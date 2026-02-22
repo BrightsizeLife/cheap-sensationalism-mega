@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cheap Sensationalism | The Collection</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0a0b10;
+            --text: #f0ede6;
+            --muted: #8a8680;
+            --dim: #44413b;
+            --amber: #E8E048;
+            --cyan: #00D4FF;
+            --coral: #FF5757;
+            --purple: #B388FF;
+            --lime: #06D6A0;
+        }
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        .font-display {
+            font-family: 'Playfair Display', serif;
+        }
+        .font-mono {
+            font-family: 'Space Mono', monospace;
+        }
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-scroll {
+            animation: scroll 15s linear infinite;
+        }
+        .animate-scroll-slow {
+            animation: scroll 40s linear infinite;
+        }
+        @keyframes flash-bg {
+            0%, 24.99% { background-color: var(--cyan); color: #0a0b10; }
+            25%, 49.99% { background-color: var(--amber); color: #0a0b10; }
+            50%, 74.99% { background-color: var(--coral); color: #0a0b10; }
+            75%, 100% { background-color: var(--lime); color: #0a0b10; }
+        }
+        .animate-flash-bg {
+            animation: flash-bg 1.5s infinite;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="selection:bg-purple-500/30 selection:text-purple-200">
+    <div id="root"></div>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>
