@@ -93,7 +93,7 @@ export const HomeView = ({ onNavigate }: { onNavigate: (view: any, id?: string) 
           <button onClick={() => onNavigate('propose')} className={getColorClasses(2)}>
             Propose
           </button>
-          {['noises', 'thoughts', 'dashboards', 'goods', 'sociality'].map((section, i) => (
+          {['noises', 'thoughts', 'dashboards', 'goods'].map((section, i) => (
             <button key={section} onClick={() => scrollToSection(section)} className={getColorClasses(i + 3)}>
               {section}
             </button>
@@ -182,58 +182,6 @@ export const HomeView = ({ onNavigate }: { onNavigate: (view: any, id?: string) 
             </ul>
           </section>
 
-          {/* perverse sociality */}
-          <section id="sociality">
-            <h1 className="text-2xl text-[#f0ede6] mb-6">perverse sociality</h1>
-            <ul className="space-y-6 list-none p-0">
-              <li>
-                <p className="text-[#8a8680] text-sm uppercase tracking-widest mb-1">Instagram</p>
-                <p className="text-[#f0ede6] text-lg italic">"Area Band Posts 47th Photo of Pedalboard, Expects Different Result"</p>
-              </li>
-              <li>
-                <p className="text-[#8a8680] text-sm uppercase tracking-widest mb-1">Twitter/X</p>
-                <p className="text-[#f0ede6] text-lg italic">"Local Musicians Discover 280 Characters Is 279 Too Many"</p>
-              </li>
-              <li>
-                <p className="text-[#8a8680] text-sm uppercase tracking-widest mb-1">Facebook</p>
-                <p className="text-[#f0ede6] text-lg italic">"Band's Facebook Page Liked Exclusively by Members' Parents, One Bot"</p>
-              </li>
-              <li>
-                <p className="text-[#8a8680] text-sm uppercase tracking-widest mb-1">TikTok</p>
-                <p className="text-[#f0ede6] text-lg italic">"Unsigned Act's TikTok Strategy Involves Hoping Algorithm Develops Taste"</p>
-              </li>
-              <li>
-                <p className="text-[#8a8680] text-sm uppercase tracking-widest mb-1">Bluesky</p>
-                <p className="text-[#f0ede6] text-lg italic">"Band Joins Bluesky, Immediately Outnumbered by Journalists Writing About Bluesky"</p>
-              </li>
-              <li>
-                <p className="text-[#8a8680] text-sm uppercase tracking-widest mb-1">Substack</p>
-                <p className="text-[#f0ede6] text-lg italic">"Substack Newsletter Achieves New Record: 3 Subscribers, All Band Members"</p>
-              </li>
-            </ul>
-
-            <div className="mt-12 pt-8 border-t border-white/5">
-              <h2 className="text-lg text-[#8a8680] mb-4">places worth your time instead</h2>
-              <ul className="space-y-3 list-disc list-inside text-[#8a8680]">
-                <li>
-                  <a href="https://radio.garden" target="_blank" rel="noreferrer" className="text-[#007BFF] hover:underline text-lg">Radio Garden</a>
-                  <span className="text-sm ml-2 opacity-60">- spin a globe, hear a station</span>
-                </li>
-                <li>
-                  <a href="https://window-swap.com" target="_blank" rel="noreferrer" className="text-[#007BFF] hover:underline text-lg">Window Swap</a>
-                  <span className="text-sm ml-2 opacity-60">- look out someone else's window</span>
-                </li>
-                <li>
-                  <a href="https://everynoise.com" target="_blank" rel="noreferrer" className="text-[#007BFF] hover:underline text-lg">Every Noise at Once</a>
-                  <span className="text-sm ml-2 opacity-60">- every genre mapped</span>
-                </li>
-                <li>
-                  <a href="https://neal.fun" target="_blank" rel="noreferrer" className="text-[#007BFF] hover:underline text-lg">Neal.fun</a>
-                  <span className="text-sm ml-2 opacity-60">- delightful interactive things</span>
-                </li>
-              </ul>
-            </div>
-          </section>
         </main>
 
         <footer className="mt-24 pt-8 border-t border-white/5 mb-16">
@@ -246,6 +194,7 @@ export const HomeView = ({ onNavigate }: { onNavigate: (view: any, id?: string) 
         </footer>
       </div>
 
+      <p className="text-center text-[#8a8680] text-sm italic mb-4">(random things to make your visit somewhat worthwhile)</p>
       <SocialBanner />
     </div>
   );
