@@ -2,10 +2,7 @@ import React from 'react';
 
 export const ProductView = ({ id, onBack }: { id: string, onBack: () => void }) => {
   const titles: Record<string, string> = {
-    'g1': 'Sensationalist T-Shirt',
-    'g2': 'Manifesto Zine (Print)',
-    'g3': 'Limited Edition Cassette',
-    'g4': 'Coffee Mug'
+    'g1': 'The Table Mic'
   };
   const title = titles[id] || `Product #${id}`;
 
@@ -17,12 +14,12 @@ export const ProductView = ({ id, onBack }: { id: string, onBack: () => void }) 
           [Product Image Placeholder]
         </div>
         <h1 className="text-3xl text-[#f0ede6] mb-2">{title}</h1>
-        <p className="text-2xl text-[#00D4FF] mb-8">$25.00</p>
+        <p className="text-2xl text-[#00D4FF] mb-8">Coming Soon</p>
         <p className="text-[#8a8680] mb-10 leading-relaxed text-lg">
-          A very basic product page where people can buy the product. High quality, sensational value. Limited run.
+          A portable, high-quality microphone designed for tabletop conversations, podcast recordings, and impromptu jam sessions. Built for the way people actually talk and play.
         </p>
-        <button className="bg-[#007BFF] text-white px-8 py-3 hover:bg-[#0056b3] transition-colors text-lg w-full md:w-auto">
-          [buy now]
+        <button disabled className="bg-[#8a8680]/30 text-[#8a8680] px-8 py-3 cursor-not-allowed text-lg w-full md:w-auto border border-white/10">
+          [coming soon]
         </button>
       </div>
     </div>
