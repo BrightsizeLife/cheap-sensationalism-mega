@@ -3,11 +3,11 @@ import { SocialBanner } from './SocialBanner';
 import { TOOLS } from '../data';
 
 const TAGS = [
-  'writing', 'DORA', 'research', 'politics', 'teams', 'scrollytelling'
+  'writing', 'DORA', 'research', 'politics', 'teams', 'scrollytelling', 'AI', 'data'
 ];
 const THOUGHTS = [
-  { id: 't1', title: 'Bayes, Splines & 2024 US Election Polls', tags: ['writing', 'research'], link: 'https://medium.com/cheap-sensationalism/bayes-splines-2024-us-election-polls-hierarchical-data-good-fun-9e6b79bb589f' },
-  { id: 't2', title: 'Follow-Up on the Bayes/Splines Election Model', tags: ['writing', 'research'], link: 'https://medium.com/cheap-sensationalism/quick-follow-up-on-the-bayes-splines-election-model-42358e4be1a1' },
+  { id: 't1', title: 'Bayes, Splines & 2024 US Election Polls', tags: ['writing', 'research', 'data', 'politics'], link: 'https://medium.com/cheap-sensationalism/bayes-splines-2024-us-election-polls-hierarchical-data-good-fun-9e6b79bb589f' },
+  { id: 't2', title: 'Follow-Up on the Bayes/Splines Election Model', tags: ['writing', 'research', 'data', 'politics'], link: 'https://medium.com/cheap-sensationalism/quick-follow-up-on-the-bayes-splines-election-model-42358e4be1a1' },
   { id: 't3', title: 'Scrollytelling Article', tags: ['writing', 'scrollytelling'], link: '#' },
   { id: 't4', title: 'Documents Are Like Sunshine', tags: ['writing', 'teams'], link: '#' },
   { id: 't5', title: 'DORA Report 2025', tags: ['DORA', 'research'], link: '#' },
@@ -15,7 +15,7 @@ const THOUGHTS = [
   { id: 't7', title: 'DORA Report 2023', tags: ['DORA', 'research'], link: '#' },
   { id: 't8', title: 'DORA Report 2022', tags: ['DORA', 'research'], link: '#' },
   { id: 't9', title: 'Team Archetypes', tags: ['teams', 'research'], link: '#' },
-  { id: 't10', title: "DORA's Inaugural AI Capabilities Model", tags: ['DORA', 'research', 'teams'], link: 'https://cloud.google.com/blog/products/ai-machine-learning/introducing-doras-inaugural-ai-capabilities-model' },
+  { id: 't10', title: "DORA's Inaugural AI Capabilities Model", tags: ['DORA', 'research', 'AI'], link: 'https://cloud.google.com/blog/products/ai-machine-learning/introducing-doras-inaugural-ai-capabilities-model' },
   { id: 't11', title: '2026 Mayoral Race Predictions', tags: ['politics'], link: '#' },
 ];
 const GOODS = [
@@ -84,7 +84,7 @@ export const HomeView = ({ onNavigate }: { onNavigate: (view: any, id?: string) 
         </div>
 
         {/* Unified Grid of Pills */}
-        <div className="grid grid-cols-3 gap-3 mb-16 pb-8 border-b border-white/5">
+        <div className="grid grid-cols-4 gap-3 mb-16 pb-8 border-b border-white/5">
           <button onClick={() => onNavigate('vote')} className={getColorClasses(0)}>
             Vote
           </button>
@@ -133,7 +133,7 @@ export const HomeView = ({ onNavigate }: { onNavigate: (view: any, id?: string) 
           {/* thoughts */}
           <section id="thoughts">
             <h1 className="text-2xl text-[#f0ede6] mb-6">thoughts</h1>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-2 mb-8">
+            <div className="grid grid-cols-4 gap-2 mb-8">
               {TAGS.map((tag, i) => (
                 <button
                   key={tag}
