@@ -1,31 +1,24 @@
 import React, { useState } from 'react';
 import { SocialBanner } from './SocialBanner';
+import { DASHBOARDS } from '../data';
 
 const TAGS = [
-  'AI', 'stats', 'philosophy', 'social sci', 'essays',
-  'code', 'proposals', 'design', 'music', 'culture'
+  'writing', 'DORA', 'research', 'politics', 'teams', 'scrollytelling'
 ];
 const THOUGHTS = [
-  { id: 't1', title: 'The End of History', tags: ['philosophy', 'essays'] },
-  { id: 't2', title: 'Bayesian Priors in Media', tags: ['stats', 'social science'] },
-  { id: 't3', title: 'Building the Network Graph', tags: ['code', 'AI'] },
-  { id: 't4', title: 'A Critique of Pure Reason', tags: ['philosophy'] },
-  { id: 't5', title: 'The Algorithmic Self', tags: ['AI', 'social science'] },
-  { id: 'p1', title: 'Proposal: The Data Cave', tags: ['proposals', 'code'] },
-  { id: 'p2', title: 'Proposal: Silent Album', tags: ['proposals', 'essays'] },
-  { id: 'p3', title: 'Proposal: Print Manifesto', tags: ['proposals', 'philosophy'] },
-];
-const TOOLS = [
-  { id: 'tool1', title: 'Data Scraper v2' },
-  { id: 'tool2', title: 'Noise Generator' },
-  { id: 'tool3', title: 'Text Analyzer' },
-  { id: 'tool4', title: 'Syntax Highlighter' },
+  { id: 't1', title: 'Medium Article', tags: ['writing'], link: '#' },
+  { id: 't2', title: 'Scrollytelling Article', tags: ['writing', 'scrollytelling'], link: '#' },
+  { id: 't3', title: 'Documents Are Like Sunshine', tags: ['writing', 'teams'], link: '#' },
+  { id: 't4', title: 'DORA Report 2025', tags: ['DORA', 'research'], link: '#' },
+  { id: 't5', title: 'DORA Report 2024', tags: ['DORA', 'research'], link: '#' },
+  { id: 't6', title: 'DORA Report 2023', tags: ['DORA', 'research'], link: '#' },
+  { id: 't7', title: 'DORA Report 2022', tags: ['DORA', 'research'], link: '#' },
+  { id: 't8', title: 'Team Archetypes', tags: ['teams', 'research'], link: '#' },
+  { id: 't9', title: 'DORA Capabilities Deep Dive', tags: ['DORA', 'research', 'teams'], link: '#' },
+  { id: 't10', title: '2026 Mayoral Race Predictions', tags: ['politics'], link: '#' },
 ];
 const GOODS = [
-  { id: 'g1', title: 'Sensationalist T-Shirt' },
-  { id: 'g2', title: 'Manifesto Zine (Print)' },
-  { id: 'g3', title: 'Limited Edition Cassette' },
-  { id: 'g4', title: 'Coffee Mug' },
+  { id: 'g1', title: 'The Table Mic' },
 ];
 
 const getColorClasses = (index: number, isActive: boolean = false) => {
@@ -41,13 +34,6 @@ const getColorClasses = (index: number, isActive: boolean = false) => {
   return `w-full h-10 px-2 py-1 text-[10px] sm:text-xs border rounded-full transition-colors flex items-center justify-center text-center font-bold tracking-widest uppercase ${c.base} ${isActive ? c.active : `bg-transparent ${c.hover}`}`;
 };
 
-const TICKER_MESSAGES = [
-  "NEWEST ALBUM: LISTEN HERE",
-  "NEW ARTICLE ON CHEESE MONGERING",
-  "HURRY! PROPOSE BEFORE OCTOBER DEADLINE",
-  "FOX NEWS: NOT RACIST, BUT #1 WITH RACISTS"
-];
-
 export const HomeView = ({ onNavigate }: { onNavigate: (view: any, id?: string) => void }) => {
   const [selectedTags, setSelectedTags] = useState<Set<string>>(new Set());
 
@@ -58,7 +44,7 @@ export const HomeView = ({ onNavigate }: { onNavigate: (view: any, id?: string) 
     setSelectedTags(next);
   };
 
-  const filteredThoughts = THOUGHTS.filter(t => 
+  const filteredThoughts = THOUGHTS.filter(t =>
     selectedTags.size === 0 || t.tags.some(tag => selectedTags.has(tag))
   );
 
@@ -71,9 +57,9 @@ export const HomeView = ({ onNavigate }: { onNavigate: (view: any, id?: string) 
 
   const tickerItems = [
     { text: "NEWEST ALBUM: LISTEN HERE", action: () => window.open('https://open.spotify.com/album/7kjmvtW08iNlCKEU0qgKXN', '_blank') },
-    { text: "NEW ARTICLE ON CHEESE MONGERING", action: () => scrollToSection('thoughts') },
-    { text: "HURRY! PROPOSE BEFORE OCTOBER DEADLINE", action: () => onNavigate('propose') },
-    { text: "FOX NEWS: NOT RACIST, BUT #1 WITH RACISTS", action: () => {} }
+    { text: "HAVE AN IDEA? PROPOSE IT", action: () => onNavigate('propose') },
+    { text: "VOTE ON THE NEXT PROJECT", action: () => onNavigate('vote') },
+    { text: "THE TABLE MIC: COMING SOON", action: () => onNavigate('product', 'g1') }
   ];
   const displayTicker = [...tickerItems, ...tickerItems, ...tickerItems, ...tickerItems];
 
@@ -90,7 +76,7 @@ export const HomeView = ({ onNavigate }: { onNavigate: (view: any, id?: string) 
             {displayTicker.map((item, i) => (
               <React.Fragment key={i}>
                 <button onClick={item.action} className="mx-4 hover:underline cursor-pointer tracking-widest uppercase font-bold">{item.text}</button>
-                <span className="mx-2 opacity-50">✦</span>
+                <span className="mx-2 opacity-50">&#x2726;</span>
               </React.Fragment>
             ))}
           </div>
@@ -107,11 +93,8 @@ export const HomeView = ({ onNavigate }: { onNavigate: (view: any, id?: string) 
           <button onClick={() => onNavigate('propose')} className={getColorClasses(2)}>
             Propose
           </button>
-          <button onClick={() => window.open('#', '_blank')} className={getColorClasses(3)}>
-            Slack
-          </button>
-          {['noises', 'thoughts', 'tools', 'goods', 'sociality'].map((section, i) => (
-            <button key={section} onClick={() => scrollToSection(section)} className={getColorClasses(i + 4)}>
+          {['noises', 'thoughts', 'dashboards', 'goods', 'sociality'].map((section, i) => (
+            <button key={section} onClick={() => scrollToSection(section)} className={getColorClasses(i + 3)}>
               {section}
             </button>
           ))}
@@ -149,9 +132,9 @@ export const HomeView = ({ onNavigate }: { onNavigate: (view: any, id?: string) 
           {/* thoughts */}
           <section id="thoughts">
             <h1 className="text-2xl text-[#f0ede6] mb-6">thoughts</h1>
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-2 mb-8">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-2 mb-8">
               {TAGS.map((tag, i) => (
-                <button 
+                <button
                   key={tag}
                   onClick={() => toggleTag(tag)}
                   className={getColorClasses(i, selectedTags.has(tag))}
@@ -163,9 +146,9 @@ export const HomeView = ({ onNavigate }: { onNavigate: (view: any, id?: string) 
             <ul className="space-y-3 list-disc list-inside text-[#8a8680]">
               {filteredThoughts.map(t => (
                 <li key={t.id} className="leading-relaxed">
-                  <button onClick={() => onNavigate('thought', t.id)} className="text-[#007BFF] hover:underline text-left text-lg">
+                  <a href={t.link} className="text-[#007BFF] hover:underline text-left text-lg">
                     {t.title}
-                  </button>
+                  </a>
                   <span className="text-sm ml-3 opacity-60">[{t.tags.join(', ')}]</span>
                 </li>
               ))}
@@ -173,13 +156,13 @@ export const HomeView = ({ onNavigate }: { onNavigate: (view: any, id?: string) 
             </ul>
           </section>
 
-          {/* tools */}
-          <section id="tools">
-            <h1 className="text-2xl text-[#f0ede6] mb-6">tools</h1>
+          {/* dashboards */}
+          <section id="dashboards">
+            <h1 className="text-2xl text-[#f0ede6] mb-6">dashboards</h1>
             <ul className="space-y-3 list-disc list-inside text-[#8a8680]">
-              {TOOLS.map(t => (
-                <li key={t.id}>
-                  <a href="#" className="text-[#007BFF] hover:underline text-lg">{t.title}</a>
+              {DASHBOARDS.map(d => (
+                <li key={d.id}>
+                  <a href={d.link} className="text-[#007BFF] hover:underline text-lg">{d.title}</a>
                 </li>
               ))}
             </ul>
@@ -202,49 +185,67 @@ export const HomeView = ({ onNavigate }: { onNavigate: (view: any, id?: string) 
           {/* perverse sociality */}
           <section id="sociality">
             <h1 className="text-2xl text-[#f0ede6] mb-6">perverse sociality</h1>
-            <ul className="space-y-4 list-none p-0">
-              <li className="flex items-center gap-3">
-                <img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/instagram.svg" alt="Instagram" className="w-6 h-6 invert opacity-70" />
-                <a href="#" className="text-[#007BFF] hover:underline">instagram</a>
+            <ul className="space-y-6 list-none p-0">
+              <li>
+                <p className="text-[#8a8680] text-sm uppercase tracking-widest mb-1">Instagram</p>
+                <p className="text-[#f0ede6] text-lg italic">"Area Band Posts 47th Photo of Pedalboard, Expects Different Result"</p>
               </li>
-              <li className="flex items-center gap-3">
-                <img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/facebook.svg" alt="Facebook" className="w-6 h-6 invert opacity-70" />
-                <a href="#" className="text-[#007BFF] hover:underline">facebook</a>
+              <li>
+                <p className="text-[#8a8680] text-sm uppercase tracking-widest mb-1">Twitter/X</p>
+                <p className="text-[#f0ede6] text-lg italic">"Local Musicians Discover 280 Characters Is 279 Too Many"</p>
               </li>
-              <li className="flex items-center gap-3">
-                <img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/tiktok.svg" alt="TikTok" className="w-6 h-6 invert opacity-70" />
-                <a href="#" className="text-[#007BFF] hover:underline">tiktok</a>
+              <li>
+                <p className="text-[#8a8680] text-sm uppercase tracking-widest mb-1">Facebook</p>
+                <p className="text-[#f0ede6] text-lg italic">"Band's Facebook Page Liked Exclusively by Members' Parents, One Bot"</p>
               </li>
-              <li className="flex items-center gap-3">
-                <img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/bluesky.svg" alt="Bluesky" className="w-6 h-6 invert opacity-70" />
-                <a href="#" className="text-[#007BFF] hover:underline">bluesky</a>
+              <li>
+                <p className="text-[#8a8680] text-sm uppercase tracking-widest mb-1">TikTok</p>
+                <p className="text-[#f0ede6] text-lg italic">"Unsigned Act's TikTok Strategy Involves Hoping Algorithm Develops Taste"</p>
               </li>
-              <li className="flex items-center gap-3">
-                <img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/medium.svg" alt="Medium" className="w-6 h-6 invert opacity-70" />
-                <a href="#" className="text-[#007BFF] hover:underline">medium</a>
+              <li>
+                <p className="text-[#8a8680] text-sm uppercase tracking-widest mb-1">Bluesky</p>
+                <p className="text-[#f0ede6] text-lg italic">"Band Joins Bluesky, Immediately Outnumbered by Journalists Writing About Bluesky"</p>
               </li>
-              <li className="flex items-center gap-3">
-                <img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/substack.svg" alt="Substack" className="w-6 h-6 invert opacity-70" />
-                <a href="#" className="text-[#007BFF] hover:underline">substack</a>
+              <li>
+                <p className="text-[#8a8680] text-sm uppercase tracking-widest mb-1">Substack</p>
+                <p className="text-[#f0ede6] text-lg italic">"Substack Newsletter Achieves New Record: 3 Subscribers, All Band Members"</p>
               </li>
             </ul>
+
+            <div className="mt-12 pt-8 border-t border-white/5">
+              <h2 className="text-lg text-[#8a8680] mb-4">places worth your time instead</h2>
+              <ul className="space-y-3 list-disc list-inside text-[#8a8680]">
+                <li>
+                  <a href="https://radio.garden" target="_blank" rel="noreferrer" className="text-[#007BFF] hover:underline text-lg">Radio Garden</a>
+                  <span className="text-sm ml-2 opacity-60">- spin a globe, hear a station</span>
+                </li>
+                <li>
+                  <a href="https://window-swap.com" target="_blank" rel="noreferrer" className="text-[#007BFF] hover:underline text-lg">Window Swap</a>
+                  <span className="text-sm ml-2 opacity-60">- look out someone else's window</span>
+                </li>
+                <li>
+                  <a href="https://everynoise.com" target="_blank" rel="noreferrer" className="text-[#007BFF] hover:underline text-lg">Every Noise at Once</a>
+                  <span className="text-sm ml-2 opacity-60">- every genre mapped</span>
+                </li>
+                <li>
+                  <a href="https://neal.fun" target="_blank" rel="noreferrer" className="text-[#007BFF] hover:underline text-lg">Neal.fun</a>
+                  <span className="text-sm ml-2 opacity-60">- delightful interactive things</span>
+                </li>
+              </ul>
+            </div>
           </section>
         </main>
 
         <footer className="mt-24 pt-8 border-t border-white/5 mb-16">
           <ul className="space-y-4 list-none p-0">
             <li className="flex items-center gap-3">
-              <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" className="w-6 h-6 invert opacity-70" />
-              <a href="#" className="text-[#007BFF] hover:underline">GitHub</a>
-            </li>
-            <li className="flex items-center gap-3">
               <img src="https://em-content.zobj.net/source/google/412/envelope_2709-fe0f.png" alt="Email" className="w-6 h-6" />
-              <a href="mailto:ddebellis@gmail.com" className="text-[#007BFF] hover:underline">example@yourdomain.com</a>
+              <a href="mailto:ddebellis@gmail.com" className="text-[#007BFF] hover:underline">ddebellis@gmail.com</a>
             </li>
           </ul>
         </footer>
       </div>
-      
+
       <SocialBanner />
     </div>
   );
