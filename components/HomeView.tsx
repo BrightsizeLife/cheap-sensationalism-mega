@@ -1,21 +1,22 @@
 import React, { useState } from 'react';
 import { SocialBanner } from './SocialBanner';
-import { DASHBOARDS } from '../data';
+import { TOOLS } from '../data';
 
 const TAGS = [
   'writing', 'DORA', 'research', 'politics', 'teams', 'scrollytelling'
 ];
 const THOUGHTS = [
-  { id: 't1', title: 'Medium Article', tags: ['writing'], link: '#' },
-  { id: 't2', title: 'Scrollytelling Article', tags: ['writing', 'scrollytelling'], link: '#' },
-  { id: 't3', title: 'Documents Are Like Sunshine', tags: ['writing', 'teams'], link: '#' },
-  { id: 't4', title: 'DORA Report 2025', tags: ['DORA', 'research'], link: '#' },
-  { id: 't5', title: 'DORA Report 2024', tags: ['DORA', 'research'], link: '#' },
-  { id: 't6', title: 'DORA Report 2023', tags: ['DORA', 'research'], link: '#' },
-  { id: 't7', title: 'DORA Report 2022', tags: ['DORA', 'research'], link: '#' },
-  { id: 't8', title: 'Team Archetypes', tags: ['teams', 'research'], link: '#' },
-  { id: 't9', title: 'DORA Capabilities Deep Dive', tags: ['DORA', 'research', 'teams'], link: '#' },
-  { id: 't10', title: '2026 Mayoral Race Predictions', tags: ['politics'], link: '#' },
+  { id: 't1', title: 'Bayes, Splines & 2024 US Election Polls', tags: ['writing', 'research'], link: 'https://medium.com/cheap-sensationalism/bayes-splines-2024-us-election-polls-hierarchical-data-good-fun-9e6b79bb589f' },
+  { id: 't2', title: 'Follow-Up on the Bayes/Splines Election Model', tags: ['writing', 'research'], link: 'https://medium.com/cheap-sensationalism/quick-follow-up-on-the-bayes-splines-election-model-42358e4be1a1' },
+  { id: 't3', title: 'Scrollytelling Article', tags: ['writing', 'scrollytelling'], link: '#' },
+  { id: 't4', title: 'Documents Are Like Sunshine', tags: ['writing', 'teams'], link: '#' },
+  { id: 't5', title: 'DORA Report 2025', tags: ['DORA', 'research'], link: '#' },
+  { id: 't6', title: 'DORA Report 2024', tags: ['DORA', 'research'], link: '#' },
+  { id: 't7', title: 'DORA Report 2023', tags: ['DORA', 'research'], link: '#' },
+  { id: 't8', title: 'DORA Report 2022', tags: ['DORA', 'research'], link: '#' },
+  { id: 't9', title: 'Team Archetypes', tags: ['teams', 'research'], link: '#' },
+  { id: 't10', title: "DORA's Inaugural AI Capabilities Model", tags: ['DORA', 'research', 'teams'], link: 'https://cloud.google.com/blog/products/ai-machine-learning/introducing-doras-inaugural-ai-capabilities-model' },
+  { id: 't11', title: '2026 Mayoral Race Predictions', tags: ['politics'], link: '#' },
 ];
 const GOODS = [
   { id: 'g1', title: 'The Table Mic' },
@@ -93,7 +94,7 @@ export const HomeView = ({ onNavigate }: { onNavigate: (view: any, id?: string) 
           <button onClick={() => onNavigate('propose')} className={getColorClasses(2)}>
             Propose
           </button>
-          {['noises', 'thoughts', 'dashboards', 'goods'].map((section, i) => (
+          {['noises', 'thoughts', 'tools', 'goods', 'sociality'].map((section, i) => (
             <button key={section} onClick={() => scrollToSection(section)} className={getColorClasses(i + 3)}>
               {section}
             </button>
@@ -156,13 +157,13 @@ export const HomeView = ({ onNavigate }: { onNavigate: (view: any, id?: string) 
             </ul>
           </section>
 
-          {/* dashboards */}
-          <section id="dashboards">
-            <h1 className="text-2xl text-[#f0ede6] mb-6">dashboards</h1>
+          {/* tools */}
+          <section id="tools">
+            <h1 className="text-2xl text-[#f0ede6] mb-6">tools</h1>
             <ul className="space-y-3 list-disc list-inside text-[#8a8680]">
-              {DASHBOARDS.map(d => (
-                <li key={d.id}>
-                  <a href={d.link} className="text-[#007BFF] hover:underline text-lg">{d.title}</a>
+              {TOOLS.map(t => (
+                <li key={t.id}>
+                  <a href={t.link} className="text-[#007BFF] hover:underline text-lg">{t.title}</a>
                 </li>
               ))}
             </ul>
@@ -182,6 +183,36 @@ export const HomeView = ({ onNavigate }: { onNavigate: (view: any, id?: string) 
             </ul>
           </section>
 
+          {/* perverse sociality */}
+          <section id="sociality">
+            <h1 className="text-2xl text-[#f0ede6] mb-6">perverse sociality</h1>
+            <ul className="space-y-4 list-none p-0">
+              <li className="flex items-center gap-3">
+                <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" className="w-6 h-6 invert opacity-70" />
+                <a href="#" className="text-[#007BFF] hover:underline">GitHub</a>
+              </li>
+              <li className="flex items-center gap-3">
+                <img src="https://em-content.zobj.net/source/google/412/envelope_2709-fe0f.png" alt="Email" className="w-6 h-6" />
+                <a href="mailto:ddebellis@gmail.com" className="text-[#007BFF] hover:underline">email</a>
+              </li>
+              <li className="flex items-center gap-3">
+                <img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/instagram.svg" alt="Instagram" className="w-6 h-6 invert opacity-70" />
+                <a href="#" className="text-[#007BFF] hover:underline">instagram</a>
+              </li>
+              <li className="flex items-center gap-3">
+                <img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/facebook.svg" alt="Facebook" className="w-6 h-6 invert opacity-70" />
+                <a href="#" className="text-[#007BFF] hover:underline">facebook</a>
+              </li>
+              <li className="flex items-center gap-3">
+                <img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/medium.svg" alt="Medium" className="w-6 h-6 invert opacity-70" />
+                <a href="#" className="text-[#007BFF] hover:underline">medium</a>
+              </li>
+              <li className="flex items-center gap-3">
+                <img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/substack.svg" alt="Substack" className="w-6 h-6 invert opacity-70" />
+                <a href="#" className="text-[#007BFF] hover:underline">substack</a>
+              </li>
+            </ul>
+          </section>
         </main>
 
         <footer className="mt-24 pt-8 border-t border-white/5 mb-16">

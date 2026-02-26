@@ -2,6 +2,7 @@
 import React from 'react';
 import { Album, CellItem, SocialPost } from './types';
 import {
+  SketchEye,
   SketchKnobs,
   SketchTape,
   SketchCircuit,
@@ -53,7 +54,7 @@ export const ALBUMS: Album[] = [
   }
 ];
 
-export const DASHBOARDS: CellItem[] = [
+export const TOOLS: CellItem[] = [
   {
     id: 'd1',
     title: 'Guitar Fretboard',
@@ -81,6 +82,13 @@ export const DASHBOARDS: CellItem[] = [
     description: 'Tools and tricks for navigating New York City like a local.',
     link: '#',
     icon: React.createElement(SketchScreen)
+  },
+  {
+    id: 'd5',
+    title: 'Bayesian Prior Explorer',
+    description: 'Interactive tool for exploring and visualizing Bayesian priors and posteriors.',
+    link: '#',
+    icon: React.createElement(SketchEye)
   }
 ];
 
