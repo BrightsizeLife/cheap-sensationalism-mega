@@ -1,15 +1,12 @@
 
 import React from 'react';
 import { Album, CellItem, SocialPost } from './types';
-import { 
-  SketchPencil, 
-  SketchBolt, 
-  SketchBook, 
-  SketchEye, 
-  SketchKnobs, 
-  SketchTape, 
-  SketchCircuit, 
-  SketchScreen 
+import {
+  SketchEye,
+  SketchKnobs,
+  SketchTape,
+  SketchCircuit,
+  SketchScreen
 } from './components/SketchIcons';
 
 const generateTracks = (albumId: string, count: number) => {
@@ -57,65 +54,41 @@ export const ALBUMS: Album[] = [
   }
 ];
 
-export const THOUGHTS: CellItem[] = [
-  {
-    id: 't1',
-    title: 'The Substack',
-    description: 'Weekly meditations on the death of context and the birth of the hyper-niche.',
-    link: 'https://substack.com',
-    icon: React.createElement(SketchPencil)
-  },
-  {
-    id: 't2',
-    title: 'Manifesto',
-    description: 'Why we make noise in an era of silence. The core philosophy of Cheap Sensationalism.',
-    link: '#',
-    icon: React.createElement(SketchBolt)
-  },
-  {
-    id: 't3',
-    title: 'Field Notes',
-    description: 'Observations from the road, the studio, and the spaces in between.',
-    link: '#',
-    icon: React.createElement(SketchBook)
-  },
-  {
-    id: 't4',
-    title: 'Visual Archives',
-    description: 'A collection of visual inspirations that drive our sonic palette.',
-    link: '#',
-    icon: React.createElement(SketchEye)
-  }
-];
-
 export const TOOLS: CellItem[] = [
   {
-    id: 'm1',
-    title: 'The Modular Wall',
-    description: 'Our custom-built Eurorack system used for 90% of "Slop".',
+    id: 'd1',
+    title: 'Guitar Fretboard',
+    description: 'Interactive fretboard visualization for scales, chords, and modes.',
     link: '#',
     icon: React.createElement(SketchKnobs)
   },
   {
-    id: 'm2',
-    title: 'Tape Loops',
-    description: 'Degraded magnetic memories. How we process time.',
+    id: 'd2',
+    title: 'Decision Making',
+    description: 'Structured frameworks for making better decisions under uncertainty.',
     link: '#',
     icon: React.createElement(SketchTape)
   },
   {
-    id: 'm3',
-    title: 'Circuit Bending',
-    description: 'Breaking toys to make new worlds. The ethos of destruction as creation.',
+    id: 'd3',
+    title: 'Simplified Power Dynamics',
+    description: 'Visual models of how influence and authority actually flow.',
     link: '#',
     icon: React.createElement(SketchCircuit)
   },
   {
-    id: 'm4',
-    title: 'Software',
-    description: 'The digital glue that holds the analog chaos together.',
+    id: 'd4',
+    title: 'NYC Navigation',
+    description: 'Tools and tricks for navigating New York City like a local.',
     link: '#',
     icon: React.createElement(SketchScreen)
+  },
+  {
+    id: 'd5',
+    title: 'Bayesian Prior Explorer',
+    description: 'Interactive tool for exploring and visualizing Bayesian priors and posteriors.',
+    link: '#',
+    icon: React.createElement(SketchEye)
   }
 ];
 
