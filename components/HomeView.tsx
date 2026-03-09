@@ -1,31 +1,25 @@
 import React, { useState } from 'react';
 import { SocialBanner } from './SocialBanner';
+import { TOOLS } from '../data';
 
 const TAGS = [
-  'AI', 'stats', 'philosophy', 'social sci', 'essays',
-  'code', 'proposals', 'design', 'music', 'culture'
+  'writing', 'DORA', 'research', 'politics', 'teams', 'scrollytelling', 'AI', 'data'
 ];
 const THOUGHTS = [
-  { id: 't1', title: 'The End of History', tags: ['philosophy', 'essays'] },
-  { id: 't2', title: 'Bayesian Priors in Media', tags: ['stats', 'social science'] },
-  { id: 't3', title: 'Building the Network Graph', tags: ['code', 'AI'] },
-  { id: 't4', title: 'A Critique of Pure Reason', tags: ['philosophy'] },
-  { id: 't5', title: 'The Algorithmic Self', tags: ['AI', 'social science'] },
-  { id: 'p1', title: 'Proposal: The Data Cave', tags: ['proposals', 'code'] },
-  { id: 'p2', title: 'Proposal: Silent Album', tags: ['proposals', 'essays'] },
-  { id: 'p3', title: 'Proposal: Print Manifesto', tags: ['proposals', 'philosophy'] },
-];
-const TOOLS = [
-  { id: 'tool1', title: 'Data Scraper v2' },
-  { id: 'tool2', title: 'Noise Generator' },
-  { id: 'tool3', title: 'Text Analyzer' },
-  { id: 'tool4', title: 'Syntax Highlighter' },
+  { id: 't1', title: 'Bayes, Splines & 2024 US Election Polls', tags: ['writing', 'research', 'data', 'politics'], link: 'https://medium.com/cheap-sensationalism/bayes-splines-2024-us-election-polls-hierarchical-data-good-fun-9e6b79bb589f' },
+  { id: 't2', title: 'Follow-Up on the Bayes/Splines Election Model', tags: ['writing', 'research', 'data', 'politics'], link: 'https://medium.com/cheap-sensationalism/quick-follow-up-on-the-bayes-splines-election-model-42358e4be1a1' },
+  { id: 't3', title: 'Scrollytelling Article', tags: ['writing', 'scrollytelling'], link: '#' },
+  { id: 't4', title: 'Documents Are Like Sunshine', tags: ['writing', 'teams'], link: '#' },
+  { id: 't5', title: 'DORA Report 2025', tags: ['DORA', 'research'], link: '#' },
+  { id: 't6', title: 'DORA Report 2024', tags: ['DORA', 'research'], link: '#' },
+  { id: 't7', title: 'DORA Report 2023', tags: ['DORA', 'research'], link: '#' },
+  { id: 't8', title: 'DORA Report 2022', tags: ['DORA', 'research'], link: '#' },
+  { id: 't9', title: 'Team Archetypes', tags: ['teams', 'research'], link: '#' },
+  { id: 't10', title: "DORA's Inaugural AI Capabilities Model", tags: ['DORA', 'research', 'AI'], link: 'https://cloud.google.com/blog/products/ai-machine-learning/introducing-doras-inaugural-ai-capabilities-model' },
+  { id: 't11', title: '2026 Mayoral Race Predictions', tags: ['politics'], link: '#' },
 ];
 const GOODS = [
-  { id: 'g1', title: 'Sensationalist T-Shirt' },
-  { id: 'g2', title: 'Manifesto Zine (Print)' },
-  { id: 'g3', title: 'Limited Edition Cassette' },
-  { id: 'g4', title: 'Coffee Mug' },
+  { id: 'g1', title: 'The Table Mic' },
 ];
 
 const getColorClasses = (index: number, isActive: boolean = false) => {
@@ -41,13 +35,6 @@ const getColorClasses = (index: number, isActive: boolean = false) => {
   return `w-full h-10 px-2 py-1 text-[10px] sm:text-xs border rounded-full transition-colors flex items-center justify-center text-center font-bold tracking-widest uppercase ${c.base} ${isActive ? c.active : `bg-transparent ${c.hover}`}`;
 };
 
-const TICKER_MESSAGES = [
-  "NEWEST ALBUM: LISTEN HERE",
-  "NEW ARTICLE ON CHEESE MONGERING",
-  "HURRY! PROPOSE BEFORE OCTOBER DEADLINE",
-  "FOX NEWS: NOT RACIST, BUT #1 WITH RACISTS"
-];
-
 export const HomeView = ({ onNavigate }: { onNavigate: (view: any, id?: string) => void }) => {
   const [selectedTags, setSelectedTags] = useState<Set<string>>(new Set());
 
@@ -58,7 +45,7 @@ export const HomeView = ({ onNavigate }: { onNavigate: (view: any, id?: string) 
     setSelectedTags(next);
   };
 
-  const filteredThoughts = THOUGHTS.filter(t => 
+  const filteredThoughts = THOUGHTS.filter(t =>
     selectedTags.size === 0 || t.tags.some(tag => selectedTags.has(tag))
   );
 
@@ -71,9 +58,9 @@ export const HomeView = ({ onNavigate }: { onNavigate: (view: any, id?: string) 
 
   const tickerItems = [
     { text: "NEWEST ALBUM: LISTEN HERE", action: () => window.open('https://open.spotify.com/album/7kjmvtW08iNlCKEU0qgKXN', '_blank') },
-    { text: "NEW ARTICLE ON CHEESE MONGERING", action: () => scrollToSection('thoughts') },
-    { text: "HURRY! PROPOSE BEFORE OCTOBER DEADLINE", action: () => onNavigate('propose') },
-    { text: "FOX NEWS: NOT RACIST, BUT #1 WITH RACISTS", action: () => {} }
+    { text: "HAVE AN IDEA? PROPOSE IT", action: () => onNavigate('propose') },
+    { text: "VOTE ON THE NEXT PROJECT", action: () => onNavigate('vote') },
+    { text: "THE TABLE MIC: COMING SOON", action: () => onNavigate('product', 'g1') }
   ];
   const displayTicker = [...tickerItems, ...tickerItems, ...tickerItems, ...tickerItems];
 
@@ -90,14 +77,14 @@ export const HomeView = ({ onNavigate }: { onNavigate: (view: any, id?: string) 
             {displayTicker.map((item, i) => (
               <React.Fragment key={i}>
                 <button onClick={item.action} className="mx-4 hover:underline cursor-pointer tracking-widest uppercase font-bold">{item.text}</button>
-                <span className="mx-2 opacity-50">✦</span>
+                <span className="mx-2 opacity-50">&#x2726;</span>
               </React.Fragment>
             ))}
           </div>
         </div>
 
         {/* Unified Grid of Pills */}
-        <div className="grid grid-cols-3 gap-3 mb-16 pb-8 border-b border-white/5">
+        <div className="grid grid-cols-4 gap-3 mb-16 pb-8 border-b border-white/5">
           <button onClick={() => onNavigate('vote')} className={getColorClasses(0)}>
             Vote
           </button>
@@ -107,11 +94,8 @@ export const HomeView = ({ onNavigate }: { onNavigate: (view: any, id?: string) 
           <button onClick={() => onNavigate('propose')} className={getColorClasses(2)}>
             Propose
           </button>
-          <button onClick={() => window.open('#', '_blank')} className={getColorClasses(3)}>
-            Slack
-          </button>
           {['noises', 'thoughts', 'tools', 'goods', 'sociality'].map((section, i) => (
-            <button key={section} onClick={() => scrollToSection(section)} className={getColorClasses(i + 4)}>
+            <button key={section} onClick={() => scrollToSection(section)} className={getColorClasses(i + 3)}>
               {section}
             </button>
           ))}
@@ -149,9 +133,9 @@ export const HomeView = ({ onNavigate }: { onNavigate: (view: any, id?: string) 
           {/* thoughts */}
           <section id="thoughts">
             <h1 className="text-2xl text-[#f0ede6] mb-6">thoughts</h1>
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-2 mb-8">
+            <div className="grid grid-cols-4 gap-2 mb-8">
               {TAGS.map((tag, i) => (
-                <button 
+                <button
                   key={tag}
                   onClick={() => toggleTag(tag)}
                   className={getColorClasses(i, selectedTags.has(tag))}
@@ -163,9 +147,9 @@ export const HomeView = ({ onNavigate }: { onNavigate: (view: any, id?: string) 
             <ul className="space-y-3 list-disc list-inside text-[#8a8680]">
               {filteredThoughts.map(t => (
                 <li key={t.id} className="leading-relaxed">
-                  <button onClick={() => onNavigate('thought', t.id)} className="text-[#007BFF] hover:underline text-left text-lg">
+                  <a href={t.link} className="text-[#007BFF] hover:underline text-left text-lg">
                     {t.title}
-                  </button>
+                  </a>
                   <span className="text-sm ml-3 opacity-60">[{t.tags.join(', ')}]</span>
                 </li>
               ))}
@@ -179,7 +163,7 @@ export const HomeView = ({ onNavigate }: { onNavigate: (view: any, id?: string) 
             <ul className="space-y-3 list-disc list-inside text-[#8a8680]">
               {TOOLS.map(t => (
                 <li key={t.id}>
-                  <a href="#" className="text-[#007BFF] hover:underline text-lg">{t.title}</a>
+                  <a href={t.link} className="text-[#007BFF] hover:underline text-lg">{t.title}</a>
                 </li>
               ))}
             </ul>
@@ -204,20 +188,20 @@ export const HomeView = ({ onNavigate }: { onNavigate: (view: any, id?: string) 
             <h1 className="text-2xl text-[#f0ede6] mb-6">perverse sociality</h1>
             <ul className="space-y-4 list-none p-0">
               <li className="flex items-center gap-3">
+                <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" className="w-6 h-6 invert opacity-70" />
+                <a href="#" className="text-[#007BFF] hover:underline">GitHub</a>
+              </li>
+              <li className="flex items-center gap-3">
+                <img src="https://em-content.zobj.net/source/google/412/envelope_2709-fe0f.png" alt="Email" className="w-6 h-6" />
+                <a href="mailto:ddebellis@gmail.com" className="text-[#007BFF] hover:underline">email</a>
+              </li>
+              <li className="flex items-center gap-3">
                 <img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/instagram.svg" alt="Instagram" className="w-6 h-6 invert opacity-70" />
                 <a href="#" className="text-[#007BFF] hover:underline">instagram</a>
               </li>
               <li className="flex items-center gap-3">
                 <img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/facebook.svg" alt="Facebook" className="w-6 h-6 invert opacity-70" />
                 <a href="#" className="text-[#007BFF] hover:underline">facebook</a>
-              </li>
-              <li className="flex items-center gap-3">
-                <img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/tiktok.svg" alt="TikTok" className="w-6 h-6 invert opacity-70" />
-                <a href="#" className="text-[#007BFF] hover:underline">tiktok</a>
-              </li>
-              <li className="flex items-center gap-3">
-                <img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/bluesky.svg" alt="Bluesky" className="w-6 h-6 invert opacity-70" />
-                <a href="#" className="text-[#007BFF] hover:underline">bluesky</a>
               </li>
               <li className="flex items-center gap-3">
                 <img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/medium.svg" alt="Medium" className="w-6 h-6 invert opacity-70" />
@@ -234,17 +218,14 @@ export const HomeView = ({ onNavigate }: { onNavigate: (view: any, id?: string) 
         <footer className="mt-24 pt-8 border-t border-white/5 mb-16">
           <ul className="space-y-4 list-none p-0">
             <li className="flex items-center gap-3">
-              <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" className="w-6 h-6 invert opacity-70" />
-              <a href="#" className="text-[#007BFF] hover:underline">GitHub</a>
-            </li>
-            <li className="flex items-center gap-3">
               <img src="https://em-content.zobj.net/source/google/412/envelope_2709-fe0f.png" alt="Email" className="w-6 h-6" />
-              <a href="mailto:ddebellis@gmail.com" className="text-[#007BFF] hover:underline">example@yourdomain.com</a>
+              <a href="mailto:ddebellis@gmail.com" className="text-[#007BFF] hover:underline">ddebellis@gmail.com</a>
             </li>
           </ul>
         </footer>
       </div>
-      
+
+      <p className="text-center text-[#8a8680] text-sm italic mb-4">(random things to make your visit somewhat worthwhile)</p>
       <SocialBanner />
     </div>
   );
