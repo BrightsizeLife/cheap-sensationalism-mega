@@ -36,6 +36,7 @@ export interface CellItem {
   description: string;
   link: string;
   icon: React.ReactNode;
+  status?: 'wip' | 'coming-soon';
 }
 
 export interface CollectionItem {
