@@ -6,13 +6,14 @@ import {
   SketchKnobs,
   SketchTape,
   SketchCircuit,
-  SketchScreen
+  SketchScreen,
+  SketchPencil
 } from './components/SketchIcons';
 
 const generateTracks = (albumId: string, count: number) => {
   const themes = ['Neon', 'Acid', 'Raw', 'Slop', 'Glitch', 'Organic', 'Plastic', 'Static', 'Wired', 'Lush', 'Lost', 'Vivid'];
   const nouns = ['System', 'Waste', 'Flesh', 'Circuit', 'Dream', 'Shadow', 'Signal', 'Voice', 'Code', 'River', 'Void', 'Light'];
-  
+
   return Array.from({ length: count }).map((_, i) => ({
     id: `${albumId}-${i + 1}`,
     title: `${themes[i % themes.length]} ${nouns[i % nouns.length]}`,
@@ -29,39 +30,32 @@ const generateTracks = (albumId: string, count: number) => {
 
 export const ALBUMS: Album[] = [
   {
-    id: '1',
-    title: 'Slop',
-    year: '2024',
-    coverUrl: 'https://images.unsplash.com/photo-1634157703702-3c124b455499?auto=format&fit=crop&q=80&w=800',
-    description: 'A chaotic, unrefined exploration of sonic debris and digital excess. Our most honest work to date.',
-    songs: generateTracks('1', 12)
-  },
-  {
-    id: '2',
-    title: 'Philadelphia Freedom',
-    year: '2023',
-    coverUrl: 'https://images.unsplash.com/photo-1542208998-f6dbbb27a72f?auto=format&fit=crop&q=80&w=800',
-    description: 'Gritty, historic, and revolutionary. A soundscape of the city that never sleeps, only dreams.',
-    songs: generateTracks('2', 10)
-  },
-  {
     id: '3',
     title: 'Cheap Sensationalism',
     year: '2022',
     coverUrl: 'https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&fit=crop&q=80&w=800',
     description: 'Exaggerated hooks, fluorescent production, and the absolute pursuit of the immediate.',
     songs: generateTracks('3', 12)
+  },
+  {
+    id: '2',
+    title: 'Philadelphia Demos',
+    year: '2023',
+    coverUrl: 'https://images.unsplash.com/photo-1542208998-f6dbbb27a72f?auto=format&fit=crop&q=80&w=800',
+    description: 'Gritty, historic, and revolutionary. A soundscape of the city that never sleeps, only dreams.',
+    songs: generateTracks('2', 10)
+  },
+  {
+    id: '1',
+    title: 'Slop',
+    year: '2024',
+    coverUrl: 'https://images.unsplash.com/photo-1634157703702-3c124b455499?auto=format&fit=crop&q=80&w=800',
+    description: 'A chaotic, unrefined exploration of sonic debris and digital excess. Our most honest work to date.',
+    songs: generateTracks('1', 12)
   }
 ];
 
 export const TOOLS: CellItem[] = [
-  {
-    id: 'd1',
-    title: 'Guitar Fretboard',
-    description: 'Interactive fretboard visualization for scales, chords, and modes.',
-    link: '#',
-    icon: React.createElement(SketchKnobs)
-  },
   {
     id: 'd2',
     title: 'Decision Making',
@@ -77,18 +71,36 @@ export const TOOLS: CellItem[] = [
     icon: React.createElement(SketchCircuit)
   },
   {
+    id: 'd1',
+    title: 'Guitar Fretboard',
+    description: 'Interactive fretboard visualization for scales, chords, and modes.',
+    link: '#',
+    icon: React.createElement(SketchKnobs),
+    status: 'wip'
+  },
+  {
+    id: 'd6',
+    title: 'Formula Visualizer',
+    description: 'Interactive tool for visualizing and exploring mathematical formulas and relationships.',
+    link: '#',
+    icon: React.createElement(SketchPencil),
+    status: 'wip'
+  },
+  {
     id: 'd4',
-    title: 'NYC Navigation',
+    title: 'NYC Distances',
     description: 'Tools and tricks for navigating New York City like a local.',
     link: '#',
-    icon: React.createElement(SketchScreen)
+    icon: React.createElement(SketchScreen),
+    status: 'wip'
   },
   {
     id: 'd5',
-    title: 'Bayesian Prior Explorer',
+    title: 'Bayesian Priors',
     description: 'Interactive tool for exploring and visualizing Bayesian priors and posteriors.',
     link: '#',
-    icon: React.createElement(SketchEye)
+    icon: React.createElement(SketchEye),
+    status: 'wip'
   }
 ];
 
