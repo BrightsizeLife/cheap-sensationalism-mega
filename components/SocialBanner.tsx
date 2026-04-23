@@ -1,13 +1,13 @@
 
 import React from 'react';
+import { getByComponent } from '../siteStructure';
 
-const FUN_SITES = [
-  { id: 'f1', name: 'Radio Garden', url: 'https://radio.garden', description: 'Spin a globe, tune into any radio station on Earth. Hours will vanish.' },
-  { id: 'f2', name: 'Window Swap', url: 'https://window-swap.com', description: 'Look out a stranger\'s window somewhere in the world. Oddly calming.' },
-  { id: 'f3', name: 'Every Noise at Once', url: 'https://everynoise.com', description: 'Every music genre mapped and playable. Algorithmic cartography of sound.' },
-  { id: 'f4', name: 'Neal.fun', url: 'https://neal.fun', description: 'Delightful interactive toys. Spend a billion dollars. Draw a perfect circle.' },
-  { id: 'f5', name: 'The Pudding', url: 'https://pudding.cool', description: 'Visual essays on culture. Data journalism that actually slaps.' },
-];
+const FUN_SITES = getByComponent('6 Random Things').map((x) => ({
+  id: x.position,
+  name: x.displayName,
+  url: x.link,
+  description: x.description,
+}));
 
 const SiteCard: React.FC<{ site: typeof FUN_SITES[number] }> = ({ site }) => {
   return (
@@ -30,6 +30,7 @@ const SiteCard: React.FC<{ site: typeof FUN_SITES[number] }> = ({ site }) => {
 };
 
 export const SocialBanner: React.FC = () => {
+  if (FUN_SITES.length === 0) return null;
   const displaySites = [...FUN_SITES, ...FUN_SITES, ...FUN_SITES];
 
   return (
@@ -39,7 +40,6 @@ export const SocialBanner: React.FC = () => {
           <SiteCard key={`${site.id}-${index}`} site={site} />
         ))}
       </div>
-      {/* Gradients for soft edges */}
       <div className="absolute top-0 left-0 h-full w-24 bg-gradient-to-r from-[#0a0b10] to-transparent pointer-events-none z-10"></div>
       <div className="absolute top-0 right-0 h-full w-24 bg-gradient-to-l from-[#0a0b10] to-transparent pointer-events-none z-10"></div>
     </div>

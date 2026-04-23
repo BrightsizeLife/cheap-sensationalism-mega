@@ -1,0 +1,553 @@
+{
+  "items": [
+    {
+      "Component": "0 Banner",
+      "Position": "0.1",
+      "Display Name": "New Article: Weird Weather",
+      "Description": "",
+      "Link": "#thoughts",
+      "Display": "Yes",
+      "Notes": ""
+    },
+    {
+      "Component": "0 Banner",
+      "Position": "0.2",
+      "Display Name": "Old Album: cheap sensationalism",
+      "Description": "",
+      "Link": "https://open.spotify.com/album/7kjmvtW08iNlCKEU0qgKXN",
+      "Display": "Yes",
+      "Notes": ""
+    },
+    {
+      "Component": "0 Banner",
+      "Position": "0.3",
+      "Display Name": "More, More, More (coming soon)",
+      "Description": "",
+      "Link": "#noises",
+      "Display": "Yes",
+      "Notes": ""
+    },
+    {
+      "Component": "0 Banner",
+      "Position": "0.4",
+      "Display Name": "Shameless: Give me money $$$",
+      "Description": "",
+      "Link": "https://ko-fi.com/cheapsensationalism",
+      "Display": "Yes",
+      "Notes": ""
+    },
+    {
+      "Component": "1 Noise",
+      "Position": "1",
+      "Display Name": "noises",
+      "Description": "",
+      "Link": "",
+      "Display": "Yes",
+      "Notes": ""
+    },
+    {
+      "Component": "1 Noise",
+      "Position": "1.1",
+      "Display Name": "Cheap Sensationalism",
+      "Description": "Fragments from a past life glued together, leaving a couple moments of conceivable musicality",
+      "Link": "",
+      "Display": "Yes",
+      "Notes": "subtitle"
+    },
+    {
+      "Component": "1 Noise",
+      "Position": "1.11",
+      "Display Name": "Spotify",
+      "Description": "",
+      "Link": "https://open.spotify.com/album/7kjmvtW08iNlCKEU0qgKXN",
+      "Display": "Yes",
+      "Notes": ""
+    },
+    {
+      "Component": "1 Noise",
+      "Position": "1.12",
+      "Display Name": "Apple Music",
+      "Description": "",
+      "Link": "https://music.apple.com/us/album/cheap-sensationalism/1773687566",
+      "Display": "Yes",
+      "Notes": ""
+    },
+    {
+      "Component": "1 Noise",
+      "Position": "1.13",
+      "Display Name": "YouTube Music",
+      "Description": "",
+      "Link": "https://music.youtube.com/playlist?list=OLAK5uy_l_jEZiq2LYmeKp6hQvg6if0eislc_NRJA",
+      "Display": "Yes",
+      "Notes": ""
+    },
+    {
+      "Component": "1 Noise",
+      "Position": "1.14",
+      "Display Name": "Album notes",
+      "Description": "",
+      "Link": "",
+      "Display": "Yes",
+      "Notes": "WIP — will live at cheapsensationalism.com/noises/cheap-sensationalism/album-notes"
+    },
+    {
+      "Component": "1 Noise",
+      "Position": "1.15",
+      "Display Name": "Chords & Lyrics",
+      "Description": "",
+      "Link": "WIP",
+      "Display": "Yes",
+      "Notes": ""
+    },
+    {
+      "Component": "1 Noise",
+      "Position": "2",
+      "Display Name": "Philadelphia Demos",
+      "Description": "Historic, Revolutionary, British, Quaker, Unfinished",
+      "Link": "WIP",
+      "Display": "Yes",
+      "Notes": ""
+    },
+    {
+      "Component": "1 Noise",
+      "Position": "3",
+      "Display Name": "Slop",
+      "Description": "Garage noises begging for preservation",
+      "Link": "WIP",
+      "Display": "Yes",
+      "Notes": ""
+    },
+    {
+      "Component": "2 Thoughts",
+      "Position": "2",
+      "Display Name": "thoughts",
+      "Description": "",
+      "Link": "",
+      "Display": "Yes",
+      "Notes": ""
+    },
+    {
+      "Component": "2 Thoughts",
+      "Position": "2.1",
+      "Display Name": "political analyses",
+      "Description": "",
+      "Link": "",
+      "Display": "Yes",
+      "Notes": ""
+    },
+    {
+      "Component": "2 Thoughts",
+      "Position": "2.11",
+      "Display Name": "Bayes, Splines & 2024 US Election Polls",
+      "Description": "",
+      "Link": "https://medium.com/cheap-sensationalism/bayes-splines-2024-us-election-polls-hierarchical-data-good-fun-9e6b79bb589f",
+      "Display": "Yes",
+      "Notes": ""
+    },
+    {
+      "Component": "2 Thoughts",
+      "Position": "2.12",
+      "Display Name": "Follow-Up on the Bayes/Splines Election Models",
+      "Description": "",
+      "Link": "https://medium.com/cheap-sensationalism/quick-follow-up-on-the-bayes-splines-election-model-42358e4be1a1",
+      "Display": "Yes",
+      "Notes": ""
+    },
+    {
+      "Component": "2 Thoughts",
+      "Position": "2.13",
+      "Display Name": "When the Only Tool You Have Is a Hammer: Copying Code to Predict a Different Election",
+      "Description": "",
+      "Link": "WIP",
+      "Display": "Yes",
+      "Notes": ""
+    },
+    {
+      "Component": "2 Thoughts",
+      "Position": "2.14",
+      "Display Name": "2024 election post mortem",
+      "Description": "",
+      "Link": "",
+      "Display": "Yes",
+      "Notes": ""
+    },
+    {
+      "Component": "2 Thoughts",
+      "Position": "2.141",
+      "Display Name": "The Media Story",
+      "Description": "",
+      "Link": "WIP",
+      "Display": "Yes",
+      "Notes": ""
+    },
+    {
+      "Component": "2 Thoughts",
+      "Position": "2.142",
+      "Display Name": "Party Alignment",
+      "Description": "",
+      "Link": "WIP",
+      "Display": "Yes",
+      "Notes": ""
+    },
+    {
+      "Component": "2 Thoughts",
+      "Position": "2.143",
+      "Display Name": "Belief Systems",
+      "Description": "",
+      "Link": "WIP",
+      "Display": "Yes",
+      "Notes": ""
+    },
+    {
+      "Component": "2 Thoughts",
+      "Position": "2.2",
+      "Display Name": "Causal Inference: The Lifesaving Nerd",
+      "Description": "",
+      "Link": "",
+      "Display": "Yes",
+      "Notes": ""
+    },
+    {
+      "Component": "2 Thoughts",
+      "Position": "2.21",
+      "Display Name": "Covariates",
+      "Description": "",
+      "Link": "WIP",
+      "Display": "Yes",
+      "Notes": ""
+    },
+    {
+      "Component": "2 Thoughts",
+      "Position": "2.22",
+      "Display Name": "Propensity Scores",
+      "Description": "",
+      "Link": "WIP",
+      "Display": "Yes",
+      "Notes": ""
+    },
+    {
+      "Component": "2 Thoughts",
+      "Position": "2.23",
+      "Display Name": "Instrumental Variables & Mechanistic Variables",
+      "Description": "",
+      "Link": "WIP",
+      "Display": "Yes",
+      "Notes": ""
+    },
+    {
+      "Component": "2 Thoughts",
+      "Position": "2.24",
+      "Display Name": "Machine Learning Approaches",
+      "Description": "",
+      "Link": "WIP",
+      "Display": "Yes",
+      "Notes": ""
+    },
+    {
+      "Component": "2 Thoughts",
+      "Position": "2.3",
+      "Display Name": "Scribbles & patterns",
+      "Description": "",
+      "Link": "",
+      "Display": "Yes",
+      "Notes": ""
+    },
+    {
+      "Component": "2 Thoughts",
+      "Position": "2.31",
+      "Display Name": "Weird Weather",
+      "Description": "",
+      "Link": "",
+      "Display": "Yes",
+      "Notes": ""
+    },
+    {
+      "Component": "2 Thoughts",
+      "Position": "2.32",
+      "Display Name": "Virtue, Vice and Search Trends",
+      "Description": "",
+      "Link": "WIP",
+      "Display": "Yes",
+      "Notes": ""
+    },
+    {
+      "Component": "2 Thoughts",
+      "Position": "2.33",
+      "Display Name": "All you need is... : multi-method analysis of Beatles Lyrics",
+      "Description": "",
+      "Link": "WIP",
+      "Display": "Yes",
+      "Notes": ""
+    },
+    {
+      "Component": "2 Thoughts",
+      "Position": "2.34",
+      "Display Name": "Taxes: Where people want money to go and where it goes",
+      "Description": "",
+      "Link": "WIP",
+      "Display": "Yes",
+      "Notes": ""
+    },
+    {
+      "Component": "2 Thoughts",
+      "Position": "2.35",
+      "Display Name": "The Paradox of Tragedy: a light explanation",
+      "Description": "",
+      "Link": "WIP",
+      "Display": "Yes",
+      "Notes": ""
+    },
+    {
+      "Component": "2 Thoughts",
+      "Position": "2.36",
+      "Display Name": "Communities, Ew!",
+      "Description": "",
+      "Link": "WIP",
+      "Display": "Yes",
+      "Notes": ""
+    },
+    {
+      "Component": "2 Thoughts",
+      "Position": "2.37",
+      "Display Name": "Just how easily could we drown in SLOP?",
+      "Description": "",
+      "Link": "WIP",
+      "Display": "Yes",
+      "Notes": ""
+    },
+    {
+      "Component": "2 Thoughts",
+      "Position": "2.4",
+      "Display Name": "on work",
+      "Description": "",
+      "Link": "",
+      "Display": "Yes",
+      "Notes": ""
+    },
+    {
+      "Component": "2 Thoughts",
+      "Position": "2.41",
+      "Display Name": "Documents are like sunshine",
+      "Description": "",
+      "Link": "https://cloud.google.com/blog/products/devops-sre/deep-dive-into-2022-state-of-devops-report-on-documentation",
+      "Display": "Yes",
+      "Notes": ""
+    },
+    {
+      "Component": "2 Thoughts",
+      "Position": "2.42",
+      "Display Name": "DORA Inaugural AI Capabilities Model",
+      "Description": "",
+      "Link": "https://cloud.google.com/blog/products/ai-machine-learning/introducing-doras-inaugural-ai-capabilities-model",
+      "Display": "Yes",
+      "Notes": ""
+    },
+    {
+      "Component": "2 Thoughts",
+      "Position": "2.43",
+      "Display Name": "The DORA reports",
+      "Description": "",
+      "Link": "",
+      "Display": "Yes",
+      "Notes": ""
+    },
+    {
+      "Component": "2 Thoughts",
+      "Position": "2.431",
+      "Display Name": "2025",
+      "Description": "",
+      "Link": "https://dora.dev/research/2025/",
+      "Display": "Yes",
+      "Notes": ""
+    },
+    {
+      "Component": "2 Thoughts",
+      "Position": "2.432",
+      "Display Name": "2024",
+      "Description": "",
+      "Link": "https://dora.dev/research/2024/",
+      "Display": "Yes",
+      "Notes": ""
+    },
+    {
+      "Component": "2 Thoughts",
+      "Position": "2.433",
+      "Display Name": "2023",
+      "Description": "",
+      "Link": "https://dora.dev/research/2023/",
+      "Display": "Yes",
+      "Notes": ""
+    },
+    {
+      "Component": "2 Thoughts",
+      "Position": "2.434",
+      "Display Name": "2022",
+      "Description": "",
+      "Link": "https://dora.dev/research/2022/",
+      "Display": "Yes",
+      "Notes": ""
+    },
+    {
+      "Component": "3 Tools",
+      "Position": "3",
+      "Display Name": "tools",
+      "Description": "",
+      "Link": "",
+      "Display": "Yes",
+      "Notes": ""
+    },
+    {
+      "Component": "3 Tools",
+      "Position": "3.1",
+      "Display Name": "Decision under many sources of uncertainty",
+      "Description": "",
+      "Link": "WIP",
+      "Display": "Yes",
+      "Notes": ""
+    },
+    {
+      "Component": "3 Tools",
+      "Position": "3.2",
+      "Display Name": "See power run: simplified power dynamics (or the many ways to lose)",
+      "Description": "",
+      "Link": "WIP",
+      "Display": "Yes",
+      "Notes": ""
+    },
+    {
+      "Component": "3 Tools",
+      "Position": "3.3",
+      "Display Name": "The fretboard: unlock the shred",
+      "Description": "",
+      "Link": "WIP",
+      "Display": "Yes",
+      "Notes": ""
+    },
+    {
+      "Component": "3 Tools",
+      "Position": "3.4",
+      "Display Name": "Bayesian priors: the silent killer",
+      "Description": "",
+      "Link": "WIP",
+      "Display": "Yes",
+      "Notes": ""
+    },
+    {
+      "Component": "3 Tools",
+      "Position": "3.5",
+      "Display Name": "Being and Time (and Distance) in NYC",
+      "Description": "",
+      "Link": "WIP",
+      "Display": "Yes",
+      "Notes": ""
+    },
+    {
+      "Component": "4 Perverse Sociality",
+      "Position": "4",
+      "Display Name": "perverse sociality",
+      "Description": "",
+      "Link": "",
+      "Display": "Yes",
+      "Notes": ""
+    },
+    {
+      "Component": "4 Perverse Sociality",
+      "Position": "4.1",
+      "Display Name": "GitHub",
+      "Description": "",
+      "Link": "https://github.com/BrightsizeLife/cheap-sensationalism-mega",
+      "Display": "Yes",
+      "Notes": ""
+    },
+    {
+      "Component": "4 Perverse Sociality",
+      "Position": "4.2",
+      "Display Name": "instagram (contact here)",
+      "Description": "",
+      "Link": "https://www.instagram.com/cheap_sensationalism/",
+      "Display": "Yes",
+      "Notes": ""
+    },
+    {
+      "Component": "4 Perverse Sociality",
+      "Position": "4.3",
+      "Display Name": "facebook",
+      "Description": "",
+      "Link": "https://www.facebook.com/people/Cheap-Sensationalism/61568710893706/",
+      "Display": "Yes",
+      "Notes": ""
+    },
+    {
+      "Component": "4 Perverse Sociality",
+      "Position": "4.4",
+      "Display Name": "LinkedIn(?)",
+      "Description": "",
+      "Link": "https://www.linkedin.com/in/derekdebellis/",
+      "Display": "Yes",
+      "Notes": ""
+    },
+    {
+      "Component": "4 Perverse Sociality",
+      "Position": "4.5",
+      "Display Name": "email",
+      "Description": "",
+      "Link": "mailto:ddebellis@gmail.com",
+      "Display": "Yes",
+      "Notes": ""
+    },
+    {
+      "Component": "5 Footer",
+      "Position": "5",
+      "Display Name": "",
+      "Description": "",
+      "Link": "",
+      "Display": "No",
+      "Notes": ""
+    },
+    {
+      "Component": "6 Random Things",
+      "Position": "6.1",
+      "Display Name": "Radio Garden",
+      "Description": "Spin a globe, tune into any radio station on Earth. Hours will vanish.",
+      "Link": "https://radio.garden",
+      "Display": "Yes",
+      "Notes": ""
+    },
+    {
+      "Component": "6 Random Things",
+      "Position": "6.2",
+      "Display Name": "Window Swap",
+      "Description": "Look out a stranger's window somewhere in the world. Oddly calming.",
+      "Link": "https://window-swap.com",
+      "Display": "Yes",
+      "Notes": ""
+    },
+    {
+      "Component": "6 Random Things",
+      "Position": "6.3",
+      "Display Name": "Every Noise at Once",
+      "Description": "Every music genre mapped and playable. Algorithmic cartography of sound.",
+      "Link": "https://everynoise.com",
+      "Display": "Yes",
+      "Notes": ""
+    },
+    {
+      "Component": "6 Random Things",
+      "Position": "6.4",
+      "Display Name": "Neal.fun",
+      "Description": "Delightful interactive toys. Spend a billion dollars. Draw a perfect circle.",
+      "Link": "https://neal.fun",
+      "Display": "Yes",
+      "Notes": ""
+    },
+    {
+      "Component": "6 Random Things",
+      "Position": "6.5",
+      "Display Name": "The Pudding",
+      "Description": "Visual essays on culture. Data journalism that actually slaps.",
+      "Link": "https://pudding.cool",
+      "Display": "Yes",
+      "Notes": ""
+    }
+  ]
+}
