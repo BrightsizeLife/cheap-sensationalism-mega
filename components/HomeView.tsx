@@ -1,6 +1,13 @@
 import React from 'react';
 import { SocialBanner } from './SocialBanner';
-import { getByComponent, isWip, isExternal, StructureItem } from '../siteStructure';
+import {
+  getByComponent,
+  isWip,
+  isExternal,
+  depthOf,
+  isHeader,
+  StructureItem,
+} from '../siteStructure';
 
 const getColorClasses = (index: number, isActive: boolean = false) => {
   const colors = [
@@ -19,13 +26,15 @@ const WipTag = () => (
   <span className="text-[#E8E048] text-xs font-bold ml-2">[WIP]</span>
 );
 
-const Item = ({ item, depth = 0 }: { item: StructureItem; depth?: number }) => {
+const indentFor = (depth: number) =>
+  depth <= 1 ? '' : depth === 2 ? 'ml-4' : depth === 3 ? 'ml-8' : 'ml-12';
+
+const Leaf: React.FC<{ item: StructureItem }> = ({ item }) => {
   const wip = isWip(item.link);
   const external = isExternal(item.link);
-  const sizeClass = depth === 0 ? 'text-lg' : 'text-base';
   if (wip) {
     return (
-      <span className={`text-[#8a8680] ${sizeClass}`}>
+      <span className="text-[#8a8680]">
         {item.displayName}
         <WipTag />
       </span>
@@ -37,7 +46,7 @@ const Item = ({ item, depth = 0 }: { item: StructureItem; depth?: number }) => {
         href={item.link}
         target={item.link.startsWith('mailto:') ? undefined : '_blank'}
         rel="noreferrer"
-        className={`text-[#007BFF] hover:underline ${sizeClass}`}
+        className="text-[#007BFF] hover:underline break-words"
       >
         {item.displayName}
       </a>
@@ -45,12 +54,68 @@ const Item = ({ item, depth = 0 }: { item: StructureItem; depth?: number }) => {
   }
   if (item.link.startsWith('#')) {
     return (
-      <a href={item.link} className={`text-[#007BFF] hover:underline ${sizeClass}`}>
+      <a href={item.link} className="text-[#007BFF] hover:underline">
         {item.displayName}
       </a>
     );
   }
-  return <span className={`text-[#f0ede6] ${sizeClass}`}>{item.displayName}</span>;
+  return <span className="text-[#f0ede6]">{item.displayName}</span>;
+};
+
+const TractatusList: React.FC<{ items: StructureItem[] }> = ({ items }) => {
+  return (
+    <div className="space-y-2 break-words">
+      {items.map((item) => {
+        const depth = depthOf(item.position);
+        const indent = indentFor(depth);
+        const header = isHeader(item, items);
+        if (header) {
+          const headerCls =
+            depth === 1
+              ? 'text-lg font-bold text-[#f0ede6] mt-6 mb-2 lowercase tracking-wide'
+              : 'text-base font-semibold text-[#f0ede6] mt-4 mb-1';
+          return (
+            <div key={item.position} className={indent}>
+              <h3 className={headerCls}>{item.displayName}</h3>
+              {item.description && (
+                <p className="text-xs italic text-[#8a8680] -mt-1 mb-2">{item.description}</p>
+              )}
+            </div>
+          );
+        }
+        return (
+          <div key={item.position} className={`${indent} text-[15px] leading-relaxed flex gap-2`}>
+            <span className="text-[#44413b] select-none flex-shrink-0">—</span>
+            <div className="flex-1 min-w-0">
+              <Leaf item={item} />
+              {item.description && (
+                <span className="text-xs italic text-[#8a8680] block">{item.description}</span>
+              )}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+};
+
+const socialIcon = (name: string): string => {
+  const n = name.toLowerCase();
+  if (n.includes('github')) return 'https://cdn.simpleicons.org/github/f0ede6';
+  if (n.includes('instagram')) return 'https://cdn.simpleicons.org/instagram/f0ede6';
+  if (n.includes('facebook')) return 'https://cdn.simpleicons.org/facebook/f0ede6';
+  if (n.includes('linkedin')) return 'https://cdn.simpleicons.org/linkedin/f0ede6';
+  if (n.includes('email')) return 'https://em-content.zobj.net/source/google/412/envelope_2709-fe0f.png';
+  return 'https://cdn.simpleicons.org/medium/f0ede6';
+};
+
+const noiseIcon = (name: string): string => {
+  const n = name.toLowerCase();
+  if (n.includes('spotify')) return 'https://cdn.simpleicons.org/spotify/1DB954';
+  if (n.includes('apple')) return 'https://cdn.simpleicons.org/applemusic/FA243C';
+  if (n.includes('youtube')) return 'https://cdn.simpleicons.org/youtubemusic/FF0000';
+  if (n.includes('album')) return 'https://em-content.zobj.net/source/google/412/scroll_1f4dc.png';
+  return 'https://em-content.zobj.net/source/google/412/musical-notes_1f3b6.png';
 };
 
 export const HomeView = ({ onNavigate: _onNavigate }: { onNavigate: (view: any, id?: string) => void }) => {
@@ -68,26 +133,6 @@ export const HomeView = ({ onNavigate: _onNavigate }: { onNavigate: (view: any, 
   const csLinks = noiseItems.filter((x) => x.position.startsWith('1.1') && x.position !== '1.1');
   const philly = noiseItems.find((x) => x.position === '2');
   const slop = noiseItems.find((x) => x.position === '3');
-
-  const socialIcon = (name: string): string => {
-    const n = name.toLowerCase();
-    if (n.includes('github')) return 'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png';
-    if (n.includes('instagram')) return 'https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/instagram.svg';
-    if (n.includes('facebook')) return 'https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/facebook.svg';
-    if (n.includes('linkedin')) return 'https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/linkedin.svg';
-    if (n.includes('email')) return 'https://em-content.zobj.net/source/google/412/envelope_2709-fe0f.png';
-    return 'https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/medium.svg';
-  };
-
-  const noiseIcon = (name: string): string => {
-    const n = name.toLowerCase();
-    if (n.includes('spotify')) return 'https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg';
-    if (n.includes('apple')) return 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Apple_Computer_Logo_rainbow.svg/2560px-Apple_Computer_Logo_rainbow.svg.png';
-    if (n.includes('youtube')) return 'https://upload.wikimedia.org/wikipedia/commons/6/6a/Youtube_Music_icon.svg';
-    if (n.includes('album')) return 'https://em-content.zobj.net/source/google/412/scroll_1f4dc.png';
-    if (n.includes('chord') || n.includes('lyric')) return 'https://em-content.zobj.net/source/google/412/musical-notes_1f3b6.png';
-    return 'https://em-content.zobj.net/source/google/412/musical-notes_1f3b6.png';
-  };
 
   const handleBannerClick = (item: StructureItem) => {
     if (!item.link) return;
@@ -154,7 +199,7 @@ export const HomeView = ({ onNavigate: _onNavigate }: { onNavigate: (view: any, 
                             <WipTag />
                           </span>
                         ) : external ? (
-                          <a href={link.link} target="_blank" rel="noreferrer" className="text-[#007BFF] hover:underline">
+                          <a href={link.link} target="_blank" rel="noreferrer" className="text-[#007BFF] hover:underline break-words">
                             {link.displayName}
                           </a>
                         ) : (
@@ -198,39 +243,13 @@ export const HomeView = ({ onNavigate: _onNavigate }: { onNavigate: (view: any, 
           {/* thoughts */}
           <section id="thoughts">
             <h1 className="text-2xl text-[#f0ede6] mb-6">thoughts</h1>
-            <ul className="space-y-3 list-disc list-inside text-[#8a8680] break-words">
-              {thoughtItems.map((t) => {
-                const depth = t.position.split('.').length - 2;
-                const indent = depth > 0 ? `ml-${Math.min(depth * 4, 12)}` : '';
-                const isHeader = !t.link && !isWip(t.link) && t.position.length <= 3;
-                if (isHeader) {
-                  return (
-                    <li key={t.position} className={`list-none ${indent} mt-4`}>
-                      <h3 className="text-[#f0ede6] text-base font-bold">{t.displayName}</h3>
-                      {t.description && <p className="text-sm italic text-[#8a8680]">{t.description}</p>}
-                    </li>
-                  );
-                }
-                return (
-                  <li key={t.position} className={`leading-relaxed ${indent}`}>
-                    <Item item={t} depth={depth} />
-                    {t.description && <span className="text-sm italic text-[#8a8680] block ml-6">{t.description}</span>}
-                  </li>
-                );
-              })}
-            </ul>
+            <TractatusList items={thoughtItems} />
           </section>
 
           {/* tools */}
           <section id="tools">
             <h1 className="text-2xl text-[#f0ede6] mb-6">tools</h1>
-            <ul className="space-y-3 list-disc list-inside text-[#8a8680] break-words">
-              {toolItems.map((t) => (
-                <li key={t.position}>
-                  <Item item={t} />
-                </li>
-              ))}
-            </ul>
+            <TractatusList items={toolItems} />
           </section>
 
           {/* perverse sociality */}
@@ -245,7 +264,7 @@ export const HomeView = ({ onNavigate: _onNavigate }: { onNavigate: (view: any, 
                     <img
                       src={socialIcon(s.displayName)}
                       alt=""
-                      className={`w-6 h-6 ${s.displayName.toLowerCase().includes('email') ? '' : 'invert opacity-70'}`}
+                      className="w-6 h-6"
                     />
                     {wip ? (
                       <span className="text-[#8a8680]">
@@ -284,16 +303,21 @@ export const HomeView = ({ onNavigate: _onNavigate }: { onNavigate: (view: any, 
       <p className="text-center text-[#8a8680] text-sm italic mb-4 px-4">(random things to make your visit somewhat worthwhile)</p>
       <SocialBanner />
 
-      {/* Ko-fi embedded widget */}
-      <div className="w-full max-w-3xl mx-auto px-4 sm:px-6 mt-12 mb-24">
-        <iframe
-          id="kofiframe"
-          src="https://ko-fi.com/cheapsensationalism/?hidefeed=true&widget=true&embed=true&preview=true"
-          style={{ border: 'none', width: '100%', padding: '4px', background: '#f9f9f9' }}
-          height={712}
-          title="cheapsensationalism"
-        />
-      </div>
+      {/* Ko-fi embedded widget — framed in a dark section so the white iframe reads as intentional */}
+      <section className="w-full border-t border-white/5 py-16 px-6 mt-8">
+        <div className="w-full max-w-md mx-auto">
+          <p className="text-[10px] uppercase tracking-[0.3em] text-[#8a8680] text-center mb-6">support the noise</p>
+          <div className="rounded-xl overflow-hidden border border-white/10 shadow-lg">
+            <iframe
+              id="kofiframe"
+              src="https://ko-fi.com/cheapsensationalism/?hidefeed=true&widget=true&embed=true&preview=true"
+              style={{ border: 'none', width: '100%', display: 'block', background: '#f9f9f9' }}
+              height={560}
+              title="cheapsensationalism"
+            />
+          </div>
+        </div>
+      </section>
     </div>
   );
 };

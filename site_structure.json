@@ -86,9 +86,9 @@
       "Position": "1.14",
       "Display Name": "Album notes",
       "Description": "",
-      "Link": "",
+      "Link": "https://htmlpreview.github.io/?https://github.com/BrightsizeLife/cheapsenseReboot/blob/main/albumNotes.html",
       "Display": "Yes",
-      "Notes": "WIP — will live at cheapsensationalism.com/noises/cheap-sensationalism/album-notes"
+      "Notes": "DONE — wired to htmlpreview render of albumNotes.html until cheapsensationalism.com/noises/cheap-sensationalism/album-notes exists"
     },
     {
       "Component": "1 Noise",

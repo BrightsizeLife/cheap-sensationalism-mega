@@ -41,3 +41,12 @@ export const isWip = (link: string) =>
 
 export const isExternal = (link: string) =>
   /^(https?:|mailto:)/i.test(link.trim());
+
+export const depthOf = (position: string): number => {
+  const parts = position.split('.');
+  if (parts.length < 2) return 0;
+  return parts[1].length;
+};
+
+export const isHeader = (item: StructureItem, all: StructureItem[]): boolean =>
+  all.some((o) => o.position !== item.position && o.position.startsWith(item.position));
