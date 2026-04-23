@@ -25,16 +25,7 @@ const items: StructureItem[] = (raw.items as any[])
 export const getByComponent = (component: string) =>
   items
     .filter((x) => x.component === component)
-    .sort((a, b) => {
-      const pa = a.position.split('.').map((n) => parseInt(n, 10) || 0);
-      const pb = b.position.split('.').map((n) => parseInt(n, 10) || 0);
-      for (let i = 0; i < Math.max(pa.length, pb.length); i++) {
-        const da = pa[i] ?? 0;
-        const db = pb[i] ?? 0;
-        if (da !== db) return da - db;
-      }
-      return 0;
-    });
+    .sort((a, b) => parseFloat(a.position) - parseFloat(b.position));
 
 export const isWip = (link: string) =>
   !link || link.trim().toUpperCase() === 'WIP' || link.trim() === '[WIP]';

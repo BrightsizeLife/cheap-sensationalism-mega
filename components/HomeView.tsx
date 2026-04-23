@@ -59,6 +59,13 @@ const Leaf: React.FC<{ item: StructureItem }> = ({ item }) => {
       </a>
     );
   }
+  if (item.link.startsWith('/')) {
+    return (
+      <a href={item.link} className="text-[#007BFF] hover:underline break-words">
+        {item.displayName}
+      </a>
+    );
+  }
   return <span className="text-[#f0ede6]">{item.displayName}</span>;
 };
 
@@ -99,14 +106,14 @@ const TractatusList: React.FC<{ items: StructureItem[] }> = ({ items }) => {
   );
 };
 
+const ICON_BASE = 'https://cdn.jsdelivr.net/npm/simple-icons@v14/icons';
 const socialIcon = (name: string): string => {
   const n = name.toLowerCase();
-  if (n.includes('github')) return 'https://cdn.simpleicons.org/github/f0ede6';
-  if (n.includes('instagram')) return 'https://cdn.simpleicons.org/instagram/f0ede6';
-  if (n.includes('facebook')) return 'https://cdn.simpleicons.org/facebook/f0ede6';
-  if (n.includes('linkedin')) return 'https://cdn.simpleicons.org/linkedin/f0ede6';
-  if (n.includes('email')) return 'https://em-content.zobj.net/source/google/412/envelope_2709-fe0f.png';
-  return 'https://cdn.simpleicons.org/medium/f0ede6';
+  if (n.includes('github')) return `${ICON_BASE}/github.svg`;
+  if (n.includes('instagram')) return `${ICON_BASE}/instagram.svg`;
+  if (n.includes('facebook')) return `${ICON_BASE}/facebook.svg`;
+  if (n.includes('linkedin')) return `${ICON_BASE}/linkedin.svg`;
+  return `${ICON_BASE}/medium.svg`;
 };
 
 const noiseIcon = (name: string): string => {
@@ -184,7 +191,7 @@ export const HomeView = ({ onNavigate: _onNavigate }: { onNavigate: (view: any, 
               <>
                 <h2 className="text-lg font-bold text-[#f0ede6] mb-2">{cs.displayName.toLowerCase()}</h2>
                 {cs.description && (
-                  <p className="text-[#8a8680] text-sm mb-4 italic">{cs.description}</p>
+                  <p className="text-[#8a8680] text-xs mb-4 italic">{cs.description}</p>
                 )}
                 <ul className="space-y-4 list-none p-0 mb-10">
                   {csLinks.map((link) => {
@@ -264,7 +271,7 @@ export const HomeView = ({ onNavigate: _onNavigate }: { onNavigate: (view: any, 
                     <img
                       src={socialIcon(s.displayName)}
                       alt=""
-                      className="w-6 h-6"
+                      className="w-5 h-5 brightness-0 invert opacity-70"
                     />
                     {wip ? (
                       <span className="text-[#8a8680]">
@@ -290,14 +297,7 @@ export const HomeView = ({ onNavigate: _onNavigate }: { onNavigate: (view: any, 
           </section>
         </main>
 
-        <footer className="mt-24 pt-8 border-t border-white/5 mb-8">
-          <ul className="space-y-4 list-none p-0">
-            <li className="flex items-center gap-3">
-              <img src="https://em-content.zobj.net/source/google/412/envelope_2709-fe0f.png" alt="Email" className="w-6 h-6" />
-              <a href="mailto:ddebellis@gmail.com" className="text-[#007BFF] hover:underline break-all">ddebellis@gmail.com</a>
-            </li>
-          </ul>
-        </footer>
+        <div className="mt-24 mb-8" />
       </div>
 
       <p className="text-center text-[#8a8680] text-sm italic mb-4 px-4">(random things to make your visit somewhat worthwhile)</p>

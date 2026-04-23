@@ -86,9 +86,9 @@
       "Position": "1.14",
       "Display Name": "Album notes",
       "Description": "",
-      "Link": "https://htmlpreview.github.io/?https://github.com/BrightsizeLife/cheapsenseReboot/blob/main/albumNotes.html",
+      "Link": "/album-notes.html",
       "Display": "Yes",
-      "Notes": "DONE — wired to htmlpreview render of albumNotes.html until cheapsensationalism.com/noises/cheap-sensationalism/album-notes exists"
+      "Notes": "DONE — copied into public/album-notes.html, served at /album-notes.html"
     },
     {
       "Component": "1 Noise",
@@ -246,7 +246,7 @@
     {
       "Component": "2 Thoughts",
       "Position": "2.3",
-      "Display Name": "Scribbles & patterns",
+      "Display Name": "scribbles & patterns",
       "Description": "",
       "Link": "",
       "Display": "Yes",
@@ -318,7 +318,7 @@
     {
       "Component": "2 Thoughts",
       "Position": "2.4",
-      "Display Name": "on work",
+      "Display Name": "work stuff",
       "Description": "",
       "Link": "",
       "Display": "Yes",
@@ -327,6 +327,24 @@
     {
       "Component": "2 Thoughts",
       "Position": "2.41",
+      "Display Name": "AI interaction experiment",
+      "Description": "",
+      "Link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Ogk-GRoAAAAJ&citation_for_view=Ogk-GRoAAAAJ:a0OBvERweLwC",
+      "Display": "Yes",
+      "Notes": ""
+    },
+    {
+      "Component": "2 Thoughts",
+      "Position": "2.42",
+      "Display Name": "Prototyping Probabilistic Failure",
+      "Description": "",
+      "Link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Ogk-GRoAAAAJ&citation_for_view=Ogk-GRoAAAAJ:yD5IFk8b50cC",
+      "Display": "Yes",
+      "Notes": ""
+    },
+    {
+      "Component": "2 Thoughts",
+      "Position": "2.43",
       "Display Name": "Documents are like sunshine",
       "Description": "",
       "Link": "https://cloud.google.com/blog/products/devops-sre/deep-dive-into-2022-state-of-devops-report-on-documentation",
@@ -335,7 +353,7 @@
     },
     {
       "Component": "2 Thoughts",
-      "Position": "2.42",
+      "Position": "2.44",
       "Display Name": "DORA Inaugural AI Capabilities Model",
       "Description": "",
       "Link": "https://cloud.google.com/blog/products/ai-machine-learning/introducing-doras-inaugural-ai-capabilities-model",
@@ -344,8 +362,8 @@
     },
     {
       "Component": "2 Thoughts",
-      "Position": "2.43",
-      "Display Name": "The DORA reports",
+      "Position": "2.45",
+      "Display Name": "DORA reports",
       "Description": "",
       "Link": "",
       "Display": "Yes",
@@ -353,7 +371,7 @@
     },
     {
       "Component": "2 Thoughts",
-      "Position": "2.431",
+      "Position": "2.451",
       "Display Name": "2025",
       "Description": "",
       "Link": "https://dora.dev/research/2025/",
@@ -362,7 +380,7 @@
     },
     {
       "Component": "2 Thoughts",
-      "Position": "2.432",
+      "Position": "2.452",
       "Display Name": "2024",
       "Description": "",
       "Link": "https://dora.dev/research/2024/",
@@ -371,7 +389,7 @@
     },
     {
       "Component": "2 Thoughts",
-      "Position": "2.433",
+      "Position": "2.453",
       "Display Name": "2023",
       "Description": "",
       "Link": "https://dora.dev/research/2023/",
@@ -380,7 +398,7 @@
     },
     {
       "Component": "2 Thoughts",
-      "Position": "2.434",
+      "Position": "2.454",
       "Display Name": "2022",
       "Description": "",
       "Link": "https://dora.dev/research/2022/",
@@ -483,15 +501,6 @@
       "Display Name": "LinkedIn(?)",
       "Description": "",
       "Link": "https://www.linkedin.com/in/derekdebellis/",
-      "Display": "Yes",
-      "Notes": ""
-    },
-    {
-      "Component": "4 Perverse Sociality",
-      "Position": "4.5",
-      "Display Name": "email",
-      "Description": "",
-      "Link": "mailto:ddebellis@gmail.com",
       "Display": "Yes",
       "Notes": ""
     },
