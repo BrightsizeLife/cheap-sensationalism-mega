@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { SocialBanner } from './SocialBanner';
 import {
   getByComponent,
@@ -114,8 +114,8 @@ const TractatusList: React.FC<{ items: StructureItem[] }> = ({ items }) => {
 
           const headerCls =
             depth === 1
-              ? 'text-xl font-bold text-[#f0ede6] mt-6 mb-2 lowercase tracking-wide'
-              : 'text-base font-semibold text-[#f0ede6] mt-4 mb-1';
+              ? 'text-lg font-bold text-[#f0ede6] mt-6 mb-2 lowercase tracking-wide'
+              : 'text-sm font-semibold text-[#8a8680] mt-4 mb-1 uppercase tracking-widest';
           return (
             <div key={item.position} className={indent}>
               <h3 className={headerCls}>{item.displayName}</h3>
@@ -162,6 +162,13 @@ const noiseIcon = (name: string): string => {
 };
 
 export const HomeView = ({ onNavigate: _onNavigate }: { onNavigate: (view: any, id?: string) => void }) => {
+  useEffect(() => {
+    const process = () => (window as any).instgrm?.Embeds?.process();
+    process();
+    const t = setTimeout(process, 1200);
+    return () => clearTimeout(t);
+  }, []);
+
   const scrollToSection = (id: string) => {
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: 'smooth' });
@@ -343,6 +350,30 @@ export const HomeView = ({ onNavigate: _onNavigate }: { onNavigate: (view: any, 
 
       <p className="text-center text-[#8a8680] text-sm italic mb-4 px-4">(random things to make your visit somewhat worthwhile)</p>
       <SocialBanner />
+
+      {/* Instagram reels */}
+      <div className="w-full border-t border-white/5 py-12 px-4">
+        <div className="flex flex-col md:flex-row gap-6 justify-center items-start max-w-3xl mx-auto">
+          <div className="w-full md:w-1/2 flex justify-center">
+            <blockquote
+              className="instagram-media"
+              data-instgrm-captioned
+              data-instgrm-permalink="https://www.instagram.com/reel/DBxQo_nx5V0/?utm_source=ig_embed&utm_campaign=loading"
+              data-instgrm-version="14"
+              style={{ background: '#FFF', border: 0, borderRadius: '3px', boxShadow: '0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15)', margin: '1px', maxWidth: '540px', minWidth: '280px', padding: 0, width: '100%' }}
+            />
+          </div>
+          <div className="w-full md:w-1/2 flex justify-center">
+            <blockquote
+              className="instagram-media"
+              data-instgrm-captioned
+              data-instgrm-permalink="https://www.instagram.com/reel/DCPWD37RyR9/?utm_source=ig_embed&utm_campaign=loading"
+              data-instgrm-version="14"
+              style={{ background: '#FFF', border: 0, borderRadius: '3px', boxShadow: '0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15)', margin: '1px', maxWidth: '540px', minWidth: '280px', padding: 0, width: '100%' }}
+            />
+          </div>
+        </div>
+      </div>
 
       {/* Ko-fi embedded widget — framed in a dark section so the white iframe reads as intentional */}
       <section className="w-full border-t border-white/5 py-16 px-6 mt-8">
