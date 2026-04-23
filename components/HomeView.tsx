@@ -69,17 +69,52 @@ const Leaf: React.FC<{ item: StructureItem }> = ({ item }) => {
   return <span className="text-[#f0ede6]">{item.displayName}</span>;
 };
 
+const directChildren = (pos: string, all: StructureItem[]) =>
+  all.filter(
+    (c) =>
+      c.position !== pos &&
+      c.position.startsWith(pos) &&
+      depthOf(c.position) === depthOf(pos) + 1,
+  );
+
 const TractatusList: React.FC<{ items: StructureItem[] }> = ({ items }) => {
+  const absorbed = new Set<string>();
+
   return (
     <div className="space-y-2 break-words">
       {items.map((item) => {
+        if (absorbed.has(item.position)) return null;
         const depth = depthOf(item.position);
         const indent = indentFor(depth);
         const header = isHeader(item, items);
+
         if (header) {
+          const children = directChildren(item.position, items);
+          const isInlineGroup =
+            children.length > 0 &&
+            children.every((c) => c.displayName.length <= 6 && !isWip(c.link));
+
+          if (isInlineGroup) {
+            children.forEach((c) => absorbed.add(c.position));
+            return (
+              <div key={item.position} className={`${indent} text-[15px] leading-relaxed flex gap-2 flex-wrap items-baseline`}>
+                <span className="text-[#44413b] select-none flex-shrink-0">—</span>
+                <span className="text-[#8a8680] font-semibold lowercase">{item.displayName}</span>
+                <span className="text-[#44413b]">[</span>
+                {children.map((c, i) => (
+                  <React.Fragment key={c.position}>
+                    <Leaf item={c} />
+                    {i < children.length - 1 && <span className="text-[#44413b]">,</span>}
+                  </React.Fragment>
+                ))}
+                <span className="text-[#44413b]">]</span>
+              </div>
+            );
+          }
+
           const headerCls =
             depth === 1
-              ? 'text-lg font-bold text-[#f0ede6] mt-6 mb-2 lowercase tracking-wide'
+              ? 'text-xl font-bold text-[#f0ede6] mt-6 mb-2 lowercase tracking-wide'
               : 'text-base font-semibold text-[#f0ede6] mt-4 mb-1';
           return (
             <div key={item.position} className={indent}>
@@ -90,6 +125,7 @@ const TractatusList: React.FC<{ items: StructureItem[] }> = ({ items }) => {
             </div>
           );
         }
+
         return (
           <div key={item.position} className={`${indent} text-[15px] leading-relaxed flex gap-2`}>
             <span className="text-[#44413b] select-none flex-shrink-0">—</span>
@@ -209,6 +245,10 @@ export const HomeView = ({ onNavigate: _onNavigate }: { onNavigate: (view: any, 
                           <a href={link.link} target="_blank" rel="noreferrer" className="text-[#007BFF] hover:underline break-words">
                             {link.displayName}
                           </a>
+                        ) : link.link.startsWith('/') ? (
+                          <a href={link.link} className="text-[#007BFF] hover:underline">
+                            {link.displayName}
+                          </a>
                         ) : (
                           <span className="text-[#8a8680]">
                             {link.displayName}
@@ -271,7 +311,8 @@ export const HomeView = ({ onNavigate: _onNavigate }: { onNavigate: (view: any, 
                     <img
                       src={socialIcon(s.displayName)}
                       alt=""
-                      className="w-5 h-5 brightness-0 invert opacity-70"
+                      className="w-5 h-5"
+                      style={{ filter: 'brightness(0) invert(0.75)' }}
                     />
                     {wip ? (
                       <span className="text-[#8a8680]">
