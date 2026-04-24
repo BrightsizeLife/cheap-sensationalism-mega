@@ -232,40 +232,44 @@ export const HomeView = ({ onNavigate: _onNavigate }: { onNavigate: (view: any, 
 
             {cs && (
               <>
-                <h2 className="text-lg font-bold text-[#f0ede6] mb-2">{cs.displayName.toLowerCase()}</h2>
+                <div className="flex items-center justify-between gap-4 mb-2">
+                  <h2 className="text-lg font-bold text-[#f0ede6]">{cs.displayName.toLowerCase()}</h2>
+                  <div className="flex items-center gap-3 flex-shrink-0">
+                    {csLinks.map((link) => {
+                      const wip = isWip(link.link);
+                      const external = isExternal(link.link);
+                      const local = !wip && link.link.startsWith('/');
+                      const icon = (
+                        <img
+                          src={noiseIcon(link.displayName)}
+                          alt={link.displayName}
+                          title={link.displayName}
+                          className="w-6 h-6 block"
+                          style={wip
+                            ? { filter: 'grayscale(1)', opacity: 0.25 }
+                            : undefined}
+                        />
+                      );
+                      if (wip) return <span key={link.position}>{icon}</span>;
+                      if (external) return (
+                        <a key={link.position} href={link.link} target="_blank" rel="noreferrer"
+                           title={link.displayName} className="opacity-70 hover:opacity-100 transition-opacity">
+                          {icon}
+                        </a>
+                      );
+                      if (local) return (
+                        <a key={link.position} href={link.link}
+                           title={link.displayName} className="opacity-70 hover:opacity-100 transition-opacity">
+                          {icon}
+                        </a>
+                      );
+                      return <span key={link.position}>{icon}</span>;
+                    })}
+                  </div>
+                </div>
                 {cs.description && (
-                  <p className="text-[#8a8680] text-xs mb-4 italic">{cs.description}</p>
+                  <p className="text-[#8a8680] text-xs mb-10 italic">{cs.description}</p>
                 )}
-                <ul className="space-y-4 list-none p-0 mb-10">
-                  {csLinks.map((link) => {
-                    const wip = isWip(link.link);
-                    const external = isExternal(link.link);
-                    return (
-                      <li key={link.position} className="flex items-center gap-3">
-                        <img src={noiseIcon(link.displayName)} alt="" className="w-6 h-6" />
-                        {wip ? (
-                          <span className="text-[#8a8680]">
-                            {link.displayName}
-                            <WipTag />
-                          </span>
-                        ) : external ? (
-                          <a href={link.link} target="_blank" rel="noreferrer" className="text-[#007BFF] hover:underline break-words">
-                            {link.displayName}
-                          </a>
-                        ) : link.link.startsWith('/') ? (
-                          <a href={link.link} className="text-[#007BFF] hover:underline">
-                            {link.displayName}
-                          </a>
-                        ) : (
-                          <span className="text-[#8a8680]">
-                            {link.displayName}
-                            <WipTag />
-                          </span>
-                        )}
-                      </li>
-                    );
-                  })}
-                </ul>
               </>
             )}
 
@@ -276,7 +280,7 @@ export const HomeView = ({ onNavigate: _onNavigate }: { onNavigate: (view: any, 
                   <WipTag />
                 </div>
                 {philly.description && (
-                  <p className="text-[#8a8680] text-sm mb-8 italic">{philly.description}</p>
+                  <p className="text-[#8a8680] text-xs mb-8 italic">{philly.description}</p>
                 )}
               </>
             )}
@@ -288,7 +292,7 @@ export const HomeView = ({ onNavigate: _onNavigate }: { onNavigate: (view: any, 
                   <WipTag />
                 </div>
                 {slop.description && (
-                  <p className="text-[#8a8680] text-sm mb-4 italic">{slop.description}</p>
+                  <p className="text-[#8a8680] text-xs mb-4 italic">{slop.description}</p>
                 )}
               </>
             )}
