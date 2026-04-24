@@ -143,13 +143,14 @@ const TractatusList: React.FC<{ items: StructureItem[] }> = ({ items }) => {
 };
 
 const ICON_BASE = 'https://cdn.jsdelivr.net/npm/simple-icons@v14/icons';
-const socialIcon = (name: string): string => {
+const LINKEDIN_SVG = `data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23f0ede6'><path d='M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z'/></svg>`;
+const socialIcon = (name: string): { src: string; invert: boolean } => {
   const n = name.toLowerCase();
-  if (n.includes('github')) return `${ICON_BASE}/github.svg`;
-  if (n.includes('instagram')) return `${ICON_BASE}/instagram.svg`;
-  if (n.includes('facebook')) return `${ICON_BASE}/facebook.svg`;
-  if (n.includes('linkedin')) return `${ICON_BASE}/linkedin.svg`;
-  return `${ICON_BASE}/medium.svg`;
+  if (n.includes('linkedin')) return { src: LINKEDIN_SVG, invert: false };
+  if (n.includes('github')) return { src: `${ICON_BASE}/github.svg`, invert: true };
+  if (n.includes('instagram')) return { src: `${ICON_BASE}/instagram.svg`, invert: true };
+  if (n.includes('facebook')) return { src: `${ICON_BASE}/facebook.svg`, invert: true };
+  return { src: `${ICON_BASE}/medium.svg`, invert: true };
 };
 
 const noiseIcon = (name: string): string => {
@@ -232,40 +233,41 @@ export const HomeView = ({ onNavigate: _onNavigate }: { onNavigate: (view: any, 
 
             {cs && (
               <>
-                <h2 className="text-lg font-bold text-[#f0ede6] mb-2">{cs.displayName.toLowerCase()}</h2>
-                {cs.description && (
-                  <p className="text-[#8a8680] text-xs mb-4 italic">{cs.description}</p>
-                )}
-                <ul className="space-y-4 list-none p-0 mb-10">
+                <div className="flex items-center gap-3 flex-wrap mb-2">
+                  <h2 className="text-lg font-bold text-[#f0ede6]">{cs.displayName.toLowerCase()}</h2>
                   {csLinks.map((link) => {
                     const wip = isWip(link.link);
                     const external = isExternal(link.link);
-                    return (
-                      <li key={link.position} className="flex items-center gap-3">
-                        <img src={noiseIcon(link.displayName)} alt="" className="w-6 h-6" />
-                        {wip ? (
-                          <span className="text-[#8a8680]">
-                            {link.displayName}
-                            <WipTag />
-                          </span>
-                        ) : external ? (
-                          <a href={link.link} target="_blank" rel="noreferrer" className="text-[#007BFF] hover:underline break-words">
-                            {link.displayName}
-                          </a>
-                        ) : link.link.startsWith('/') ? (
-                          <a href={link.link} className="text-[#007BFF] hover:underline">
-                            {link.displayName}
-                          </a>
-                        ) : (
-                          <span className="text-[#8a8680]">
-                            {link.displayName}
-                            <WipTag />
-                          </span>
-                        )}
-                      </li>
+                    const local = !wip && link.link.startsWith('/');
+                    const img = (
+                      <img
+                        src={noiseIcon(link.displayName)}
+                        alt={link.displayName}
+                        className="w-5 h-5 block"
+                        style={wip ? { filter: 'grayscale(1)', opacity: 0.25 } : undefined}
+                      />
                     );
+                    if (wip) return (
+                      <span key={link.position} title={link.displayName}>{img}</span>
+                    );
+                    if (external) return (
+                      <a key={link.position} href={link.link} target="_blank" rel="noreferrer"
+                         title={link.displayName} className="opacity-70 hover:opacity-100 transition-opacity">
+                        {img}
+                      </a>
+                    );
+                    if (local) return (
+                      <a key={link.position} href={link.link}
+                         title={link.displayName} className="opacity-70 hover:opacity-100 transition-opacity">
+                        {img}
+                      </a>
+                    );
+                    return <span key={link.position} title={link.displayName}>{img}</span>;
                   })}
-                </ul>
+                </div>
+                {cs.description && (
+                  <p className="text-[#8a8680] text-xs mb-10 italic">{cs.description}</p>
+                )}
               </>
             )}
 
@@ -276,7 +278,7 @@ export const HomeView = ({ onNavigate: _onNavigate }: { onNavigate: (view: any, 
                   <WipTag />
                 </div>
                 {philly.description && (
-                  <p className="text-[#8a8680] text-sm mb-8 italic">{philly.description}</p>
+                  <p className="text-[#8a8680] text-xs mb-8 italic">{philly.description}</p>
                 )}
               </>
             )}
@@ -288,7 +290,7 @@ export const HomeView = ({ onNavigate: _onNavigate }: { onNavigate: (view: any, 
                   <WipTag />
                 </div>
                 {slop.description && (
-                  <p className="text-[#8a8680] text-sm mb-4 italic">{slop.description}</p>
+                  <p className="text-[#8a8680] text-xs mb-4 italic">{slop.description}</p>
                 )}
               </>
             )}
@@ -315,12 +317,14 @@ export const HomeView = ({ onNavigate: _onNavigate }: { onNavigate: (view: any, 
                 const external = isExternal(s.link);
                 return (
                   <li key={s.position} className="flex items-center gap-3">
-                    <img
-                      src={socialIcon(s.displayName)}
-                      alt=""
-                      className="w-5 h-5"
-                      style={{ filter: 'brightness(0) invert(0.75)' }}
-                    />
+                    {(() => { const ic = socialIcon(s.displayName); return (
+                      <img
+                        src={ic.src}
+                        alt=""
+                        className="w-5 h-5"
+                        style={ic.invert ? { filter: 'brightness(0) invert(0.75)' } : { opacity: 0.75 }}
+                      />
+                    ); })()}
                     {wip ? (
                       <span className="text-[#8a8680]">
                         {s.displayName}
@@ -378,7 +382,7 @@ export const HomeView = ({ onNavigate: _onNavigate }: { onNavigate: (view: any, 
       {/* Ko-fi embedded widget — framed in a dark section so the white iframe reads as intentional */}
       <section className="w-full border-t border-white/5 py-16 px-6 mt-8">
         <div className="w-full max-w-md mx-auto">
-          <p className="text-[10px] uppercase tracking-[0.3em] text-[#8a8680] text-center mb-6">support the noise</p>
+          <p className="text-xs text-[#8a8680] text-center mb-6 italic leading-relaxed px-2">a small tip goes a long way in providing me with the means to launch more studies and a super happy moment that will likely last longer than I should admit</p>
           <div className="rounded-xl overflow-hidden border border-white/10 shadow-lg">
             <iframe
               id="kofiframe"
