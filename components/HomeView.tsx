@@ -9,13 +9,14 @@ import {
   StructureItem,
 } from '../siteStructure';
 
+// Neon accent rotation — tokens from the cs design kit (--cs-cyan/amber/purple/coral/lime).
 const getColorClasses = (index: number, isActive: boolean = false) => {
   const colors = [
-    { base: 'text-[#00D4FF] border-[#00D4FF]', active: 'bg-[#00D4FF] text-[#0a0b10]', hover: 'hover:bg-[#00D4FF] hover:text-[#0a0b10]' },
-    { base: 'text-[#E8E048] border-[#E8E048]', active: 'bg-[#E8E048] text-[#0a0b10]', hover: 'hover:bg-[#E8E048] hover:text-[#0a0b10]' },
-    { base: 'text-[#B388FF] border-[#B388FF]', active: 'bg-[#B388FF] text-[#0a0b10]', hover: 'hover:bg-[#B388FF] hover:text-[#0a0b10]' },
-    { base: 'text-[#FF5757] border-[#FF5757]', active: 'bg-[#FF5757] text-[#0a0b10]', hover: 'hover:bg-[#FF5757] hover:text-[#0a0b10]' },
-    { base: 'text-[#06D6A0] border-[#06D6A0]', active: 'bg-[#06D6A0] text-[#0a0b10]', hover: 'hover:bg-[#06D6A0] hover:text-[#0a0b10]' },
+    { base: 'text-[var(--cs-cyan)] border-[var(--cs-cyan)]',     active: 'bg-[var(--cs-cyan)] text-[var(--cs-bg)]',     hover: 'hover:bg-[var(--cs-cyan)] hover:text-[var(--cs-bg)]' },
+    { base: 'text-[var(--cs-amber)] border-[var(--cs-amber)]',   active: 'bg-[var(--cs-amber)] text-[var(--cs-bg)]',    hover: 'hover:bg-[var(--cs-amber)] hover:text-[var(--cs-bg)]' },
+    { base: 'text-[var(--cs-purple)] border-[var(--cs-purple)]', active: 'bg-[var(--cs-purple)] text-[var(--cs-bg)]',   hover: 'hover:bg-[var(--cs-purple)] hover:text-[var(--cs-bg)]' },
+    { base: 'text-[var(--cs-coral)] border-[var(--cs-coral)]',   active: 'bg-[var(--cs-coral)] text-[var(--cs-bg)]',    hover: 'hover:bg-[var(--cs-coral)] hover:text-[var(--cs-bg)]' },
+    { base: 'text-[var(--cs-lime)] border-[var(--cs-lime)]',     active: 'bg-[var(--cs-lime)] text-[var(--cs-bg)]',     hover: 'hover:bg-[var(--cs-lime)] hover:text-[var(--cs-bg)]' },
   ];
   const pattern = [0, 3, 1, 2, 4, 1, 0, 3, 2, 4];
   const c = colors[pattern[index % pattern.length]];
@@ -23,7 +24,7 @@ const getColorClasses = (index: number, isActive: boolean = false) => {
 };
 
 const WipTag = () => (
-  <span className="text-[#E8E048] text-xs font-bold ml-2">[WIP]</span>
+  <span className="text-[var(--cs-amber)] text-xs font-bold ml-2">[WIP]</span>
 );
 
 const indentFor = (depth: number) =>
@@ -34,7 +35,7 @@ const Leaf: React.FC<{ item: StructureItem }> = ({ item }) => {
   const external = isExternal(item.link);
   if (wip) {
     return (
-      <span className="text-[#8a8680]">
+      <span className="cs-text-muted">
         {item.displayName}
         <WipTag />
       </span>
@@ -46,7 +47,7 @@ const Leaf: React.FC<{ item: StructureItem }> = ({ item }) => {
         href={item.link}
         target={item.link.startsWith('mailto:') ? undefined : '_blank'}
         rel="noreferrer"
-        className="text-[#007BFF] hover:underline break-words"
+        className="cs-text-link hover:underline break-words"
       >
         {item.displayName}
       </a>
@@ -54,19 +55,19 @@ const Leaf: React.FC<{ item: StructureItem }> = ({ item }) => {
   }
   if (item.link.startsWith('#')) {
     return (
-      <a href={item.link} className="text-[#007BFF] hover:underline">
+      <a href={item.link} className="cs-text-link hover:underline">
         {item.displayName}
       </a>
     );
   }
   if (item.link.startsWith('/')) {
     return (
-      <a href={item.link} className="text-[#007BFF] hover:underline break-words">
+      <a href={item.link} className="cs-text-link hover:underline break-words">
         {item.displayName}
       </a>
     );
   }
-  return <span className="text-[#f0ede6]">{item.displayName}</span>;
+  return <span className="cs-text-primary">{item.displayName}</span>;
 };
 
 const directChildren = (pos: string, all: StructureItem[]) =>
@@ -98,29 +99,29 @@ const TractatusList: React.FC<{ items: StructureItem[] }> = ({ items }) => {
             children.forEach((c) => absorbed.add(c.position));
             return (
               <div key={item.position} className={`${indent} text-[15px] leading-relaxed flex gap-2 flex-wrap items-baseline`}>
-                <span className="text-[#44413b] select-none flex-shrink-0">—</span>
-                <span className="text-[#8a8680] font-semibold lowercase">{item.displayName}</span>
-                <span className="text-[#44413b]">[</span>
+                <span className="cs-text-dim select-none flex-shrink-0">—</span>
+                <span className="cs-text-muted font-semibold lowercase">{item.displayName}</span>
+                <span className="cs-text-dim">[</span>
                 {children.map((c, i) => (
                   <React.Fragment key={c.position}>
                     <Leaf item={c} />
-                    {i < children.length - 1 && <span className="text-[#44413b]">,</span>}
+                    {i < children.length - 1 && <span className="cs-text-dim">,</span>}
                   </React.Fragment>
                 ))}
-                <span className="text-[#44413b]">]</span>
+                <span className="cs-text-dim">]</span>
               </div>
             );
           }
 
           const headerCls =
             depth === 1
-              ? 'text-lg font-bold text-[#f0ede6] mt-6 mb-2 lowercase tracking-wide'
-              : 'text-sm font-semibold text-[#8a8680] mt-4 mb-1 uppercase tracking-widest';
+              ? 'text-lg font-bold cs-text-primary mt-6 mb-2 lowercase tracking-wide'
+              : 'text-sm font-semibold cs-text-muted mt-4 mb-1 uppercase tracking-widest';
           return (
             <div key={item.position} className={indent}>
               <h3 className={headerCls}>{item.displayName}</h3>
               {item.description && (
-                <p className="text-xs italic text-[#8a8680] -mt-1 mb-2">{item.description}</p>
+                <p className="text-xs italic cs-text-muted -mt-1 mb-2">{item.description}</p>
               )}
             </div>
           );
@@ -128,11 +129,11 @@ const TractatusList: React.FC<{ items: StructureItem[] }> = ({ items }) => {
 
         return (
           <div key={item.position} className={`${indent} text-[15px] leading-relaxed flex gap-2`}>
-            <span className="text-[#44413b] select-none flex-shrink-0">—</span>
+            <span className="cs-text-dim select-none flex-shrink-0">—</span>
             <div className="flex-1 min-w-0">
               <Leaf item={item} />
               {item.description && (
-                <span className="text-xs italic text-[#8a8680] block">{item.description}</span>
+                <span className="text-xs italic cs-text-muted block">{item.description}</span>
               )}
             </div>
           </div>
@@ -196,12 +197,12 @@ export const HomeView = ({ onNavigate: _onNavigate }: { onNavigate: (view: any, 
   return (
     <div className="min-h-screen flex flex-col">
       <div className="flex-grow w-full max-w-3xl mx-auto p-6 sm:p-8 md:p-16">
-        <header className="mb-8 flex flex-col gap-4 border-b border-white/5 pb-6">
-          <h1 className="text-3xl md:text-5xl font-normal text-[#f0ede6] m-0 text-center">CHEAP SENSATIONALISM</h1>
+        <header className="mb-8 flex flex-col gap-4 border-b cs-border-subtle pb-6">
+          <h1 className="text-3xl md:text-5xl font-normal cs-text-primary m-0 text-center">CHEAP SENSATIONALISM</h1>
         </header>
 
         {/* Flashing Ticker Banner */}
-        <div className="mb-6 border border-white/10 rounded-full overflow-hidden h-8 flex items-center animate-flash-bg font-bold tracking-widest text-xs uppercase relative group">
+        <div className="mb-6 border cs-border-faint rounded-full overflow-hidden h-8 flex items-center animate-flash-bg font-bold tracking-widest text-xs uppercase relative group">
           <div className="flex animate-scroll-slow group-hover:[animation-play-state:paused] whitespace-nowrap w-max">
             {displayTicker.map((item, i) => (
               <React.Fragment key={i}>
@@ -218,7 +219,7 @@ export const HomeView = ({ onNavigate: _onNavigate }: { onNavigate: (view: any, 
         </div>
 
         {/* Navigation Pills */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-16 pb-8 border-b border-white/5">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-16 pb-8 border-b cs-border-subtle">
           {['noises', 'thoughts', 'tools', 'sociality'].map((section, i) => (
             <button key={section} onClick={() => scrollToSection(section)} className={getColorClasses(i)}>
               {section}
@@ -229,12 +230,12 @@ export const HomeView = ({ onNavigate: _onNavigate }: { onNavigate: (view: any, 
         <main className="space-y-16">
           {/* noises */}
           <section id="noises">
-            <h1 className="text-2xl text-[#f0ede6] mb-6">noises</h1>
+            <h1 className="text-2xl cs-text-primary mb-6">noises</h1>
 
             {cs && (
               <>
                 <div className="flex items-center gap-3 flex-wrap mb-2">
-                  <h2 className="text-lg font-bold text-[#f0ede6]">{cs.displayName.toLowerCase()}</h2>
+                  <h2 className="text-lg font-bold cs-text-primary">{cs.displayName.toLowerCase()}</h2>
                   {csLinks.map((link) => {
                     const wip = isWip(link.link);
                     const external = isExternal(link.link);
@@ -266,7 +267,7 @@ export const HomeView = ({ onNavigate: _onNavigate }: { onNavigate: (view: any, 
                   })}
                 </div>
                 {cs.description && (
-                  <p className="text-[#8a8680] text-xs mb-10 italic">{cs.description}</p>
+                  <p className="cs-text-muted text-xs mb-10 italic">{cs.description}</p>
                 )}
               </>
             )}
@@ -274,11 +275,11 @@ export const HomeView = ({ onNavigate: _onNavigate }: { onNavigate: (view: any, 
             {philly && (
               <>
                 <div className="flex items-center gap-3 mb-2 flex-wrap">
-                  <h2 className="text-lg font-bold text-[#8a8680]">{philly.displayName.toLowerCase()}</h2>
+                  <h2 className="text-lg font-bold cs-text-muted">{philly.displayName.toLowerCase()}</h2>
                   <WipTag />
                 </div>
                 {philly.description && (
-                  <p className="text-[#8a8680] text-xs mb-8 italic">{philly.description}</p>
+                  <p className="cs-text-muted text-xs mb-8 italic">{philly.description}</p>
                 )}
               </>
             )}
@@ -286,11 +287,11 @@ export const HomeView = ({ onNavigate: _onNavigate }: { onNavigate: (view: any, 
             {slop && (
               <>
                 <div className="flex items-center gap-3 mb-2 flex-wrap">
-                  <h2 className="text-lg font-bold text-[#8a8680]">{slop.displayName.toLowerCase()}</h2>
+                  <h2 className="text-lg font-bold cs-text-muted">{slop.displayName.toLowerCase()}</h2>
                   <WipTag />
                 </div>
                 {slop.description && (
-                  <p className="text-[#8a8680] text-xs mb-4 italic">{slop.description}</p>
+                  <p className="cs-text-muted text-xs mb-4 italic">{slop.description}</p>
                 )}
               </>
             )}
@@ -298,19 +299,19 @@ export const HomeView = ({ onNavigate: _onNavigate }: { onNavigate: (view: any, 
 
           {/* thoughts */}
           <section id="thoughts">
-            <h1 className="text-2xl text-[#f0ede6] mb-6">thoughts</h1>
+            <h1 className="text-2xl cs-text-primary mb-6">thoughts</h1>
             <TractatusList items={thoughtItems} />
           </section>
 
           {/* tools */}
           <section id="tools">
-            <h1 className="text-2xl text-[#f0ede6] mb-6">tools</h1>
+            <h1 className="text-2xl cs-text-primary mb-6">tools</h1>
             <TractatusList items={toolItems} />
           </section>
 
           {/* perverse sociality */}
           <section id="sociality">
-            <h1 className="text-2xl text-[#f0ede6] mb-6">perverse sociality</h1>
+            <h1 className="text-2xl cs-text-primary mb-6">perverse sociality</h1>
             <ul className="space-y-4 list-none p-0">
               {socialItems.map((s) => {
                 const wip = isWip(s.link);
@@ -326,7 +327,7 @@ export const HomeView = ({ onNavigate: _onNavigate }: { onNavigate: (view: any, 
                       />
                     ); })()}
                     {wip ? (
-                      <span className="text-[#8a8680]">
+                      <span className="cs-text-muted">
                         {s.displayName}
                         <WipTag />
                       </span>
@@ -335,12 +336,12 @@ export const HomeView = ({ onNavigate: _onNavigate }: { onNavigate: (view: any, 
                         href={s.link}
                         target={s.link.startsWith('mailto:') ? undefined : '_blank'}
                         rel="noreferrer"
-                        className="text-[#007BFF] hover:underline break-all"
+                        className="cs-text-link hover:underline break-all"
                       >
                         {s.displayName}
                       </a>
                     ) : (
-                      <span className="text-[#f0ede6]">{s.displayName}</span>
+                      <span className="cs-text-primary">{s.displayName}</span>
                     )}
                   </li>
                 );
@@ -352,11 +353,11 @@ export const HomeView = ({ onNavigate: _onNavigate }: { onNavigate: (view: any, 
         <div className="mt-24 mb-8" />
       </div>
 
-      <p className="text-center text-[#8a8680] text-sm italic mb-4 px-4">(random things to make your visit somewhat worthwhile)</p>
+      <p className="text-center cs-text-muted text-sm italic mb-4 px-4">(random things to make your visit somewhat worthwhile)</p>
       <SocialBanner />
 
       {/* Instagram reels */}
-      <div className="w-full border-t border-white/5 py-12 px-4">
+      <div className="w-full border-t cs-border-subtle py-12 px-4">
         <div className="flex flex-col md:flex-row gap-6 justify-center items-start max-w-3xl mx-auto">
           <div className="w-full md:w-1/2 flex justify-center">
             <blockquote
@@ -380,10 +381,10 @@ export const HomeView = ({ onNavigate: _onNavigate }: { onNavigate: (view: any, 
       </div>
 
       {/* Ko-fi embedded widget — framed in a dark section so the white iframe reads as intentional */}
-      <section className="w-full border-t border-white/5 py-16 px-6 mt-8">
+      <section className="w-full border-t cs-border-subtle py-16 px-6 mt-8">
         <div className="w-full max-w-md mx-auto">
-          <p className="text-xs text-[#8a8680] text-center mb-6 italic leading-relaxed px-2">a small tip goes a long way in providing me with the means to launch more studies and a super happy moment that will likely last longer than I should admit</p>
-          <div className="rounded-xl overflow-hidden border border-white/10 shadow-lg">
+          <p className="text-xs cs-text-muted text-center mb-6 italic leading-relaxed px-2">a small tip goes a long way in providing me with the means to launch more studies and a super happy moment that will likely last longer than I should admit</p>
+          <div className="rounded-xl overflow-hidden border cs-border-faint shadow-lg">
             <iframe
               id="kofiframe"
               src="https://ko-fi.com/cheapsensationalism/?hidefeed=true&widget=true&embed=true&preview=true"

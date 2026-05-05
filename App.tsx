@@ -16,7 +16,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#0a0b10] text-[#60665f] font-mono selection:bg-purple-500/30 selection:text-purple-200">
+    <div className="min-h-screen cs-bg-base cs-text-muted selection:bg-purple-500/30 selection:text-purple-200">
       {view === 'home' && <HomeView onNavigate={navigate} />}
       {view === 'thought' && <ThoughtView id={selectedId!} onBack={() => navigate('home')} />}
     </div>
