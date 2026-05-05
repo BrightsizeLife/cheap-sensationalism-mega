@@ -12,10 +12,10 @@ export const ThoughtView = ({ id, onBack }: { id: string, onBack: () => void }) 
 
   return (
     <div className="p-8 md:p-16 max-w-2xl mx-auto min-h-screen flex flex-col">
-      <button onClick={onBack} className="text-[#007BFF] hover:underline mb-12 block w-fit">[back to index]</button>
-      <article className="flex-grow">
-        <h1 className="text-3xl md:text-4xl text-[#f0ede6] mb-8 font-normal">{title}</h1>
-        <div className="text-[#8a8680] space-y-6 leading-relaxed text-lg">
+      <button onClick={onBack} className="cs-text-link hover:underline mb-12 block w-fit font-mono text-sm">[back to index]</button>
+      <article className="flex-grow cs-essay-body">
+        <h1 className="cs-display text-3xl md:text-5xl cs-text-primary mb-10 font-normal italic leading-tight">{title}</h1>
+        <div className="space-y-6 text-lg">
           <p>This is a stationary page for the selected thought. The context is dead, but the text remains.</p>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
           <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>

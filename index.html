@@ -8,52 +8,97 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
+        /* ── cheap-sensationalism design tokens ─────────────────────── */
         :root {
-            --bg: #0a0b10;
-            --text: #f0ede6;
-            --muted: #8a8680;
-            --dim: #44413b;
-            --amber: #E8E048;
-            --cyan: #00D4FF;
-            --coral: #FF5757;
-            --purple: #B388FF;
-            --lime: #06D6A0;
+            /* surface */
+            --cs-bg: #0a0b10;
+
+            /* text scale */
+            --cs-text-primary: #f0ede6;
+            --cs-text-muted:   #8a8680;
+            --cs-text-dim:     #44413b;
+
+            /* link */
+            --cs-link: #007BFF;
+
+            /* neon accents — rotate by index for nav pills, kickers */
+            --cs-cyan:   #00D4FF;
+            --cs-coral:  #FF5757;
+            --cs-amber:  #E8E048;
+            --cs-purple: #B388FF;
+            --cs-lime:   #06D6A0;
+
+            /* data signal colors — semantic, scientific meaning */
+            --cs-data-warm:  #FF5757;
+            --cs-data-cold:  #00D4FF;
+            --cs-data-gold:  #E8E048;
+            --cs-data-green: #06D6A0;
+
+            /* borders */
+            --cs-border-subtle: rgba(255, 255, 255, 0.05);
+            --cs-border-faint:  rgba(255, 255, 255, 0.10);
+
+            /* legacy aliases (kept for any inline references during migration) */
+            --bg: var(--cs-bg);
+            --text: var(--cs-text-primary);
+            --muted: var(--cs-text-muted);
+            --dim: var(--cs-text-dim);
+            --amber: var(--cs-amber);
+            --cyan: var(--cs-cyan);
+            --coral: var(--cs-coral);
+            --purple: var(--cs-purple);
+            --lime: var(--cs-lime);
         }
+
+        /* Main site default: Inter. Data journalism mode swaps to Space Mono via .mode-data. */
         body {
             font-family: 'Inter', system-ui, sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
+            background-color: var(--cs-bg);
+            color: var(--cs-text-primary);
             overflow-x: hidden;
             line-height: 1.6;
         }
-        .font-display {
-            font-family: 'Playfair Display', serif;
+
+        /* ── type families ──────────────────────────────────────────── */
+        .cs-display, .font-display { font-family: 'Playfair Display', serif; }
+        .cs-mono,    .font-mono    { font-family: 'Space Mono', monospace; }
+
+        /* Essay prose — used inside thoughts and data journalism long-form sections */
+        .cs-essay-body {
+            font-family: Georgia, 'Times New Roman', serif;
+            line-height: 1.75;
+            color: var(--cs-text-primary);
         }
-        .font-mono {
-            font-family: 'Space Mono', monospace;
-        }
+
+        /* Data journalism mode — Space Mono UI throughout. Apply on a section wrapper. */
+        .mode-data { font-family: 'Space Mono', monospace; }
+
+        /* ── color helpers (cs-prefixed) ────────────────────────────── */
+        .cs-text-primary { color: var(--cs-text-primary); }
+        .cs-text-muted   { color: var(--cs-text-muted); }
+        .cs-text-dim     { color: var(--cs-text-dim); }
+        .cs-text-link    { color: var(--cs-link); }
+        .cs-bg-base      { background-color: var(--cs-bg); }
+        .cs-border-subtle { border-color: var(--cs-border-subtle); }
+        .cs-border-faint  { border-color: var(--cs-border-faint); }
+
+        /* ── animations ─────────────────────────────────────────────── */
         @keyframes scroll {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
         }
-        .animate-scroll {
-            animation: scroll 15s linear infinite;
-        }
-        .animate-scroll-slow {
-            animation: scroll 40s linear infinite;
-        }
+        .animate-scroll      { animation: scroll 15s linear infinite; }
+        .animate-scroll-slow { animation: scroll 40s linear infinite; }
+
         @keyframes flash-bg {
-            0%, 24.99% { background-color: var(--cyan); color: #0a0b10; }
-            25%, 49.99% { background-color: var(--amber); color: #0a0b10; }
-            50%, 74.99% { background-color: var(--coral); color: #0a0b10; }
-            75%, 100% { background-color: var(--lime); color: #0a0b10; }
+            0%,   24.99% { background-color: var(--cs-cyan);  color: var(--cs-bg); }
+            25%,  49.99% { background-color: var(--cs-amber); color: var(--cs-bg); }
+            50%,  74.99% { background-color: var(--cs-coral); color: var(--cs-bg); }
+            75%, 100%    { background-color: var(--cs-lime);  color: var(--cs-bg); }
         }
-        .animate-flash-bg {
-            animation: flash-bg 1.5s infinite;
-        }
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
+        .animate-flash-bg { animation: flash-bg 1.5s infinite; }
+
+        .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar {
             -ms-overflow-style: none;
             scrollbar-width: none;
