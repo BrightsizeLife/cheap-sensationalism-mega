@@ -1,0 +1,607 @@
+/*
+ * site.css: what the map needs that pact.css does not have.
+ *
+ * Linked after fonts.css, tokens.css and pact.css. Every colour, size and
+ * gap is a token. Classes are cs- because they belong to this site;
+ * pact- classes come unchanged from the design system.
+ *
+ * The one idea on top of pact: the site is a subway map. Five lines, one
+ * pact hue each, a lettered bullet per line, stations as dots, transfers
+ * as ringed dots. The absurdity lives in the words; the drawing stays
+ * plain signage.
+ */
+
+/* ── Wordmark ─────────────────────────────────────────────────────────── */
+/* The studio name stays in capitals (the parent system's rule) and takes
+   the wide cut, like the name on the front of a train. */
+.cs-wordmark {
+  font-variation-settings: "wdth" var(--pact-display-wdth);
+  font-size: 1.125rem;
+  letter-spacing: 0.02em;
+}
+@media (min-width: 48rem) {
+  .cs-wordmark { font-size: 1.25rem; }
+}
+.cs-wordmark[aria-current="page"] {
+  text-decoration: none;
+}
+
+/* ── Line bullets ─────────────────────────────────────────────────────── */
+/* The bullet carries a letter, so it takes the -ink cut of its hue (6:1
+   against the white letter), not the pop cut, which never carries type. */
+.cs-bullet {
+  display: inline-grid;
+  place-items: center;
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 50%;
+  color: var(--pact-bg);
+  background: var(--pact-ink);
+  font-family: var(--pact-font-ui);
+  font-size: 0.8em;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: 0;
+  text-transform: none;
+  vertical-align: 0.1em;
+  flex: none;
+}
+.cs-bullet-lg {
+  font-size: 1.1em;
+}
+.cs-bullet[data-hue="technology"] { background: var(--pact-dim-technology-ink); }
+.cs-bullet[data-hue="architecture"] { background: var(--pact-dim-architecture-ink); }
+.cs-bullet[data-hue="culture"] { background: var(--pact-dim-culture-ink); }
+.cs-bullet[data-hue="practices"] { background: var(--pact-dim-practices-ink); }
+.cs-bullet[data-hue="outcomes"] { background: var(--pact-dim-outcomes-ink); }
+
+.cs-bullets {
+  display: inline-flex;
+  gap: 2px;
+  margin-right: 6px;
+  vertical-align: 0.05em;
+}
+
+/* Bullets in the header nav sit beside the word. */
+.pact-nav a .cs-bullet {
+  margin-right: 2px;
+}
+
+/* ── Status, new ──────────────────────────────────────────────────────── */
+/* The word is the signal. The chip only echoes it. */
+.cs-status {
+  display: inline-block;
+  font-size: var(--pact-text-kicker);
+  font-weight: 900;
+  letter-spacing: var(--pact-tracking-widest);
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border-radius: 2px;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+.cs-status[data-status="live"] {
+  color: var(--pact-ink);
+  box-shadow: inset 0 0 0 2px var(--pact-ink);
+}
+/* Under construction borrows the [WIP] chip: orange pop, ink text, 6.5:1. */
+.cs-status[data-status="wip"] {
+  color: var(--pact-ink);
+  background: var(--pact-dim-culture);
+}
+.cs-status[data-status="idea"] {
+  color: var(--pact-muted);
+  box-shadow: inset 0 0 0 1px var(--pact-muted);
+}
+.cs-status[data-status="retired"] {
+  color: var(--pact-muted);
+  background: var(--pact-surface);
+}
+
+.cs-new-tag {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 0 5px;
+  font-size: var(--pact-text-kicker);
+  font-weight: 900;
+  letter-spacing: var(--pact-tracking-widest);
+  text-transform: uppercase;
+  color: var(--pact-ink);
+  border: 2px solid var(--pact-ink);
+  border-radius: 2px;
+  line-height: 1.5;
+  vertical-align: 0.15em;
+}
+
+/* ── Shared layout bits ───────────────────────────────────────────────── */
+.cs-measure { max-width: var(--pact-measure); }
+.cs-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 var(--pact-space-2);
+}
+.cs-action {
+  margin-top: var(--pact-space-3);
+}
+.cs-action .pact-btn {
+  margin-right: var(--pact-space-1);
+}
+.cs-sub-h {
+  display: block;
+  margin: var(--pact-space-3) 0 var(--pact-space-1);
+}
+.cs-plain-link {
+  font-weight: 700;
+}
+.cs-nowrap { white-space: nowrap; }
+
+/* The intro's left rule is the line's colour when the page belongs to one. */
+.cs-intro.pact-dim-section {
+  padding-left: var(--pact-space-2);
+}
+.cs-intro .cs-kicker {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 6px;
+}
+.cs-intro .cs-kicker a {
+  color: var(--pact-muted);
+}
+
+.cs-stat-note {
+  display: block;
+  margin-top: 4px;
+}
+.cs-fresh-note {
+  margin-top: var(--pact-space-2);
+}
+
+/* ── The lines, as a legend ───────────────────────────────────────────── */
+.cs-lines {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: var(--pact-space-4) var(--pact-space-3);
+}
+.cs-line {
+  border-top: 3px solid var(--pact-ink);
+  padding-top: var(--pact-space-1);
+}
+.cs-line-h {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: var(--pact-text-h2);
+  font-weight: 900;
+  font-variation-settings: "wdth" var(--pact-display-wdth);
+  letter-spacing: var(--pact-tracking-tight);
+  text-transform: lowercase;
+  margin: 0 0 var(--pact-space-1);
+}
+.cs-line-blurb {
+  margin-bottom: var(--pact-space-1);
+}
+.cs-line-hubs a {
+  font-weight: 700;
+}
+
+/* ── The explorer: view switch, filters, the view ─────────────────────── */
+.cs-explorer-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 0 var(--pact-space-3);
+  border-bottom: 1px solid var(--pact-rule);
+  margin-bottom: var(--pact-space-2);
+}
+.cs-explorer-head .pact-h2 {
+  margin: 0;
+  padding-bottom: 6px;
+}
+.cs-viewswitch.pact-tabs {
+  margin: 0;
+  border-bottom: 0;
+}
+
+.cs-filters {
+  display: grid;
+  gap: var(--pact-space-2);
+  margin-bottom: var(--pact-space-3);
+}
+.cs-filter-group {
+  margin: 0;
+}
+.cs-filter-group legend {
+  margin-bottom: 0;
+}
+.cs-toggles {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 var(--pact-space-2);
+}
+/* A toggle looks like a tab: the pressed one carries the blue underline,
+   and aria-pressed says the same thing to a screen reader. */
+.cs-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 0 4px;
+  background: none;
+  border: 0;
+  border-bottom: 3px solid transparent;
+  font-weight: 700;
+  color: var(--pact-ink);
+  cursor: pointer;
+}
+.cs-toggle:hover {
+  border-bottom-color: var(--pact-rule);
+}
+.cs-toggle[aria-pressed="true"] {
+  border-bottom-color: var(--pact-primary);
+}
+.cs-radio {
+  gap: 6px;
+  font-weight: 700;
+}
+.cs-count {
+  margin: 0;
+}
+
+/* ── List ─────────────────────────────────────────────────────────────── */
+.cs-list {
+  display: grid;
+  gap: var(--pact-space-6);
+}
+.cs-list-line-h {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.cs-list-line-h a {
+  color: var(--pact-ink);
+  text-decoration: none;
+}
+.cs-list-line-h a:hover {
+  text-decoration: underline;
+}
+.cs-list-hub + .cs-list-hub {
+  margin-top: var(--pact-space-4);
+}
+.cs-list-line-h {
+  margin-bottom: 0;
+}
+.cs-list-line-blurb {
+  margin-top: 2px;
+}
+/* A hub inside the list: the way into its launching page. */
+.cs-list-hub-h {
+  margin: var(--pact-space-3) 0 var(--pact-space-1);
+  font-size: 1.125rem;
+  font-weight: 900;
+  text-transform: lowercase;
+}
+.cs-list-hub-h .pact-small {
+  font-weight: 400;
+}
+
+.cs-row p + p {
+  margin-top: 4px;
+}
+.cs-row-title {
+  font-weight: 700;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+}
+.cs-row-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px var(--pact-space-2);
+}
+.cs-row-blurb {
+  max-width: var(--pact-measure);
+}
+.cs-row-go {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 var(--pact-space-2);
+}
+.cs-row-go .pact-cta {
+  min-height: 32px;
+  line-height: 16px;
+}
+.cs-transfer a {
+  font-weight: 700;
+}
+
+/* ── Table ────────────────────────────────────────────────────────────── */
+/* Visually hidden text inside the table is absolutely positioned; without
+   a positioned ancestor it escapes the scroll box and widens the page. */
+.pact-table-wrap {
+  position: relative;
+}
+.cs-table td:first-child a {
+  font-weight: 700;
+}
+.cs-table td .pact-cta {
+  min-height: 24px;
+  padding: 0;
+  line-height: 1.4;
+}
+.cs-sort {
+  background: none;
+  border: 0;
+  padding: 0;
+  min-height: 24px;
+  color: var(--pact-primary);
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  cursor: pointer;
+}
+.cs-sort:hover {
+  text-decoration: underline;
+}
+
+/* ── Network ──────────────────────────────────────────────────────────── */
+.cs-net-legend {
+  margin-top: var(--pact-space-1);
+}
+.cs-net-legend svg {
+  /* .pact-chart svg stretches every svg in the figure to full width; the
+     legend swatches keep the size their attributes give them. */
+  display: inline-block;
+  width: auto;
+  flex: none;
+}
+.cs-net-box {
+  width: 100%;
+  border-top: 3px solid var(--pact-ink);
+  border-bottom: 1px solid var(--pact-rule);
+  margin-top: var(--pact-space-1);
+}
+.cs-net-svg {
+  display: block;
+  max-width: none;
+}
+
+.cs-net-stop {
+  stroke: var(--pact-ink);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+.cs-net-stop[data-hue="technology"] { stroke: var(--pact-dim-technology); }
+.cs-net-stop[data-hue="architecture"] { stroke: var(--pact-dim-architecture); }
+.cs-net-stop[data-hue="culture"] { stroke: var(--pact-dim-culture); }
+.cs-net-stop[data-hue="practices"] { stroke: var(--pact-dim-practices); }
+.cs-net-stop[data-hue="outcomes"] { stroke: var(--pact-dim-outcomes); }
+
+.cs-net-related {
+  stroke: var(--pact-muted);
+  stroke-width: 1.25;
+  stroke-dasharray: 4 4;
+  stroke-opacity: 0.7;
+}
+
+.cs-net-dot {
+  fill: var(--pact-muted);
+  stroke: var(--pact-ink);
+  stroke-width: 1;
+}
+.cs-net-dot[data-hue="technology"] { fill: var(--pact-dim-technology); }
+.cs-net-dot[data-hue="architecture"] { fill: var(--pact-dim-architecture); }
+.cs-net-dot[data-hue="culture"] { fill: var(--pact-dim-culture); }
+.cs-net-dot[data-hue="practices"] { fill: var(--pact-dim-practices); }
+.cs-net-dot[data-hue="outcomes"] { fill: var(--pact-dim-outcomes); }
+
+/* Not in service: hollow, ringed in the line's colour. */
+.cs-net-dot.cs-net-hollow {
+  fill: var(--pact-bg);
+  stroke: var(--pact-muted);
+  stroke-width: 2.5;
+}
+.cs-net-hollow[data-hue="technology"] { stroke: var(--pact-dim-technology); }
+.cs-net-hollow[data-hue="architecture"] { stroke: var(--pact-dim-architecture); }
+.cs-net-hollow[data-hue="culture"] { stroke: var(--pact-dim-culture); }
+.cs-net-hollow[data-hue="practices"] { stroke: var(--pact-dim-practices); }
+.cs-net-hollow[data-hue="outcomes"] { stroke: var(--pact-dim-outcomes); }
+
+/* A transfer station: the black ring from every subway map. */
+.cs-net-ring {
+  fill: var(--pact-bg);
+  stroke: var(--pact-ink);
+  stroke-width: 2;
+}
+
+.cs-net-hub {
+  fill: var(--pact-ink);
+  stroke: var(--pact-bg);
+  stroke-width: 2;
+}
+.cs-net-hub[data-hue="technology"] { fill: var(--pact-dim-technology-ink); }
+.cs-net-hub[data-hue="architecture"] { fill: var(--pact-dim-architecture-ink); }
+.cs-net-hub[data-hue="culture"] { fill: var(--pact-dim-culture-ink); }
+.cs-net-hub[data-hue="practices"] { fill: var(--pact-dim-practices-ink); }
+.cs-net-hub[data-hue="outcomes"] { fill: var(--pact-dim-outcomes-ink); }
+.cs-net-hub-letter {
+  fill: var(--pact-bg);
+  font-family: var(--pact-font-ui);
+  font-size: 13px;
+  font-weight: 900;
+  text-anchor: middle;
+  pointer-events: none;
+}
+
+.cs-net-label {
+  font-family: var(--pact-font-ui);
+  font-size: 11px;
+  fill: var(--pact-ink);
+  paint-order: stroke;
+  stroke: var(--pact-bg);
+  stroke-width: 3px;
+  stroke-linejoin: round;
+  pointer-events: none;
+}
+.cs-net-label-hub {
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.cs-net-hit {
+  fill: transparent;
+  stroke: none;
+}
+.cs-net-node {
+  cursor: pointer;
+}
+/* The selected station wears the action colour: it is the current thing. */
+.cs-net-selected {
+  fill: none;
+  stroke: var(--pact-primary);
+  stroke-width: 3;
+}
+.cs-net-node:focus-visible {
+  outline: var(--pact-focus-ring);
+}
+.cs-net-node:focus-visible .cs-net-hit {
+  stroke: var(--pact-primary);
+  stroke-width: 3;
+}
+[data-dim] {
+  opacity: 0.18;
+}
+
+.cs-network figcaption {
+  color: var(--pact-ink);
+  font-size: var(--pact-text-base);
+  margin-top: var(--pact-space-2);
+}
+.cs-net-panel {
+  border-top: 2px solid var(--pact-ink);
+  padding-top: var(--pact-space-1);
+  max-width: var(--pact-measure);
+}
+.cs-net-panel > * + * {
+  margin-top: 6px;
+}
+.cs-net-panel .cs-kicker {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 6px;
+}
+.cs-net-panel-title {
+  font-size: var(--pact-text-h2);
+  font-weight: 900;
+  font-variation-settings: "wdth" var(--pact-display-wdth);
+}
+
+/* ── Advisories, elsewhere ────────────────────────────────────────────── */
+.cs-advisories {
+  max-width: var(--pact-measure);
+}
+.cs-advisories .pact-cta {
+  min-height: 0;
+  padding: 0;
+  line-height: inherit;
+}
+.cs-elsewhere {
+  display: grid;
+  gap: 0 var(--pact-space-4);
+}
+@media (min-width: 48rem) {
+  .cs-elsewhere { grid-template-columns: 1fr 2fr; }
+}
+
+/* ── Station page ─────────────────────────────────────────────────────── */
+.cs-station-status {
+  margin-top: var(--pact-space-2);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 8px;
+}
+.cs-facts {
+  margin: 0;
+  max-width: var(--pact-measure);
+  border-top: 2px solid var(--pact-ink);
+}
+.cs-facts > div {
+  display: grid;
+  grid-template-columns: 9rem 1fr;
+  gap: var(--pact-space-2);
+  padding: 10px 0;
+  border-bottom: 1px solid var(--pact-rule);
+}
+.cs-facts dt {
+  font-size: var(--pact-text-kicker);
+  font-weight: 900;
+  letter-spacing: var(--pact-tracking-widest);
+  text-transform: uppercase;
+  color: var(--pact-muted);
+  padding-top: 4px;
+}
+.cs-facts dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+@media (max-width: 30rem) {
+  .cs-facts > div { grid-template-columns: 1fr; gap: 2px; }
+}
+.cs-nextstop {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--pact-space-1) var(--pact-space-4);
+  border-top: 3px solid var(--pact-ink);
+  padding-top: var(--pact-space-1);
+}
+.cs-nextstop p {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Editions ─────────────────────────────────────────────────────────── */
+.cs-edition .pact-h2 {
+  margin-bottom: 4px;
+}
+.cs-edition > * + * {
+  margin-top: var(--pact-space-1);
+}
+.cs-changes {
+  max-width: var(--pact-measure);
+}
+.cs-inline-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px var(--pact-space-2);
+}
+.cs-inline-list a {
+  display: inline-block;
+  line-height: 32px;
+}
+
+/* ── Share, build ─────────────────────────────────────────────────────── */
+.cs-permalink {
+  border-top: 1px solid var(--pact-rule);
+  padding-top: var(--pact-space-3);
+  max-width: var(--pact-measure);
+}
+.cs-build {
+  margin-top: var(--pact-space-2);
+}
+.cs-build a {
+  line-height: inherit;
+}

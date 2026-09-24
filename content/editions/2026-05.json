@@ -1,0 +1,619 @@
+{
+  "id": "2026-05",
+  "published": "2026-05-05",
+  "note": "The site as it stood in May 2026: four sections (noises, thoughts, tools, perverse sociality), a flashing ticker, and a dark background. Frozen from site_structure.json when the map replaced it.",
+  "lines": [
+    {
+      "id": "noises",
+      "name": "noises",
+      "letter": "N",
+      "hue": "culture",
+      "blurb": "Music."
+    },
+    {
+      "id": "thoughts",
+      "name": "thoughts",
+      "letter": "T",
+      "hue": "practices",
+      "blurb": "Essays, analyses, and work."
+    },
+    {
+      "id": "tools",
+      "name": "tools",
+      "letter": "7",
+      "hue": "technology",
+      "blurb": "Interactive tools, all of them under construction."
+    }
+  ],
+  "hubs": [
+    {
+      "id": "music",
+      "line": "noises",
+      "name": "noises",
+      "h1": "noises.",
+      "lede": "One album out, two more in the garage.",
+      "action": {
+        "label": "[listen to cheap sensationalism]",
+        "url": "https://open.spotify.com/album/7kjmvtW08iNlCKEU0qgKXN"
+      }
+    },
+    {
+      "id": "politics",
+      "line": "thoughts",
+      "name": "political analyses",
+      "h1": "political analyses.",
+      "lede": "Election models and a post mortem in three parts."
+    },
+    {
+      "id": "causal",
+      "line": "thoughts",
+      "name": "causal inference: the lifesaving nerd",
+      "h1": "causal inference: the lifesaving nerd.",
+      "lede": "A series in four parts, none written yet."
+    },
+    {
+      "id": "scribbles",
+      "line": "thoughts",
+      "name": "scribbles & patterns",
+      "h1": "scribbles & patterns.",
+      "lede": "Data essays. One finished."
+    },
+    {
+      "id": "work",
+      "line": "thoughts",
+      "name": "work stuff",
+      "h1": "work stuff.",
+      "lede": "Papers, posts, and DORA reports."
+    },
+    {
+      "id": "toolbox",
+      "line": "tools",
+      "name": "tools",
+      "h1": "tools.",
+      "lede": "Five tools, all under construction."
+    }
+  ],
+  "things": [
+    {
+      "id": "cheap-sensationalism",
+      "title": "cheap sensationalism",
+      "hubs": [
+        "music"
+      ],
+      "kind": "album",
+      "status": "live",
+      "year": "2024",
+      "blurb": "Fragments from a past life glued together, leaving a couple moments of conceivable musicality.",
+      "links": [
+        {
+          "label": "[listen on spotify]",
+          "url": "https://open.spotify.com/album/7kjmvtW08iNlCKEU0qgKXN"
+        },
+        {
+          "label": "[apple music]",
+          "url": "https://music.apple.com/us/album/cheap-sensationalism/1773687566"
+        },
+        {
+          "label": "[youtube music]",
+          "url": "https://music.youtube.com/playlist?list=OLAK5uy_l_jEZiq2LYmeKp6hQvg6if0eislc_NRJA"
+        },
+        {
+          "label": "[read the album notes]",
+          "url": "/album-notes.html"
+        }
+      ],
+      "related": [
+        "chords-and-lyrics"
+      ]
+    },
+    {
+      "id": "chords-and-lyrics",
+      "title": "chords & lyrics",
+      "hubs": [
+        "music"
+      ],
+      "kind": "songbook",
+      "status": "wip",
+      "blurb": "The chords and words to cheap sensationalism.",
+      "links": [],
+      "related": [
+        "cheap-sensationalism"
+      ]
+    },
+    {
+      "id": "philadelphia-demos",
+      "title": "philadelphia demos",
+      "hubs": [
+        "music"
+      ],
+      "kind": "album",
+      "status": "wip",
+      "blurb": "Historic, Revolutionary, British, Quaker, Unfinished.",
+      "links": [],
+      "related": []
+    },
+    {
+      "id": "slop",
+      "title": "slop",
+      "hubs": [
+        "music"
+      ],
+      "kind": "album",
+      "status": "wip",
+      "blurb": "Garage noises begging for preservation.",
+      "links": [],
+      "related": []
+    },
+    {
+      "id": "bayes-splines-2024",
+      "title": "Bayes, Splines & 2024 US Election Polls",
+      "hubs": [
+        "politics"
+      ],
+      "kind": "essay",
+      "status": "live",
+      "blurb": "Bayesian splines fitted to 2024 US election polls, on Medium.",
+      "links": [
+        {
+          "label": "[read it]",
+          "url": "https://medium.com/cheap-sensationalism/bayes-splines-2024-us-election-polls-hierarchical-data-good-fun-9e6b79bb589f"
+        }
+      ],
+      "related": [
+        "bayes-splines-follow-up"
+      ]
+    },
+    {
+      "id": "bayes-splines-follow-up",
+      "title": "Follow-Up on the Bayes/Splines Election Models",
+      "hubs": [
+        "politics"
+      ],
+      "kind": "essay",
+      "status": "live",
+      "blurb": "A follow-up on the same model, after the votes were counted.",
+      "links": [
+        {
+          "label": "[read it]",
+          "url": "https://medium.com/cheap-sensationalism/quick-follow-up-on-the-bayes-splines-election-model-42358e4be1a1"
+        }
+      ],
+      "related": [
+        "bayes-splines-2024"
+      ]
+    },
+    {
+      "id": "hammer",
+      "title": "When the Only Tool You Have Is a Hammer: Copying Code to Predict a Different Election",
+      "hubs": [
+        "politics"
+      ],
+      "kind": "essay",
+      "status": "wip",
+      "blurb": "Copying code written for one election to predict another.",
+      "links": [],
+      "related": [
+        "bayes-splines-2024"
+      ]
+    },
+    {
+      "id": "media-story",
+      "title": "the media story",
+      "hubs": [
+        "politics"
+      ],
+      "kind": "essay",
+      "status": "wip",
+      "blurb": "Part of a 2024 election post mortem.",
+      "links": [],
+      "related": [
+        "party-alignment",
+        "belief-systems"
+      ]
+    },
+    {
+      "id": "party-alignment",
+      "title": "party alignment",
+      "hubs": [
+        "politics"
+      ],
+      "kind": "essay",
+      "status": "wip",
+      "blurb": "Part of a 2024 election post mortem.",
+      "links": [],
+      "related": [
+        "media-story",
+        "belief-systems"
+      ]
+    },
+    {
+      "id": "belief-systems",
+      "title": "belief systems",
+      "hubs": [
+        "politics"
+      ],
+      "kind": "essay",
+      "status": "wip",
+      "blurb": "Part of a 2024 election post mortem.",
+      "links": [],
+      "related": [
+        "media-story",
+        "party-alignment"
+      ]
+    },
+    {
+      "id": "covariates",
+      "title": "Covariates",
+      "hubs": [
+        "causal"
+      ],
+      "kind": "lesson",
+      "status": "wip",
+      "blurb": "Part of Causal Inference: The Lifesaving Nerd.",
+      "links": [],
+      "related": []
+    },
+    {
+      "id": "propensity-scores",
+      "title": "Propensity Scores",
+      "hubs": [
+        "causal"
+      ],
+      "kind": "lesson",
+      "status": "wip",
+      "blurb": "Part of Causal Inference: The Lifesaving Nerd.",
+      "links": [],
+      "related": []
+    },
+    {
+      "id": "instrumental-variables",
+      "title": "Instrumental Variables & Mechanistic Variables",
+      "hubs": [
+        "causal"
+      ],
+      "kind": "lesson",
+      "status": "wip",
+      "blurb": "Part of Causal Inference: The Lifesaving Nerd.",
+      "links": [],
+      "related": []
+    },
+    {
+      "id": "ml-approaches",
+      "title": "Machine Learning Approaches",
+      "hubs": [
+        "causal"
+      ],
+      "kind": "lesson",
+      "status": "wip",
+      "blurb": "Part of Causal Inference: The Lifesaving Nerd.",
+      "links": [],
+      "related": []
+    },
+    {
+      "id": "weird-weather",
+      "title": "Weird Weather",
+      "hubs": [
+        "scribbles"
+      ],
+      "kind": "data essay",
+      "status": "live",
+      "blurb": "How strange each city’s winter was, measured against its own history.",
+      "links": [
+        {
+          "label": "[read it]",
+          "url": "https://weather.cheapsensationalism.com"
+        }
+      ],
+      "related": []
+    },
+    {
+      "id": "virtue-and-vice",
+      "title": "Virtue, Vice and Search Trends",
+      "hubs": [
+        "scribbles"
+      ],
+      "kind": "data essay",
+      "status": "wip",
+      "blurb": "What people search for around New Year’s.",
+      "links": [],
+      "related": []
+    },
+    {
+      "id": "beatles",
+      "title": "All you need is... : multi-method analysis of Beatles Lyrics",
+      "hubs": [
+        "scribbles"
+      ],
+      "kind": "data essay",
+      "status": "wip",
+      "blurb": "A multi-method analysis of Beatles lyrics.",
+      "links": [],
+      "related": []
+    },
+    {
+      "id": "taxes",
+      "title": "Taxes: Where people want money to go and where it goes",
+      "hubs": [
+        "scribbles"
+      ],
+      "kind": "essay",
+      "status": "wip",
+      "blurb": "Where people want tax money to go, and where it goes.",
+      "links": [],
+      "related": []
+    },
+    {
+      "id": "paradox-of-tragedy",
+      "title": "The Paradox of Tragedy: a light explanation",
+      "hubs": [
+        "scribbles"
+      ],
+      "kind": "essay",
+      "status": "wip",
+      "blurb": "Why sad things feel good, lightly.",
+      "links": [],
+      "related": []
+    },
+    {
+      "id": "communities-ew",
+      "title": "Communities, Ew!",
+      "hubs": [
+        "scribbles"
+      ],
+      "kind": "essay",
+      "status": "wip",
+      "blurb": "Communities, considered with some reluctance.",
+      "links": [],
+      "related": []
+    },
+    {
+      "id": "drown-in-slop",
+      "title": "Just how easily could we drown in SLOP?",
+      "hubs": [
+        "scribbles"
+      ],
+      "kind": "essay",
+      "status": "wip",
+      "blurb": "How easily could we drown in slop?",
+      "links": [],
+      "related": []
+    },
+    {
+      "id": "ai-interaction-experiment",
+      "title": "AI interaction experiment",
+      "hubs": [
+        "work"
+      ],
+      "kind": "paper",
+      "status": "live",
+      "blurb": "A paper, listed on Google Scholar.",
+      "links": [
+        {
+          "label": "[read it]",
+          "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Ogk-GRoAAAAJ&citation_for_view=Ogk-GRoAAAAJ:a0OBvERweLwC"
+        }
+      ],
+      "related": []
+    },
+    {
+      "id": "prototyping-probabilistic-failure",
+      "title": "Prototyping Probabilistic Failure",
+      "hubs": [
+        "work"
+      ],
+      "kind": "paper",
+      "status": "live",
+      "blurb": "A paper, listed on Google Scholar.",
+      "links": [
+        {
+          "label": "[read it]",
+          "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Ogk-GRoAAAAJ&citation_for_view=Ogk-GRoAAAAJ:yD5IFk8b50cC"
+        }
+      ],
+      "related": []
+    },
+    {
+      "id": "documents-sunshine",
+      "title": "Documents are like sunshine",
+      "hubs": [
+        "work"
+      ],
+      "kind": "blog post",
+      "status": "live",
+      "blurb": "A deep dive into documentation from the 2022 State of DevOps report.",
+      "links": [
+        {
+          "label": "[read it]",
+          "url": "https://cloud.google.com/blog/products/devops-sre/deep-dive-into-2022-state-of-devops-report-on-documentation"
+        }
+      ],
+      "related": []
+    },
+    {
+      "id": "dora-ai-capabilities",
+      "title": "DORA Inaugural AI Capabilities Model",
+      "hubs": [
+        "work"
+      ],
+      "kind": "blog post",
+      "status": "live",
+      "blurb": "Introducing DORA’s inaugural AI capabilities model.",
+      "links": [
+        {
+          "label": "[read it]",
+          "url": "https://cloud.google.com/blog/products/ai-machine-learning/introducing-doras-inaugural-ai-capabilities-model"
+        }
+      ],
+      "related": []
+    },
+    {
+      "id": "dora-reports",
+      "title": "DORA reports",
+      "hubs": [
+        "work"
+      ],
+      "kind": "research reports",
+      "status": "live",
+      "blurb": "The yearly DORA research reports.",
+      "links": [
+        {
+          "label": "[2025]",
+          "url": "https://dora.dev/research/2025/"
+        },
+        {
+          "label": "[2024]",
+          "url": "https://dora.dev/research/2024/"
+        },
+        {
+          "label": "[2023]",
+          "url": "https://dora.dev/research/2023/"
+        },
+        {
+          "label": "[2022]",
+          "url": "https://dora.dev/research/2022/"
+        }
+      ],
+      "related": []
+    },
+    {
+      "id": "decision-uncertainty",
+      "title": "Decision under many sources of uncertainty",
+      "hubs": [
+        "toolbox"
+      ],
+      "kind": "interactive tool",
+      "status": "wip",
+      "blurb": "Making a decision when several things are uncertain at once.",
+      "links": [],
+      "related": []
+    },
+    {
+      "id": "see-power-run",
+      "title": "See power run: simplified power dynamics (or the many ways to lose)",
+      "hubs": [
+        "toolbox"
+      ],
+      "kind": "interactive tool",
+      "status": "wip",
+      "blurb": "Simplified power dynamics, or the many ways to lose.",
+      "links": [],
+      "related": []
+    },
+    {
+      "id": "fretboard",
+      "title": "The fretboard: unlock the shred",
+      "hubs": [
+        "toolbox"
+      ],
+      "kind": "interactive tool",
+      "status": "wip",
+      "blurb": "Scales and chords on a guitar neck.",
+      "links": [],
+      "related": []
+    },
+    {
+      "id": "bayesian-priors",
+      "title": "Bayesian priors: the silent killer",
+      "hubs": [
+        "toolbox"
+      ],
+      "kind": "interactive tool",
+      "status": "wip",
+      "blurb": "What a prior believes before it sees data.",
+      "links": [],
+      "related": []
+    },
+    {
+      "id": "nyc",
+      "title": "Being and Time (and Distance) in NYC",
+      "hubs": [
+        "toolbox"
+      ],
+      "kind": "interactive tool",
+      "status": "wip",
+      "blurb": "Being and time, and distance, in New York City.",
+      "links": [],
+      "related": []
+    }
+  ],
+  "advisories": [
+    {
+      "text": "New article: Weird Weather.",
+      "link": {
+        "label": "[read it]",
+        "url": "https://weather.cheapsensationalism.com"
+      }
+    },
+    {
+      "text": "Old album: cheap sensationalism.",
+      "link": {
+        "label": "[listen]",
+        "url": "https://open.spotify.com/album/7kjmvtW08iNlCKEU0qgKXN"
+      }
+    },
+    {
+      "text": "More, More, More (coming soon)."
+    },
+    {
+      "text": "Cheap Sensationalism's Cheap Sensationalism preview.",
+      "link": {
+        "label": "[watch it]",
+        "url": "https://www.instagram.com/reel/DBxQo_nx5V0/"
+      }
+    },
+    {
+      "text": "Shameless: give me money $$$.",
+      "link": {
+        "label": "[ko-fi]",
+        "url": "https://ko-fi.com/cheapsensationalism"
+      }
+    }
+  ],
+  "elsewhere": {
+    "accounts": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/BrightsizeLife/cheap-sensationalism-mega"
+      },
+      {
+        "label": "instagram (contact here)",
+        "url": "https://www.instagram.com/cheap_sensationalism/"
+      },
+      {
+        "label": "facebook",
+        "url": "https://www.facebook.com/people/Cheap-Sensationalism/61568710893706/"
+      },
+      {
+        "label": "LinkedIn",
+        "url": "https://www.linkedin.com/in/derekdebellis/"
+      }
+    ],
+    "detours": [
+      {
+        "label": "Radio Garden",
+        "url": "https://radio.garden",
+        "blurb": "Spin a globe, tune into any radio station on Earth. Hours will vanish."
+      },
+      {
+        "label": "Window Swap",
+        "url": "https://window-swap.com",
+        "blurb": "Look out a stranger's window somewhere in the world. Oddly calming."
+      },
+      {
+        "label": "Every Noise at Once",
+        "url": "https://everynoise.com",
+        "blurb": "Every music genre mapped and playable. Algorithmic cartography of sound."
+      },
+      {
+        "label": "Neal.fun",
+        "url": "https://neal.fun",
+        "blurb": "Delightful interactive toys. Spend a billion dollars. Draw a perfect circle."
+      },
+      {
+        "label": "The Pudding",
+        "url": "https://pudding.cool",
+        "blurb": "Visual essays on culture. Data journalism that actually slaps."
+      }
+    ]
+  }
+}

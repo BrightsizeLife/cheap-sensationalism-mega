@@ -1,24 +1,26 @@
 {
-  "name": "cheap-sensationalism---official-website",
+  "name": "cheap-sensationalism",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "check:atlas": "node scripts/check-atlas.mjs",
+    "check": "npm run typecheck && npm run check:atlas && npm run build"
   },
   "dependencies": {
-    "clsx": "^2.1.1",
     "d3": "^7.9.0",
-    "lucide-react": "^0.575.0",
     "react": "^19.2.4",
-    "react-dom": "^19.2.4",
-    "tailwind-merge": "^3.5.0"
+    "react-dom": "^19.2.4"
   },
   "devDependencies": {
     "@types/d3": "^7.4.3",
     "@types/node": "^22.14.0",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
     "@vitejs/plugin-react": "^5.0.0",
     "typescript": "~5.8.2",
     "vite": "^6.2.0"
