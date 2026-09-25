@@ -1,5 +1,5 @@
-// One station: what it is, whether it runs, where it goes, and what it
-// connects to. Every station has its own address, so it can be sent.
+// One thing: what it is, whether it works yet, where it is filed, and what
+// it connects to. Every thing has its own address, so it can be sent.
 
 import React from 'react';
 import type { Atlas } from '../atlas/load';
@@ -35,11 +35,10 @@ export function StationPage({ atlas, thing }: { atlas: Atlas; thing: Thing }) {
               <Bullet line={l} /> {l.name}{' '}
             </React.Fragment>
           ))}
-          · station
         </p>
         <h1 className="pact-h1">{thing.title}</h1>
         <p className="pact-lede">{thing.blurb}</p>
-        <p className="cs-station-status">
+        <p className="cs-thing-status">
           <StatusTag status={thing.status} /> {atlas.fresh.has(thing.id) && <NewTag />}
           {thing.note && <span className="pact-small pact-muted"> {thing.note}</span>}
         </p>
@@ -63,7 +62,7 @@ export function StationPage({ atlas, thing }: { atlas: Atlas; thing: Thing }) {
             <dd>{thing.kind}</dd>
           </div>
           <div>
-            <dt>stops at</dt>
+            <dt>filed under</dt>
             <dd>
               {hubs.map((h, k) => (
                 <React.Fragment key={h!.id}>
@@ -71,7 +70,7 @@ export function StationPage({ atlas, thing }: { atlas: Atlas; thing: Thing }) {
                   <Link to={`/${h!.id}`}>{h!.name}</Link>
                 </React.Fragment>
               ))}
-              {hubs.length > 1 && <span className="pact-muted"> (a transfer station)</span>}
+              {hubs.length > 1 && <span className="pact-muted"> (filed twice, on purpose)</span>}
             </dd>
           </div>
           {thing.year && (
@@ -113,36 +112,36 @@ export function StationPage({ atlas, thing }: { atlas: Atlas; thing: Thing }) {
             connects to
           </h2>
           <p className="pact-small pact-muted cs-measure">
-            Stations this one talks to, whatever line they are on. This is the part of the map that ignores the map.
+            Other things this one talks to, wherever they are filed.
           </p>
-          <ul className="pact-rows">
+          <ul className="cs-dash-list">
             {neighbours.map((t) => (
-              <ThingRow key={t.id} atlas={atlas} thing={t} />
+              <ThingRow key={t.id} atlas={atlas} thing={t} detail />
             ))}
           </ul>
         </section>
       )}
 
       {(prev || next) && home && (
-        <nav className="pact-section cs-nextstop" aria-label={`stops at ${home.name}`}>
+        <nav className="pact-section cs-nextstop" aria-label={`more in ${home.name}`}>
           {prev && (
             <p>
-              <span className="cs-kicker">previous stop</span>
-              <Link className="pact-cta" to={`/station/${prev.id}`}>
+              <span className="cs-kicker">previous</span>
+              <Link className="pact-cta" to={`/thing/${prev.id}`}>
                 [{prev.title}]
               </Link>
             </p>
           )}
           {next && (
             <p>
-              <span className="cs-kicker">next stop</span>
-              <Link className="pact-cta" to={`/station/${next.id}`}>
+              <span className="cs-kicker">next</span>
+              <Link className="pact-cta" to={`/thing/${next.id}`}>
                 [{next.title}]
               </Link>
             </p>
           )}
           <p>
-            <span className="cs-kicker">this line</span>
+            <span className="cs-kicker">all of it</span>
             <Link className="pact-cta" to={`/${home.id}`}>
               [back to {home.name}]
             </Link>

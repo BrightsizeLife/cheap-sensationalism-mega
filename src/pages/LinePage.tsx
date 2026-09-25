@@ -12,17 +12,17 @@ export function LinePage({ atlas, line }: { atlas: Atlas; line: Line }) {
     <>
       <div className="pact-section cs-intro pact-dim-section" data-dimension={line.hue}>
         <p className="cs-kicker">
-          <Bullet line={line} /> the {line.name} line · {plural(hubs.length, 'stop')}
+          <Bullet line={line} /> {plural(hubs.length, 'hub')}
         </p>
         <h1 className="pact-h1">{line.name}.</h1>
         <p className="pact-lede">
-          {line.blurb} {plural(c.all, 'station')}, {c.live} in service.
+          {line.blurb} {plural(c.all, 'thing')}, {c.live} live.
         </p>
       </div>
 
       <section className="pact-section" aria-labelledby="stops-h">
         <h2 id="stops-h" className="pact-h2">
-          stops on this line
+          hubs
         </h2>
         <ul className="pact-rows cs-hubrows">
           {hubs.map((h) => {
@@ -32,8 +32,7 @@ export function LinePage({ atlas, line }: { atlas: Atlas; line: Line }) {
                 <p className="cs-row-title">
                   <Link to={`/${h.id}`}>{h.name}</Link>{' '}
                   <span className="pact-small pact-muted">
-                    <span className="pact-num">{at.all}</span> stations, <span className="pact-num">{at.live}</span> in
-                    service
+                    <span className="pact-num">{at.all}</span> things, <span className="pact-num">{at.live}</span> live
                   </span>
                 </p>
                 <p className="pact-small pact-muted">{h.lede}</p>
@@ -46,9 +45,9 @@ export function LinePage({ atlas, line }: { atlas: Atlas; line: Line }) {
       <Explorer
         atlas={atlas}
         things={things}
-        caption={`every station on the ${line.name} line`}
+        caption={`everything in ${line.name}`}
         headingId="line-things-h"
-        heading="every station on the line"
+        heading="everything here"
       />
     </>
   );

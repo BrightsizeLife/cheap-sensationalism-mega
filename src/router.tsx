@@ -1,5 +1,5 @@
 // A router small enough to read in one sitting. Paths are real paths
-// (/music, /station/weird-weather) so a link can be sent to someone;
+// (/music, /thing/weird-weather) so a link can be sent to someone;
 // vercel.json rewrites them all to index.html. The query string holds
 // the rest of the state that makes a view a view: edition, list/table/
 // network, filters, the selected station. Change any of it and the URL

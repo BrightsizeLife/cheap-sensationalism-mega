@@ -17,7 +17,7 @@ export function HubPage({ atlas, hub }: { atlas: Atlas; hub: Hub }) {
     <>
       <div className="pact-section cs-intro pact-dim-section" data-dimension={line.hue}>
         <p className="cs-kicker">
-          <Bullet line={line} /> <Link to={`/${line.id}`}>{line.name} line</Link> · {hub.name}
+          <Bullet line={line} /> <Link to={`/${line.id}`}>{line.name}</Link> · {hub.name}
         </p>
         <h1 className="pact-h1">{hub.h1}</h1>
         <p className="pact-lede">{hub.lede}</p>
@@ -34,13 +34,13 @@ export function HubPage({ atlas, hub }: { atlas: Atlas; hub: Hub }) {
         </h2>
         <dl className="pact-stats">
           <div className="pact-stat">
-            <dt className="cs-kicker">stations</dt>
+            <dt className="cs-kicker">things</dt>
             <dd>
               <span className="pact-num-big">{c.all}</span>
             </dd>
           </div>
           <div className="pact-stat">
-            <dt className="cs-kicker">in service</dt>
+            <dt className="cs-kicker">live</dt>
             <dd>
               <span className="pact-num-big">{c.live}</span>
             </dd>
@@ -58,15 +58,15 @@ export function HubPage({ atlas, hub }: { atlas: Atlas; hub: Hub }) {
         atlas={atlas}
         things={things}
         hub={hub}
-        caption={`every station at ${hub.name}`}
+        caption={`everything in ${hub.name}`}
         headingId="hub-things-h"
-        heading="the stations"
+        heading="everything here"
       />
 
       {transfers.length > 0 && (
         <section className="pact-section" aria-labelledby="transfers-h">
           <h2 id="transfers-h" className="pact-h2">
-            change here for
+            also connects to
           </h2>
           <ul className="pact-rows">
             {transfers.map(({ hub: other, via }) => {
@@ -75,14 +75,14 @@ export function HubPage({ atlas, hub }: { atlas: Atlas; hub: Hub }) {
                 <li key={other.id}>
                   <p className="cs-row-title">
                     <Bullet line={otherLine} /> <Link to={`/${other.id}`}>{other.name}</Link>{' '}
-                    <span className="pact-small pact-muted">on the {otherLine.name} line</span>
+                    <span className="pact-small pact-muted">in {otherLine.name}</span>
                   </p>
                   <p className="pact-small pact-muted">
                     via{' '}
                     {via.map((t, i) => (
                       <React.Fragment key={t.id}>
                         {i > 0 && ', '}
-                        <Link to={`/station/${t.id}`}>{t.title}</Link>
+                        <Link to={`/thing/${t.id}`}>{t.title}</Link>
                       </React.Fragment>
                     ))}
                   </p>
@@ -96,12 +96,12 @@ export function HubPage({ atlas, hub }: { atlas: Atlas; hub: Hub }) {
       {siblings.length > 0 && (
         <section className="pact-section" aria-labelledby="siblings-h">
           <h2 id="siblings-h" className="cs-kicker">
-            other stops on the {line.name} line
+            more in {line.name}
           </h2>
           <p className="cs-links">
             {siblings.map((h) => (
               <Link key={h.id} className="pact-cta" to={`/${h.id}`}>
-                [{h.name}: {plural(atlas.thingsAt(h.id).length, 'station')}]
+                [{h.name}: {plural(atlas.thingsAt(h.id).length, 'thing')}]
               </Link>
             ))}
           </p>

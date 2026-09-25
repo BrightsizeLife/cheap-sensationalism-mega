@@ -1,4 +1,4 @@
-// The table: one row per station, sortable, for people who like to see
+// The table: one row per thing, sortable, for people who like to see
 // everything at once and then argue with the order.
 
 import type { Atlas } from '../atlas/load';
@@ -8,10 +8,10 @@ import { Link, setParams } from '../router';
 import { Bullets, NewTag, StatusTag, ThingLinks } from '../components/bits';
 
 const COLUMNS: { key: Sort | null; label: string; num?: boolean }[] = [
-  { key: 'title', label: 'station' },
-  { key: 'line', label: 'line' },
+  { key: 'title', label: 'thing' },
+  { key: 'line', label: 'section' },
   { key: null, label: 'kind' },
-  { key: 'status', label: 'service' },
+  { key: 'status', label: 'status' },
   { key: 'updated', label: 'updated', num: true },
   { key: null, label: 'go' },
 ];
@@ -38,7 +38,7 @@ export function TableView({ atlas, things, caption }: { atlas: Atlas; things: Th
       <table className="pact-table cs-table">
         <caption>
           {caption}
-          <span className="pact-sr-only">, sorted by {sort === 'line' ? 'line' : sort}</span>
+          <span className="pact-sr-only">, sorted by {sort === 'line' ? 'section' : sort}</span>
         </caption>
         <thead>
           <tr>
@@ -70,7 +70,7 @@ export function TableView({ atlas, things, caption }: { atlas: Atlas; things: Th
           {rows.map((t) => (
             <tr key={t.id}>
               <td>
-                <Link to={`/station/${t.id}`}>{t.title}</Link>
+                <Link to={`/thing/${t.id}`}>{t.title}</Link>
                 {atlas.fresh.has(t.id) && <NewTag />}
               </td>
               <td className="cs-nowrap">

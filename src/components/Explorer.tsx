@@ -1,5 +1,5 @@
-// View switch + filters + the chosen view, over any set of stations.
-// The landing, line pages, and hub pages all use it with a different set.
+// View switch + filters + the chosen view, over any set of things.
+// The landing, section pages, and hub pages all use it with a different set.
 
 import React from 'react';
 import type { Atlas } from '../atlas/load';

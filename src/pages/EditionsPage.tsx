@@ -1,5 +1,5 @@
-// Every version of the map, kept. A link with ?edition= shows that version
-// and keeps showing it, however much the current map changes.
+// Every version of the site, kept. A link with ?edition= shows that version
+// and keeps showing it, however much the current site changes.
 
 import { atlasFor, EDITIONS, previousEdition } from '../atlas/load';
 import { Link } from '../router';
@@ -12,7 +12,7 @@ export function EditionsPage() {
         <p className="cs-kicker">{plural(EDITIONS.length, 'edition')}</p>
         <h1 className="pact-h1">editions.</h1>
         <p className="pact-lede">
-          Every version of this map is kept. Open one and send the link: it will show that version for as long as the site
+          Every version of this site is kept. Open one and send the link: it will show that version for as long as the site
           exists.
         </p>
       </div>
@@ -31,8 +31,8 @@ export function EditionsPage() {
               <span className="pact-num">{e.id}</span>
             </h2>
             <p className="pact-small pact-muted">
-              published <span className="pact-num">{e.published}</span> · {plural(e.lines.length, 'line')} ·{' '}
-              {plural(c.all, 'station')} · {c.live} in service
+              published <span className="pact-num">{e.published}</span> · {plural(e.lines.length, 'section')} ·{' '}
+              {plural(c.all, 'thing')} · {c.live} live
             </p>
             <p className="cs-measure">{e.note}</p>
             <p>
@@ -43,15 +43,15 @@ export function EditionsPage() {
             {prev && (
               <details className="cs-changes">
                 <summary className="pact-summary">
-                  what changed since {prev.id}: {added.length} opened, {removed.length} closed or renamed
+                  what changed since {prev.id}: {added.length} added, {removed.length} removed or renamed
                 </summary>
                 {added.length > 0 && (
                   <>
-                    <h3 className="cs-kicker cs-sub-h">opened</h3>
+                    <h3 className="cs-kicker cs-sub-h">added</h3>
                     <ul className="cs-inline-list">
                       {added.map((t) => (
                         <li key={t.id}>
-                          <Link to={`/station/${t.id}?edition=${e.id}`}>{t.title}</Link>
+                          <Link to={`/thing/${t.id}?edition=${e.id}`}>{t.title}</Link>
                         </li>
                       ))}
                     </ul>
@@ -59,11 +59,11 @@ export function EditionsPage() {
                 )}
                 {removed.length > 0 && (
                   <>
-                    <h3 className="cs-kicker cs-sub-h">closed or renamed</h3>
+                    <h3 className="cs-kicker cs-sub-h">removed or renamed</h3>
                     <ul className="cs-inline-list">
                       {removed.map((t) => (
                         <li key={t.id}>
-                          <Link to={`/station/${t.id}?edition=${prev.id}`}>{t.title}</Link>
+                          <Link to={`/thing/${t.id}?edition=${prev.id}`}>{t.title}</Link>
                         </li>
                       ))}
                     </ul>
@@ -80,8 +80,7 @@ export function EditionsPage() {
           before the editions
         </h2>
         <p className="cs-measure">
-          The site existed before it kept its own history. These earlier systems are decommissioned and left standing, the
-          way old stations are.
+          The site existed before it kept its own history. The earlier versions are still standing.
         </p>
         <ul className="pact-rows">
           <li>

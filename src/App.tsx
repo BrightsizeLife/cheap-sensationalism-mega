@@ -1,6 +1,6 @@
 // Which page is this? Paths are matched against the edition being viewed,
 // so /music means "the music hub in this edition", and an old link to a
-// station that has since closed still says something useful.
+// thing that has since been removed still says something useful.
 
 import React, { useEffect } from 'react';
 import { atlasFor, LATEST } from './atlas/load';
@@ -30,18 +30,18 @@ export default function App() {
   if (!first) {
     current = 'map';
     page = <Landing atlas={atlas} />;
-  } else if (first === 'station' && second) {
+  } else if ((first === 'thing' || first === 'station') && second) {
     const thing = atlas.thingById.get(second);
     if (thing) {
       title = `${thing.title} · ${SITE}`;
       page = <StationPage atlas={atlas} thing={thing} />;
     } else {
       const inLatest = atlasFor(LATEST).thingById.get(second);
-      title = `no such station · ${SITE}`;
+      title = `not found · ${SITE}`;
       page = (
         <Closed
-          what={`There is no station called “${second}” in edition ${atlas.edition.id}.`}
-          alt={inLatest && pinned ? { to: `/station/${second}?edition=${LATEST.id}`, label: `[see it in the current edition]` } : undefined}
+          what={`There is nothing called “${second}” in edition ${atlas.edition.id}.`}
+          alt={inLatest && pinned ? { to: `/thing/${second}?edition=${LATEST.id}`, label: `[see it in the current edition]` } : undefined}
         />
       );
     }
@@ -58,14 +58,15 @@ export default function App() {
     title = `${hub.name} · ${SITE}`;
     page = <HubPage atlas={atlas} hub={hub} />;
   } else {
-    title = `closed · ${SITE}`;
-    page = <Closed what={`Nothing runs to /${first} in edition ${atlas.edition.id}.`} />;
+    title = `not found · ${SITE}`;
+    page = <Closed what={`There is nothing at /${first} in edition ${atlas.edition.id}.`} />;
   }
 
-  // Old names for hubs land on the current name, keeping the query string.
+  // Old names land on the current ones, keeping the query string.
   useEffect(() => {
-    if (hub && first !== hub.id) navigate(`/${hub.id}${search}`, { replace: true });
-  }, [hub, first, search]);
+    if (first === 'station' && second) navigate(`/thing/${second}${search}`, { replace: true });
+    else if (hub && first !== hub.id) navigate(`/${hub.id}${search}`, { replace: true });
+  }, [hub, first, second, search]);
 
   useEffect(() => {
     document.title = title;
@@ -92,9 +93,9 @@ export default function App() {
 function Closed({ what, alt }: { what: string; alt?: { to: string; label: string } }) {
   return (
     <div className="pact-section cs-intro">
-      <p className="cs-kicker">service suspended</p>
-      <h1 className="pact-h1">this station is closed.</h1>
-      <p className="pact-lede">{what} It may have been renamed, merged, or never built.</p>
+      <p className="cs-kicker">404</p>
+      <h1 className="pact-h1">nothing here.</h1>
+      <p className="pact-lede">{what} It may have been renamed, merged, or never made.</p>
       <p className="cs-links">
         {alt && (
           <Link className="pact-cta" to={alt.to}>
@@ -102,7 +103,7 @@ function Closed({ what, alt }: { what: string; alt?: { to: string; label: string
           </Link>
         )}
         <Link className="pact-cta" to="/">
-          [back to the map]
+          [back to everything]
         </Link>
       </p>
     </div>

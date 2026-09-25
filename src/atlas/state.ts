@@ -59,12 +59,12 @@ export function useFiltered(atlas: Atlas, things: Thing[]) {
   );
 }
 
-/** Subway words for status. The word is always shown; nothing relies on colour. */
+/** Status in words. The word is always shown; nothing relies on colour. */
 export const STATUS_WORDS: Record<Status, string> = {
-  live: 'in service',
-  wip: 'under construction',
+  live: 'live',
+  wip: '[WIP]',
   idea: 'planned',
-  retired: 'out of service',
+  retired: 'retired',
 };
 
 export const STATUS_ORDER: Record<Status, number> = { live: 0, wip: 1, idea: 2, retired: 3 };

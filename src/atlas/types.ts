@@ -1,18 +1,18 @@
-// The shape of an edition: a dated snapshot of everything on the map.
+// The shape of an edition: a dated snapshot of everything on the site.
 //
 // Three levels, and then a way around them:
-//   line   a verb. what you do with the things on it (listen, read, ...).
+//   line   a section, named for what you do there (listen, read, ...).
 //          five at most, one colour each.
-//   hub    a launching page on one line (music, instruments, essays, ...).
-//   thing  a station. it stops at one or more hubs, and it can point at
-//          any other thing on any line through `related`.
+//   hub    a launching page inside a section (music, instruments, ...).
+//   thing  one piece of work. it is filed under one or more hubs, and it
+//          can point at any other thing in any section through `related`.
 // The hierarchy is for finding your way; `hubs` and `related` are the
 // rhizome, the connections that ignore the hierarchy on purpose.
 
 /** The five pact hues. Each line takes one; they are never cycled. */
 export type Hue = 'technology' | 'architecture' | 'culture' | 'practices' | 'outcomes';
 
-/** Subway words for how finished something is. */
+/** How finished something is. */
 export type Status = 'live' | 'wip' | 'idea' | 'retired';
 
 export interface LinkRef {
@@ -64,7 +64,7 @@ export interface Thing {
   related: string[];
 }
 
-export interface Advisory {
+export interface BannerItem {
   text: string;
   link?: LinkRef;
 }
@@ -77,7 +77,8 @@ export interface Edition {
   lines: Line[];
   hubs: Hub[];
   things: Thing[];
-  advisories: Advisory[];
-  /** Out-of-system transfers: accounts, and other people's good websites. */
+  /** The moving banner at the top of the landing page. */
+  banner: BannerItem[];
+  /** Accounts (perverse sociality), and other people's better websites. */
   elsewhere: { accounts: LinkRef[]; detours: (LinkRef & { blurb: string })[] };
 }

@@ -1,9 +1,10 @@
 # cheap sensationalism
 
-The studio site, drawn as a subway map. Everything Derek makes is a
-**station**. Stations stop at **hubs** (each hub has its own launching page,
-like `/music` or `/instruments`), and hubs sit on one of five **lines**,
-named for what you do there: listen, read, use, play, guess.
+The studio site. Everything Derek makes is a **thing**. Things are filed
+under **hubs** (each hub has its own launching page, like `/music` or
+`/instruments`), and hubs sit in one of five **sections**, named for what
+you do there: listen, read, use, play, guess. In the code and the JSON a
+section is called a `line`.
 
 Every map can be seen three ways, picked at the top: **list**, **table**, or
 **network**. Whatever is on screen is in the URL, so it can be sent.
@@ -12,12 +13,12 @@ Every map can be seen three ways, picked at the top: **list**, **table**, or
 
 | you want to | edit |
 |---|---|
-| add, rename, or move a station | `content/editions/2026-09.json` → `things` |
+| add, rename, or move a thing | `content/editions/2026-09.json` → `things` |
 | change a launching page's headline, lede, or button | same file → `hubs` |
-| change the advisories or the "elsewhere" links | same file → `advisories`, `elsewhere` |
+| change the moving banner, or the sociality and random-things links | same file → `banner`, `elsewhere` |
 | change how things look | `src/styles/site.css` (tokens are in `src/styles/tokens.css`) |
 
-A station looks like this. Only `id`, `title`, `hubs`, `kind`, `status`,
+A thing looks like this. Only `id`, `title`, `hubs`, `kind`, `status`,
 `blurb`, `links` and `related` are required.
 
 ```json
@@ -36,10 +37,10 @@ A station looks like this. Only `id`, `title`, `hubs`, `kind`, `status`,
 }
 ```
 
-- `status` is one of `live` (in service), `wip` (under construction),
-  `idea` (planned), `retired` (out of service). `note` says why, in a few words.
-- Two or more `hubs` make it a **transfer station**. `related` draws a dashed
-  line to any other station, on any line. These are the connections that
+- `status` is one of `live`, `wip` (shown as `[WIP]`), `idea` (planned),
+  or `retired`. `note` says why, in a few words.
+- Two or more `hubs` file it in two places at once. `related` draws a dashed
+  line to any other thing, in any section. These are the connections that
   ignore the hierarchy.
 - `source` is only for **public** repositories. A private repo's name,
   link, or Vercel URL never goes in here: this repository is public, so
@@ -49,13 +50,13 @@ A station looks like this. Only `id`, `title`, `hubs`, `kind`, `status`,
 ## versions you can send
 
 - **Editions.** Each file in `content/editions/` is a dated snapshot of the
-  whole map. `?edition=2026-05` shows the site as it was in May 2026, and
+  whole site. `?edition=2026-05` shows the site as it was in May 2026, and
   keeps showing it. The `[copy a link to exactly this]` button at the
   bottom of every page pins the current edition into the link, so what you
-  send does not change when the map does. To start a new edition, copy the
+  send does not change when the site does. To start a new edition, copy the
   latest file, rename it (`2026-12.json`), change its `id`, `published` and
-  `note`, and edit away. The `/editions` page lists what opened and closed
-  between editions.
+  `note`, and edit away. The `/editions` page lists what was added and removed
+  between editions. (Things were called stations in an early draft; `/station/…` links still work.)
 - **Builds.** The footer names the commit each page was built from and
   links to it.
 
@@ -68,8 +69,8 @@ npm run check      # types, the edition files, and a production build
 ```
 
 `npm run check:atlas` on its own checks the edition files and says in a
-sentence what is wrong: a station pointing at a hub that does not exist, two
-lines sharing a colour, a path that clashes with another.
+sentence what is wrong: a thing pointing at a hub that does not exist, two
+sections sharing a colour, a path that clashes with another.
 
 ## privacy and security, on purpose
 
@@ -85,5 +86,5 @@ lines sharing a colour, a path that clashes with another.
 The PACT design system (white ground, black type, one indigo for everything
 you can press, five colours held apart under colour blindness), with the
 Cheap Sensationalism voice on top: lowercase headers, `[bracket]` actions,
-`[WIP]` where it's true. The subway map is the structure; the jokes are in
-the words.
+`[WIP]` where it's true, and one loud thing on purpose, the moving banner.
+It stops on hover, on focus, with its own button, and under reduced motion.

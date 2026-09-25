@@ -31,7 +31,7 @@ export function Shell({
           <Link to="/" className="pact-wordmark cs-wordmark" aria-current={current === 'map' ? 'page' : undefined}>
             CHEAP SENSATIONALISM
           </Link>
-          <nav className="pact-nav" aria-label="lines">
+          <nav className="pact-nav" aria-label="sections">
             <ul>
               {atlas.edition.lines.map((l) => (
                 <li key={l.id}>
@@ -52,7 +52,6 @@ export function Shell({
       <main id="main" tabIndex={-1} className="pact-page">
         {pinned && <EditionBanner atlas={atlas} />}
         {children}
-        <Permalink atlas={atlas} />
       </main>
       <Footer atlas={atlas} />
     </>
@@ -67,11 +66,11 @@ function EditionBanner({ atlas }: { atlas: Atlas }) {
       <p>
         <span className="cs-kicker">edition {atlas.edition.id}</span>
         {isLatest
-          ? 'This link is pinned to the current edition. It will keep showing this edition after the map changes.'
-          : `You are looking at the map as it was in ${atlas.edition.published}. It will not change.`}{' '}
+          ? 'This link is pinned to the current edition. It will keep showing this edition after the site changes.'
+          : `You are looking at the site as it was on ${atlas.edition.published}. It will not change.`}{' '}
         {!isLatest && (
           <a className="pact-cta" href={path}>
-            [see the current map]
+            [see the current site]
           </a>
         )}
       </p>
@@ -80,7 +79,7 @@ function EditionBanner({ atlas }: { atlas: Atlas }) {
 }
 
 /** Copies a link that reproduces this exact screen, with the edition
- *  pinned, so it still shows the same thing after the map moves on. */
+ *  pinned, so it still shows the same thing after the site changes. */
 function Permalink({ atlas }: { atlas: Atlas }) {
   const { path, search } = useLocation();
   const [said, setSaid] = useState('');
@@ -92,26 +91,20 @@ function Permalink({ atlas }: { atlas: Atlas }) {
     try {
       await navigator.clipboard.writeText(url);
       setManual(null);
-      setSaid(`Copied. The link is pinned to edition ${atlas.edition.id}.`);
+      setSaid(`Copied. The link is pinned to edition ${atlas.edition.id}, so it will keep showing exactly this.`);
     } catch {
       setManual(url);
-      setSaid('Your browser would not let the page copy. The link is in the box below; copy it from there.');
+      setSaid('Your browser would not let the page copy. The link is in the box below.');
     }
   };
   return (
-    <section className="pact-section cs-permalink" aria-labelledby="share-h">
-      <h2 id="share-h" className="cs-kicker">
-        share this exact view
-      </h2>
-      <p className="pact-small pact-muted">
-        The link keeps the view, the filters, the selected station, and edition {atlas.edition.id}, so the person you send it to
-        sees what you see, even after the map changes.
-      </p>
-      <p>
-        <button type="button" className="pact-cta" onClick={copy}>
-          [copy a link to exactly this]
-        </button>
-      </p>
+    <div className="cs-permalink">
+      <button type="button" className="pact-cta" onClick={copy}>
+        [copy a link to exactly this]
+      </button>
+      <span className="pact-small cs-permalink-said" role="status">
+        {said}
+      </span>
       {manual && (
         <p className="pact-field">
           <label className="pact-field-label" htmlFor="permalink">
@@ -120,10 +113,7 @@ function Permalink({ atlas }: { atlas: Atlas }) {
           <input id="permalink" className="pact-input" readOnly value={manual} onFocus={(e) => e.currentTarget.select()} />
         </p>
       )}
-      <p className="pact-small" role="status">
-        {said}
-      </p>
-    </section>
+    </div>
   );
 }
 
@@ -132,6 +122,7 @@ function Footer({ atlas }: { atlas: Atlas }) {
   return (
     <footer className="pact-footer">
       <div className="pact-page">
+        <Permalink atlas={atlas} />
         <p>
           cheap sensationalism is independent. it is not affiliated with or endorsed by anyone, which you could probably tell.
         </p>
@@ -146,7 +137,7 @@ function Footer({ atlas }: { atlas: Atlas }) {
           </li>
           <li>
             <a href="https://ko-fi.com/cheapsensationalism" rel="noopener">
-              fares
+              ko-fi
             </a>
           </li>
         </ul>

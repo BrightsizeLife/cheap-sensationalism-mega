@@ -5,10 +5,9 @@
  * gap is a token. Classes are cs- because they belong to this site;
  * pact- classes come unchanged from the design system.
  *
- * The one idea on top of pact: the site is a subway map. Five lines, one
- * pact hue each, a lettered bullet per line, stations as dots, transfers
- * as ringed dots. The absurdity lives in the words; the drawing stays
- * plain signage.
+ * On top of pact: five sections, one pact hue each, a lettered circle per
+ * section, and one loud thing on purpose, the moving banner. Everything
+ * else stays as plain as a list.
  */
 
 /* ── Wordmark ─────────────────────────────────────────────────────────── */
@@ -158,37 +157,6 @@
   margin-top: var(--pact-space-2);
 }
 
-/* ── The lines, as a legend ───────────────────────────────────────────── */
-.cs-lines {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
-  gap: var(--pact-space-4) var(--pact-space-3);
-}
-.cs-line {
-  border-top: 3px solid var(--pact-ink);
-  padding-top: var(--pact-space-1);
-}
-.cs-line-h {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: var(--pact-text-h2);
-  font-weight: 900;
-  font-variation-settings: "wdth" var(--pact-display-wdth);
-  letter-spacing: var(--pact-tracking-tight);
-  text-transform: lowercase;
-  margin: 0 0 var(--pact-space-1);
-}
-.cs-line-blurb {
-  margin-bottom: var(--pact-space-1);
-}
-.cs-line-hubs a {
-  font-weight: 700;
-}
-
 /* ── The explorer: view switch, filters, the view ─────────────────────── */
 .cs-explorer-head {
   display: flex;
@@ -291,37 +259,51 @@
   font-weight: 400;
 }
 
-.cs-row p + p {
-  margin-top: 4px;
+/* One thing per line, with an em dash in front, like the first version of
+   the site. The dash is decoration the screen reader skips. */
+.cs-dash-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+}
+.cs-dash-list > li {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  line-height: var(--pact-leading-snug);
+}
+.cs-dash {
+  color: var(--pact-muted);
+  flex: none;
+}
+.cs-row-body {
+  min-width: 0;
 }
 .cs-row-title {
   font-weight: 700;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 4px;
-}
-.cs-row-meta {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 4px var(--pact-space-2);
-}
-.cs-row-blurb {
-  max-width: var(--pact-measure);
+  padding-block: 3px; /* a 24px-tall target without changing the line */
 }
 .cs-row-go {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0 var(--pact-space-2);
-}
-.cs-row-go .pact-cta {
-  min-height: 32px;
-  line-height: 16px;
-}
-.cs-transfer a {
+  display: inline-block; /* a 24px target, even when the line wraps next to another link */
+  min-height: 24px;
+  line-height: 24px;
+  font-size: var(--pact-text-sm);
   font-weight: 700;
+  white-space: nowrap;
+}
+.cs-also a {
+  color: var(--pact-muted);
+  padding-block: 4px;
+}
+.cs-row-blurb {
+  display: block;
+  margin-top: 2px;
+  max-width: var(--pact-measure);
+}
+.cs-row .cs-status {
+  vertical-align: 0.1em;
 }
 
 /* ── Table ────────────────────────────────────────────────────────────── */
@@ -506,25 +488,8 @@
   font-variation-settings: "wdth" var(--pact-display-wdth);
 }
 
-/* ── Advisories, elsewhere ────────────────────────────────────────────── */
-.cs-advisories {
-  max-width: var(--pact-measure);
-}
-.cs-advisories .pact-cta {
-  min-height: 0;
-  padding: 0;
-  line-height: inherit;
-}
-.cs-elsewhere {
-  display: grid;
-  gap: 0 var(--pact-space-4);
-}
-@media (min-width: 48rem) {
-  .cs-elsewhere { grid-template-columns: 1fr 2fr; }
-}
-
 /* ── Station page ─────────────────────────────────────────────────────── */
-.cs-station-status {
+.cs-thing-status {
   margin-top: var(--pact-space-2);
   display: flex;
   flex-wrap: wrap;
@@ -595,13 +560,163 @@
 
 /* ── Share, build ─────────────────────────────────────────────────────── */
 .cs-permalink {
-  border-top: 1px solid var(--pact-rule);
-  padding-top: var(--pact-space-3);
-  max-width: var(--pact-measure);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 var(--pact-space-2);
+  margin-bottom: var(--pact-space-2);
+}
+.cs-permalink .pact-cta {
+  color: var(--pact-primary);
+  line-height: 28px;
+}
+.cs-permalink-said {
+  color: var(--pact-ink);
 }
 .cs-build {
   margin-top: var(--pact-space-2);
 }
 .cs-build a {
   line-height: inherit;
+}
+
+/* ── Front page ───────────────────────────────────────────────────────── */
+/* The name, as big and wide as the width allows: the one h1 on the front
+   page. Typed lowercase and set in capitals by CSS, so a screen reader
+   says the words instead of spelling them. */
+.cs-front {
+  margin-bottom: var(--pact-space-3);
+}
+.cs-title {
+  font-size: clamp(1.55rem, 7.4vw, 4.75rem);
+  font-weight: 900;
+  font-variation-settings: "wdth" 125;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  margin: 0;
+  text-wrap: balance;
+}
+.cs-front-lede {
+  margin-top: var(--pact-space-1);
+}
+
+/* ── The moving banner ────────────────────────────────────────────────── */
+/* The one loud thing, by request, and the one place the site breaks the
+   pact rule that nothing moves. It scrolls, and its ground steps through
+   four token colours, every one at 6.5:1 or better under ink text, once
+   every 2 seconds. It stops on hover and focus, stops for good with the
+   button under it, and never starts under reduced motion. */
+.cs-ticker-wrap {
+  margin-bottom: var(--pact-space-6);
+}
+.cs-ticker {
+  overflow: hidden;
+  border-top: 3px solid var(--pact-ink);
+  border-bottom: 3px solid var(--pact-ink);
+  background: var(--pact-dim-practices);
+  animation: cs-ticker-colour 8s steps(1, end) infinite;
+}
+.cs-ticker-track {
+  display: flex;
+  width: max-content;
+  animation: cs-ticker-scroll 45s linear infinite;
+}
+.cs-ticker-items {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.cs-ticker-items li {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  min-height: 44px;
+  color: var(--pact-ink);
+  font-size: 0.8125rem;
+  font-weight: 900;
+  letter-spacing: var(--pact-tracking-widest);
+  text-transform: uppercase;
+}
+.cs-ticker-link {
+  color: var(--pact-ink);
+  text-decoration: none;
+  padding: 0 var(--pact-space-2);
+  line-height: 44px;
+}
+.cs-ticker-link:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+}
+/* On a coloured ground the blue ring drops under 3:1; ink holds 6.5:1. */
+.cs-ticker-link:focus-visible {
+  outline: 3px solid var(--pact-ink);
+  outline-offset: -3px;
+}
+.cs-ticker-items li > span:not(.cs-ticker-sep) {
+  padding: 0 var(--pact-space-2);
+}
+.cs-ticker-sep {
+  opacity: 0.6;
+}
+.cs-ticker:hover,
+.cs-ticker:hover .cs-ticker-track,
+.cs-ticker:focus-within,
+.cs-ticker:focus-within .cs-ticker-track,
+.cs-ticker[data-stopped],
+.cs-ticker[data-stopped] .cs-ticker-track {
+  animation-play-state: paused;
+}
+.cs-ticker-control {
+  margin-top: 4px;
+}
+.cs-ticker-control .pact-cta {
+  min-height: 32px;
+  line-height: 16px;
+  font-size: var(--pact-text-sm);
+}
+@keyframes cs-ticker-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@keyframes cs-ticker-colour {
+  0% { background: var(--pact-dim-practices); }
+  25% { background: var(--pact-dim-culture); }
+  50% { background: var(--pact-seq-4); }
+  75% { background: var(--pact-div-warm-1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cs-ticker,
+  .cs-ticker-track {
+    animation: none;
+  }
+  .cs-ticker-track {
+    width: auto;
+  }
+  .cs-ticker-items {
+    flex-wrap: wrap;
+  }
+  .cs-ticker-items[aria-hidden] {
+    display: none;
+  }
+  .cs-ticker-control {
+    display: none;
+  }
+}
+
+/* ── Filters, folded ──────────────────────────────────────────────────── */
+.cs-filter-box > summary {
+  list-style: none;
+  cursor: pointer;
+  width: max-content;
+}
+.cs-filter-box > summary::-webkit-details-marker {
+  display: none;
+}
+.cs-filter-box[open] > summary {
+  margin-bottom: var(--pact-space-1);
+}
+.cs-filter-box .cs-filter-group + .cs-filter-group {
+  margin-top: var(--pact-space-2);
 }

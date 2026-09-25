@@ -215,7 +215,7 @@ export function NetworkView({ atlas, things, focusHub }: { atlas: Atlas; things:
   const pick = (e: React.MouseEvent, n: Node) => {
     e.preventDefault();
     setParams({ view: 'network', node: n.id === selected ? null : n.id });
-    setSaid(n.id === selected ? 'Selection cleared.' : `${n.thing?.title ?? n.hub?.name} selected. Details are under the map.`);
+    setSaid(n.id === selected ? 'Selection cleared.' : `${n.thing?.title ?? n.hub?.name} selected. Details are under the drawing.`);
   };
   const listHref = (() => {
     const p = new URLSearchParams(search);
@@ -232,19 +232,19 @@ export function NetworkView({ atlas, things, focusHub }: { atlas: Atlas; things:
       <ul className="pact-legend cs-net-legend" aria-label="how to read the network">
         <li>
           <svg width="14" height="14" aria-hidden="true"><circle cx="7" cy="7" r="5" className="cs-net-dot" /></svg>
-          in service
+          live
         </li>
         <li>
           <svg width="14" height="14" aria-hidden="true"><circle cx="7" cy="7" r="5" className="cs-net-dot cs-net-hollow" /></svg>
-          under construction, planned, or retired
+          not finished, planned, or retired
         </li>
         <li>
           <svg width="18" height="18" aria-hidden="true"><circle cx="9" cy="9" r="5" className="cs-net-dot" /><circle cx="9" cy="9" r="8" className="cs-net-ring" /></svg>
-          transfer: stops at two hubs or more
+          filed in two places or more
         </li>
         <li>
           <svg width="26" height="10" aria-hidden="true"><line x1="1" y1="5" x2="25" y2="5" className="cs-net-related" /></svg>
-          a connection across lines
+          a connection across sections
         </li>
       </ul>
       <p className="pact-small">
@@ -259,7 +259,7 @@ export function NetworkView({ atlas, things, focusHub }: { atlas: Atlas; things:
             height={height}
             viewBox={`0 0 ${width} ${height}`}
             role="group"
-            aria-label={`network of ${things.length} stations. each station is a link that selects it.`}
+            aria-label={`network of ${things.length} things. each one is a link that selects it.`}
             className="cs-net-svg"
           >
             <g>
@@ -288,8 +288,8 @@ export function NetworkView({ atlas, things, focusHub }: { atlas: Atlas; things:
                 const showLabel = !!n.hub || labelAll || near.has(n.id);
                 const right = n.x < width * 0.62;
                 const aria = n.hub
-                  ? `${n.hub.name}, a hub on the ${n.line.name} line`
-                  : `${n.thing!.title}, ${n.thing!.kind}, ${atlas.linesOf(n.thing!).map((l) => l.name).join(' and ')} line`;
+                  ? `${n.hub.name}, a hub in ${n.line.name}`
+                  : `${n.thing!.title}, ${n.thing!.kind}, in ${atlas.linesOf(n.thing!).map((l) => l.name).join(' and ')}`;
                 return (
                   <a
                     key={n.id}
@@ -349,8 +349,8 @@ export function NetworkView({ atlas, things, focusHub }: { atlas: Atlas; things:
           <Selected atlas={atlas} n={sel} />
         ) : (
           <>
-            {things.length} stations. Pick one to see where it goes.{' '}
-            {labelAll ? '' : 'Names appear when you pick a station, or on a wider screen.'}
+            {things.length} things. Pick one to see what it connects to.{' '}
+            {labelAll ? '' : 'Names appear when you pick one, or on a wider screen.'}
           </>
         )}
       </figcaption>
@@ -369,7 +369,7 @@ function Selected({ atlas, n }: { atlas: Atlas; n: Node }) {
     return (
       <div className="cs-net-panel">
         <p className="cs-kicker">
-          <Bullet line={n.line} /> {n.line.name} line · hub · {count} stations
+          <Bullet line={n.line} /> {n.line.name} · hub · {count} things
         </p>
         <p className="pact-h3 cs-net-panel-title">{n.hub.name}</p>
         <p className="pact-small">{n.hub.lede}</p>
@@ -401,8 +401,8 @@ function Selected({ atlas, n }: { atlas: Atlas; n: Node }) {
       </p>
       <p className="pact-small">{t.blurb}</p>
       <p className="cs-links">
-        <Link className="pact-cta" to={`/station/${t.id}`}>
-          [go to the station]
+        <Link className="pact-cta" to={`/thing/${t.id}`}>
+          [open it]
         </Link>
         <ThingLinks thing={t} limit={1} />
         {clear}

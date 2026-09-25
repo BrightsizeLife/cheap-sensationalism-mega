@@ -1,7 +1,7 @@
 {
   "id": "2026-09",
   "published": "2026-09-24",
-  "note": "The site becomes a subway map. Five lines named for what you do (listen, read, use, play, guess), ten hubs with launching pages, and every station reachable as a list, a table, or a network. It also opens the stations built since May: games, a midterms model, an ear trainer, and a lab.",
+  "note": "The site becomes a map with three ways to read it (list, table, network). Five sections named for what you do (listen, read, use, play, guess), ten hubs with their own launching pages, and everything built since May: games, a midterms model, an ear trainer, a lab.",
   "lines": [
     {
       "id": "listen",
@@ -1252,42 +1252,53 @@
       ]
     }
   ],
-  "advisories": [
+  "banner": [
     {
-      "text": "Three games have opened for construction on the play line. Delays of unknown length.",
+      "text": "New model: the 2026 midterms, refit every day",
       "link": {
-        "label": "[see the games]",
-        "url": "/games"
-      }
-    },
-    {
-      "text": "The 2026 midterms model refits every day, including the days when nothing happened.",
-      "link": {
-        "label": "[see the model]",
+        "label": "[see it]",
         "url": "https://midterms26.cheapsensationalism.com"
       }
     },
     {
-      "text": "Weird Weather remains in service. The weather has not improved.",
+      "text": "New: three games, none finished",
+      "link": {
+        "label": "[see them]",
+        "url": "/games"
+      }
+    },
+    {
+      "text": "New article: Weird Weather",
       "link": {
         "label": "[read it]",
         "url": "https://weather.cheapsensationalism.com"
       }
     },
     {
-      "text": "More, More, More is still coming soon. No estimated arrival time."
+      "text": "Old album: cheap sensationalism",
+      "link": {
+        "label": "[listen]",
+        "url": "https://open.spotify.com/album/7kjmvtW08iNlCKEU0qgKXN"
+      }
     },
     {
-      "text": "The preview reel runs on Instagram, a different network with worse signage.",
+      "text": "More, More, More (coming soon)",
+      "link": {
+        "label": "[music]",
+        "url": "/music"
+      }
+    },
+    {
+      "text": "Cheap Sensationalism's Cheap Sensationalism Preview",
       "link": {
         "label": "[watch it]",
         "url": "https://www.instagram.com/reel/DBxQo_nx5V0/"
       }
     },
     {
-      "text": "Shameless: fares are optional, and gratefully received.",
+      "text": "Shameless: give me money $$$",
       "link": {
-        "label": "[pay a fare on ko-fi]",
+        "label": "[ko-fi]",
         "url": "https://ko-fi.com/cheapsensationalism"
       }
     }

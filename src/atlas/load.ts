@@ -31,7 +31,7 @@ function parse(raw: any): Edition {
     lines: raw.lines ?? [],
     hubs: (raw.hubs ?? []).map((h: any) => ({ ...h, aliases: list(h.aliases) })),
     things,
-    advisories: raw.advisories ?? [],
+    banner: raw.banner ?? raw.advisories ?? [],
     elsewhere: raw.elsewhere ?? { accounts: [], detours: [] },
   };
 }
