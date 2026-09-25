@@ -37,8 +37,9 @@ A thing looks like this. Only `id`, `title`, `hubs`, `kind`, `status`,
 }
 ```
 
-- `status` is one of `live`, `wip` (shown as `[WIP]`), `idea` (planned),
-  or `retired`. `note` says why, in a few words.
+- `status` is one of `live`, `wip` (shown as `[WIP]`), or `idea` (planned).
+  `note` says why, in a few words. Nothing is kept as retired: when a thing
+  is done with, it comes off the site.
 - Two or more `hubs` file it in two places at once. `related` draws a dashed
   line to any other thing, in any section. These are the connections that
   ignore the hierarchy.

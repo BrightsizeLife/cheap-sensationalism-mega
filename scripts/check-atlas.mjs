@@ -6,7 +6,7 @@ import { join } from 'node:path';
 
 const DIR = 'content/editions';
 const HUES = ['technology', 'architecture', 'culture', 'practices', 'outcomes'];
-const STATUSES = ['live', 'wip', 'idea', 'retired'];
+const STATUSES = ['live', 'wip', 'idea'];
 const RESERVED = ['thing', 'station', 'editions', 'fonts', 'album-notes.html'];
 const list = (v) => (Array.isArray(v) ? v : typeof v === 'string' ? v.split(',').map((s) => s.trim()).filter(Boolean) : []);
 

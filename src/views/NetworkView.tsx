@@ -236,7 +236,7 @@ export function NetworkView({ atlas, things, focusHub }: { atlas: Atlas; things:
         </li>
         <li>
           <svg width="14" height="14" aria-hidden="true"><circle cx="7" cy="7" r="5" className="cs-net-dot cs-net-hollow" /></svg>
-          not finished, planned, or retired
+          not finished or planned
         </li>
         <li>
           <svg width="18" height="18" aria-hidden="true"><circle cx="9" cy="9" r="5" className="cs-net-dot" /><circle cx="9" cy="9" r="8" className="cs-net-ring" /></svg>

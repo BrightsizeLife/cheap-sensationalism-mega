@@ -64,7 +64,6 @@ export const STATUS_WORDS: Record<Status, string> = {
   live: 'live',
   wip: '[WIP]',
   idea: 'planned',
-  retired: 'retired',
 };
 
-export const STATUS_ORDER: Record<Status, number> = { live: 0, wip: 1, idea: 2, retired: 3 };
+export const STATUS_ORDER: Record<Status, number> = { live: 0, wip: 1, idea: 2 };

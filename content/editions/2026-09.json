@@ -311,15 +311,10 @@
         {
           "label": "[play the fretboard]",
           "url": "https://fretboard.cheapsensationalism.com"
-        },
-        {
-          "label": "[the older R version]",
-          "url": "https://cheap-sensationalism.shinyapps.io/guitarFretboard/"
         }
       ],
       "related": [
-        "ear-commander",
-        "earcraft"
+        "ear-commander"
       ]
     },
     {
@@ -337,7 +332,6 @@
       "made": "plain JavaScript",
       "links": [],
       "related": [
-        "earcraft",
         "fretboard"
       ]
     },
@@ -356,24 +350,6 @@
       "made": "one HTML file",
       "links": [],
       "related": []
-    },
-    {
-      "id": "earcraft",
-      "title": "earcraft",
-      "hubs": [
-        "music-tools"
-      ],
-      "kind": "ear training",
-      "status": "retired",
-      "blurb": "An earlier ear trainer that tied notes to colours and intervals to plants. Ear Commander replaced it and keeps score instead.",
-      "year": "2025",
-      "updated": "2025-10",
-      "made": "Next.js",
-      "links": [],
-      "source": "https://github.com/BrightsizeLife/earcraft",
-      "related": [
-        "ear-commander"
-      ]
     },
     {
       "id": "weird-weather",
@@ -952,7 +928,6 @@
       "source": "https://github.com/BrightsizeLife/decision-process-app",
       "related": [
         "decision-workbench",
-        "decision-process-r",
         "where-to-be"
       ]
     },
@@ -978,24 +953,6 @@
       "related": [
         "decision-uncertainty",
         "updraft"
-      ]
-    },
-    {
-      "id": "decision-process-r",
-      "title": "decision process, the R version",
-      "hubs": [
-        "decision-apps"
-      ],
-      "kind": "decision tool",
-      "status": "retired",
-      "blurb": "The original Shiny app behind Decision Space. Retired, still standing.",
-      "year": "2025",
-      "updated": "2025-11",
-      "made": "R Shiny",
-      "links": [],
-      "source": "https://github.com/BrightsizeLife/decision-process",
-      "related": [
-        "decision-uncertainty"
       ]
     },
     {
@@ -1321,24 +1278,6 @@
       "links": [],
       "related": [
         "midterms-2026"
-      ]
-    },
-    {
-      "id": "nyc-mayor-2025",
-      "title": "predict 25 NY mayor",
-      "hubs": [
-        "political-analyses"
-      ],
-      "kind": "election model",
-      "status": "retired",
-      "blurb": "A poll model for the 2025 mayoral race that got as far as cleaning the data. The election happened anyway.",
-      "year": "2025",
-      "updated": "2025-10",
-      "made": "R, brms",
-      "links": [],
-      "source": "https://github.com/BrightsizeLife/predict-25-ny-mayor",
-      "related": [
-        "bayes-splines-2024"
       ]
     },
     {

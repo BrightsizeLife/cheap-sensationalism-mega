@@ -13,7 +13,7 @@
 export type Hue = 'technology' | 'architecture' | 'culture' | 'practices' | 'outcomes';
 
 /** How finished something is. */
-export type Status = 'live' | 'wip' | 'idea' | 'retired';
+export type Status = 'live' | 'wip' | 'idea';
 
 export interface LinkRef {
   label: string;

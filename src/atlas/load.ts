@@ -14,7 +14,7 @@ const list = (v: unknown): string[] =>
       ? v.split(',').map((s) => s.trim()).filter(Boolean)
       : [];
 
-const STATUSES: Status[] = ['live', 'wip', 'idea', 'retired'];
+const STATUSES: Status[] = ['live', 'wip', 'idea'];
 
 function parse(raw: any): Edition {
   const things: Thing[] = (raw.things ?? []).map((t: any) => ({
@@ -136,7 +136,7 @@ export class Atlas {
 
   count(things: Thing[] = this.edition.things) {
     const by = (s: Status) => things.filter((t) => t.status === s).length;
-    return { all: things.length, live: by('live'), wip: by('wip'), idea: by('idea'), retired: by('retired') };
+    return { all: things.length, live: by('live'), wip: by('wip'), idea: by('idea') };
   }
 
   /** Warn about references that point nowhere. Development only. */
