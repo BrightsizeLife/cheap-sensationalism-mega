@@ -2,8 +2,8 @@
 
 The studio site. Everything Derek makes is a **thing**. Things are filed
 under **hubs** (each hub has its own launching page, like `/music` or
-`/instruments`), and hubs sit in one of five **sections**, named for what
-you do there: listen, read, use, play, guess. In the code and the JSON a
+`/music-tools`), and hubs sit in one of five **sections**, named for what
+you do there: listen, read, use, play, think. In the code and the JSON a
 section is called a `line`.
 
 Every map can be seen three ways, picked at the top: **list**, **table**, or
@@ -25,7 +25,7 @@ A thing looks like this. Only `id`, `title`, `hubs`, `kind`, `status`,
 {
   "id": "weird-weather",
   "title": "weird weather",
-  "hubs": ["essays"],
+  "hubs": ["scribbles"],
   "kind": "data essay",
   "status": "live",
   "blurb": "How strange was your city’s winter?",

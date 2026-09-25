@@ -38,7 +38,7 @@ export interface Hub {
   lede: string;
   /** The one thing this page exists for. Rendered as the filled button. */
   action?: LinkRef;
-  /** Old paths that should land here, e.g. /music-tools for /instruments. */
+  /** Old paths that should land here, e.g. /instruments for /music-tools. */
   aliases?: string[];
 }
 
