@@ -785,6 +785,50 @@
       ]
     },
     {
+      "id": "podcast-science-behind-dora",
+      "title": "the science behind DORA (Engineering Enablement podcast)",
+      "hubs": [
+        "work"
+      ],
+      "kind": "podcast",
+      "status": "live",
+      "blurb": "A conversation with Abi Noda on how DORA's research is done, from defining outcomes to survey design and structural equation modelling.",
+      "links": [
+        {
+          "label": "[listen]",
+          "url": "https://podcasts.apple.com/us/podcast/the-science-behind-dora-derek-debellis-google/id1619140476?i=1000654849708"
+        },
+        {
+          "label": "[spotify]",
+          "url": "https://open.spotify.com/episode/09KqJyjbwUHUJuTtz8A4oc"
+        }
+      ],
+      "related": [
+        "dora-reports",
+        "podcast-dora-ai-impact"
+      ]
+    },
+    {
+      "id": "podcast-dora-ai-impact",
+      "title": "DORA's latest research on AI impact (Engineering Enablement podcast)",
+      "hubs": [
+        "work"
+      ],
+      "kind": "podcast",
+      "status": "live",
+      "blurb": "A conversation with Abi Noda on DORA's research into how generative AI affects software work, and how leaders can measure it.",
+      "links": [
+        {
+          "label": "[listen]",
+          "url": "https://podcasts.apple.com/us/podcast/doras-latest-research-on-ai-impact/id1619140476?i=1000709581891"
+        }
+      ],
+      "related": [
+        "dora-ai-capabilities",
+        "podcast-science-behind-dora"
+      ]
+    },
+    {
       "id": "documents-sunshine",
       "title": "documents are like sunshine",
       "hubs": [
