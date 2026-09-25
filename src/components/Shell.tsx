@@ -5,7 +5,6 @@ import React, { useState } from 'react';
 import type { Atlas } from '../atlas/load';
 import { LATEST } from '../atlas/load';
 import { Link, useLocation } from '../router';
-import { Bullet } from './bits';
 
 declare const __BUILD__: { sha: string; date: string };
 
@@ -36,7 +35,7 @@ export function Shell({
               {atlas.edition.lines.map((l) => (
                 <li key={l.id}>
                   <Link to={`/${l.id}`} aria-current={current === l.id ? 'page' : undefined}>
-                    <Bullet line={l} /> {l.name}
+                    {l.name}
                   </Link>
                 </li>
               ))}

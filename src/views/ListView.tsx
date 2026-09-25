@@ -1,13 +1,14 @@
-// The list: section, then hub, then one line per thing, the way the first
-// version of the site did it. Something filed under two hubs appears under
-// both, with a note saying where else it lives.
+// The list: section, then hub, then one line per thing. The hierarchy is
+// shown by space, size and indent and nothing else: no markers, no colour.
+// Something filed under two hubs appears under both, with a note saying
+// where else it lives.
 
 import React from 'react';
 import type { Atlas } from '../atlas/load';
 import type { Hub, Thing } from '../atlas/types';
 import { STATUS_ORDER } from '../atlas/state';
 import { Link } from '../router';
-import { Bullet, Go, StatusTag } from '../components/bits';
+import { Go, StatusTag } from '../components/bits';
 
 const byService = (a: Thing, b: Thing) =>
   STATUS_ORDER[a.status] - STATUS_ORDER[b.status] || (b.updated ?? '').localeCompare(a.updated ?? '');
@@ -25,9 +26,6 @@ export function ThingRow({ atlas, thing, here, detail }: { atlas: Atlas; thing: 
   const shown = shortLinks ? thing.links : thing.links.slice(0, 1);
   return (
     <li className="cs-row">
-      <span className="cs-dash" aria-hidden="true">
-        —
-      </span>
       <span className="cs-row-body">
         <Link to={`/thing/${thing.id}`} className="cs-row-title">
           {thing.title}
@@ -70,25 +68,21 @@ export function ListView({ atlas, things, headingLevel = 3 }: { atlas: Atlas; th
   const lines = atlas.edition.lines.filter((l) => atlas.hubsOn(l.id).some((h) => atlas.thingsAt(h.id).some((t) => shown.has(t.id))));
   if (!lines.length) return <p className="pact-muted">Nothing matches these filters.</p>;
   return (
-    <div className="cs-list">
+    <div className="cs-tree">
       {lines.map((line) => (
-        <section key={line.id} className="cs-list-line pact-dim-section" data-dimension={line.hue} aria-labelledby={`list-${line.id}`}>
-          <H id={`list-${line.id}`} className="pact-h2 cs-list-line-h">
-            <Bullet line={line} /> <Link to={`/${line.id}`}>{line.name}</Link>
+        <section key={line.id} className="cs-tree-section" aria-labelledby={`list-${line.id}`}>
+          <H id={`list-${line.id}`} className="cs-tree-section-h">
+            <Link to={`/${line.id}`}>{line.name}</Link>
           </H>
-          <p className="pact-small pact-muted cs-list-line-blurb">{line.blurb}</p>
           {atlas.hubsOn(line.id).map((hub) => {
             const here = atlas.thingsAt(hub.id).filter((t) => shown.has(t.id)).sort(byService);
             if (!here.length) return null;
             return (
-              <div key={hub.id} className="cs-list-hub">
-                <H2 className="cs-list-hub-h">
-                  <Link to={`/${hub.id}`}>{hub.name}</Link>{' '}
-                  <span className="pact-small pact-muted">
-                    <span className="pact-num">{here.length}</span> {here.length === 1 ? 'thing' : 'things'}
-                  </span>
+              <div key={hub.id} className="cs-tree-hub">
+                <H2 className="cs-tree-hub-h">
+                  <Link to={`/${hub.id}`}>{hub.name}</Link>
                 </H2>
-                <ul className="cs-dash-list">
+                <ul className="cs-tree-items">
                   {here.map((t) => (
                     <ThingRow key={t.id} atlas={atlas} thing={t} here={hub} />
                   ))}
@@ -106,7 +100,7 @@ export function ListView({ atlas, things, headingLevel = 3 }: { atlas: Atlas; th
 export function HubList({ atlas, hub, things }: { atlas: Atlas; hub: Hub; things: Thing[] }) {
   if (!things.length) return <p className="pact-muted">Nothing matches these filters.</p>;
   return (
-    <ul className="cs-dash-list">
+    <ul className="cs-tree-items cs-tree-items-flat">
       {[...things].sort(byService).map((t) => (
         <ThingRow key={t.id} atlas={atlas} thing={t} here={hub} />
       ))}

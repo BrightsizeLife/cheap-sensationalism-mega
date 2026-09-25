@@ -6,7 +6,7 @@ import type { Atlas } from '../atlas/load';
 import type { Thing } from '../atlas/types';
 import { STATUS_ORDER } from '../atlas/state';
 import { Link } from '../router';
-import { Bullet, Go, NewTag, StatusTag } from '../components/bits';
+import { Go, NewTag, StatusTag } from '../components/bits';
 import { ThingRow } from '../views/ListView';
 
 export function StationPage({ atlas, thing }: { atlas: Atlas; thing: Thing }) {
@@ -28,14 +28,8 @@ export function StationPage({ atlas, thing }: { atlas: Atlas; thing: Thing }) {
 
   return (
     <>
-      <div className="pact-section cs-intro pact-dim-section" data-dimension={lines[0]?.hue}>
-        <p className="cs-kicker">
-          {lines.map((l) => (
-            <React.Fragment key={l.id}>
-              <Bullet line={l} /> {l.name}{' '}
-            </React.Fragment>
-          ))}
-        </p>
+      <div className="pact-section cs-intro">
+        <p className="cs-kicker">{lines.map((l) => l.name).join(' · ')}</p>
         <h1 className="pact-h1">{thing.title}</h1>
         <p className="pact-lede">{thing.blurb}</p>
         <p className="cs-thing-status">
@@ -114,7 +108,7 @@ export function StationPage({ atlas, thing }: { atlas: Atlas; thing: Thing }) {
           <p className="pact-small pact-muted cs-measure">
             Other things this one talks to, wherever they are filed.
           </p>
-          <ul className="cs-dash-list">
+          <ul className="cs-tree-items cs-tree-items-flat">
             {neighbours.map((t) => (
               <ThingRow key={t.id} atlas={atlas} thing={t} detail />
             ))}

@@ -5,9 +5,8 @@
  * gap is a token. Classes are cs- because they belong to this site;
  * pact- classes come unchanged from the design system.
  *
- * On top of pact: five sections, one pact hue each, a lettered circle per
- * section, and one loud thing on purpose, the moving banner. Everything
- * else stays as plain as a list.
+ * On top of pact: one plain list whose hierarchy is carried by space,
+ * size and indent alone, and one loud thing on purpose, the moving banner.
  */
 
 /* ── Wordmark ─────────────────────────────────────────────────────────── */
@@ -25,76 +24,22 @@
   text-decoration: none;
 }
 
-/* ── Line bullets ─────────────────────────────────────────────────────── */
-/* The bullet carries a letter, so it takes the -ink cut of its hue (6:1
-   against the white letter), not the pop cut, which never carries type. */
-.cs-bullet {
-  display: inline-grid;
-  place-items: center;
-  width: 1.5em;
-  height: 1.5em;
-  border-radius: 50%;
-  color: var(--pact-bg);
-  background: var(--pact-ink);
-  font-family: var(--pact-font-ui);
-  font-size: 0.8em;
-  font-weight: 900;
-  line-height: 1;
-  letter-spacing: 0;
-  text-transform: none;
-  vertical-align: 0.1em;
-  flex: none;
-}
-.cs-bullet-lg {
-  font-size: 1.1em;
-}
-.cs-bullet[data-hue="technology"] { background: var(--pact-dim-technology-ink); }
-.cs-bullet[data-hue="architecture"] { background: var(--pact-dim-architecture-ink); }
-.cs-bullet[data-hue="culture"] { background: var(--pact-dim-culture-ink); }
-.cs-bullet[data-hue="practices"] { background: var(--pact-dim-practices-ink); }
-.cs-bullet[data-hue="outcomes"] { background: var(--pact-dim-outcomes-ink); }
-
-.cs-bullets {
-  display: inline-flex;
-  gap: 2px;
-  margin-right: 6px;
-  vertical-align: 0.05em;
-}
-
-/* Bullets in the header nav sit beside the word. */
-.pact-nav a .cs-bullet {
-  margin-right: 2px;
-}
-
 /* ── Status, new ──────────────────────────────────────────────────────── */
-/* The word is the signal. The chip only echoes it. */
+/* Plain words in small type. [WIP] in ink so it is found; the rest muted. */
 .cs-status {
-  display: inline-block;
-  font-size: var(--pact-text-kicker);
-  font-weight: 900;
-  letter-spacing: var(--pact-tracking-widest);
-  text-transform: uppercase;
-  padding: 2px 6px;
-  border-radius: 2px;
-  line-height: 1.4;
+  font-size: var(--pact-text-sm);
+  font-weight: 700;
+  color: var(--pact-ink);
   white-space: nowrap;
 }
-.cs-status[data-status="live"] {
-  color: var(--pact-ink);
-  box-shadow: inset 0 0 0 2px var(--pact-ink);
-}
-/* Under construction borrows the [WIP] chip: orange pop, ink text, 6.5:1. */
-.cs-status[data-status="wip"] {
-  color: var(--pact-ink);
-  background: var(--pact-dim-culture);
-}
-.cs-status[data-status="idea"] {
-  color: var(--pact-muted);
-  box-shadow: inset 0 0 0 1px var(--pact-muted);
-}
+.cs-status[data-status="idea"],
 .cs-status[data-status="retired"] {
+  font-weight: 400;
   color: var(--pact-muted);
-  background: var(--pact-surface);
+}
+.cs-status[data-status="live"] {
+  font-weight: 400;
+  color: var(--pact-muted);
 }
 
 .cs-new-tag {
@@ -135,10 +80,6 @@
 }
 .cs-nowrap { white-space: nowrap; }
 
-/* The intro's left rule is the line's colour when the page belongs to one. */
-.cs-intro.pact-dim-section {
-  padding-left: var(--pact-space-2);
-}
 .cs-intro .cs-kicker {
   display: flex;
   flex-wrap: wrap;
@@ -223,60 +164,57 @@
 }
 
 /* ── List ─────────────────────────────────────────────────────────────── */
-.cs-list {
-  display: grid;
-  gap: var(--pact-space-6);
+/* Three levels, told apart by space, size and indent only:
+   section  big and heavy, with the most room above it
+   hub      medium, indented one step
+   thing    body size, indented two steps, rows close together */
+.cs-tree-section + .cs-tree-section {
+  margin-top: var(--pact-space-6);
 }
-.cs-list-line-h {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+.cs-tree-section-h {
+  font-size: var(--pact-text-h2);
+  font-weight: 900;
+  font-variation-settings: "wdth" var(--pact-display-wdth);
+  letter-spacing: var(--pact-tracking-tight);
+  line-height: var(--pact-leading-snug);
+  text-transform: lowercase;
+  margin: 0;
 }
-.cs-list-line-h a {
+.cs-tree-section-h a,
+.cs-tree-hub-h a {
   color: var(--pact-ink);
   text-decoration: none;
 }
-.cs-list-line-h a:hover {
+.cs-tree-section-h a:hover,
+.cs-tree-hub-h a:hover {
   text-decoration: underline;
 }
-.cs-list-hub + .cs-list-hub {
-  margin-top: var(--pact-space-4);
+.cs-tree-hub {
+  margin: var(--pact-space-3) 0 0 var(--pact-space-3);
 }
-.cs-list-line-h {
-  margin-bottom: 0;
-}
-.cs-list-line-blurb {
-  margin-top: 2px;
-}
-/* A hub inside the list: the way into its launching page. */
-.cs-list-hub-h {
-  margin: var(--pact-space-3) 0 var(--pact-space-1);
+.cs-tree-hub-h {
   font-size: 1.125rem;
-  font-weight: 900;
+  font-weight: 700;
   text-transform: lowercase;
+  margin: 0 0 var(--pact-space-1);
 }
-.cs-list-hub-h .pact-small {
-  font-weight: 400;
-}
-
-/* One thing per line, with an em dash in front, like the first version of
-   the site. The dash is decoration the screen reader skips. */
-.cs-dash-list {
+.cs-tree-items {
   list-style: none;
-  margin: 0;
+  margin: 0 0 0 var(--pact-space-3);
   padding: 0;
   display: grid;
-  gap: 6px;
+  gap: 4px;
 }
-.cs-dash-list > li {
-  display: flex;
-  gap: 10px;
-  align-items: baseline;
+.cs-tree-items-flat {
+  margin-left: 0;
+}
+@media (max-width: 30rem) {
+  .cs-tree-hub { margin-left: var(--pact-space-2); }
+  .cs-tree-items { margin-left: var(--pact-space-2); }
+  .cs-tree-items-flat { margin-left: 0; }
+}
+.cs-row {
   line-height: var(--pact-leading-snug);
-}
-.cs-dash {
-  color: var(--pact-muted);
-  flex: none;
 }
 .cs-row-body {
   min-width: 0;
@@ -301,9 +239,6 @@
   display: block;
   margin-top: 2px;
   max-width: var(--pact-measure);
-}
-.cs-row .cs-status {
-  vertical-align: 0.1em;
 }
 
 /* ── Table ────────────────────────────────────────────────────────────── */
@@ -415,14 +350,6 @@
 .cs-net-hub[data-hue="culture"] { fill: var(--pact-dim-culture-ink); }
 .cs-net-hub[data-hue="practices"] { fill: var(--pact-dim-practices-ink); }
 .cs-net-hub[data-hue="outcomes"] { fill: var(--pact-dim-outcomes-ink); }
-.cs-net-hub-letter {
-  fill: var(--pact-bg);
-  font-family: var(--pact-font-ui);
-  font-size: 13px;
-  font-weight: 900;
-  text-anchor: middle;
-  pointer-events: none;
-}
 
 .cs-net-label {
   font-family: var(--pact-font-ui);

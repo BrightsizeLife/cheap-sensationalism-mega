@@ -5,7 +5,7 @@ import type { Atlas } from '../atlas/load';
 import type { Thing } from '../atlas/types';
 import { STATUS_ORDER, useViewState, type Sort } from '../atlas/state';
 import { Link, setParams } from '../router';
-import { Bullets, NewTag, StatusTag, ThingLinks } from '../components/bits';
+import { NewTag, SectionNames, StatusTag, ThingLinks } from '../components/bits';
 
 const COLUMNS: { key: Sort | null; label: string; num?: boolean }[] = [
   { key: 'title', label: 'thing' },
@@ -74,7 +74,7 @@ export function TableView({ atlas, things, caption }: { atlas: Atlas; things: Th
                 {atlas.fresh.has(t.id) && <NewTag />}
               </td>
               <td className="cs-nowrap">
-                <Bullets atlas={atlas} thing={t} />
+                <SectionNames atlas={atlas} thing={t} />
               </td>
               <td>{t.kind}</td>
               <td>

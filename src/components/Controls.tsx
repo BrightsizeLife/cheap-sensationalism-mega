@@ -5,7 +5,7 @@
 import type { Atlas } from '../atlas/load';
 import { useViewState, VIEWS, type View } from '../atlas/state';
 import { Link, setParams, useLocation } from '../router';
-import { Bullet, plural } from './bits';
+import { plural } from './bits';
 
 const VIEW_WORDS: Record<View, string> = { list: 'list', table: 'table', network: 'network' };
 
@@ -70,7 +70,7 @@ export function Filters({
                   aria-pressed={lines.includes(l.id)}
                   onClick={() => toggleLine(l.id)}
                 >
-                  <Bullet line={l} /> {l.name}
+                  {l.name}
                 </button>
               ))}
             </div>

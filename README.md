@@ -86,5 +86,7 @@ sections sharing a colour, a path that clashes with another.
 The PACT design system (white ground, black type, one indigo for everything
 you can press, five colours held apart under colour blindness), with the
 Cheap Sensationalism voice on top: lowercase headers, `[bracket]` actions,
-`[WIP]` where it's true, and one loud thing on purpose, the moving banner.
-It stops on hover, on focus, with its own button, and under reduced motion.
+`[WIP]` where it's true. The list is one plain hierarchy (section, hub,
+thing) told apart by space, size and indent, with no markers or colour.
+The one loud thing, on purpose, is the moving banner. It stops on hover,
+on focus, with its own button, and under reduced motion.

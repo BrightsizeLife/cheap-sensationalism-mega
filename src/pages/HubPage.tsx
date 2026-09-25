@@ -4,7 +4,7 @@ import React from 'react';
 import type { Atlas } from '../atlas/load';
 import type { Hub } from '../atlas/types';
 import { Link } from '../router';
-import { Bullet, Go, plural } from '../components/bits';
+import { Go, plural } from '../components/bits';
 import { Explorer } from '../components/Explorer';
 
 export function HubPage({ atlas, hub }: { atlas: Atlas; hub: Hub }) {
@@ -15,9 +15,9 @@ export function HubPage({ atlas, hub }: { atlas: Atlas; hub: Hub }) {
   const siblings = atlas.hubsOn(line.id).filter((h) => h.id !== hub.id);
   return (
     <>
-      <div className="pact-section cs-intro pact-dim-section" data-dimension={line.hue}>
+      <div className="pact-section cs-intro">
         <p className="cs-kicker">
-          <Bullet line={line} /> <Link to={`/${line.id}`}>{line.name}</Link> · {hub.name}
+          <Link to={`/${line.id}`}>{line.name}</Link> · {hub.name}
         </p>
         <h1 className="pact-h1">{hub.h1}</h1>
         <p className="pact-lede">{hub.lede}</p>
@@ -68,13 +68,13 @@ export function HubPage({ atlas, hub }: { atlas: Atlas; hub: Hub }) {
           <h2 id="transfers-h" className="pact-h2">
             also connects to
           </h2>
-          <ul className="pact-rows">
+          <ul className="cs-tree-items cs-tree-items-flat">
             {transfers.map(({ hub: other, via }) => {
               const otherLine = atlas.lineById.get(other.line)!;
               return (
                 <li key={other.id}>
                   <p className="cs-row-title">
-                    <Bullet line={otherLine} /> <Link to={`/${other.id}`}>{other.name}</Link>{' '}
+                    <Link to={`/${other.id}`}>{other.name}</Link>{' '}
                     <span className="pact-small pact-muted">in {otherLine.name}</span>
                   </p>
                   <p className="pact-small pact-muted">

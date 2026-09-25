@@ -28,12 +28,9 @@ export function Landing({ atlas }: { atlas: Atlas }) {
         <h2 id="sociality-h" className="pact-h2">
           perverse sociality
         </h2>
-        <ul className="cs-dash-list">
+        <ul className="cs-tree-items cs-tree-items-flat">
           {e.elsewhere.accounts.map((a) => (
             <li key={a.url}>
-              <span className="cs-dash" aria-hidden="true">
-                —
-              </span>
               <span>
                 <Go link={a} className="cs-plain-link" />
                 {a.blurb && <span className="pact-small pact-muted"> {a.blurb}</span>}
@@ -48,12 +45,9 @@ export function Landing({ atlas }: { atlas: Atlas }) {
           random things
         </h2>
         <p className="pact-small pact-muted cs-measure">to make your visit somewhat worthwhile</p>
-        <ul className="cs-dash-list">
+        <ul className="cs-tree-items cs-tree-items-flat">
           {e.elsewhere.detours.map((d) => (
             <li key={d.url}>
-              <span className="cs-dash" aria-hidden="true">
-                —
-              </span>
               <span>
                 <Go link={d} className="cs-plain-link" /> <span className="pact-small pact-muted">{d.blurb}</span>
               </span>

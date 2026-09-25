@@ -1,38 +1,17 @@
 // Small pieces used on every page.
 
 import React from 'react';
-import type { Line, LinkRef, Status, Thing } from '../atlas/types';
+import type { LinkRef, Status, Thing } from '../atlas/types';
 import { STATUS_WORDS } from '../atlas/state';
 import type { Atlas } from '../atlas/load';
 import { Link } from '../router';
 
-/** A section's letter in a circle. Always sits next to the section's
- *  name, so it is hidden from screen readers unless `label` is set. */
-export function Bullet({ line, label = false, size }: { line: Line; label?: boolean; size?: 'lg' }) {
-  return (
-    <span
-      className={`cs-bullet${size === 'lg' ? ' cs-bullet-lg' : ''}`}
-      data-hue={line.hue}
-      {...(label ? { role: 'img', 'aria-label': `${line.name} section` } : { 'aria-hidden': true })}
-    >
-      {line.letter}
-    </span>
-  );
+/** The sections a thing is filed under, as words. */
+export function SectionNames({ atlas, thing }: { atlas: Atlas; thing: Thing }) {
+  return <>{atlas.linesOf(thing).map((l) => l.name).join(', ')}</>;
 }
 
-export function Bullets({ atlas, thing }: { atlas: Atlas; thing: Thing }) {
-  const lines = atlas.linesOf(thing);
-  return (
-    <span className="cs-bullets">
-      {lines.map((l) => (
-        <Bullet key={l.id} line={l} />
-      ))}
-      <span className="pact-sr-only">in {lines.map((l) => l.name).join(' and ')}</span>
-    </span>
-  );
-}
-
-/** Status as a word. The chip's colour only echoes the word. */
+/** Status as a word in small type. Nothing but the word carries it. */
 export function StatusTag({ status, note }: { status: Status; note?: string }) {
   return (
     <span className="cs-status" data-status={status}>

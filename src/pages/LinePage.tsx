@@ -1,7 +1,7 @@
 import type { Atlas } from '../atlas/load';
 import type { Line } from '../atlas/types';
 import { Link } from '../router';
-import { Bullet, plural } from '../components/bits';
+import { plural } from '../components/bits';
 import { Explorer } from '../components/Explorer';
 
 export function LinePage({ atlas, line }: { atlas: Atlas; line: Line }) {
@@ -10,9 +10,9 @@ export function LinePage({ atlas, line }: { atlas: Atlas; line: Line }) {
   const c = atlas.count(things);
   return (
     <>
-      <div className="pact-section cs-intro pact-dim-section" data-dimension={line.hue}>
+      <div className="pact-section cs-intro">
         <p className="cs-kicker">
-          <Bullet line={line} /> {plural(hubs.length, 'hub')}
+          {plural(hubs.length, 'hub')}
         </p>
         <h1 className="pact-h1">{line.name}.</h1>
         <p className="pact-lede">
@@ -24,7 +24,7 @@ export function LinePage({ atlas, line }: { atlas: Atlas; line: Line }) {
         <h2 id="stops-h" className="pact-h2">
           hubs
         </h2>
-        <ul className="pact-rows cs-hubrows">
+        <ul className="cs-tree-items cs-tree-items-flat">
           {hubs.map((h) => {
             const at = atlas.count(atlas.thingsAt(h.id));
             return (

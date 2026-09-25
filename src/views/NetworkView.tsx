@@ -17,7 +17,7 @@ import type { Atlas } from '../atlas/load';
 import type { Hub, Line, Thing } from '../atlas/types';
 import { useViewState } from '../atlas/state';
 import { Link, setParams, useLocation } from '../router';
-import { Bullet, NewTag, StatusTag, ThingLinks } from '../components/bits';
+import { NewTag, StatusTag, ThingLinks } from '../components/bits';
 
 type Node = {
   id: string;
@@ -246,6 +246,12 @@ export function NetworkView({ atlas, things, focusHub }: { atlas: Atlas; things:
           <svg width="26" height="10" aria-hidden="true"><line x1="1" y1="5" x2="25" y2="5" className="cs-net-related" /></svg>
           a connection across sections
         </li>
+        {atlas.edition.lines.map((l) => (
+          <li key={l.id}>
+            <svg width="26" height="10" aria-hidden="true"><line x1="1" y1="5" x2="25" y2="5" className="cs-net-stop" data-hue={l.hue} /></svg>
+            {l.name}
+          </li>
+        ))}
       </ul>
       <p className="pact-small">
         <Link className="pact-cta" to={listHref} replace>
@@ -302,10 +308,7 @@ export function NetworkView({ atlas, things, focusHub }: { atlas: Atlas; things:
                   >
                     {n.hub ? (
                       <>
-                        <circle cx={n.x} cy={n.y} r={n.r} className="cs-net-hub" data-hue={n.line.hue} />
-                        <text x={n.x} y={n.y} className="cs-net-hub-letter" dy="0.35em" aria-hidden="true">
-                          {n.line.letter}
-                        </text>
+                        <circle cx={n.x} cy={n.y} r={n.r * 0.7} className="cs-net-hub" data-hue={n.line.hue} />
                       </>
                     ) : (
                       <>
@@ -369,7 +372,7 @@ function Selected({ atlas, n }: { atlas: Atlas; n: Node }) {
     return (
       <div className="cs-net-panel">
         <p className="cs-kicker">
-          <Bullet line={n.line} /> {n.line.name} · hub · {count} things
+          {n.line.name} · hub · {count} things
         </p>
         <p className="pact-h3 cs-net-panel-title">{n.hub.name}</p>
         <p className="pact-small">{n.hub.lede}</p>
@@ -386,12 +389,7 @@ function Selected({ atlas, n }: { atlas: Atlas; n: Node }) {
   return (
     <div className="cs-net-panel">
       <p className="cs-kicker">
-        {atlas.linesOf(t).map((l) => (
-          <React.Fragment key={l.id}>
-            <Bullet line={l} /> {l.name}{' '}
-          </React.Fragment>
-        ))}
-        · {t.kind}
+        {atlas.linesOf(t).map((l) => l.name).join(', ')} · {t.kind}
       </p>
       <p className="pact-h3 cs-net-panel-title">
         {t.title} {atlas.fresh.has(t.id) && <NewTag />}
