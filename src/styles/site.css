@@ -59,6 +59,10 @@
 
 /* ── Shared layout bits ───────────────────────────────────────────────── */
 .cs-measure { max-width: var(--pact-measure); }
+/* A word too long for a wide heading on a small phone ("sensationalism"
+   at 320px) breaks instead of pushing the page sideways. */
+.pact-h1,
+.pact-h2 { overflow-wrap: anywhere; }
 .cs-links {
   display: flex;
   flex-wrap: wrap;

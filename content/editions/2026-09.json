@@ -8,7 +8,7 @@
       "name": "listen",
       "letter": "L",
       "hue": "culture",
-      "blurb": "Music, and tools for making it."
+      "blurb": "Music."
     },
     {
       "id": "read",
@@ -52,21 +52,6 @@
       "action": {
         "label": "[listen to cheap sensationalism]",
         "url": "https://open.spotify.com/album/7kjmvtW08iNlCKEU0qgKXN"
-      }
-    },
-    {
-      "id": "music-tools",
-      "line": "listen",
-      "name": "music tools",
-      "aliases": [
-        "instruments",
-        "music-tool"
-      ],
-      "h1": "music tools.",
-      "lede": "A fretboard, an ear trainer, and a map of how the studio's signal flows.",
-      "action": {
-        "label": "[play the fretboard]",
-        "url": "https://fretboard.cheapsensationalism.com"
       }
     },
     {
@@ -183,6 +168,21 @@
       "lede": "Platforms for running studies and coding what people say. Closed until the ethics and privacy paperwork is done."
     },
     {
+      "id": "music-tools",
+      "line": "use",
+      "name": "music tools",
+      "aliases": [
+        "instruments",
+        "music-tool"
+      ],
+      "h1": "music tools.",
+      "lede": "A fretboard, an ear trainer, and a map of how the studio's signal flows.",
+      "action": {
+        "label": "[play the fretboard]",
+        "url": "https://fretboard.cheapsensationalism.com"
+      }
+    },
+    {
       "id": "games",
       "line": "play",
       "name": "games",
@@ -240,8 +240,7 @@
       ],
       "related": [
         "chords-and-lyrics",
-        "slop",
-        "beatles"
+        "slop"
       ]
     },
     {
@@ -282,10 +281,7 @@
       "status": "wip",
       "blurb": "Garage noises begging for preservation.",
       "links": [],
-      "related": [
-        "the-patchbay",
-        "drown-in-slop"
-      ]
+      "related": []
     },
     {
       "id": "more-more-more",
@@ -359,9 +355,7 @@
       "updated": "2026-06",
       "made": "one HTML file",
       "links": [],
-      "related": [
-        "slop"
-      ]
+      "related": []
     },
     {
       "id": "earcraft",
@@ -425,8 +419,7 @@
       "id": "beatles",
       "title": "all you need is… : multi-method analysis of Beatles lyrics",
       "hubs": [
-        "scribbles",
-        "music"
+        "scribbles"
       ],
       "kind": "data essay",
       "status": "wip",
@@ -437,8 +430,7 @@
       "links": [],
       "related": [
         "paradox-of-tragedy",
-        "midterms-2026",
-        "cheap-sensationalism"
+        "midterms-2026"
       ]
     },
     {
@@ -594,9 +586,7 @@
       "status": "idea",
       "blurb": "A question about how much machine-made filler the internet can absorb, asked by someone with an album called Slop.",
       "links": [],
-      "related": [
-        "slop"
-      ]
+      "related": []
     },
     {
       "id": "relations",
@@ -716,8 +706,7 @@
       "id": "paradox-of-tragedy",
       "title": "the paradox of tragedy: a light explanation",
       "hubs": [
-        "scribbles",
-        "music"
+        "scribbles"
       ],
       "kind": "research explainer",
       "status": "wip",
