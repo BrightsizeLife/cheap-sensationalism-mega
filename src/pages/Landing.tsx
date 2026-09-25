@@ -31,7 +31,13 @@ export function Landing({ atlas }: { atlas: Atlas }) {
         <ul className="cs-dash-list">
           {e.elsewhere.accounts.map((a) => (
             <li key={a.url}>
-              <Go link={a} className="cs-plain-link" />
+              <span className="cs-dash" aria-hidden="true">
+                —
+              </span>
+              <span>
+                <Go link={a} className="cs-plain-link" />
+                {a.blurb && <span className="pact-small pact-muted"> {a.blurb}</span>}
+              </span>
             </li>
           ))}
         </ul>
@@ -45,7 +51,12 @@ export function Landing({ atlas }: { atlas: Atlas }) {
         <ul className="cs-dash-list">
           {e.elsewhere.detours.map((d) => (
             <li key={d.url}>
-              <Go link={d} className="cs-plain-link" /> <span className="pact-small pact-muted">{d.blurb}</span>
+              <span className="cs-dash" aria-hidden="true">
+                —
+              </span>
+              <span>
+                <Go link={d} className="cs-plain-link" /> <span className="pact-small pact-muted">{d.blurb}</span>
+              </span>
             </li>
           ))}
         </ul>

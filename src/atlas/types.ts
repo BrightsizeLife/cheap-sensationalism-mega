@@ -80,5 +80,5 @@ export interface Edition {
   /** The moving banner at the top of the landing page. */
   banner: BannerItem[];
   /** Accounts (perverse sociality), and other people's better websites. */
-  elsewhere: { accounts: LinkRef[]; detours: (LinkRef & { blurb: string })[] };
+  elsewhere: { accounts: (LinkRef & { blurb?: string })[]; detours: (LinkRef & { blurb: string })[] };
 }

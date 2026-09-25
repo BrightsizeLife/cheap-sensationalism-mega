@@ -1,145 +1,204 @@
 {
   "id": "2026-09",
   "published": "2026-09-24",
-  "note": "The site becomes a map with three ways to read it (list, table, network). Five sections named for what you do (listen, read, use, play, guess), ten hubs with their own launching pages, and everything built since May: games, a midterms model, an ear trainer, a lab.",
+  "note": "Five sections (listen, read, use, play, think) and thirteen hubs with their own launching pages. The original categories are kept (noises; political analyses; causal inference; scribbles & patterns; work stuff), and the new ones hold what was built since May: decision apps, stats tools, study tools, AI tools, research tools, games, random ideas.",
   "lines": [
     {
       "id": "listen",
       "name": "listen",
       "letter": "L",
       "hue": "culture",
-      "blurb": "Records, and the instruments for making or hearing them."
+      "blurb": "Music, and tools for making it."
     },
     {
       "id": "read",
       "name": "read",
       "letter": "R",
       "hue": "practices",
-      "blurb": "Essays, lessons, and reports: words arranged around numbers."
+      "blurb": "Thoughts: analyses, essays, and work stuff."
     },
     {
       "id": "use",
       "name": "use",
       "letter": "U",
       "hue": "technology",
-      "blurb": "Tools that run in a browser and take your assumptions seriously."
+      "blurb": "Apps and tools that run in a browser."
     },
     {
       "id": "play",
       "name": "play",
       "letter": "P",
       "hue": "architecture",
-      "blurb": "Games. Some of them are also experiments, and they will tell you so."
+      "blurb": "Games."
     },
     {
-      "id": "guess",
-      "name": "guess",
-      "letter": "G",
+      "id": "think",
+      "name": "think",
+      "letter": "T",
       "hue": "outcomes",
-      "blurb": "Forecasts and the methods behind them. Wrong in known ways."
+      "blurb": "Random ideas, and the ones not sorted yet."
     }
   ],
   "hubs": [
     {
       "id": "music",
       "line": "listen",
-      "name": "music",
-      "h1": "records, finished and otherwise.",
-      "lede": "One album is out: fragments from a past life, glued together. Two more are garage noises begging for preservation.",
+      "name": "noises",
+      "aliases": [
+        "noises"
+      ],
+      "h1": "noises.",
+      "lede": "One album out: fragments from a past life glued together. Two more are garage noises begging for preservation.",
       "action": {
         "label": "[listen to cheap sensationalism]",
         "url": "https://open.spotify.com/album/7kjmvtW08iNlCKEU0qgKXN"
       }
     },
     {
-      "id": "instruments",
+      "id": "music-tools",
       "line": "listen",
-      "name": "instruments",
+      "name": "music tools",
       "aliases": [
-        "music-tools",
+        "instruments",
         "music-tool"
       ],
-      "h1": "tools for making noise, and for hearing it.",
-      "lede": "A fretboard, an ear trainer, and a map of where one studio’s signal goes. The ear trainer keeps score, so it is the only thing on this site that will judge you.",
+      "h1": "music tools.",
+      "lede": "A fretboard, an ear trainer, and a map of how the studio's signal flows.",
       "action": {
         "label": "[play the fretboard]",
         "url": "https://fretboard.cheapsensationalism.com"
       }
     },
     {
-      "id": "essays",
+      "id": "political-analyses",
       "line": "read",
-      "name": "essays",
+      "name": "political analyses",
       "aliases": [
-        "thoughts"
+        "politics",
+        "forecasts",
+        "elections"
       ],
-      "h1": "things I looked at long enough to write down.",
-      "lede": "Data essays and the occasional argument. A few are published. Most are written, built, and waiting for me to stop fiddling with them.",
-      "action": {
-        "label": "[read weird weather]",
-        "url": "https://weather.cheapsensationalism.com"
-      }
-    },
-    {
-      "id": "explainers",
-      "line": "read",
-      "name": "explainers",
-      "h1": "the maths, drawn slowly.",
-      "lede": "Interactive lessons that show every step of a calculation, for anyone who was once told it was obvious.",
-      "action": {
-        "label": "[show your work]",
-        "url": "https://relations-olive.vercel.app"
-      }
-    },
-    {
-      "id": "work",
-      "line": "read",
-      "name": "work",
-      "h1": "the day job, in public.",
-      "lede": "Research from the day job: DORA reports, papers, and a blog post arguing that documentation matters, which it does."
-    },
-    {
-      "id": "tools",
-      "line": "use",
-      "name": "tools",
-      "h1": "machines for deciding things.",
-      "lede": "Put in what you believe, including how unsure you are, and get back what that implies. Most of them run a few thousand simulations so you do not have to.",
-      "action": {
-        "label": "[try decision space]",
-        "url": "https://decision-process-app.vercel.app"
-      }
-    },
-    {
-      "id": "lab",
-      "line": "use",
-      "name": "lab",
-      "h1": "things that ask questions and keep the answers.",
-      "lede": "Research platforms and experiments with language models. Most are invite-only or not deployed, because they store what people tell them, and that deserves more care than a weekend."
-    },
-    {
-      "id": "games",
-      "line": "play",
-      "name": "games",
-      "h1": "games, for a loose definition of fun.",
-      "lede": "Three games started in September: a political economy for four players, a war fought through late reports, and a survival game played behind a veil of ignorance. None are open to the public yet."
-    },
-    {
-      "id": "forecasts",
-      "line": "guess",
-      "name": "forecasts",
-      "h1": "guesses, with error bars.",
-      "lede": "Election models and one football model. The 2026 midterms model refits every day, whether or not anything happened.",
+      "h1": "political analyses.",
+      "lede": "Election models, and a post mortem on 2024 in three parts.",
       "action": {
         "label": "[see the 2026 midterms model]",
         "url": "https://midterms26.cheapsensationalism.com"
       }
     },
     {
-      "id": "methods",
-      "line": "guess",
-      "name": "methods",
-      "h1": "the machinery under the guesses.",
-      "lede": "Research code for estimating things that resist being estimated. Mostly R. Mostly unfinished."
+      "id": "causal-inference",
+      "line": "read",
+      "name": "causal inference: the lifesaving nerd",
+      "aliases": [
+        "causal"
+      ],
+      "h1": "causal inference: the lifesaving nerd.",
+      "lede": "Telling cause from coincidence, in four parts and some R."
+    },
+    {
+      "id": "scribbles",
+      "line": "read",
+      "name": "scribbles & patterns",
+      "aliases": [
+        "essays",
+        "thoughts",
+        "scribbles-and-patterns"
+      ],
+      "h1": "scribbles & patterns.",
+      "lede": "Data essays and the occasional argument. Weird Weather is out. The rest are written, built, or only named.",
+      "action": {
+        "label": "[read weird weather]",
+        "url": "https://weather.cheapsensationalism.com"
+      }
+    },
+    {
+      "id": "work",
+      "line": "read",
+      "name": "work stuff",
+      "aliases": [
+        "work-stuff"
+      ],
+      "h1": "work stuff.",
+      "lede": "Research from the day job: DORA reports, papers, and posts."
+    },
+    {
+      "id": "decision-apps",
+      "line": "use",
+      "name": "decision apps",
+      "aliases": [
+        "decisions",
+        "tools"
+      ],
+      "h1": "decision apps.",
+      "lede": "Put in what you believe, including how unsure you are, and get back what that implies.",
+      "action": {
+        "label": "[try decision under many sources of uncertainty]",
+        "url": "https://decision-process-app.vercel.app"
+      }
+    },
+    {
+      "id": "stats-tools",
+      "line": "use",
+      "name": "stats tools",
+      "aliases": [
+        "stats"
+      ],
+      "h1": "stats tools.",
+      "lede": "For seeing what a model assumes before it tells you anything.",
+      "action": {
+        "label": "[open relations]",
+        "url": "https://relations-olive.vercel.app"
+      }
+    },
+    {
+      "id": "study-tools",
+      "line": "use",
+      "name": "study tools",
+      "aliases": [
+        "explainers",
+        "study"
+      ],
+      "h1": "study tools.",
+      "lede": "Big ideas, laid out so you can poke them."
+    },
+    {
+      "id": "ai-tools",
+      "line": "use",
+      "name": "AI tools",
+      "aliases": [
+        "lab",
+        "ai"
+      ],
+      "h1": "AI tools.",
+      "lede": "Apps with a language model somewhere inside. Most are invite-only, because they keep what people type."
+    },
+    {
+      "id": "research-tools",
+      "line": "use",
+      "name": "research tools",
+      "aliases": [
+        "research"
+      ],
+      "h1": "research tools.",
+      "lede": "Platforms for running studies and coding what people say. Closed until the ethics and privacy paperwork is done."
+    },
+    {
+      "id": "games",
+      "line": "play",
+      "name": "games",
+      "h1": "games.",
+      "lede": "Three games, started in September. None are open to the public yet."
+    },
+    {
+      "id": "random-ideas",
+      "line": "think",
+      "name": "random ideas",
+      "aliases": [
+        "ideas",
+        "methods"
+      ],
+      "h1": "random ideas.",
+      "lede": "Things that exist mostly as a folder and a good intention."
     }
   ],
   "things": [
@@ -173,6 +232,10 @@
         {
           "label": "[watch the preview reel]",
           "url": "https://www.instagram.com/reel/DBxQo_nx5V0/"
+        },
+        {
+          "label": "[watch the other reel]",
+          "url": "https://www.instagram.com/reel/DCPWD37RyR9/"
         }
       ],
       "related": [
@@ -238,10 +301,9 @@
     },
     {
       "id": "fretboard",
-      "title": "the fretboard",
+      "title": "the fretboard: unlock the shred",
       "hubs": [
-        "instruments",
-        "tools"
+        "music-tools"
       ],
       "kind": "music tool",
       "status": "live",
@@ -268,8 +330,7 @@
       "id": "ear-commander",
       "title": "ear commander",
       "hubs": [
-        "instruments",
-        "games"
+        "music-tools"
       ],
       "kind": "ear training",
       "status": "wip",
@@ -288,7 +349,7 @@
       "id": "the-patchbay",
       "title": "the patchbay",
       "hubs": [
-        "instruments"
+        "music-tools"
       ],
       "kind": "signal map",
       "status": "live",
@@ -306,7 +367,7 @@
       "id": "earcraft",
       "title": "earcraft",
       "hubs": [
-        "instruments"
+        "music-tools"
       ],
       "kind": "ear training",
       "status": "retired",
@@ -324,7 +385,7 @@
       "id": "weird-weather",
       "title": "weird weather",
       "hubs": [
-        "essays"
+        "scribbles"
       ],
       "kind": "data essay",
       "status": "live",
@@ -345,9 +406,9 @@
     },
     {
       "id": "virtue-and-vice",
-      "title": "virtue, vice & search trends",
+      "title": "virtue, vice and search trends",
       "hubs": [
-        "essays"
+        "scribbles"
       ],
       "kind": "data essay",
       "status": "wip",
@@ -362,9 +423,9 @@
     },
     {
       "id": "beatles",
-      "title": "all you need is…",
+      "title": "all you need is… : multi-method analysis of Beatles lyrics",
       "hubs": [
-        "essays",
+        "scribbles",
         "music"
       ],
       "kind": "data essay",
@@ -382,9 +443,9 @@
     },
     {
       "id": "media-story",
-      "title": "the media story",
+      "title": "2024 election post mortem: the media story",
       "hubs": [
-        "essays"
+        "political-analyses"
       ],
       "kind": "data essay",
       "status": "wip",
@@ -400,9 +461,9 @@
     },
     {
       "id": "party-alignment",
-      "title": "party alignment",
+      "title": "2024 election post mortem: party alignment",
       "hubs": [
-        "essays"
+        "political-analyses"
       ],
       "kind": "data essay",
       "status": "wip",
@@ -419,9 +480,9 @@
     },
     {
       "id": "belief-systems",
-      "title": "belief systems",
+      "title": "2024 election post mortem: belief systems",
       "hubs": [
-        "essays"
+        "political-analyses"
       ],
       "kind": "data essay",
       "status": "wip",
@@ -437,9 +498,9 @@
     },
     {
       "id": "hammer",
-      "title": "when the only tool you have is a hammer",
+      "title": "when the only tool you have is a hammer: copying code to predict a different election",
       "hubs": [
-        "essays"
+        "political-analyses"
       ],
       "kind": "essay",
       "status": "idea",
@@ -454,8 +515,7 @@
       "id": "bayes-splines-2024",
       "title": "bayes, splines & 2024 US election polls",
       "hubs": [
-        "essays",
-        "forecasts"
+        "political-analyses"
       ],
       "kind": "essay",
       "status": "live",
@@ -477,10 +537,9 @@
     },
     {
       "id": "bayes-splines-follow-up",
-      "title": "follow-up on the bayes/splines election model",
+      "title": "follow-up on the bayes/splines election models",
       "hubs": [
-        "essays",
-        "forecasts"
+        "political-analyses"
       ],
       "kind": "essay",
       "status": "live",
@@ -499,9 +558,9 @@
     },
     {
       "id": "taxes",
-      "title": "taxes: where people want money to go, and where it goes",
+      "title": "taxes: where people want money to go and where it goes",
       "hubs": [
-        "essays"
+        "scribbles"
       ],
       "kind": "essay",
       "status": "idea",
@@ -515,7 +574,7 @@
       "id": "communities-ew",
       "title": "communities, ew!",
       "hubs": [
-        "essays"
+        "scribbles"
       ],
       "kind": "essay",
       "status": "idea",
@@ -529,7 +588,7 @@
       "id": "drown-in-slop",
       "title": "just how easily could we drown in slop?",
       "hubs": [
-        "essays"
+        "scribbles"
       ],
       "kind": "essay",
       "status": "idea",
@@ -541,10 +600,10 @@
     },
     {
       "id": "relations",
-      "title": "show your work",
+      "title": "relations",
       "hubs": [
-        "explainers",
-        "tools"
+        "stats-tools",
+        "study-tools"
       ],
       "kind": "interactive lessons",
       "status": "live",
@@ -554,7 +613,7 @@
       "made": "plain JavaScript",
       "links": [
         {
-          "label": "[show your work]",
+          "label": "[open relations]",
           "url": "https://relations-olive.vercel.app"
         }
       ],
@@ -562,14 +621,14 @@
       "related": [
         "fun-ideas",
         "bayesian-priors",
-        "causal-inference"
+        "covariates"
       ]
     },
     {
       "id": "fun-ideas",
-      "title": "really cool ideas",
+      "title": "fun ideas",
       "hubs": [
-        "explainers"
+        "study-tools"
       ],
       "kind": "interactive essays",
       "status": "wip",
@@ -588,7 +647,7 @@
       "id": "predictive-processing",
       "title": "predictive processing",
       "hubs": [
-        "explainers"
+        "study-tools"
       ],
       "kind": "course",
       "status": "wip",
@@ -604,11 +663,25 @@
       ]
     },
     {
+      "id": "structures",
+      "title": "structures",
+      "hubs": [
+        "study-tools"
+      ],
+      "kind": "study tool",
+      "status": "wip",
+      "note": "link coming",
+      "blurb": "A study tool.",
+      "links": [],
+      "related": [
+        "fun-ideas"
+      ]
+    },
+    {
       "id": "bayesian-priors",
       "title": "bayesian priors: the silent killer",
       "hubs": [
-        "explainers",
-        "tools"
+        "stats-tools"
       ],
       "kind": "interactive tool",
       "status": "wip",
@@ -624,10 +697,26 @@
       ]
     },
     {
+      "id": "dag-to-code",
+      "title": "DAG to code",
+      "hubs": [
+        "stats-tools"
+      ],
+      "kind": "stats tool",
+      "status": "wip",
+      "note": "link coming",
+      "blurb": "A stats tool for turning a causal diagram into code.",
+      "links": [],
+      "related": [
+        "relations",
+        "causal-calc"
+      ]
+    },
+    {
       "id": "paradox-of-tragedy",
       "title": "the paradox of tragedy: a light explanation",
       "hubs": [
-        "explainers",
+        "scribbles",
         "music"
       ],
       "kind": "research explainer",
@@ -639,21 +728,6 @@
       "links": [],
       "related": [
         "beatles"
-      ]
-    },
-    {
-      "id": "causal-inference",
-      "title": "causal inference: the lifesaving nerd",
-      "hubs": [
-        "explainers"
-      ],
-      "kind": "series",
-      "status": "idea",
-      "blurb": "Four lessons on telling cause from coincidence: covariates, propensity scores, instrumental and mechanistic variables, and machine learning.",
-      "links": [],
-      "related": [
-        "causal-calc",
-        "relations"
       ]
     },
     {
@@ -692,7 +766,7 @@
     },
     {
       "id": "dora-ai-capabilities",
-      "title": "DORA’s inaugural AI capabilities model",
+      "title": "DORA inaugural AI capabilities model",
       "hubs": [
         "work"
       ],
@@ -765,10 +839,70 @@
       "related": []
     },
     {
-      "id": "decision-uncertainty",
-      "title": "decision space",
+      "id": "covariates",
+      "title": "covariates",
       "hubs": [
-        "tools"
+        "causal-inference"
+      ],
+      "kind": "lesson",
+      "status": "idea",
+      "blurb": "Part of Causal Inference: The Lifesaving Nerd.",
+      "links": [],
+      "related": [
+        "propensity-scores",
+        "causal-calc"
+      ]
+    },
+    {
+      "id": "propensity-scores",
+      "title": "propensity scores",
+      "hubs": [
+        "causal-inference"
+      ],
+      "kind": "lesson",
+      "status": "idea",
+      "blurb": "Part of Causal Inference: The Lifesaving Nerd.",
+      "links": [],
+      "related": [
+        "covariates",
+        "instrumental-variables"
+      ]
+    },
+    {
+      "id": "instrumental-variables",
+      "title": "instrumental variables & mechanistic variables",
+      "hubs": [
+        "causal-inference"
+      ],
+      "kind": "lesson",
+      "status": "idea",
+      "blurb": "Part of Causal Inference: The Lifesaving Nerd.",
+      "links": [],
+      "related": [
+        "propensity-scores",
+        "ml-approaches"
+      ]
+    },
+    {
+      "id": "ml-approaches",
+      "title": "machine learning approaches",
+      "hubs": [
+        "causal-inference"
+      ],
+      "kind": "lesson",
+      "status": "idea",
+      "blurb": "Part of Causal Inference: The Lifesaving Nerd.",
+      "links": [],
+      "related": [
+        "instrumental-variables",
+        "relations"
+      ]
+    },
+    {
+      "id": "decision-uncertainty",
+      "title": "decision under many sources of uncertainty",
+      "hubs": [
+        "decision-apps"
       ],
       "kind": "decision tool",
       "status": "live",
@@ -778,7 +912,7 @@
       "made": "React, d3",
       "links": [
         {
-          "label": "[try decision space]",
+          "label": "[try it]",
           "url": "https://decision-process-app.vercel.app"
         }
       ],
@@ -791,9 +925,9 @@
     },
     {
       "id": "decision-workbench",
-      "title": "decision workbench",
+      "title": "bayesian decision analysis",
       "hubs": [
-        "tools"
+        "decision-apps"
       ],
       "kind": "decision tool",
       "status": "live",
@@ -803,7 +937,7 @@
       "made": "React",
       "links": [
         {
-          "label": "[open the workbench]",
+          "label": "[try it]",
           "url": "https://decision-analysis-xi.vercel.app"
         }
       ],
@@ -817,7 +951,7 @@
       "id": "decision-process-r",
       "title": "decision process, the R version",
       "hubs": [
-        "tools"
+        "decision-apps"
       ],
       "kind": "decision tool",
       "status": "retired",
@@ -833,9 +967,9 @@
     },
     {
       "id": "where-to-be",
-      "title": "where to be",
+      "title": "region finder",
       "hubs": [
-        "tools"
+        "decision-apps"
       ],
       "kind": "decision tool",
       "status": "wip",
@@ -851,9 +985,9 @@
     },
     {
       "id": "nyc",
-      "title": "being and time (and distance) in nyc",
+      "title": "being and time (and distance) in NYC",
       "hubs": [
-        "tools"
+        "stats-tools"
       ],
       "kind": "map",
       "status": "live",
@@ -872,10 +1006,9 @@
     },
     {
       "id": "power-explorer",
-      "title": "mixed model power explorer",
+      "title": "power calculator",
       "hubs": [
-        "tools",
-        "methods"
+        "stats-tools"
       ],
       "kind": "calculator",
       "status": "live",
@@ -898,7 +1031,7 @@
       "id": "see-power-run",
       "title": "see power run: simplified power dynamics (or the many ways to lose)",
       "hubs": [
-        "tools"
+        "random-ideas"
       ],
       "kind": "simulation",
       "status": "idea",
@@ -912,9 +1045,9 @@
     },
     {
       "id": "updraft",
-      "title": "updraft",
+      "title": "5A decision creation",
       "hubs": [
-        "tools"
+        "decision-apps"
       ],
       "kind": "practice tool",
       "status": "wip",
@@ -932,7 +1065,7 @@
       "id": "philosophy-of-ai",
       "title": "philosophy of AI",
       "hubs": [
-        "lab"
+        "ai-tools"
       ],
       "kind": "research platform",
       "status": "wip",
@@ -949,9 +1082,9 @@
     },
     {
       "id": "study-builder",
-      "title": "experimentes",
+      "title": "study builder",
       "hubs": [
-        "lab"
+        "research-tools"
       ],
       "kind": "research platform",
       "status": "wip",
@@ -968,10 +1101,10 @@
     },
     {
       "id": "creation-station",
-      "title": "threefold",
+      "title": "creation station",
       "hubs": [
-        "lab",
-        "instruments"
+        "ai-tools",
+        "music-tools"
       ],
       "kind": "creative workspace",
       "status": "wip",
@@ -990,7 +1123,7 @@
       "id": "linguathread",
       "title": "linguathread",
       "hubs": [
-        "lab"
+        "ai-tools"
       ],
       "kind": "language partner",
       "status": "wip",
@@ -1008,7 +1141,7 @@
       "id": "vibe-cooking",
       "title": "vibe cooking",
       "hubs": [
-        "lab"
+        "ai-tools"
       ],
       "kind": "kitchen experiment",
       "status": "wip",
@@ -1024,9 +1157,9 @@
     },
     {
       "id": "pulse",
-      "title": "pulse",
+      "title": "polling app",
       "hubs": [
-        "lab"
+        "research-tools"
       ],
       "kind": "polling app",
       "status": "wip",
@@ -1042,9 +1175,9 @@
     },
     {
       "id": "waypoint",
-      "title": "waypoint",
+      "title": "pathways",
       "hubs": [
-        "lab"
+        "ai-tools"
       ],
       "kind": "planning companion",
       "status": "wip",
@@ -1060,7 +1193,7 @@
     },
     {
       "id": "class-war",
-      "title": "power & prosperity",
+      "title": "class war",
       "hubs": [
         "games"
       ],
@@ -1079,7 +1212,7 @@
     },
     {
       "id": "fog",
-      "title": "fog",
+      "title": "fog of war",
       "hubs": [
         "games"
       ],
@@ -1099,8 +1232,7 @@
       "id": "lord-of-the-dots",
       "title": "lord of the dots",
       "hubs": [
-        "games",
-        "lab"
+        "games"
       ],
       "kind": "game",
       "status": "wip",
@@ -1118,10 +1250,9 @@
     },
     {
       "id": "midterms-2026",
-      "title": "2026 midterms",
+      "title": "midterms 26",
       "hubs": [
-        "forecasts",
-        "essays"
+        "political-analyses"
       ],
       "kind": "election model",
       "status": "live",
@@ -1145,7 +1276,7 @@
       "id": "nfl-meta-model",
       "title": "nfl meta-model",
       "hubs": [
-        "forecasts"
+        "random-ideas"
       ],
       "kind": "sports model",
       "status": "wip",
@@ -1161,9 +1292,9 @@
     },
     {
       "id": "nyc-mayor-2025",
-      "title": "2025 NYC mayor",
+      "title": "predict 25 NY mayor",
       "hubs": [
-        "forecasts"
+        "political-analyses"
       ],
       "kind": "election model",
       "status": "retired",
@@ -1181,7 +1312,8 @@
       "id": "compound-effects",
       "title": "compound effects",
       "hubs": [
-        "methods"
+        "random-ideas",
+        "causal-inference"
       ],
       "kind": "methods paper",
       "status": "wip",
@@ -1193,14 +1325,15 @@
       "links": [],
       "related": [
         "power-explorer",
-        "causal-inference"
+        "covariates"
       ]
     },
     {
       "id": "causal-calc",
       "title": "causal calc",
       "hubs": [
-        "methods"
+        "causal-inference",
+        "random-ideas"
       ],
       "kind": "R functions",
       "status": "wip",
@@ -1212,14 +1345,14 @@
       "links": [],
       "source": "https://github.com/BrightsizeLife/causalCalc",
       "related": [
-        "causal-inference"
+        "covariates"
       ]
     },
     {
       "id": "evolving-clusters",
       "title": "evolving clusters",
       "hubs": [
-        "methods"
+        "random-ideas"
       ],
       "kind": "R prototype",
       "status": "wip",
@@ -1236,7 +1369,7 @@
       "id": "qual-network",
       "title": "qual network",
       "hubs": [
-        "methods"
+        "research-tools"
       ],
       "kind": "research pipeline",
       "status": "wip",
@@ -1306,20 +1439,25 @@
   "elsewhere": {
     "accounts": [
       {
-        "label": "instagram, where you can contact me",
-        "url": "https://www.instagram.com/cheap_sensationalism/"
+        "label": "GitHub",
+        "url": "https://github.com/BrightsizeLife/cheap-sensationalism-mega"
       },
       {
-        "label": "github",
-        "url": "https://github.com/BrightsizeLife"
+        "label": "instagram (contact here)",
+        "url": "https://www.instagram.com/cheap_sensationalism/"
       },
       {
         "label": "facebook",
         "url": "https://www.facebook.com/people/Cheap-Sensationalism/61568710893706/"
       },
       {
-        "label": "linkedin",
+        "label": "LinkedIn",
         "url": "https://www.linkedin.com/in/derekdebellis/"
+      },
+      {
+        "label": "ko-fi",
+        "url": "https://ko-fi.com/cheapsensationalism",
+        "blurb": "a small tip goes a long way in providing me with the means to launch more studies and a super happy moment that will likely last longer than I should admit"
       }
     ],
     "detours": [

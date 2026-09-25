@@ -19,7 +19,10 @@ export function ThingRow({ atlas, thing, here, detail }: { atlas: Atlas; thing: 
     .filter((h) => h !== here?.id)
     .map((h) => atlas.hubById.get(h))
     .filter((h): h is Hub => !!h);
-  const first = thing.links[0];
+  // Short labels ([2025], [2024], ...) all fit on the line, the way the
+  // first site listed the DORA years; otherwise just the main way in.
+  const shortLinks = thing.links.length > 1 && thing.links.every((l) => l.label.length <= 8);
+  const shown = shortLinks ? thing.links : thing.links.slice(0, 1);
   return (
     <li className="cs-row">
       <span className="cs-dash" aria-hidden="true">
@@ -35,12 +38,12 @@ export function ThingRow({ atlas, thing, here, detail }: { atlas: Atlas; thing: 
             <StatusTag status={thing.status} note={thing.note} />
           </>
         )}
-        {first && (
-          <>
+        {shown.map((l) => (
+          <React.Fragment key={l.url}>
             {' '}
-            <Go link={first} className="cs-row-go" />
-          </>
-        )}
+            <Go link={l} className="cs-row-go" />
+          </React.Fragment>
+        ))}
         {here && elsewhere.length > 0 && (
           <span className="pact-small pact-muted cs-also">
             {' '}
