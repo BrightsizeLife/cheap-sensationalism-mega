@@ -1,9 +1,11 @@
 // The shape of an edition: a dated snapshot of everything on the site.
 //
 // Three levels, and then a way around them:
-//   line   a section, named for what you do there (listen, read, ...).
+//   line   a section (noises, thoughts, tools, ...).
 //          five at most, one colour each.
-//   hub    a launching page inside a section (music, instruments, ...).
+//   hub    a launching page inside a section (political analyses, ...).
+//          a section's things that sit in no hub are held by its one
+//          `loose` hub, which has no page of its own.
 //   thing  one piece of work. it is filed under one or more hubs, and it
 //          can point at any other thing in any section through `related`.
 // The hierarchy is for finding your way; `hubs` and `related` are the
@@ -40,6 +42,10 @@ export interface Hub {
   action?: LinkRef;
   /** Old paths that should land here, e.g. /instruments for /music-tools. */
   aliases?: string[];
+  /** Things filed straight under the section, with no hub of their own.
+   *  The list shows them under the section name without a hub heading,
+   *  and the hub's address leads to the section page. One per section. */
+  loose?: boolean;
 }
 
 export interface Thing {

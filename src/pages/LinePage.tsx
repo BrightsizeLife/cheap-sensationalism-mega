@@ -5,21 +5,20 @@ import { plural } from '../components/bits';
 import { Explorer } from '../components/Explorer';
 
 export function LinePage({ atlas, line }: { atlas: Atlas; line: Line }) {
-  const hubs = atlas.hubsOn(line.id);
+  const hubs = atlas.hubsListed(line.id);
   const things = atlas.thingsOn(line.id);
   const c = atlas.count(things);
   return (
     <>
       <div className="pact-section cs-intro">
-        <p className="cs-kicker">
-          {plural(hubs.length, 'hub')}
-        </p>
+        {hubs.length > 0 && <p className="cs-kicker">{plural(hubs.length, 'hub')}</p>}
         <h1 className="pact-h1">{line.name}.</h1>
         <p className="pact-lede">
           {line.blurb} {plural(c.all, 'thing')}, {c.live} live.
         </p>
       </div>
 
+      {hubs.length > 0 && (
       <section className="pact-section" aria-labelledby="stops-h">
         <h2 id="stops-h" className="pact-h2">
           hubs
@@ -30,7 +29,7 @@ export function LinePage({ atlas, line }: { atlas: Atlas; line: Line }) {
             return (
               <li key={h.id}>
                 <p className="cs-row-title">
-                  <Link to={`/${h.id}`}>{h.name}</Link>{' '}
+                  <Link to={atlas.hubPath(h)}>{h.name}</Link>{' '}
                   <span className="pact-small pact-muted">
                     <span className="pact-num">{at.all}</span> things, <span className="pact-num">{at.live}</span> live
                   </span>
@@ -41,6 +40,7 @@ export function LinePage({ atlas, line }: { atlas: Atlas; line: Line }) {
           })}
         </ul>
       </section>
+      )}
 
       <Explorer
         atlas={atlas}

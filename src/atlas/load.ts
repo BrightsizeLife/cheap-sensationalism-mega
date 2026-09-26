@@ -79,6 +79,16 @@ export class Atlas {
     return this.edition.hubs.filter((h) => h.line === lineId);
   }
 
+  /** Hubs with a page of their own, i.e. not a section's loose things. */
+  hubsListed(lineId: string): Hub[] {
+    return this.hubsOn(lineId).filter((h) => !h.loose);
+  }
+
+  /** Where a link to this hub goes. Loose things live on the section page. */
+  hubPath(hub: Hub): string {
+    return `/${hub.loose ? hub.line : hub.id}`;
+  }
+
   thingsAt(hubId: string): Thing[] {
     return this.edition.things.filter((t) => t.hubs.includes(hubId));
   }

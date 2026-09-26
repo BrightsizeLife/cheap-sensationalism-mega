@@ -170,7 +170,8 @@
 /* Three levels, told apart by space, size and indent only:
    section  big and heavy, with the most room above it
    hub      medium, indented one step
-   thing    body size, indented two steps, rows close together */
+   thing    body size, indented two steps, rows close together
+   A section's loose things (no hub) sit one step in, under the section. */
 .cs-tree-section + .cs-tree-section {
   margin-top: var(--pact-space-6);
 }
@@ -211,10 +212,15 @@
 .cs-tree-items-flat {
   margin-left: 0;
 }
+/* A section's loose things sit one step in, level with the hub names. */
+.cs-tree-hub-loose > .cs-tree-items {
+  margin-left: 0;
+}
 @media (max-width: 30rem) {
   .cs-tree-hub { margin-left: var(--pact-space-2); }
   .cs-tree-items { margin-left: var(--pact-space-2); }
-  .cs-tree-items-flat { margin-left: 0; }
+  .cs-tree-items-flat,
+  .cs-tree-hub-loose > .cs-tree-items { margin-left: 0; }
 }
 .cs-row {
   line-height: var(--pact-leading-snug);

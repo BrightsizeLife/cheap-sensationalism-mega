@@ -53,6 +53,11 @@ export default function App() {
     current = line.id;
     title = `${line.name} · ${SITE}`;
     page = <LinePage atlas={atlas} line={line} />;
+  } else if (hub?.loose) {
+    const home = atlas.lineById.get(hub.line)!;
+    current = home.id;
+    title = `${home.name} · ${SITE}`;
+    page = <LinePage atlas={atlas} line={home} />;
   } else if (hub) {
     current = hub.line;
     title = `${hub.name} · ${SITE}`;
@@ -65,8 +70,8 @@ export default function App() {
   // Old names land on the current ones, keeping the query string.
   useEffect(() => {
     if (first === 'station' && second) navigate(`/thing/${second}${search}`, { replace: true });
-    else if (hub && first !== hub.id) navigate(`/${hub.id}${search}`, { replace: true });
-  }, [hub, first, second, search]);
+    else if (hub && first !== atlas.hubPath(hub).slice(1)) navigate(`${atlas.hubPath(hub)}${search}`, { replace: true });
+  }, [atlas, hub, first, second, search]);
 
   useEffect(() => {
     document.title = title;

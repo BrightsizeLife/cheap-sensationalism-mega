@@ -12,7 +12,7 @@ export function HubPage({ atlas, hub }: { atlas: Atlas; hub: Hub }) {
   const things = atlas.thingsAt(hub.id);
   const c = atlas.count(things);
   const transfers = atlas.transfersFrom(hub.id);
-  const siblings = atlas.hubsOn(line.id).filter((h) => h.id !== hub.id);
+  const siblings = atlas.hubsListed(line.id).filter((h) => h.id !== hub.id);
   return (
     <>
       <div className="pact-section cs-intro">
@@ -74,8 +74,8 @@ export function HubPage({ atlas, hub }: { atlas: Atlas; hub: Hub }) {
               return (
                 <li key={other.id}>
                   <p className="cs-row-title">
-                    <Link to={`/${other.id}`}>{other.name}</Link>{' '}
-                    <span className="pact-small pact-muted">in {otherLine.name}</span>
+                    <Link to={atlas.hubPath(other)}>{other.name}</Link>
+                    {!other.loose && <span className="pact-small pact-muted"> in {otherLine.name}</span>}
                   </p>
                   <p className="pact-small pact-muted">
                     via{' '}
@@ -100,7 +100,7 @@ export function HubPage({ atlas, hub }: { atlas: Atlas; hub: Hub }) {
           </h2>
           <p className="cs-links">
             {siblings.map((h) => (
-              <Link key={h.id} className="pact-cta" to={`/${h.id}`}>
+              <Link key={h.id} className="pact-cta" to={atlas.hubPath(h)}>
                 [{h.name}: {plural(atlas.thingsAt(h.id).length, 'thing')}]
               </Link>
             ))}

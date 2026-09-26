@@ -1,5 +1,6 @@
 // The list: section, then hub, then one line per thing. The hierarchy is
 // shown by space, size and indent and nothing else: no markers, no colour.
+// A section's loose things come first, one step in, with no hub heading.
 // Something filed under two hubs appears under both, with a note saying
 // where else it lives.
 
@@ -8,7 +9,7 @@ import type { Atlas } from '../atlas/load';
 import type { Hub, Thing } from '../atlas/types';
 import { STATUS_ORDER } from '../atlas/state';
 import { Link } from '../router';
-import { Go, StatusTag } from '../components/bits';
+import { Go, StatusTag, linksFor } from '../components/bits';
 
 const byService = (a: Thing, b: Thing) =>
   STATUS_ORDER[a.status] - STATUS_ORDER[b.status] || (b.updated ?? '').localeCompare(a.updated ?? '');
@@ -22,8 +23,9 @@ export function ThingRow({ atlas, thing, here, detail }: { atlas: Atlas; thing: 
     .filter((h): h is Hub => !!h);
   // Short labels ([2025], [2024], ...) all fit on the line, the way the
   // first site listed the DORA years; otherwise just the main way in.
-  const shortLinks = thing.links.length > 1 && thing.links.every((l) => l.label.length <= 8);
-  const shown = shortLinks ? thing.links : thing.links.slice(0, 1);
+  const links = linksFor(thing);
+  const shortLinks = links.length > 1 && links.every((l) => l.label.length <= 8);
+  const shown = shortLinks ? links : links.slice(0, 1);
   return (
     <li className="cs-row">
       <span className="cs-row-body">
@@ -49,7 +51,7 @@ export function ThingRow({ atlas, thing, here, detail }: { atlas: Atlas; thing: 
             {elsewhere.map((h, i) => (
               <React.Fragment key={h.id}>
                 {i > 0 && ', '}
-                <Link to={`/${h.id}`}>{h.name}</Link>
+                <Link to={atlas.hubPath(h)}>{h.name}</Link>
               </React.Fragment>
             ))}
           </span>
@@ -77,10 +79,21 @@ export function ListView({ atlas, things, headingLevel = 3 }: { atlas: Atlas; th
           {atlas.hubsOn(line.id).map((hub) => {
             const here = atlas.thingsAt(hub.id).filter((t) => shown.has(t.id)).sort(byService);
             if (!here.length) return null;
+            if (hub.loose) {
+              return (
+                <div key={hub.id} className="cs-tree-hub cs-tree-hub-loose">
+                  <ul className="cs-tree-items">
+                    {here.map((t) => (
+                      <ThingRow key={t.id} atlas={atlas} thing={t} here={hub} />
+                    ))}
+                  </ul>
+                </div>
+              );
+            }
             return (
               <div key={hub.id} className="cs-tree-hub">
                 <H2 className="cs-tree-hub-h">
-                  <Link to={`/${hub.id}`}>{hub.name}</Link>
+                  <Link to={atlas.hubPath(hub)}>{hub.name}</Link>
                 </H2>
                 <ul className="cs-tree-items">
                   {here.map((t) => (

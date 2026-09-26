@@ -66,8 +66,15 @@ export function Go({
   );
 }
 
+/** The ways in that are shown. Nothing unfinished is linked yet: a
+ *  [WIP] or planned thing keeps its links in the data but shows none. */
+export function linksFor(thing: Thing) {
+  return thing.status === 'live' ? thing.links : [];
+}
+
 export function ThingLinks({ thing, limit }: { thing: Thing; limit?: number }) {
-  const links = limit ? thing.links.slice(0, limit) : thing.links;
+  const all = linksFor(thing);
+  const links = limit ? all.slice(0, limit) : all;
   if (!links.length) return null;
   return (
     <span className="cs-links">

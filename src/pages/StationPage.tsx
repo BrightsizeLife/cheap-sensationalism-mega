@@ -6,14 +6,14 @@ import type { Atlas } from '../atlas/load';
 import type { Thing } from '../atlas/types';
 import { STATUS_ORDER } from '../atlas/state';
 import { Link } from '../router';
-import { Go, NewTag, StatusTag } from '../components/bits';
+import { Go, NewTag, StatusTag, linksFor } from '../components/bits';
 import { ThingRow } from '../views/ListView';
 
 export function StationPage({ atlas, thing }: { atlas: Atlas; thing: Thing }) {
   const lines = atlas.linesOf(thing);
   const hubs = thing.hubs.map((h) => atlas.hubById.get(h)).filter((h) => !!h);
   const home = hubs[0];
-  const [first, ...rest] = thing.links;
+  const [first, ...rest] = linksFor(thing);
   const neighbours = atlas.neighbours(thing);
 
   // Previous and next stop on the home hub, in the order its page lists them.
@@ -61,7 +61,7 @@ export function StationPage({ atlas, thing }: { atlas: Atlas; thing: Thing }) {
               {hubs.map((h, k) => (
                 <React.Fragment key={h!.id}>
                   {k > 0 && ', '}
-                  <Link to={`/${h!.id}`}>{h!.name}</Link>
+                  <Link to={atlas.hubPath(h!)}>{h!.name}</Link>
                 </React.Fragment>
               ))}
               {hubs.length > 1 && <span className="pact-muted"> (filed twice, on purpose)</span>}
@@ -88,12 +88,12 @@ export function StationPage({ atlas, thing }: { atlas: Atlas; thing: Thing }) {
           <div>
             <dt>source</dt>
             <dd>
-              {thing.source ? (
+              {thing.source && thing.status === 'live' ? (
                 <a href={thing.source} rel="noopener">
                   {thing.source.replace(/^https:\/\//, '')}
                 </a>
               ) : (
-                <span className="pact-muted">not public</span>
+                <span className="pact-muted">{thing.source ? 'linked once it’s finished' : 'not public'}</span>
               )}
             </dd>
           </div>
@@ -136,7 +136,7 @@ export function StationPage({ atlas, thing }: { atlas: Atlas; thing: Thing }) {
           )}
           <p>
             <span className="cs-kicker">all of it</span>
-            <Link className="pact-cta" to={`/${home.id}`}>
+            <Link className="pact-cta" to={atlas.hubPath(home)}>
               [back to {home.name}]
             </Link>
           </p>

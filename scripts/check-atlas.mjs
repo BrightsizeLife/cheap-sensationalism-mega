@@ -55,6 +55,11 @@ for (const name of readdirSync(DIR).filter((f) => f.endsWith('.json')).sort()) {
     list(h.aliases).forEach((a) => claim(a, `hub ${h.id} (alias)`));
     if (!lineIds.has(h.line)) say(file, `hub ${h.id} is on unknown line "${h.line}"`);
     if (!h.h1 || !h.lede) say(file, `hub ${h.id} needs an h1 and a lede`);
+    if (h.loose !== undefined && typeof h.loose !== 'boolean') say(file, `hub ${h.id} loose should be true or false`);
+  });
+  lines.forEach((l) => {
+    const loose = hubs.filter((h) => h.line === l.id && h.loose);
+    if (loose.length > 1) say(file, `line ${l.id} has ${loose.length} loose hubs; one holds all of a section's loose things`);
   });
 
   const hubIds = new Set(hubs.map((h) => h.id));

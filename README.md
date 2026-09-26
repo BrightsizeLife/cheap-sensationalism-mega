@@ -1,10 +1,13 @@
 # cheap sensationalism
 
-The studio site. Everything Derek makes is a **thing**. Things are filed
-under **hubs** (each hub has its own launching page, like `/music` or
-`/music-tools`), and hubs sit in one of five **sections**, named for what
-you do there: listen, read, use, play, think. In the code and the JSON a
-section is called a `line`.
+The studio site. Everything Derek makes is a **thing**. Things sit in one
+of five **sections** (noises, thoughts, tools, distractions, curiosities),
+either straight in the section or in a **hub** inside it (each hub has its
+own launching page, like `/political-analyses` or `/stats-tools`). In the
+code and the JSON a section is called a `line`. Things that sit straight in
+a section are held by that section's one `loose` hub, which has no page of
+its own: the list shows them under the section name, and its address leads
+to the section page.
 
 Every map can be seen three ways, picked at the top: **list**, **table**, or
 **network**. Whatever is on screen is in the URL, so it can be sent.
@@ -40,6 +43,9 @@ A thing looks like this. Only `id`, `title`, `hubs`, `kind`, `status`,
 - `status` is one of `live`, `wip` (shown as `[WIP]`), or `idea` (planned).
   `note` says why, in a few words. Nothing is kept as retired: when a thing
   is done with, it comes off the site.
+- Only `live` things are linked. A `[WIP]` or planned thing keeps its
+  `links` and `source` in the file, but the site shows none of them until
+  its status changes to `live`.
 - Two or more `hubs` file it in two places at once. `related` draws a dashed
   line to any other thing, in any section. These are the connections that
   ignore the hierarchy.

@@ -377,7 +377,7 @@ function Selected({ atlas, n }: { atlas: Atlas; n: Node }) {
         <p className="pact-h3 cs-net-panel-title">{n.hub.name}</p>
         <p className="pact-small">{n.hub.lede}</p>
         <p className="cs-links">
-          <Link className="pact-cta" to={`/${n.hub.id}`}>
+          <Link className="pact-cta" to={atlas.hubPath(n.hub)}>
             [open the {n.hub.name} page]
           </Link>
           {clear}
