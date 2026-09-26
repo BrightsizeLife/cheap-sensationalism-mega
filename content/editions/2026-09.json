@@ -1,0 +1,1395 @@
+{
+  "id": "2026-09",
+  "published": "2026-09-26",
+  "note": "Sorted by hand: noises, thoughts, tools, distractions, curiosities, with subgroups inside thoughts and tools. Unfinished things are listed but not linked yet.",
+  "lines": [
+    {
+      "id": "noises",
+      "name": "noises",
+      "letter": "N",
+      "hue": "culture",
+      "blurb": "Music."
+    },
+    {
+      "id": "thoughts",
+      "name": "thoughts",
+      "letter": "T",
+      "hue": "practices",
+      "blurb": "Analyses, essays, and work stuff."
+    },
+    {
+      "id": "tools",
+      "name": "tools",
+      "letter": "O",
+      "hue": "technology",
+      "blurb": "Apps and tools that run in a browser."
+    },
+    {
+      "id": "distractions",
+      "name": "distractions",
+      "letter": "D",
+      "hue": "architecture",
+      "blurb": "Three games, started in September. None are open to the public yet."
+    },
+    {
+      "id": "curiosities",
+      "name": "curiosities",
+      "letter": "C",
+      "hue": "outcomes",
+      "blurb": "Lessons, courses, and practice tools."
+    }
+  ],
+  "hubs": [
+    {
+      "id": "music",
+      "line": "noises",
+      "name": "noises",
+      "h1": "noises.",
+      "lede": "Music.",
+      "loose": true
+    },
+    {
+      "id": "other-thoughts",
+      "line": "thoughts",
+      "name": "thoughts",
+      "h1": "thoughts.",
+      "lede": "Analyses, essays, and work stuff.",
+      "loose": true
+    },
+    {
+      "id": "work",
+      "line": "thoughts",
+      "name": "work stuff",
+      "aliases": [
+        "work-stuff"
+      ],
+      "h1": "work stuff.",
+      "lede": "Research from the day job: DORA reports, papers, posts, and two podcasts."
+    },
+    {
+      "id": "political-analyses",
+      "line": "thoughts",
+      "name": "political analyses",
+      "aliases": [
+        "politics",
+        "forecasts",
+        "elections"
+      ],
+      "h1": "political analyses.",
+      "lede": "Election models, and a post mortem on 2024 in three parts.",
+      "action": {
+        "label": "[see the 2026 midterms model]",
+        "url": "https://midterms26.cheapsensationalism.com"
+      }
+    },
+    {
+      "id": "causal-inference",
+      "line": "thoughts",
+      "name": "causal inference: the lifesaving nerd",
+      "aliases": [
+        "causal"
+      ],
+      "h1": "causal inference: the lifesaving nerd.",
+      "lede": "Telling cause from coincidence: four planned lessons and a methods paper."
+    },
+    {
+      "id": "scribbles",
+      "line": "thoughts",
+      "name": "scribbles & patterns",
+      "aliases": [
+        "essays",
+        "scribbles-and-patterns"
+      ],
+      "h1": "scribbles & patterns.",
+      "lede": "Data essays and the occasional argument. Weird Weather is out. The rest are written, built, or only named.",
+      "action": {
+        "label": "[read weird weather]",
+        "url": "https://weather.cheapsensationalism.com"
+      }
+    },
+    {
+      "id": "power-and-belief",
+      "line": "thoughts",
+      "name": "power & belief",
+      "h1": "power & belief.",
+      "lede": "See power run, and two newer ideas about how power and belief propagate."
+    },
+    {
+      "id": "other-tools",
+      "line": "tools",
+      "name": "tools",
+      "h1": "tools.",
+      "lede": "Apps and tools that run in a browser.",
+      "loose": true,
+      "aliases": [
+        "music-tools",
+        "instruments"
+      ]
+    },
+    {
+      "id": "decision-tools",
+      "line": "tools",
+      "name": "decision tools",
+      "aliases": [
+        "decision-apps",
+        "decisions"
+      ],
+      "h1": "decision tools.",
+      "lede": "Put in what you believe, including how unsure you are, and get back what that implies.",
+      "action": {
+        "label": "[try decision under many sources of uncertainty]",
+        "url": "https://decision-process-app.vercel.app"
+      }
+    },
+    {
+      "id": "stats-tools",
+      "line": "tools",
+      "name": "stats tools",
+      "aliases": [
+        "stats"
+      ],
+      "h1": "stats tools.",
+      "lede": "For seeing what a model assumes before it tells you anything.",
+      "action": {
+        "label": "[open the power calculator]",
+        "url": "https://cheap-sensationalism.shinyapps.io/longitudinal_power_calc/"
+      }
+    },
+    {
+      "id": "ai-tools",
+      "line": "tools",
+      "name": "AI tools",
+      "aliases": [
+        "lab",
+        "ai"
+      ],
+      "h1": "AI tools.",
+      "lede": "Apps with a language model somewhere inside. Most are invite-only, because they keep what people type."
+    },
+    {
+      "id": "research-tools",
+      "line": "tools",
+      "name": "research tools",
+      "aliases": [
+        "research"
+      ],
+      "h1": "research tools.",
+      "lede": "Platforms for running studies and polls. Closed until the ethics and privacy paperwork is done."
+    },
+    {
+      "id": "places",
+      "line": "tools",
+      "name": "places",
+      "h1": "places.",
+      "lede": "Where to live, and how far everything is: a region finder and a walking map of New York."
+    },
+    {
+      "id": "games",
+      "line": "distractions",
+      "name": "distractions",
+      "h1": "distractions.",
+      "lede": "Three games, started in September. None are open to the public yet.",
+      "loose": true
+    },
+    {
+      "id": "other-curiosities",
+      "line": "curiosities",
+      "name": "curiosities",
+      "h1": "curiosities.",
+      "lede": "Lessons, courses, and practice tools.",
+      "loose": true,
+      "aliases": [
+        "study-tools",
+        "study",
+        "explainers"
+      ]
+    }
+  ],
+  "things": [
+    {
+      "id": "philadelphia-demos",
+      "title": "philadelphia demos",
+      "hubs": [
+        "music"
+      ],
+      "kind": "album",
+      "status": "wip",
+      "blurb": "Historic, revolutionary, British, Quaker, unfinished.",
+      "links": [],
+      "related": []
+    },
+    {
+      "id": "slop",
+      "title": "slop",
+      "hubs": [
+        "music"
+      ],
+      "kind": "album",
+      "status": "wip",
+      "blurb": "Garage noises begging for preservation.",
+      "links": [],
+      "related": []
+    },
+    {
+      "id": "the-patchbay",
+      "title": "the patchbay",
+      "hubs": [
+        "music"
+      ],
+      "kind": "signal map",
+      "status": "live",
+      "note": "used in one studio: mine",
+      "blurb": "An interactive map of how one studio’s signal runs through Logic, with each plugin’s settings drawn as curves. Built to mix slop.",
+      "year": "2026",
+      "updated": "2026-06",
+      "made": "one HTML file",
+      "links": [],
+      "related": []
+    },
+    {
+      "id": "cheap-sensationalism",
+      "title": "cheap sensationalism",
+      "hubs": [
+        "music"
+      ],
+      "kind": "album",
+      "status": "live",
+      "blurb": "Fragments from a past life glued together, leaving a couple moments of conceivable musicality.",
+      "year": "2024",
+      "links": [
+        {
+          "label": "[listen on spotify]",
+          "url": "https://open.spotify.com/album/7kjmvtW08iNlCKEU0qgKXN"
+        },
+        {
+          "label": "[apple music]",
+          "url": "https://music.apple.com/us/album/cheap-sensationalism/1773687566"
+        },
+        {
+          "label": "[youtube music]",
+          "url": "https://music.youtube.com/playlist?list=OLAK5uy_l_jEZiq2LYmeKp6hQvg6if0eislc_NRJA"
+        },
+        {
+          "label": "[read the album notes]",
+          "url": "/album-notes.html"
+        },
+        {
+          "label": "[watch the preview reel]",
+          "url": "https://www.instagram.com/reel/DBxQo_nx5V0/"
+        },
+        {
+          "label": "[watch the other reel]",
+          "url": "https://www.instagram.com/reel/DCPWD37RyR9/"
+        }
+      ],
+      "related": [
+        "slop"
+      ]
+    },
+    {
+      "id": "philosophy-of-ai",
+      "title": "philosophy of AI",
+      "hubs": [
+        "other-thoughts"
+      ],
+      "kind": "research platform",
+      "status": "wip",
+      "note": "running; not linked yet",
+      "blurb": "The same thought experiments put to people and to AI models, with every answer pooled into one dataset. The ship of Theseus is involved.",
+      "year": "2026",
+      "updated": "2026-08",
+      "made": "React, Firebase, R",
+      "links": [],
+      "related": [
+        "lord-of-the-dots",
+        "study-builder"
+      ]
+    },
+    {
+      "id": "ai-interaction-experiment",
+      "title": "AI interaction experiment",
+      "hubs": [
+        "work"
+      ],
+      "kind": "paper",
+      "status": "live",
+      "blurb": "A paper, listed on Google Scholar.",
+      "links": [
+        {
+          "label": "[see it on scholar]",
+          "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Ogk-GRoAAAAJ&citation_for_view=Ogk-GRoAAAAJ:a0OBvERweLwC"
+        }
+      ],
+      "related": []
+    },
+    {
+      "id": "documents-sunshine",
+      "title": "documents are like sunshine",
+      "hubs": [
+        "work"
+      ],
+      "kind": "blog post",
+      "status": "live",
+      "blurb": "A deep dive into documentation, from the 2022 State of DevOps report.",
+      "year": "2022",
+      "links": [
+        {
+          "label": "[read it]",
+          "url": "https://cloud.google.com/blog/products/devops-sre/deep-dive-into-2022-state-of-devops-report-on-documentation"
+        }
+      ],
+      "related": [
+        "dora-reports"
+      ]
+    },
+    {
+      "id": "podcast-dora-ai-impact",
+      "title": "DORA's latest research on AI impact (Engineering Enablement podcast)",
+      "hubs": [
+        "work"
+      ],
+      "kind": "podcast",
+      "status": "live",
+      "blurb": "A conversation with Abi Noda on DORA's research into how generative AI affects software work, and how leaders can measure it.",
+      "links": [
+        {
+          "label": "[listen]",
+          "url": "https://podcasts.apple.com/us/podcast/doras-latest-research-on-ai-impact/id1619140476?i=1000709581891"
+        }
+      ],
+      "related": [
+        "dora-ai-capabilities",
+        "podcast-science-behind-dora"
+      ]
+    },
+    {
+      "id": "podcast-science-behind-dora",
+      "title": "the science behind DORA (Engineering Enablement podcast)",
+      "hubs": [
+        "work"
+      ],
+      "kind": "podcast",
+      "status": "live",
+      "blurb": "A conversation with Abi Noda on how DORA's research is done, from defining outcomes to survey design and structural equation modelling.",
+      "links": [
+        {
+          "label": "[listen]",
+          "url": "https://podcasts.apple.com/us/podcast/the-science-behind-dora-derek-debellis-google/id1619140476?i=1000654849708"
+        },
+        {
+          "label": "[spotify]",
+          "url": "https://open.spotify.com/episode/09KqJyjbwUHUJuTtz8A4oc"
+        }
+      ],
+      "related": [
+        "dora-reports",
+        "podcast-dora-ai-impact"
+      ]
+    },
+    {
+      "id": "dora-ai-capabilities",
+      "title": "DORA inaugural AI capabilities model",
+      "hubs": [
+        "work"
+      ],
+      "kind": "blog post",
+      "status": "live",
+      "blurb": "The announcement of DORA’s first AI capabilities model.",
+      "year": "2025",
+      "links": [
+        {
+          "label": "[read it]",
+          "url": "https://cloud.google.com/blog/products/ai-machine-learning/introducing-doras-inaugural-ai-capabilities-model"
+        }
+      ],
+      "related": [
+        "dora-reports"
+      ]
+    },
+    {
+      "id": "dora-reports",
+      "title": "DORA reports",
+      "hubs": [
+        "work"
+      ],
+      "kind": "research reports",
+      "status": "live",
+      "blurb": "The yearly DORA research reports on how software gets built and what helps.",
+      "year": "2022",
+      "updated": "2025",
+      "links": [
+        {
+          "label": "[2025]",
+          "url": "https://dora.dev/research/2025/"
+        },
+        {
+          "label": "[2024]",
+          "url": "https://dora.dev/research/2024/"
+        },
+        {
+          "label": "[2023]",
+          "url": "https://dora.dev/research/2023/"
+        },
+        {
+          "label": "[2022]",
+          "url": "https://dora.dev/research/2022/"
+        }
+      ],
+      "related": [
+        "dora-ai-capabilities",
+        "documents-sunshine"
+      ]
+    },
+    {
+      "id": "prototyping-probabilistic-failure",
+      "title": "prototyping probabilistic failure",
+      "hubs": [
+        "work"
+      ],
+      "kind": "paper",
+      "status": "live",
+      "blurb": "A paper, listed on Google Scholar.",
+      "links": [
+        {
+          "label": "[see it on scholar]",
+          "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Ogk-GRoAAAAJ&citation_for_view=Ogk-GRoAAAAJ:yD5IFk8b50cC"
+        }
+      ],
+      "related": []
+    },
+    {
+      "id": "midterms-2026",
+      "title": "midterms 26",
+      "hubs": [
+        "political-analyses"
+      ],
+      "kind": "election model",
+      "status": "live",
+      "blurb": "Every public poll of the 2026 midterms, run through two Bayesian models every day, with prediction markets and op-eds tracked alongside for comparison.",
+      "year": "2026",
+      "updated": "2026-09",
+      "made": "R, brms, Stan",
+      "links": [
+        {
+          "label": "[see the model]",
+          "url": "https://midterms26.cheapsensationalism.com"
+        }
+      ],
+      "related": [
+        "bayes-splines-2024",
+        "party-alignment"
+      ]
+    },
+    {
+      "id": "bayes-splines-follow-up",
+      "title": "follow-up on the bayes/splines election models",
+      "hubs": [
+        "political-analyses"
+      ],
+      "kind": "essay",
+      "status": "live",
+      "blurb": "What the model got right and wrong, once there were votes to check it against.",
+      "year": "2024",
+      "updated": "2024-11",
+      "links": [
+        {
+          "label": "[read it on medium]",
+          "url": "https://medium.com/cheap-sensationalism/quick-follow-up-on-the-bayes-splines-election-model-42358e4be1a1"
+        }
+      ],
+      "related": [
+        "bayes-splines-2024"
+      ]
+    },
+    {
+      "id": "bayes-splines-2024",
+      "title": "bayes, splines & 2024 US election polls",
+      "hubs": [
+        "political-analyses"
+      ],
+      "kind": "essay",
+      "status": "live",
+      "blurb": "Hierarchical Bayesian splines fitted to the 2024 polls, written up while the polls were still arguing.",
+      "year": "2024",
+      "updated": "2024-10",
+      "made": "R, brms",
+      "links": [
+        {
+          "label": "[read it on medium]",
+          "url": "https://medium.com/cheap-sensationalism/bayes-splines-2024-us-election-polls-hierarchical-data-good-fun-9e6b79bb589f"
+        }
+      ],
+      "related": [
+        "bayes-splines-follow-up",
+        "midterms-2026"
+      ]
+    },
+    {
+      "id": "party-alignment",
+      "title": "2024 election post mortem: party alignment",
+      "hubs": [
+        "political-analyses"
+      ],
+      "kind": "data essay",
+      "status": "wip",
+      "note": "built; not published yet",
+      "blurb": "Act two: how closely people’s positions matched the party they voted for. It ends by looking ahead to 2026 and 2028.",
+      "updated": "2026-07",
+      "made": "R, brms",
+      "links": [],
+      "related": [
+        "media-story",
+        "belief-systems",
+        "midterms-2026"
+      ]
+    },
+    {
+      "id": "belief-systems",
+      "title": "2024 election post mortem: belief systems",
+      "hubs": [
+        "political-analyses"
+      ],
+      "kind": "data essay",
+      "status": "wip",
+      "note": "exploratory draft",
+      "blurb": "Act three: worldviews. Exploratory, and built on 65 people, which it says out loud.",
+      "updated": "2026-07",
+      "made": "R, brms",
+      "links": [],
+      "related": [
+        "media-story",
+        "party-alignment"
+      ]
+    },
+    {
+      "id": "media-story",
+      "title": "2024 election post mortem: the media story",
+      "hubs": [
+        "political-analyses"
+      ],
+      "kind": "data essay",
+      "status": "wip",
+      "note": "built; not published yet",
+      "blurb": "Act one of a post mortem on the 2024 election, built on a survey of 153 US adults: where their news came from.",
+      "updated": "2026-07",
+      "made": "R, brms",
+      "links": [],
+      "related": [
+        "party-alignment",
+        "belief-systems"
+      ]
+    },
+    {
+      "id": "state-of-the-union",
+      "title": "state of the union",
+      "hubs": [
+        "political-analyses"
+      ],
+      "kind": "project",
+      "status": "idea",
+      "blurb": "Details to come.",
+      "links": [],
+      "related": []
+    },
+    {
+      "id": "compound-effects",
+      "title": "compound effects",
+      "hubs": [
+        "causal-inference"
+      ],
+      "kind": "methods paper",
+      "status": "wip",
+      "note": "prototype",
+      "blurb": "Turning cheap, short-term effects into estimates of long-term outcomes by chaining posteriors together.",
+      "year": "2026",
+      "updated": "2026-07",
+      "made": "Python, R",
+      "links": [],
+      "related": [
+        "power-explorer",
+        "covariates"
+      ]
+    },
+    {
+      "id": "ml-approaches",
+      "title": "machine learning approaches",
+      "hubs": [
+        "causal-inference"
+      ],
+      "kind": "lesson",
+      "status": "idea",
+      "blurb": "Part of Causal Inference: The Lifesaving Nerd.",
+      "links": [],
+      "related": [
+        "instrumental-variables",
+        "relations"
+      ]
+    },
+    {
+      "id": "instrumental-variables",
+      "title": "instrumental variables & mechanistic variables",
+      "hubs": [
+        "causal-inference"
+      ],
+      "kind": "lesson",
+      "status": "idea",
+      "blurb": "Part of Causal Inference: The Lifesaving Nerd.",
+      "links": [],
+      "related": [
+        "propensity-scores",
+        "ml-approaches"
+      ]
+    },
+    {
+      "id": "propensity-scores",
+      "title": "propensity scores",
+      "hubs": [
+        "causal-inference"
+      ],
+      "kind": "lesson",
+      "status": "idea",
+      "blurb": "Part of Causal Inference: The Lifesaving Nerd.",
+      "links": [],
+      "related": [
+        "covariates",
+        "instrumental-variables"
+      ]
+    },
+    {
+      "id": "covariates",
+      "title": "covariates",
+      "hubs": [
+        "causal-inference"
+      ],
+      "kind": "lesson",
+      "status": "idea",
+      "blurb": "Part of Causal Inference: The Lifesaving Nerd.",
+      "links": [],
+      "related": [
+        "propensity-scores"
+      ]
+    },
+    {
+      "id": "communities-ew",
+      "title": "communities, ew!",
+      "hubs": [
+        "scribbles"
+      ],
+      "kind": "essay",
+      "status": "idea",
+      "blurb": "An essay about communities, written by someone who flinches at the word.",
+      "links": [],
+      "related": [
+        "lord-of-the-dots"
+      ]
+    },
+    {
+      "id": "paradox-of-tragedy",
+      "title": "the paradox of tragedy: a light explanation",
+      "hubs": [
+        "scribbles"
+      ],
+      "kind": "research explainer",
+      "status": "wip",
+      "note": "runs on simulated data, so it explains a method, not a finding",
+      "blurb": "Why sad songs feel good. One proposed answer, existential isolation, and the Bayesian mediation model that would test it.",
+      "updated": "2026-07",
+      "made": "R, brms",
+      "links": [],
+      "related": [
+        "beatles"
+      ]
+    },
+    {
+      "id": "beatles",
+      "title": "all you need is… : multi-method analysis of Beatles lyrics",
+      "hubs": [
+        "scribbles"
+      ],
+      "kind": "data essay",
+      "status": "wip",
+      "note": "ready; not published yet",
+      "blurb": "A theory of the Beatles’ emotional arc, tested two ways: topic models, and AI coders reading every song. The lyrics themselves are not reproduced.",
+      "updated": "2026-09",
+      "made": "R, plain JavaScript",
+      "links": [],
+      "related": [
+        "paradox-of-tragedy",
+        "midterms-2026"
+      ]
+    },
+    {
+      "id": "weird-weather",
+      "title": "weird weather",
+      "hubs": [
+        "scribbles"
+      ],
+      "kind": "data essay",
+      "status": "live",
+      "blurb": "How strange was your city’s winter? Every city measured against its own history, with a model underneath.",
+      "year": "2026",
+      "updated": "2026-05",
+      "made": "Python, one HTML page",
+      "links": [
+        {
+          "label": "[read weird weather]",
+          "url": "https://weather.cheapsensationalism.com"
+        }
+      ],
+      "source": "https://github.com/BrightsizeLife/Weird-weather",
+      "related": [
+        "virtue-and-vice"
+      ]
+    },
+    {
+      "id": "taxes",
+      "title": "taxes: where people want money to go and where it goes",
+      "hubs": [
+        "scribbles"
+      ],
+      "kind": "essay",
+      "status": "idea",
+      "blurb": "Where people say they want tax money to go, set beside where it actually goes.",
+      "links": [],
+      "related": [
+        "class-war"
+      ]
+    },
+    {
+      "id": "virtue-and-vice",
+      "title": "virtue, vice and search trends",
+      "hubs": [
+        "scribbles"
+      ],
+      "kind": "data essay",
+      "status": "wip",
+      "note": "built and audited; not published yet",
+      "blurb": "Which Google searches rise and fall around New Year’s, from 2005 to now, with the corrections for multiple comparisons that the resolutions themselves never get.",
+      "updated": "2026-08",
+      "made": "Python, plain JavaScript",
+      "links": [],
+      "related": [
+        "weird-weather"
+      ]
+    },
+    {
+      "id": "see-power-run",
+      "title": "see power run: simplified power dynamics (or the many ways to lose)",
+      "hubs": [
+        "power-and-belief"
+      ],
+      "kind": "simulation",
+      "status": "idea",
+      "blurb": "People, resources, and the state of the world, simulated to see how influence moves. Currently a stub with ambitions.",
+      "updated": "2025-01",
+      "made": "R",
+      "links": [],
+      "related": [
+        "class-war"
+      ]
+    },
+    {
+      "id": "power-propagation",
+      "title": "power propagation",
+      "hubs": [
+        "power-and-belief"
+      ],
+      "kind": "project",
+      "status": "idea",
+      "blurb": "Details to come.",
+      "links": [],
+      "related": []
+    },
+    {
+      "id": "belief-propagation",
+      "title": "belief propagation",
+      "hubs": [
+        "power-and-belief"
+      ],
+      "kind": "project",
+      "status": "idea",
+      "blurb": "Details to come.",
+      "links": [],
+      "related": []
+    },
+    {
+      "id": "fretboard",
+      "title": "the fretboard: unlock the shred",
+      "hubs": [
+        "other-tools"
+      ],
+      "kind": "music tool",
+      "status": "live",
+      "blurb": "Scales, chords, and modes laid out on a guitar neck, so you can see where your hand is supposed to go.",
+      "year": "2025",
+      "updated": "2026-05",
+      "made": "R Shiny, then React",
+      "links": [
+        {
+          "label": "[play the fretboard]",
+          "url": "https://fretboard.cheapsensationalism.com"
+        }
+      ],
+      "related": [
+        "ear-commander"
+      ]
+    },
+    {
+      "id": "das-codifier",
+      "title": "das codifier",
+      "hubs": [
+        "other-tools"
+      ],
+      "kind": "project",
+      "status": "idea",
+      "blurb": "Details to come.",
+      "links": [],
+      "related": []
+    },
+    {
+      "id": "updraft",
+      "title": "5A decision creation",
+      "hubs": [
+        "decision-tools"
+      ],
+      "kind": "practice tool",
+      "status": "wip",
+      "note": "prototype, waiting in a pull request",
+      "blurb": "The evidence-based practice cycle, ask, acquire, appraise, apply, assess, with a Bayesian belief engine keeping track of what you now think.",
+      "updated": "2026-08",
+      "made": "Next.js",
+      "links": [],
+      "source": "https://github.com/BrightsizeLife/5As",
+      "related": [
+        "decision-workbench"
+      ]
+    },
+    {
+      "id": "decision-workbench",
+      "title": "bayesian decision analysis",
+      "hubs": [
+        "decision-tools"
+      ],
+      "kind": "decision tool",
+      "status": "live",
+      "blurb": "The four steps of Bayesian decision analysis, decision trees included, as something you click through instead of read about.",
+      "year": "2026",
+      "updated": "2026-08",
+      "made": "React",
+      "links": [
+        {
+          "label": "[try it]",
+          "url": "https://decision-analysis-xi.vercel.app"
+        }
+      ],
+      "source": "https://github.com/BrightsizeLife/decision-analysis",
+      "related": [
+        "decision-uncertainty",
+        "updraft"
+      ]
+    },
+    {
+      "id": "decision-uncertainty",
+      "title": "decision under many sources of uncertainty",
+      "hubs": [
+        "decision-tools"
+      ],
+      "kind": "decision tool",
+      "status": "live",
+      "blurb": "Compare two choices on up to five things you care about, each with its own uncertainty, and let a few thousand simulated futures argue it out.",
+      "year": "2025",
+      "updated": "2026-05",
+      "made": "React, d3",
+      "links": [
+        {
+          "label": "[try it]",
+          "url": "https://decision-process-app.vercel.app"
+        }
+      ],
+      "source": "https://github.com/BrightsizeLife/decision-process-app",
+      "related": [
+        "decision-workbench",
+        "where-to-be"
+      ]
+    },
+    {
+      "id": "evolving-clusters",
+      "title": "evolving clusters",
+      "hubs": [
+        "stats-tools"
+      ],
+      "kind": "R prototype",
+      "status": "wip",
+      "note": "prototype",
+      "blurb": "Clustering where the cluster centres evolve, the way a genetic algorithm would.",
+      "year": "2025",
+      "updated": "2025-01",
+      "made": "R",
+      "links": [],
+      "source": "https://github.com/BrightsizeLife/evolving_clusters",
+      "related": []
+    },
+    {
+      "id": "power-explorer",
+      "title": "power calculator",
+      "hubs": [
+        "stats-tools"
+      ],
+      "kind": "calculator",
+      "status": "live",
+      "blurb": "Simulates the power of a longitudinal study before you run it, plus the chance your estimate comes out with the wrong sign or the wrong size.",
+      "year": "2025",
+      "updated": "2025-02",
+      "made": "R Shiny",
+      "links": [
+        {
+          "label": "[run the calculator]",
+          "url": "https://cheap-sensationalism.shinyapps.io/longitudinal_power_calc/"
+        }
+      ],
+      "source": "https://github.com/BrightsizeLife/sample-calculators",
+      "related": [
+        "compound-effects"
+      ]
+    },
+    {
+      "id": "dag-to-code",
+      "title": "DAG to code",
+      "hubs": [
+        "stats-tools"
+      ],
+      "kind": "stats tool",
+      "status": "wip",
+      "note": "link coming",
+      "blurb": "A stats tool for turning a causal diagram into code.",
+      "links": [],
+      "related": [
+        "relations"
+      ]
+    },
+    {
+      "id": "bayesian-priors",
+      "title": "bayesian priors: the silent killer",
+      "hubs": [
+        "stats-tools"
+      ],
+      "kind": "interactive tool",
+      "status": "wip",
+      "note": "works; not deployed yet",
+      "blurb": "Pick a model and a prior, and see what it believes before it has seen any data. Then see how much data it takes to change its mind.",
+      "updated": "2026-08",
+      "made": "R Shiny, then plain JavaScript",
+      "links": [],
+      "source": "https://github.com/BrightsizeLife/bayesian-priors-dash",
+      "related": [
+        "predictive-processing",
+        "relations"
+      ]
+    },
+    {
+      "id": "creation-station",
+      "title": "creation station",
+      "hubs": [
+        "ai-tools"
+      ],
+      "kind": "creative workspace",
+      "status": "wip",
+      "note": "invite only",
+      "blurb": "One app with three rooms: Noise for song sketches, Words for manuscripts, Screen for screenplays, and a reader in the corner that comments on all of them.",
+      "year": "2026",
+      "updated": "2026-09",
+      "made": "Next.js, Firebase, Gemini",
+      "links": [],
+      "related": [
+        "linguathread",
+        "vibe-cooking"
+      ]
+    },
+    {
+      "id": "vibe-cooking",
+      "title": "vibe cooking",
+      "hubs": [
+        "ai-tools"
+      ],
+      "kind": "kitchen experiment",
+      "status": "wip",
+      "note": "invite only",
+      "blurb": "Say what you feel like eating. It suggests ingredients, then recipes, then a grocery list that respects your allergies.",
+      "year": "2026",
+      "updated": "2026-09",
+      "made": "React, Firebase, Gemini",
+      "links": [],
+      "related": [
+        "creation-station"
+      ]
+    },
+    {
+      "id": "waypoint",
+      "title": "pathways",
+      "hubs": [
+        "ai-tools"
+      ],
+      "kind": "planning companion",
+      "status": "wip",
+      "note": "prototype",
+      "blurb": "Turns a goal into a plan in seven stages, then checks on it.",
+      "year": "2026",
+      "updated": "2026-07",
+      "made": "Next.js, Claude",
+      "links": [],
+      "related": [
+        "decision-workbench"
+      ]
+    },
+    {
+      "id": "pulse",
+      "title": "polling app",
+      "hubs": [
+        "research-tools"
+      ],
+      "kind": "polling app",
+      "status": "wip",
+      "note": "stays closed until it has a privacy policy",
+      "blurb": "A polling app with a review queue and a portal for researchers.",
+      "year": "2026",
+      "updated": "2026-09",
+      "made": "React, Firebase",
+      "links": [],
+      "related": [
+        "study-builder"
+      ]
+    },
+    {
+      "id": "study-builder",
+      "title": "study builder",
+      "hubs": [
+        "research-tools"
+      ],
+      "kind": "research platform",
+      "status": "wip",
+      "note": "studies need ethics approval before anyone sees them",
+      "blurb": "A platform for running online studies: consent, survey, debrief, and balanced assignment to conditions.",
+      "year": "2026",
+      "updated": "2026-09",
+      "made": "Next.js, Postgres, jsPsych",
+      "links": [],
+      "related": [
+        "philosophy-of-ai",
+        "pulse"
+      ]
+    },
+    {
+      "id": "where-to-be",
+      "title": "region finder",
+      "hubs": [
+        "places"
+      ],
+      "kind": "decision tool",
+      "status": "wip",
+      "note": "works; not public yet",
+      "blurb": "Ranks 41 US regions by what you say matters, then carries your uncertainty about those weights through a Monte Carlo, because nobody knows exactly how much they care about trails.",
+      "year": "2026",
+      "updated": "2026-07",
+      "made": "plain JavaScript, Python",
+      "links": [],
+      "related": [
+        "decision-uncertainty"
+      ]
+    },
+    {
+      "id": "nyc",
+      "title": "being and time (and distance) in NYC",
+      "hubs": [
+        "places"
+      ],
+      "kind": "map",
+      "status": "live",
+      "blurb": "How walkable New York is from every subway station: heatmaps, nearest stations, travel times.",
+      "year": "2026",
+      "updated": "2026-08",
+      "made": "R Shiny, Leaflet",
+      "links": [
+        {
+          "label": "[open the map]",
+          "url": "https://navigating-nyc.vercel.app"
+        }
+      ],
+      "source": "https://github.com/BrightsizeLife/navigating-nyc",
+      "related": []
+    },
+    {
+      "id": "lord-of-the-dots",
+      "title": "lord of the dots",
+      "hubs": [
+        "games"
+      ],
+      "kind": "game",
+      "status": "wip",
+      "note": "playable; the research version comes next",
+      "blurb": "A ten-minute survival game played behind a Rawlsian veil of ignorance: you help write the rules before you find out which dot you are.",
+      "year": "2026",
+      "updated": "2026-09",
+      "made": "Next.js",
+      "links": [],
+      "related": [
+        "philosophy-of-ai",
+        "communities-ew",
+        "fog"
+      ]
+    },
+    {
+      "id": "fog",
+      "title": "fog of war",
+      "hubs": [
+        "games"
+      ],
+      "kind": "game",
+      "status": "wip",
+      "note": "practice mode works; online play does not yet",
+      "blurb": "Command an army through reports that arrive late and are sometimes wrong.",
+      "year": "2026",
+      "updated": "2026-09",
+      "made": "Next.js",
+      "links": [],
+      "related": [
+        "lord-of-the-dots"
+      ]
+    },
+    {
+      "id": "class-war",
+      "title": "class war",
+      "hubs": [
+        "games"
+      ],
+      "kind": "game",
+      "status": "wip",
+      "note": "in playtest",
+      "blurb": "A political economy for four players: business, workers, and two parties, all trying to get what they want out of the same tax code.",
+      "year": "2026",
+      "updated": "2026-09",
+      "made": "TypeScript",
+      "links": [],
+      "related": [
+        "see-power-run",
+        "taxes"
+      ]
+    },
+    {
+      "id": "relations",
+      "title": "relations",
+      "hubs": [
+        "other-curiosities"
+      ],
+      "kind": "interactive lessons",
+      "status": "live",
+      "blurb": "Scrolling lessons that draw each statistical calculation step by step and compute it live: ANOVA, Bayes, DAGs, GLMs, survival, machine learning, calculus.",
+      "year": "2026",
+      "updated": "2026-09",
+      "made": "plain JavaScript",
+      "links": [
+        {
+          "label": "[open relations]",
+          "url": "https://relations-olive.vercel.app"
+        }
+      ],
+      "source": "https://github.com/BrightsizeLife/relations",
+      "related": [
+        "fun-ideas",
+        "bayesian-priors",
+        "covariates"
+      ]
+    },
+    {
+      "id": "linguathread",
+      "title": "linguathread",
+      "hubs": [
+        "other-curiosities"
+      ],
+      "kind": "language partner",
+      "status": "wip",
+      "note": "invite only, five seats",
+      "blurb": "A language-practice partner that corrects every line you write, then sums up the session.",
+      "year": "2026",
+      "updated": "2026-09",
+      "made": "Next.js, Firebase, Gemini",
+      "links": [],
+      "related": [
+        "creation-station"
+      ]
+    },
+    {
+      "id": "ear-commander",
+      "title": "ear commander",
+      "hubs": [
+        "other-curiosities"
+      ],
+      "kind": "ear training",
+      "status": "wip",
+      "note": "works; not public yet",
+      "blurb": "Ear training for intervals, chords, scales, and modes that scores you against chance, which is less flattering than it sounds. Nothing you do leaves your device.",
+      "year": "2026",
+      "updated": "2026-09",
+      "made": "plain JavaScript",
+      "links": [],
+      "related": [
+        "fretboard"
+      ]
+    },
+    {
+      "id": "structures",
+      "title": "structures",
+      "hubs": [
+        "other-curiosities"
+      ],
+      "kind": "study tool",
+      "status": "wip",
+      "note": "link coming",
+      "blurb": "A study tool.",
+      "links": [],
+      "related": [
+        "fun-ideas"
+      ]
+    },
+    {
+      "id": "predictive-processing",
+      "title": "predictive processing",
+      "hubs": [
+        "other-curiosities"
+      ],
+      "kind": "course",
+      "status": "wip",
+      "note": "built; citations still being checked",
+      "blurb": "The theory that a brain is mostly guessing, taught from the concepts through the maths to the arguments against it.",
+      "year": "2026",
+      "updated": "2026-09",
+      "made": "Next.js, MDX, KaTeX",
+      "links": [],
+      "related": [
+        "bayesian-priors",
+        "fun-ideas"
+      ]
+    },
+    {
+      "id": "fun-ideas",
+      "title": "fun ideas",
+      "hubs": [
+        "other-curiosities"
+      ],
+      "kind": "interactive essays",
+      "status": "wip",
+      "note": "works; not public yet",
+      "blurb": "Eleven ideas, from thermodynamics to Freud to Foucault, each drawn as a structure you can poke and a model you can run.",
+      "year": "2026",
+      "updated": "2026-09",
+      "made": "plain JavaScript",
+      "links": [],
+      "related": [
+        "relations",
+        "predictive-processing"
+      ]
+    }
+  ],
+  "banner": [
+    {
+      "text": "New model: the 2026 midterms, refit every day",
+      "link": {
+        "label": "[see it]",
+        "url": "https://midterms26.cheapsensationalism.com"
+      }
+    },
+    {
+      "text": "New: three games, none finished",
+      "link": {
+        "label": "[see them]",
+        "url": "/distractions"
+      }
+    },
+    {
+      "text": "New article: Weird Weather",
+      "link": {
+        "label": "[read it]",
+        "url": "https://weather.cheapsensationalism.com"
+      }
+    },
+    {
+      "text": "Old album: cheap sensationalism",
+      "link": {
+        "label": "[listen]",
+        "url": "https://open.spotify.com/album/7kjmvtW08iNlCKEU0qgKXN"
+      }
+    },
+    {
+      "text": "More, More, More (coming soon)",
+      "link": {
+        "label": "[music]",
+        "url": "/noises"
+      }
+    },
+    {
+      "text": "Cheap Sensationalism's Cheap Sensationalism Preview",
+      "link": {
+        "label": "[watch it]",
+        "url": "https://www.instagram.com/reel/DBxQo_nx5V0/"
+      }
+    },
+    {
+      "text": "Shameless: give me money $$$",
+      "link": {
+        "label": "[ko-fi]",
+        "url": "https://ko-fi.com/cheapsensationalism"
+      }
+    }
+  ],
+  "elsewhere": {
+    "accounts": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/BrightsizeLife/cheap-sensationalism-mega"
+      },
+      {
+        "label": "instagram (contact here)",
+        "url": "https://www.instagram.com/cheap_sensationalism/"
+      },
+      {
+        "label": "facebook",
+        "url": "https://www.facebook.com/people/Cheap-Sensationalism/61568710893706/"
+      },
+      {
+        "label": "LinkedIn",
+        "url": "https://www.linkedin.com/in/derekdebellis/"
+      },
+      {
+        "label": "ko-fi",
+        "url": "https://ko-fi.com/cheapsensationalism",
+        "blurb": "a small tip goes a long way in providing me with the means to launch more studies and a super happy moment that will likely last longer than I should admit"
+      }
+    ],
+    "detours": [
+      {
+        "label": "radio garden",
+        "url": "https://radio.garden",
+        "blurb": "Spin a globe, tune into any radio station on Earth. Hours will vanish."
+      },
+      {
+        "label": "window swap",
+        "url": "https://window-swap.com",
+        "blurb": "Look out a stranger’s window somewhere in the world. Oddly calming."
+      },
+      {
+        "label": "every noise at once",
+        "url": "https://everynoise.com",
+        "blurb": "Every music genre mapped and playable. Algorithmic cartography of sound."
+      },
+      {
+        "label": "neal.fun",
+        "url": "https://neal.fun",
+        "blurb": "Delightful interactive toys. Spend a billion dollars. Draw a perfect circle."
+      },
+      {
+        "label": "the pudding",
+        "url": "https://pudding.cool",
+        "blurb": "Visual essays on culture. Data journalism that actually slaps."
+      }
+    ]
+  }
+}
