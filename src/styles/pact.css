@@ -1,0 +1,302 @@
+/*
+ * pact.css · v2: the page chrome and general patterns of the PACT design.
+ * Link fonts.css, then tokens.css, then this. Every colour, size, gap and
+ * duration in here is a var(--pact-*) from tokens.css.
+ *
+ * Works on a blank page: a small reset sits at the top. Charts drawn by
+ * assets/pact-charts.js take their classes from the "charts" section.
+ *
+ * Prefixes: pact- for this design, cs- for pieces borrowed unchanged from
+ * the Cheap Sensationalism system.
+ */
+
+/* ── Reset (small, on purpose) ────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+h1, h2, h3, h4, p, ul, ol, dl, dd, figure, blockquote, pre { margin: 0; }
+img, svg { display: block; max-width: 100%; }
+button, input, select, textarea { font: inherit; color: inherit; }
+
+/* ── Base ─────────────────────────────────────────────────────────────── */
+html { background: var(--pact-bg); font-size: 100%; }
+body {
+  margin: 0;
+  background: var(--pact-bg);
+  color: var(--pact-ink);
+  font-family: var(--pact-font-ui);
+  font-size: var(--pact-text-base);
+  line-height: var(--pact-leading-base);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  transition: background-color var(--pact-motion-quick) ease, color var(--pact-motion-quick) ease;
+}
+
+/* Display settings the reader can turn on (the [display] panel). Colour
+   and motion live in tokens.css; these three are layout and reading. */
+html[data-pact-size="115"] { font-size: 115%; }
+html[data-pact-size="130"] { font-size: 130%; }
+html[data-pact-spacing="open"] body { line-height: 1.8; letter-spacing: 0.12em; word-spacing: 0.16em; } /* WCAG 1.4.12's values */
+html[data-pact-spacing="open"] .pact-prose p + p { margin-top: 2em; }
+html[data-pact-links="underline"] { --pact-cta-decoration: underline; }
+
+.pact-page { width: 100%; max-width: var(--pact-page-max); margin-inline: auto; padding-inline: var(--pact-space-2); }
+@media (min-width: 48rem) { .pact-page { padding-inline: var(--pact-space-4); } }
+main.pact-page { padding-top: var(--pact-space-6); }
+.pact-prose { max-width: var(--pact-measure); }
+.pact-prose p + p { margin-top: var(--pact-space-2); }
+.pact-prose ul:not(.pact-rows), .pact-prose ol:not(.pact-rows) { padding-left: 1.25em; margin-top: var(--pact-space-2); }
+.pact-prose ul:not(.pact-rows) { list-style: disc; }
+.pact-prose ol:not(.pact-rows) { list-style: decimal; }
+.pact-prose li::marker { font-family: var(--pact-font-num); font-weight: 700; }
+.pact-prose :not(.pact-rows) > li + li { margin-top: var(--pact-space-1); }
+/* Sections breathe. Rows inside them do not. */
+.pact-section + .pact-section { margin-top: var(--pact-section-gap); }
+
+/* ── Focus, skip link, hidden text ────────────────────────────────────── */
+:focus-visible { outline: var(--pact-focus-ring); outline-offset: var(--pact-focus-offset); border-radius: 2px; }
+.pact-skip {
+  position: absolute; left: var(--pact-space-2); top: -100px;
+  padding: var(--pact-space-1) var(--pact-space-2);
+  background: var(--pact-primary); color: var(--pact-primary-ink); font-weight: 700; z-index: 100;
+}
+.pact-skip:focus-visible { top: var(--pact-space-2); }
+.pact-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+
+/* ── The cursor ───────────────────────────────────────────────────────── */
+/* The system cursor, always; never a custom image or a follower. The hand
+   means "you can do this", like the indigo, and appears on nothing inert. */
+a, button, summary, label:has(> input[type="radio"]), label:has(> input[type="checkbox"]), [data-pact-activate] { cursor: pointer; }
+button:disabled, [aria-disabled="true"] { cursor: not-allowed; }
+input[type="range"] { cursor: grab; }
+input[type="range"]:active { cursor: grabbing; }
+[aria-busy="true"] { cursor: progress; }
+
+/* ── Type roles ───────────────────────────────────────────────────────── */
+.cs-kicker { font-family: var(--pact-font-ui); font-size: var(--pact-text-kicker); font-weight: 900; letter-spacing: var(--pact-tracking-widest); text-transform: uppercase; color: var(--pact-muted); }
+h2.cs-kicker { display: block; margin: 0 0 var(--pact-space-2); }
+/* Headings are TYPED in lowercase; no text-transform, so DORA and Stripe keep their capitals. */
+.pact-h1 {
+  font-size: var(--pact-text-h1); font-weight: 900;
+  font-variation-settings: "wdth" var(--pact-display-wdth);
+  line-height: var(--pact-leading-tight); letter-spacing: var(--pact-tracking-tight);
+  margin: var(--pact-space-1) 0 0; text-wrap: balance;
+}
+.pact-h2 {
+  font-size: var(--pact-text-h2); font-weight: 900;
+  font-variation-settings: "wdth" var(--pact-display-wdth);
+  line-height: var(--pact-leading-snug); letter-spacing: var(--pact-tracking-tight);
+  margin: 0 0 var(--pact-space-2); text-wrap: balance;
+}
+.pact-h3 { font-size: 1rem; font-weight: 700; margin: 0 0 var(--pact-space-1); }
+.pact-lede { font-size: 1.125em; line-height: var(--pact-leading-snug); max-width: var(--pact-measure); margin: var(--pact-space-2) 0 0; text-wrap: pretty; }
+.pact-muted { color: var(--pact-muted); }
+.pact-small { font-size: var(--pact-text-sm); }
+.pact-num { font-family: var(--pact-font-num); font-variant-numeric: tabular-nums; }
+.pact-num-big { font-family: var(--pact-font-num); font-size: var(--pact-text-num); font-weight: 700; line-height: 1; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+.pact-formula {
+  font-family: var(--pact-font-num); font-size: 1.05em; background: var(--pact-surface);
+  padding: var(--pact-space-2); margin: var(--pact-space-2) 0;
+  white-space: pre-wrap; overflow-wrap: anywhere; border-left: 6px solid var(--pact-ink);
+}
+
+/* ── Links and CTAs ───────────────────────────────────────────────────── */
+a { color: var(--pact-primary); text-decoration-thickness: 1px; text-underline-offset: 0.15em; }
+@media (hover: hover) { a:hover { text-decoration-thickness: 2px; } }
+/* [bracket] CTA: brackets are in the copy, so screen readers say them. */
+.pact-cta {
+  display: inline-block; font-weight: 700; color: var(--pact-primary);
+  text-decoration: var(--pact-cta-decoration); text-decoration-thickness: 2px; text-underline-offset: 0.18em;
+  padding: var(--pact-space-1) 0; min-height: 44px; line-height: 28px;
+  background: none; border: 0; font-size: inherit;
+}
+@media (hover: hover) { .pact-cta:hover { text-decoration: underline; text-decoration-thickness: 2px; } }
+.pact-cta:disabled { color: var(--pact-muted); }
+/* The filled button: the one action on a page. Only it changes colour on hover. */
+.pact-btn {
+  display: inline-flex; align-items: center; justify-content: center; min-height: 48px;
+  padding: 0 var(--pact-space-3); background: var(--pact-primary); color: var(--pact-primary-ink);
+  font-weight: 700; font-size: 1.05em; text-decoration: none; border: 0; border-radius: 4px;
+  transition: background-color var(--pact-motion-quick) ease, transform var(--pact-motion-quick) ease;
+}
+@media (hover: hover) { .pact-btn:hover:not(:disabled) { background: var(--pact-primary-hover); text-decoration: none; } }
+.pact-btn:active:not(:disabled) { transform: translateY(1px); }
+.pact-btn:focus-visible { outline-offset: 3px; }
+.pact-btn:disabled { background: var(--pact-muted); color: var(--pact-bg); }
+
+/* ── Header, display panel, footer ────────────────────────────────────── */
+.pact-header { border-bottom: 1px solid var(--pact-rule); }
+.pact-header-inner { display: flex; align-items: center; flex-wrap: wrap; gap: var(--pact-space-1) var(--pact-space-3); min-height: 64px; padding-block: var(--pact-space-1); }
+.pact-wordmark { font-weight: 900; font-size: 1.5rem; letter-spacing: var(--pact-tracking-tight); font-variation-settings: "wdth" 110; text-decoration: none; color: var(--pact-ink); line-height: 44px; margin-right: auto; }
+.pact-nav ul { display: flex; flex-wrap: wrap; gap: 0 var(--pact-space-2); list-style: none; margin: 0; padding: 0; }
+.pact-nav a { display: inline-block; color: var(--pact-ink); text-decoration: none; font-weight: 700; line-height: 44px; padding-inline: 4px; border-bottom: 3px solid transparent; transition: border-color var(--pact-motion-quick) ease; }
+@media (hover: hover) { .pact-nav a:hover { border-bottom-color: var(--pact-rule); } }
+.pact-nav a[aria-current="page"] { border-bottom-color: var(--pact-primary); }
+.pact-display-toggle { padding-inline: 0; }
+
+/* The [display] panel: inline under the header, never a modal. */
+.pact-display { border-bottom: 1px solid var(--pact-rule); background: var(--pact-surface); }
+.pact-display:not([hidden]) { animation: pact-in var(--pact-motion) var(--pact-ease-out); }
+.pact-display .pact-page { padding-block: var(--pact-space-3); }
+.pact-display-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(12.5rem, 1fr)); gap: var(--pact-space-2) var(--pact-space-4); margin-top: var(--pact-space-1); }
+
+.pact-footer { border-top: 1px solid var(--pact-rule); margin-top: var(--pact-section-gap); padding-block: var(--pact-space-4); color: var(--pact-muted); font-size: var(--pact-text-sm); }
+.pact-footer ul { display: flex; flex-wrap: wrap; gap: var(--pact-space-1) var(--pact-space-2); list-style: none; margin: var(--pact-space-2) 0 0; padding: 0; }
+.pact-footer a { display: inline-block; color: var(--pact-ink); line-height: 32px; }
+
+/* ── Stats ────────────────────────────────────────────────────────────── */
+.pact-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr)); gap: var(--pact-space-3); margin: 0; padding: 0; list-style: none; }
+.pact-stat { border-top: 3px solid var(--pact-ink); padding-top: var(--pact-space-1); }
+.pact-stat .pact-num-big { display: block; margin-top: 4px; }
+.pact-stat-live .pact-num-big { color: var(--pact-signal); }
+
+/* ── Tables ───────────────────────────────────────────────────────────── */
+.pact-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.pact-table { width: 100%; border-collapse: collapse; font-size: var(--pact-text-sm); }
+.pact-table caption { text-align: left; font-weight: 700; padding-bottom: var(--pact-space-1); }
+.pact-table th, .pact-table td { text-align: left; padding: 10px 12px 10px 0; border-bottom: 1px solid var(--pact-rule); vertical-align: top; }
+.pact-table th { font-size: var(--pact-text-kicker); font-weight: 900; letter-spacing: var(--pact-tracking-widest); text-transform: uppercase; color: var(--pact-muted); }
+.pact-table td.pact-num, .pact-table th.pact-num { text-align: right; padding-right: 0; white-space: nowrap; }
+.pact-table tbody tr:last-child td { border-bottom: var(--pact-rule-strong) solid var(--pact-ink); }
+.pact-table tfoot td { font-weight: 700; border-bottom: 0; }
+
+/* ── The five: marks, and coded chrome ────────────────────────────────── */
+[data-dimension="practices"] { --dim: var(--pact-dim-practices); --dim-ink: var(--pact-dim-practices-ink); }
+[data-dimension="architecture"] { --dim: var(--pact-dim-architecture); --dim-ink: var(--pact-dim-architecture-ink); }
+[data-dimension="culture"] { --dim: var(--pact-dim-culture); --dim-ink: var(--pact-dim-culture-ink); }
+[data-dimension="technology"] { --dim: var(--pact-dim-technology); --dim-ink: var(--pact-dim-technology-ink); }
+[data-dimension="outcomes"] { --dim: var(--pact-dim-outcomes); --dim-ink: var(--pact-dim-outcomes-ink); }
+/* A mark: a 12px circle before a name. Colour never alone: the word is beside it. */
+.pact-dim-mark { display: inline-block; width: 12px; height: 12px; border-radius: 50%; background: var(--dim); box-shadow: 0 0 0 1px var(--pact-mark-edge); margin-right: 8px; vertical-align: baseline; }
+/* Coded chrome: a subway bullet (the dimension's initial in a circle) before its name.
+   The -ink cut carries the letter, so the letter passes as text. aria-hidden: the name follows. */
+.pact-bullet { display: inline-grid; place-items: center; width: 1.625rem; height: 1.625rem; flex: none; border-radius: 50%; background: var(--dim-ink); color: var(--pact-on-dim); font: 800 0.8125rem/1 var(--pact-font-ui); letter-spacing: 0; vertical-align: middle; }
+/* Coded chrome: a 6px rule beside a dimension's rows or section. Never a fill behind text. */
+.pact-dim-row { border-left: 6px solid var(--dim); padding-left: var(--pact-space-2); }
+.pact-dim-section { border-left: 6px solid var(--dim, var(--pact-ink)); padding-left: var(--pact-space-2); }
+/* Five before thirty-five: the dimensions as rows that open into their concepts. */
+.pact-dim-rows { list-style: none; margin: 0; padding: 0; border-top: var(--pact-rule-strong) solid var(--pact-ink); }
+.pact-dim-rows > li { border-bottom: 1px solid var(--pact-rule); }
+.pact-dim-rows summary { display: flex; align-items: center; flex-wrap: wrap; gap: 4px 10px; min-height: 52px; padding-block: var(--pact-space-1); list-style: none; }
+.pact-dim-rows summary::-webkit-details-marker { display: none; }
+.pact-dim-rows summary::after { content: "+"; margin-left: auto; font: 700 1.25rem/1 var(--pact-font-num); color: var(--pact-muted); }
+.pact-dim-rows details[open] summary::after { content: "−"; }
+.pact-dim-rows details[open] > :not(summary) { animation: pact-in var(--pact-motion) var(--pact-ease-out); }
+.pact-dim-rows details > ul { list-style: none; margin: 0 0 var(--pact-space-2); padding: 0; display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: var(--pact-text-sm); }
+
+/* ── Notices, banner, WIP, signal ─────────────────────────────────────── */
+.pact-notice { border: 2px solid var(--pact-ink); padding: var(--pact-space-2); max-width: var(--pact-measure); }
+.pact-notice p { margin: 0; }
+.pact-banner { border-top: 6px solid var(--pact-ink); border-bottom: 1px solid var(--pact-rule); padding: var(--pact-space-2) 0; margin-bottom: var(--pact-space-4); }
+.pact-banner p { margin: 0; max-width: var(--pact-measure); }
+.pact-banner .cs-kicker { display: block; margin-bottom: 4px; }
+.cs-wip-tag { display: inline-block; background: var(--pact-dim-culture); color: var(--pact-wip-ink); font-size: var(--pact-text-kicker); font-weight: 900; letter-spacing: var(--pact-tracking-widest); padding: 2px 6px; margin-left: 6px; vertical-align: middle; border-radius: 2px; }
+.pact-signal-text { color: var(--pact-signal-ink); font-weight: 700; }
+.pact-independence { border-top: 3px solid var(--pact-ink); padding-top: var(--pact-space-2); max-width: var(--pact-measure); }
+
+/* ── Rows, tabs, inputs, dialog ───────────────────────────────────────── */
+.pact-rows { list-style: none; margin: 0; padding: 0; }
+.pact-rows > li { padding: var(--pact-space-2) 0; border-bottom: 1px solid var(--pact-rule); }
+.pact-rows > li:first-child { border-top: var(--pact-rule-strong) solid var(--pact-ink); }
+.pact-tabs { margin-bottom: var(--pact-space-4); border-bottom: 1px solid var(--pact-rule); }
+.pact-tabs ul { display: flex; flex-wrap: wrap; gap: 0 var(--pact-space-2); list-style: none; margin: 0; padding: 0; }
+.pact-tabs a { display: inline-block; color: var(--pact-ink); text-decoration: none; font-weight: 700; line-height: 44px; padding-inline: 4px; border-bottom: 3px solid transparent; }
+@media (hover: hover) { .pact-tabs a:hover { border-bottom-color: var(--pact-rule); } }
+.pact-tabs a[aria-current="page"] { border-bottom-color: var(--pact-primary); }
+.pact-input { width: 100%; max-width: var(--pact-measure); min-height: 44px; padding: 0 12px; border: 2px solid var(--pact-ink); border-radius: 4px; background: var(--pact-bg); color: var(--pact-ink); font-size: max(1rem, 16px); }
+.pact-field { margin-top: var(--pact-space-2); }
+.pact-field-label { display: block; font-weight: 700; margin-bottom: 4px; }
+.pact-fieldset { border: 0; padding: 0; margin: var(--pact-space-2) 0 0; min-width: 0; }
+.pact-fieldset legend { font-weight: 700; padding: 0; margin-bottom: 4px; }
+.pact-radio { display: flex; align-items: center; gap: 10px; min-height: 44px; }
+.pact-radio input { width: 20px; height: 20px; margin: 0; accent-color: var(--pact-primary); }
+.pact-summary { font-weight: 900; line-height: 44px; }
+.pact-dialog { border: 3px solid var(--pact-ink); padding: var(--pact-space-3); max-width: min(90vw, 28rem); background: var(--pact-bg); color: var(--pact-ink); }
+.pact-dialog::backdrop { background: rgba(29, 27, 23, 0.6); }
+
+/* ── The four words ───────────────────────────────────────────────────── */
+.pact-mark { display: flex; flex-direction: column; font-size: var(--pact-text-h1); font-weight: 900; line-height: 1.05; letter-spacing: var(--pact-tracking-tight); margin: var(--pact-space-2) 0 0; }
+.pact-mark-word { display: block; }
+.pact-mark-initial { color: var(--pact-primary); }
+
+/* ── Charts ───────────────────────────────────────────────────────────── */
+/* A figure: kicker (optional), a takeaway title in HTML, the chart, a notes
+   list for the third callout, the readout line, and a how-to-read caption.
+   assets/pact-charts.js draws into .pact-chart-body and writes the readout. */
+.pact-chart { margin: 0; }
+.pact-chart-title { font-weight: 800; font-size: 1.05em; line-height: 1.3; margin: 4px 0 var(--pact-space-1); max-width: var(--pact-measure); text-wrap: balance; }
+.pact-chart-body { margin-top: var(--pact-space-1); }
+.pact-chart figcaption { font-size: var(--pact-text-sm); color: var(--pact-muted); margin-top: var(--pact-space-1); max-width: var(--pact-measure); }
+/* The readout replaces tooltips: hover, tab to or tap a mark; this line answers. */
+.pact-readout { font-size: var(--pact-text-sm); min-height: 2.9em; margin-top: var(--pact-space-1); border-left: 3px solid var(--pact-primary); padding-left: 10px; max-width: var(--pact-measure); }
+.pact-chart-notes { list-style: none; padding: 0; margin: var(--pact-space-1) 0 0; font-size: var(--pact-text-sm); max-width: var(--pact-measure); display: flex; flex-direction: column; gap: 4px; }
+.pact-chart-notes li::before { content: "· "; font-weight: 800; }
+.pact-chart-steps { display: flex; flex-wrap: wrap; gap: 0 var(--pact-space-2); margin-top: var(--pact-space-1); }
+/* A legend is the fallback when direct labels cannot fit (more than five series, or a phone collision). */
+.pact-legend { display: flex; flex-wrap: wrap; gap: 6px var(--pact-space-2); font-size: var(--pact-text-sm); margin: 0 0 var(--pact-space-1); padding: 0; list-style: none; }
+.pact-legend li, .pact-legend span { display: inline-flex; align-items: center; gap: 6px; }
+.pact-legend i { width: 12px; height: 12px; display: inline-block; }
+
+/* SVG drawn by pact-charts.js, in the container's own pixels, so text is real size on every screen. */
+.pact-chart svg { display: block; max-width: 100%; height: auto; overflow: visible; }
+.pact-chart svg text { font-family: var(--pact-font-ui); font-size: 12px; fill: var(--pact-ink); }
+.pact-chart svg .pc-num { font-family: var(--pact-font-num); font-size: 11px; font-variant-numeric: tabular-nums; }
+.pact-chart svg .pc-muted { fill: var(--pact-muted); }
+.pact-chart svg .pc-bold { font-weight: 700; }
+.pact-chart svg .pc-grid { stroke: var(--pact-rule); stroke-width: 1; }
+.pact-chart svg .pc-zero { stroke: var(--pact-ink); stroke-width: 1.5; }
+.pact-chart svg .pc-guide { stroke: var(--pact-rule); stroke-width: 1; stroke-dasharray: 1 3; }
+.pact-chart svg .pc-ref { stroke: var(--pact-ink); stroke-width: 1; stroke-dasharray: 3 3; }
+.pact-chart svg .pc-hit { fill: transparent; }
+.pact-chart svg .pc-lead { stroke: var(--pact-ink); stroke-width: 1; }
+.pact-chart svg .pc-note { font-size: 12.5px; paint-order: stroke; stroke: var(--pact-bg); stroke-width: 4px; stroke-linejoin: round; }
+.pact-chart svg .pc-note-dot { fill: var(--pact-ink); }
+.pact-chart svg .pc-ghost { fill: var(--pact-bg); stroke: var(--pact-context); stroke-width: 1.5; }
+.pact-chart svg .pc-trail { stroke: var(--pact-context); stroke-width: 1.5; }
+.pact-chart svg [data-info] { outline-offset: 2px; }
+.pact-chart svg [data-info]:focus-visible { outline: var(--pact-focus-ring); }
+.pact-chart[data-interactive] svg [data-info] { cursor: pointer; }
+
+/* Fills and strokes, by job. Series: which one. Context: the grey beside the subject. You: indigo. */
+.pact-fill-practices { fill: var(--pact-dim-practices); background: var(--pact-dim-practices); }
+.pact-fill-architecture { fill: var(--pact-dim-architecture); background: var(--pact-dim-architecture); }
+.pact-fill-culture { fill: var(--pact-dim-culture); background: var(--pact-dim-culture); }
+.pact-fill-technology { fill: var(--pact-dim-technology); background: var(--pact-dim-technology); }
+.pact-fill-outcomes { fill: var(--pact-dim-outcomes); background: var(--pact-dim-outcomes); }
+.pact-fill-context { fill: var(--pact-context); background: var(--pact-context); }
+.pact-fill-ink { fill: var(--pact-ink); background: var(--pact-ink); }
+.pact-fill-you { fill: var(--pact-primary); background: var(--pact-primary); }
+.pact-stroke-practices { stroke: var(--pact-dim-practices); } .pact-stroke-architecture { stroke: var(--pact-dim-architecture); }
+.pact-stroke-culture { stroke: var(--pact-dim-culture); } .pact-stroke-technology { stroke: var(--pact-dim-technology); }
+.pact-stroke-outcomes { stroke: var(--pact-dim-outcomes); } .pact-stroke-context { stroke: var(--pact-context); }
+.pact-stroke-ink { stroke: var(--pact-ink); } .pact-stroke-you { stroke: var(--pact-primary); }
+/* Sequential: how much. */
+.pact-fill-seq-1 { fill: var(--pact-seq-1); background: var(--pact-seq-1); } .pact-fill-seq-2 { fill: var(--pact-seq-2); background: var(--pact-seq-2); }
+.pact-fill-seq-3 { fill: var(--pact-seq-3); background: var(--pact-seq-3); } .pact-fill-seq-4 { fill: var(--pact-seq-4); background: var(--pact-seq-4); }
+.pact-fill-seq-5 { fill: var(--pact-seq-5); background: var(--pact-seq-5); } .pact-fill-seq-6 { fill: var(--pact-seq-6); background: var(--pact-seq-6); }
+.pact-fill-seq-7 { fill: var(--pact-seq-7); background: var(--pact-seq-7); }
+/* Diverging: which way. Positive is indigo, negative is orange. */
+.pact-fill-pos-3 { fill: var(--pact-div-pos-3); background: var(--pact-div-pos-3); } .pact-fill-pos-2 { fill: var(--pact-div-pos-2); background: var(--pact-div-pos-2); }
+.pact-fill-pos-1 { fill: var(--pact-div-pos-1); background: var(--pact-div-pos-1); } .pact-fill-mid { fill: var(--pact-div-mid); background: var(--pact-div-mid); }
+.pact-fill-neg-1 { fill: var(--pact-div-neg-1); background: var(--pact-div-neg-1); } .pact-fill-neg-2 { fill: var(--pact-div-neg-2); background: var(--pact-div-neg-2); }
+.pact-fill-neg-3 { fill: var(--pact-div-neg-3); background: var(--pact-div-neg-3); }
+
+/* HTML bars, still the simplest chart for a handful of values. */
+.pact-bars { display: grid; grid-template-columns: minmax(5rem, 1fr) 3fr auto; gap: 6px var(--pact-space-2); align-items: center; margin: 0; }
+.pact-bar-label { font-size: var(--pact-text-sm); }
+.pact-bar { display: flex; gap: 2px; height: 18px; }
+.pact-bar > i { display: block; height: 100%; }
+.pact-bar-value { font-family: var(--pact-font-num); font-variant-numeric: tabular-nums; font-size: var(--pact-text-sm); text-align: right; }
+.pact-bars-axis { grid-column: 2; display: flex; justify-content: space-between; font-family: var(--pact-font-num); font-size: 0.75rem; color: var(--pact-muted); border-top: 2px solid var(--pact-ink); padding-top: 4px; }
+.pact-scale { display: flex; height: 14px; margin-top: var(--pact-space-1); }
+.pact-scale i { flex: 1; }
+.pact-scale-labels { display: flex; justify-content: space-between; font-family: var(--pact-font-num); font-size: 0.75rem; color: var(--pact-muted); font-variant-numeric: tabular-nums; }
+
+/* ── Motion ───────────────────────────────────────────────────────────── */
+/* Something appearing in place: fade and a half-nudge. Zero under less motion. */
+@keyframes pact-in { from { opacity: 0; transform: translateY(calc(var(--pact-nudge) * -0.5)); } }
+
+/* ── Forced colours (Windows contrast themes): step back, keep edges and marks ── */
+@media (forced-colors: active) {
+  .pact-btn { border: 2px solid ButtonText; }
+  .pact-dim-mark, .pact-bullet, .pact-chart svg [class*="pact-fill-"] { forced-color-adjust: none; }
+  :focus-visible { outline-color: Highlight; }
+}

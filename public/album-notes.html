@@ -4,8 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Album Notes | Cheap Sensationalism</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" />
   <style>
+    /* Self-hosted, like the rest of the site: no request leaves for a font. */
+    @font-face {
+      font-family: "Azeret Mono";
+      font-weight: 100 900;
+      font-display: swap;
+      src: url("/fonts/azeret-mono-latin.woff2") format("woff2");
+    }
     :root {
       --bg: #0a0b10;
       --text: #f0ede6;
@@ -15,7 +21,7 @@
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      font-family: 'Space Mono', monospace;
+      font-family: 'Space Mono', 'Azeret Mono', monospace;
       background: var(--bg);
       color: var(--text);
       line-height: 1.75;
@@ -139,7 +145,7 @@
     </section>
 
     <footer>
-      <a href="https://github.com/BrightsizeLife/cheap-sensationalism-mega" target="_blank">github</a>
+      <a href="https://github.com/BrightsizeLife/cheap-sensationalism-mega" rel="noopener">github</a>
       &nbsp;&middot;&nbsp;
       <a href="/">cheapsensationalism.com</a>
     </footer>

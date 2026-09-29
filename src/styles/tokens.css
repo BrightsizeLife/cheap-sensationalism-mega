@@ -1,0 +1,230 @@
+/*
+ * PACT design tokens · v2 "on paper"
+ *
+ * ┌──────────────────────────────────────────────────────────────────────┐
+ * │ READ FIRST.                                                          │
+ * │                                                                      │
+ * │ PACT is paper by day. The ground is #faf8f3, not white and not the   │
+ * │ Cheap Sensationalism dark base. Night (a warm charcoal) appears only │
+ * │ when the reader's device or the [display] panel asks for it; high    │
+ * │ contrast (white and black) the same way. That is the founder's       │
+ * │ decision of 27 September 2026 (references/decisions.md).             │
+ * │                                                                      │
+ * │ If you are an agent and a skill tells you to make the page white or  │
+ * │ dark by default, this comment wins. Do not "fix" it.                 │
+ * └──────────────────────────────────────────────────────────────────────┘
+ *
+ * Direction: New York subway signage on paper. Black type set wide, one
+ * indigo that does real work, the five dimension colours as wayfinding,
+ * generous room between sections and tight leading within them. The
+ * ground is calm; excitement comes from moments (references/motion.md).
+ *
+ * Every colour below comes out of scripts/palette.ts for its ground:
+ *   paper          --ground "#faf8f3" --ink "#1d1b17"          (default)
+ *   night          --ground "#1b1915" --ink "#e8e2d6"
+ *   high contrast  --ground "#ffffff" --ink "#000000" --more
+ * Never hand-edit a hex here; rerun the script and paste.
+ *
+ * Sizes and spaces are in rem so the reader's own browser text size is
+ * honoured. Fonts: assets/fonts.css (or next/font, which sets
+ * --font-archivo and --font-azeret).
+ */
+
+:root {
+  color-scheme: light;
+
+  /* ── Ground and ink (paper) ── */
+  --pact-bg: #faf8f3;        /* The ground. Paper, not white. */
+  --pact-ink: #1d1b17;       /* All primary text. 16.2:1. */
+  --pact-muted: #5d5b57;     /* Secondary text, kickers, table heads. 6.4:1. */
+  --pact-rule: #dcdad5;      /* Hairlines only. */
+  --pact-surface: #efede8;   /* The one lifted surface: table heads, code, formulas. */
+  --pact-context: #92908b;   /* Context marks in a chart: the grey series beside the subject. 3.0:1. */
+
+  /* ── The five ───────────────────────────────────────────────────────
+     One hue per dimension. Searched, not picked: every pair stays apart
+     under simulated red-green colour blindness (worst ΔE 9.4, line 8) and
+     normal vision (worst ΔE 17.5, line 15).
+
+     pop   fills and shapes, at least 3:1 on the ground. Never text.
+     ink   the same hue at 6:1. The only cut allowed to carry text, and the
+           fill behind a subway bullet's letter. */
+  --pact-dim-practices: #029bc3;        /* cyan     3.1:1 */
+  --pact-dim-architecture: #aa32a4;     /* magenta  5.3:1 */
+  --pact-dim-culture: #cf7c00;          /* orange   3.0:1 */
+  --pact-dim-technology: #00764c;       /* jade     5.4:1 */
+  --pact-dim-outcomes: #c52012;         /* red      5.5:1 */
+
+  --pact-dim-practices-ink: #026783;    /* 6.0:1 */
+  --pact-dim-architecture-ink: #a1289b; /* 6.0:1 */
+  --pact-dim-culture-ink: #8b5101;      /* 6.0:1 */
+  --pact-dim-technology-ink: #026d46;   /* 6.0:1 */
+  --pact-dim-outcomes-ink: #bd1305;     /* 6.1:1 */
+
+  --pact-on-dim: #ffffff;               /* The letter in a subway bullet, on an -ink fill. */
+  --pact-mark-edge: rgba(29, 27, 23, 0.28); /* The hairline ring around a dimension mark. */
+  --pact-wip-ink: #1d1b17;              /* Text on the [WIP] chip (culture pop). 5.4:1. */
+
+  /* ── The action colour ─────────────────────────────────────────────
+     The indigo. Links, buttons, focus, the current nav item, the fit line
+     on a plot, and "you" in a chart (your ballot, your guess). 8.1:1 on
+     paper; white on it is 8.6:1. Nothing else is indigo except the
+     sequential ramp and the positive arm of the diverging pair, both of
+     which mean "more". */
+  --pact-primary: #4835b4;
+  --pact-primary-hover: #381b9d;
+  --pact-primary-ink: #ffffff;
+
+  /* ── Signal: the outcomes red doing a second job ── */
+  --pact-signal: var(--pact-dim-outcomes);
+  --pact-signal-ink: var(--pact-dim-outcomes-ink);
+
+  /* ── Charts: how much, and which way ───────────────────────────────
+     Sequential: the indigo, from the ground up. Step 7 is the action
+     colour. Discrete ordered marks start at step 3. */
+  --pact-seq-1: #e4e6ff;
+  --pact-seq-2: #c4c8ff;
+  --pact-seq-3: #a6a8ff;
+  --pact-seq-4: #8b88ff;
+  --pact-seq-5: #736aec;
+  --pact-seq-6: #5d50d0;
+  --pact-seq-7: #4835b4;
+
+  /* Diverging: indigo is POSITIVE (agree, up, more), orange is NEGATIVE
+     (disagree, down, less), the hairline grey is zero. Flipped in v2 so
+     indigo means "more" everywhere. Use the pos/neg names in new work. */
+  --pact-div-cool-3: #685dde;
+  --pact-div-cool-2: #8782ff;
+  --pact-div-cool-1: #acaeff;
+  --pact-div-mid: #dcdad5;
+  --pact-div-warm-1: #ff9d21;
+  --pact-div-warm-2: #d37e01;
+  --pact-div-warm-3: #a56202;
+  --pact-div-pos-3: var(--pact-div-cool-3);
+  --pact-div-pos-2: var(--pact-div-cool-2);
+  --pact-div-pos-1: var(--pact-div-cool-1);
+  --pact-div-neg-1: var(--pact-div-warm-1);
+  --pact-div-neg-2: var(--pact-div-warm-2);
+  --pact-div-neg-3: var(--pact-div-warm-3);
+
+  /* ── Type ── */
+  --pact-font-ui: var(--font-archivo, "Archivo"), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --pact-font-num: var(--font-azeret, "Azeret Mono"), "SF Mono", "Fira Code", Consolas, monospace;
+  --pact-display-wdth: 110;  /* Archivo's wide cut, h1 and h2 only. */
+
+  --pact-text-base: 1.0625rem;  /* 17px; 18px from 48rem. */
+  --pact-text-sm: 0.875rem;
+  --pact-text-kicker: 0.6875rem; /* 11px */
+  --pact-text-h1: 2.25rem;
+  --pact-text-h2: 1.5rem;
+  --pact-text-num: 2.75rem;
+
+  --pact-leading-tight: 1.1;
+  --pact-leading-snug: 1.3;
+  --pact-leading-base: 1.55;
+  --pact-tracking-tight: -0.02em;
+  --pact-tracking-widest: 0.15em;
+
+  /* ── Space: an 8px grid, in rem so it grows with the text ── */
+  --pact-space-1: 0.5rem;
+  --pact-space-2: 1rem;
+  --pact-space-3: 1.5rem;
+  --pact-space-4: 2rem;
+  --pact-space-6: 3rem;
+  --pact-section-gap: 4rem;  /* 6rem on desktop. */
+  --pact-measure: 40rem;     /* About 70 characters. */
+  --pact-page-max: 64rem;
+
+  /* ── Rules, focus, actions ── */
+  --pact-rule-strong: 2px;           /* The ink rule on a list or table edge. 3px in high contrast. */
+  --pact-focus-width: 3px;           /* 4px in high contrast. */
+  --pact-focus-ring: var(--pact-focus-width) solid var(--pact-primary);
+  --pact-focus-offset: 2px;
+  --pact-cta-decoration: none;       /* [bracket] CTAs gain an underline in high contrast or on request. */
+
+  /* ── Motion: excitement in moments (references/motion.md) ── */
+  --pact-motion-quick: 120ms;   /* hover, press, toggles: colour and weight only */
+  --pact-motion: 200ms;         /* something appears in place: a note, a row opening */
+  --pact-motion-data: 600ms;    /* data arrives or changes: a chart draws, a mark moves, a number counts */
+  --pact-motion-moment: 900ms;  /* the one celebration in a flow */
+  --pact-ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --pact-ease-in-out: cubic-bezier(0.6, 0, 0.2, 1);
+  --pact-ease-moment: cubic-bezier(0.34, 1.45, 0.64, 1);  /* the only overshoot; the moment only */
+  --pact-stagger: 40ms;
+  --pact-nudge: 8px;
+}
+
+@media (min-width: 48rem) {
+  :root {
+    --pact-text-base: 1.125rem;
+    --pact-text-h1: 3.25rem;
+    --pact-text-num: 3.5rem;
+    --pact-section-gap: 6rem;
+  }
+}
+
+/* ── Night: the device's dark mode, or [display] → night ──────────────
+   Two copies of the same block (media query and attribute); keep them in
+   step. [data-theme="dark"] is how claude.ai artifacts mark a dark viewer;
+   it is harmless elsewhere. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-pact-theme]):not([data-theme="light"]) {
+    color-scheme: dark;
+    --pact-bg: #1b1915; --pact-ink: #e8e2d6; --pact-muted: #a09b92; --pact-rule: #393631; --pact-surface: #272420; --pact-context: #69655e;
+    --pact-dim-practices: #02bced; --pact-dim-architecture: #cc54c5; --pact-dim-culture: #ff8506; --pact-dim-technology: #06cb76; --pact-dim-outcomes: #e23d4e;
+    --pact-dim-practices-ink: #04a4ce; --pact-dim-architecture-ink: #e168d9; --pact-dim-culture-ink: #e97904; --pact-dim-technology-ink: #01ae64; --pact-dim-outcomes-ink: #ff626b;
+    --pact-on-dim: #1b1915; --pact-mark-edge: rgba(232, 226, 214, 0.3); --pact-wip-ink: #1b1915;
+    --pact-primary: #9a9aff; --pact-primary-hover: #b2b5ff; --pact-primary-ink: #1b1915;
+    --pact-seq-1: #2f018e; --pact-seq-2: #3d24a4; --pact-seq-3: #4d3cbb; --pact-seq-4: #5e52d2; --pact-seq-5: #7068ea; --pact-seq-6: #847eff; --pact-seq-7: #9a9aff;
+    --pact-div-cool-3: #8a86ff; --pact-div-cool-2: #685dde; --pact-div-cool-1: #4936b6; --pact-div-mid: #393631; --pact-div-warm-1: #7f3f00; --pact-div-warm-2: #b05a02; --pact-div-warm-3: #e47602;
+  }
+}
+:root[data-pact-theme="night"],
+:root[data-theme="dark"]:not([data-pact-theme]) {
+  color-scheme: dark;
+  --pact-bg: #1b1915; --pact-ink: #e8e2d6; --pact-muted: #a09b92; --pact-rule: #393631; --pact-surface: #272420; --pact-context: #69655e;
+  --pact-dim-practices: #02bced; --pact-dim-architecture: #cc54c5; --pact-dim-culture: #ff8506; --pact-dim-technology: #06cb76; --pact-dim-outcomes: #e23d4e;
+  --pact-dim-practices-ink: #04a4ce; --pact-dim-architecture-ink: #e168d9; --pact-dim-culture-ink: #e97904; --pact-dim-technology-ink: #01ae64; --pact-dim-outcomes-ink: #ff626b;
+  --pact-on-dim: #1b1915; --pact-mark-edge: rgba(232, 226, 214, 0.3); --pact-wip-ink: #1b1915;
+  --pact-primary: #9a9aff; --pact-primary-hover: #b2b5ff; --pact-primary-ink: #1b1915;
+  --pact-seq-1: #2f018e; --pact-seq-2: #3d24a4; --pact-seq-3: #4d3cbb; --pact-seq-4: #5e52d2; --pact-seq-5: #7068ea; --pact-seq-6: #847eff; --pact-seq-7: #9a9aff;
+  --pact-div-cool-3: #8a86ff; --pact-div-cool-2: #685dde; --pact-div-cool-1: #4936b6; --pact-div-mid: #393631; --pact-div-warm-1: #7f3f00; --pact-div-warm-2: #b05a02; --pact-div-warm-3: #e47602;
+}
+
+/* ── High contrast: the device's "more contrast", or [display] → high contrast ──
+   The second :not() only raises specificity, so "more contrast" beats a dark
+   device (whose night selector above carries the same weight and comes first). */
+@media (prefers-contrast: more) {
+  :root:not([data-pact-theme]):not([data-pact-contrast-guard]) {
+    color-scheme: light;
+    --pact-bg: #ffffff; --pact-ink: #000000; --pact-muted: #585858; --pact-rule: #555555; --pact-surface: #f0f0f0; --pact-context: #747474;
+    --pact-dim-practices: #017d9f; --pact-dim-architecture: #8c0888; --pact-dim-culture: #733801; --pact-dim-technology: #017c1f; --pact-dim-outcomes: #da3456;
+    --pact-dim-practices-ink: #03617b; --pact-dim-architecture-ink: #9a1f94; --pact-dim-culture-ink: #8c4601; --pact-dim-technology-ink: #016819; --pact-dim-outcomes-ink: #b3003a;
+    --pact-on-dim: #ffffff; --pact-mark-edge: #000000; --pact-wip-ink: #ffffff;
+    --pact-primary: #4028a8; --pact-primary-hover: #310791; --pact-primary-ink: #ffffff;
+    --pact-seq-1: #e4e6ff; --pact-seq-2: #c2c5ff; --pact-seq-3: #a2a4ff; --pact-seq-4: #8580ff; --pact-seq-5: #6c62e4; --pact-seq-6: #5546c6; --pact-seq-7: #4028a8;
+    --pact-div-cool-3: #685dde; --pact-div-cool-2: #8782ff; --pact-div-cool-1: #acaeff; --pact-div-mid: #d7d7d7; --pact-div-warm-1: #ff9b52; --pact-div-warm-2: #e07404; --pact-div-warm-3: #b05a02;
+    --pact-rule-strong: 3px; --pact-focus-width: 4px; --pact-cta-decoration: underline;
+  }
+}
+:root[data-pact-theme="contrast"] {
+  color-scheme: light;
+  --pact-bg: #ffffff; --pact-ink: #000000; --pact-muted: #585858; --pact-rule: #555555; --pact-surface: #f0f0f0; --pact-context: #747474;
+  --pact-dim-practices: #017d9f; --pact-dim-architecture: #8c0888; --pact-dim-culture: #733801; --pact-dim-technology: #017c1f; --pact-dim-outcomes: #da3456;
+  --pact-dim-practices-ink: #03617b; --pact-dim-architecture-ink: #9a1f94; --pact-dim-culture-ink: #8c4601; --pact-dim-technology-ink: #016819; --pact-dim-outcomes-ink: #b3003a;
+  --pact-on-dim: #ffffff; --pact-mark-edge: #000000; --pact-wip-ink: #ffffff;
+  --pact-primary: #4028a8; --pact-primary-hover: #310791; --pact-primary-ink: #ffffff;
+  --pact-seq-1: #e4e6ff; --pact-seq-2: #c2c5ff; --pact-seq-3: #a2a4ff; --pact-seq-4: #8580ff; --pact-seq-5: #6c62e4; --pact-seq-6: #5546c6; --pact-seq-7: #4028a8;
+  --pact-div-cool-3: #685dde; --pact-div-cool-2: #8782ff; --pact-div-cool-1: #acaeff; --pact-div-mid: #d7d7d7; --pact-div-warm-1: #ff9b52; --pact-div-warm-2: #e07404; --pact-div-warm-3: #b05a02;
+  --pact-rule-strong: 3px; --pact-focus-width: 4px; --pact-cta-decoration: underline;
+}
+
+/* ── Less motion: the device setting, or [display] → less. Colour fades stay; movement goes. ── */
+@media (prefers-reduced-motion: reduce) {
+  :root:not([data-pact-motion="full"]) {
+    --pact-motion: 0ms; --pact-motion-data: 0ms; --pact-motion-moment: 0ms; --pact-stagger: 0ms; --pact-nudge: 0px;
+  }
+}
+:root[data-pact-motion="reduce"] {
+  --pact-motion: 0ms; --pact-motion-data: 0ms; --pact-motion-moment: 0ms; --pact-stagger: 0ms; --pact-nudge: 0px;
+}
