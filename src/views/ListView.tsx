@@ -21,13 +21,16 @@ export function ThingRow({ atlas, thing, here, detail }: { atlas: Atlas; thing: 
     .filter((h) => h !== here?.id)
     .map((h) => atlas.hubById.get(h))
     .filter((h): h is Hub => !!h);
-  // Short labels ([2025], [2024], ...) all fit on the line, the way the
-  // first site listed the DORA years; otherwise just the main way in.
+  // Links marked inList in the content go on the line (the album's
+  // spotify, apple music and youtube music). Otherwise short labels
+  // ([2025], [2024], ...) all fit, the way the first site listed the DORA
+  // years; otherwise just the main way in.
   const links = linksFor(thing);
+  const picked = links.filter((l) => l.inList);
   const shortLinks = links.length > 1 && links.every((l) => l.label.length <= 8);
-  const shown = shortLinks ? links : links.slice(0, 1);
+  const shown = picked.length ? picked : shortLinks ? links : links.slice(0, 1);
   return (
-    <li className="cs-row">
+    <li className={thing.status === 'live' ? 'cs-row' : 'cs-row cs-unfinished'}>
       <span className="cs-row-body">
         <Link to={`/thing/${thing.id}`} className="cs-row-title">
           {thing.title}

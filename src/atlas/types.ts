@@ -20,6 +20,8 @@ export type Status = 'live' | 'wip' | 'idea';
 export interface LinkRef {
   label: string;
   url: string;
+  /** Show this link on the thing's line in the list, not only on its page. */
+  inList?: boolean;
 }
 
 export interface Line {

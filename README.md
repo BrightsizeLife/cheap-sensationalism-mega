@@ -43,6 +43,12 @@ A thing looks like this. Only `id`, `title`, `hubs`, `kind`, `status`,
 - `status` is one of `live`, `wip` (shown as `[WIP]`), or `idea` (planned).
   `note` says why, in a few words. Nothing is kept as retired: when a thing
   is done with, it comes off the site.
+- Unfinished things (`wip` and `idea`) are hidden from the list, table and
+  network until a visitor presses `[show the … unfinished things]`, and are
+  greyed out when shown. `?status=all` in a link shows them straight away.
+- A link with `"inList": true` also shows on the thing's line in the list
+  (the album's spotify, apple music and youtube music). Without it, the line
+  shows the first link only.
 - Only `live` things are linked. A `[WIP]` or planned thing keeps its
   `links` and `source` in the file, but the site shows none of them until
   its status changes to `live`.

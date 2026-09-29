@@ -331,7 +331,13 @@ export function NetworkView({ atlas, things, focusHub }: { atlas: Atlas; things:
                         y={n.y}
                         dy="0.35em"
                         textAnchor={right ? 'start' : 'end'}
-                        className={n.hub ? 'cs-net-label cs-net-label-hub' : 'cs-net-label'}
+                        className={
+                          n.hub
+                            ? 'cs-net-label cs-net-label-hub'
+                            : n.thing!.status === 'live'
+                              ? 'cs-net-label'
+                              : 'cs-net-label cs-net-label-unfinished'
+                        }
                         aria-hidden="true"
                       >
                         {label.length > 26 && !n.hub && n.id !== selected ? `${label.slice(0, 24).trimEnd()}…` : label}

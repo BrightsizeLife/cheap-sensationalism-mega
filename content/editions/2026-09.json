@@ -258,16 +258,19 @@
       "year": "2024",
       "links": [
         {
-          "label": "[listen on spotify]",
-          "url": "https://open.spotify.com/album/7kjmvtW08iNlCKEU0qgKXN"
+          "label": "[spotify]",
+          "url": "https://open.spotify.com/album/7kjmvtW08iNlCKEU0qgKXN",
+          "inList": true
         },
         {
           "label": "[apple music]",
-          "url": "https://music.apple.com/us/album/cheap-sensationalism/1773687566"
+          "url": "https://music.apple.com/us/album/cheap-sensationalism/1773687566",
+          "inList": true
         },
         {
           "label": "[youtube music]",
-          "url": "https://music.youtube.com/playlist?list=OLAK5uy_l_jEZiq2LYmeKp6hQvg6if0eislc_NRJA"
+          "url": "https://music.youtube.com/playlist?list=OLAK5uy_l_jEZiq2LYmeKp6hQvg6if0eislc_NRJA",
+          "inList": true
         },
         {
           "label": "[read the album notes]",

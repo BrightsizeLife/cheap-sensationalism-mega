@@ -43,6 +43,20 @@
   color: var(--pact-muted);
 }
 
+/* Unfinished things ([WIP] and planned) are greyed out wherever they are
+   listed, by the owner's choice: the name, its status and the rest of its
+   row in the muted grey (6.4:1 on paper, so still readable). Names stay
+   underlined, so they still read as links. They are hidden until the
+   reader asks for them; see UnfinishedToggle in Controls.tsx. */
+.cs-unfinished,
+.cs-unfinished a,
+.cs-unfinished .cs-status {
+  color: var(--pact-muted);
+}
+.cs-network .cs-net-label-unfinished {
+  fill: var(--pact-muted);
+}
+
 .cs-new-tag {
   display: inline-block;
   margin-left: 0.5rem;
@@ -733,4 +747,16 @@
 }
 .cs-filter-box .cs-filter-group + .cs-filter-group {
   margin-top: var(--pact-space-2);
+}
+/* [filter] and the unfinished button share a line. An open filter takes the
+   whole line, so its sections sit under [filter] and the button moves down;
+   the control the reader just pressed stays where it was. */
+.cs-filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 0 var(--pact-space-3);
+}
+.cs-filter-box[open] {
+  flex-basis: 100%;
 }

@@ -82,6 +82,7 @@ for (const name of readdirSync(DIR).filter((f) => f.endsWith('.json')).sort()) {
     for (const l of t.links ?? []) {
       if (!l.label || !l.url) say(file, `${where} has a link without a label or url`);
       else if (!/^(https:\/\/|\/)/.test(l.url)) say(file, `${where} links to "${l.url}"; use https:// or a path on this site`);
+      if (l.inList !== undefined && typeof l.inList !== 'boolean') say(file, `${where} link "${l.label}" has inList "${l.inList}"; use true or leave it out`);
     }
     if (t.source && !/^https:\/\/github\.com\//.test(t.source)) say(file, `${where} source should be a github.com URL`);
     if (t.updated && !/^\d{4}(-\d{2})?$/.test(t.updated)) say(file, `${where} updated should look like 2026-09`);

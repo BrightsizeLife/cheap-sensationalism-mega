@@ -36,77 +36,79 @@ export function ViewSwitch() {
   );
 }
 
+/** Unfinished things ([WIP] and planned) are hidden until the reader asks
+ *  for them, by the owner's choice. One button, always in the same place,
+ *  saying how many it will show or hide. The choice goes in the URL. */
+function UnfinishedToggle({ unfinished }: { unfinished: number }) {
+  const { status } = useViewState();
+  const things = unfinished === 1 ? 'thing' : 'things';
+  const [label, next] =
+    status === 'all'
+      ? [`[hide the ${unfinished} unfinished ${things}]`, null]
+      : status === 'wip'
+        ? ['[show the finished things too]', 'all']
+        : [`[show the ${unfinished} unfinished ${things}]`, 'all'];
+  return (
+    <button type="button" className="pact-cta cs-unfinished-toggle" onClick={() => setParams({ status: next })}>
+      {label}
+    </button>
+  );
+}
+
 export function Filters({
   atlas,
   showLines = true,
   shown,
   total,
+  unfinished,
 }: {
   atlas: Atlas;
   showLines?: boolean;
   shown: number;
   total: number;
+  /** Unfinished things the section filter lets through. */
+  unfinished: number;
 }) {
-  const { lines, status } = useViewState();
+  const { lines } = useViewState();
   const toggleLine = (id: string) => {
     const next = lines.includes(id) ? lines.filter((l) => l !== id) : [...lines, id];
     setParams({ line: next.length ? next.join(',') : null });
   };
-  const active = lines.length > 0 || status !== 'all';
+  const active = lines.length > 0;
   return (
     <div className="cs-filters">
-      {/* Closed unless a filter is on: the first screen stays as plain as the list. */}
-      <details className="cs-filter-box" open={active || undefined}>
-        <summary className="pact-cta cs-filter-summary">[filter]</summary>
+      <div className="cs-filter-row">
         {showLines && (
-          <fieldset className="pact-fieldset cs-filter-group">
-            <legend className="cs-kicker">sections</legend>
-            <div className="cs-toggles">
-              {atlas.edition.lines.map((l) => (
-                <button
-                  key={l.id}
-                  type="button"
-                  className="cs-toggle"
-                  aria-pressed={lines.includes(l.id)}
-                  onClick={() => toggleLine(l.id)}
-                >
-                  {l.name}
+          /* Closed unless a filter is on: the first screen stays as plain as the list. */
+          <details className="cs-filter-box" open={active || undefined}>
+            <summary className="pact-cta cs-filter-summary">[filter]</summary>
+            <fieldset className="pact-fieldset cs-filter-group">
+              <legend className="cs-kicker">sections</legend>
+              <div className="cs-toggles">
+                {atlas.edition.lines.map((l) => (
+                  <button
+                    key={l.id}
+                    type="button"
+                    className="cs-toggle"
+                    aria-pressed={lines.includes(l.id)}
+                    onClick={() => toggleLine(l.id)}
+                  >
+                    {l.name}
+                  </button>
+                ))}
+              </div>
+            </fieldset>
+            {active && (
+              <p>
+                <button type="button" className="pact-cta" onClick={() => setParams({ line: null })}>
+                  [clear the filter]
                 </button>
-              ))}
-            </div>
-          </fieldset>
+              </p>
+            )}
+          </details>
         )}
-        <fieldset className="pact-fieldset cs-filter-group">
-          <legend className="cs-kicker">status</legend>
-          <div className="cs-toggles">
-            {(
-              [
-                ['all', 'everything'],
-                ['live', 'live'],
-                ['wip', 'not finished'],
-              ] as const
-            ).map(([value, word]) => (
-              <label key={value} className="pact-radio cs-radio">
-                <input
-                  type="radio"
-                  name="status"
-                  value={value}
-                  checked={status === value}
-                  onChange={() => setParams({ status: value === 'all' ? null : value })}
-                />
-                {word}
-              </label>
-            ))}
-          </div>
-        </fieldset>
-        {active && (
-          <p>
-            <button type="button" className="pact-cta" onClick={() => setParams({ line: null, status: null })}>
-              [clear the filters]
-            </button>
-          </p>
-        )}
-      </details>
+        {unfinished > 0 && <UnfinishedToggle unfinished={unfinished} />}
+      </div>
       <p className="pact-small pact-muted cs-count" role="status">
         {active ? (
           <>

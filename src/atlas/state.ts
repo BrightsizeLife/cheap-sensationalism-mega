@@ -4,7 +4,9 @@
 //   ?edition=2026-05   an old edition (sticky: internal links keep it)
 //   ?view=table        list | table | network
 //   ?line=listen,play  only these lines
-//   ?status=live       all | live | wip (wip also covers idea)
+//   ?status=all        show the unfinished things too. Without it only
+//                      finished (live) things show, by the owner's choice;
+//                      status=wip shows only unfinished ones (wip and idea)
 //   ?sort=updated      table sort: title | line | status | updated
 //   ?node=fog          the selected station in the network view
 
@@ -16,7 +18,7 @@ import type { Status, Thing } from './types';
 export type View = 'list' | 'table' | 'network';
 export const VIEWS: View[] = ['list', 'table', 'network'];
 
-export type StatusFilter = 'all' | 'live' | 'wip';
+export type StatusFilter = 'live' | 'all' | 'wip';
 export type Sort = 'title' | 'line' | 'status' | 'updated';
 export const SORTS: Sort[] = ['title', 'line', 'status', 'updated'];
 
@@ -37,26 +39,26 @@ export function useViewState() {
   const view = (VIEWS as string[]).includes(params.get('view') ?? '') ? (params.get('view') as View) : 'list';
   const lines = (params.get('line') ?? '').split(',').filter(Boolean);
   const statusRaw = params.get('status');
-  const status: StatusFilter = statusRaw === 'live' || statusRaw === 'wip' ? statusRaw : 'all';
+  const status: StatusFilter = statusRaw === 'all' || statusRaw === 'wip' ? statusRaw : 'live';
   const sort = (SORTS as string[]).includes(params.get('sort') ?? '') ? (params.get('sort') as Sort) : 'line';
   const node = params.get('node');
   return { view, lines, status, sort, node };
 }
 
-const WIPISH: Status[] = ['wip', 'idea'];
+/** Not finished: [WIP] and planned. Hidden unless the reader asks. */
+export const isUnfinished = (t: Thing) => t.status !== 'live';
 
+/** The things on screen, and how many unfinished ones the section filter
+ *  lets through, so the button can say how many it would show or hide. */
 export function useFiltered(atlas: Atlas, things: Thing[]) {
   const { lines, status } = useViewState();
-  return useMemo(
-    () =>
-      things.filter((t) => {
-        if (lines.length && !atlas.linesOf(t).some((l) => lines.includes(l.id))) return false;
-        if (status === 'live' && t.status !== 'live') return false;
-        if (status === 'wip' && !WIPISH.includes(t.status)) return false;
-        return true;
-      }),
-    [atlas, things, lines.join(','), status],
-  );
+  return useMemo(() => {
+    const inLines = lines.length ? things.filter((t) => atlas.linesOf(t).some((l) => lines.includes(l.id))) : things;
+    const shown = inLines.filter((t) =>
+      status === 'all' ? true : status === 'wip' ? isUnfinished(t) : !isUnfinished(t),
+    );
+    return { shown, unfinished: inLines.filter(isUnfinished).length };
+  }, [atlas, things, lines.join(','), status]);
 }
 
 /** Status in words. The word is always shown; nothing relies on colour. */

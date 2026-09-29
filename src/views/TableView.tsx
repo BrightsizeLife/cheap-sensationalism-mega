@@ -68,7 +68,7 @@ export function TableView({ atlas, things, caption }: { atlas: Atlas; things: Th
         </thead>
         <tbody>
           {rows.map((t) => (
-            <tr key={t.id}>
+            <tr key={t.id} className={t.status === 'live' ? undefined : 'cs-unfinished'}>
               <td>
                 <Link to={`/thing/${t.id}`}>{t.title}</Link>
                 {atlas.fresh.has(t.id) && <NewTag />}

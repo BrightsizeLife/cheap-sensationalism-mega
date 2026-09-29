@@ -26,8 +26,11 @@ export function Explorer({
   headingId: string;
   heading: React.ReactNode;
 }) {
-  const { view } = useViewState();
-  const shown = useFiltered(atlas, things);
+  const { view, status } = useViewState();
+  const { shown, unfinished } = useFiltered(atlas, things);
+  // With unfinished things hidden, a hub where nothing is finished yet says
+  // so plainly instead of "nothing matches"; the button above shows them.
+  const nothingFinished = !shown.length && status === 'live' && unfinished > 0;
   const multiLine = new Set(things.flatMap((t) => atlas.linesOf(t).map((l) => l.id))).size > 1;
   return (
     <section className="pact-section cs-explorer" aria-labelledby={headingId}>
@@ -37,11 +40,19 @@ export function Explorer({
         </h2>
         <ViewSwitch />
       </div>
-      <Filters atlas={atlas} showLines={multiLine && !hub} shown={shown.length} total={things.length} />
-      {view === 'list' &&
+      <Filters
+        atlas={atlas}
+        showLines={multiLine && !hub}
+        shown={shown.length}
+        total={things.length}
+        unfinished={unfinished}
+      />
+      {nothingFinished && <p className="pact-muted">Nothing here is finished yet.</p>}
+      {!nothingFinished &&
+        view === 'list' &&
         (hub ? <HubList atlas={atlas} hub={hub} things={shown} /> : <ListView atlas={atlas} things={shown} />)}
-      {view === 'table' && <TableView atlas={atlas} things={shown} caption={caption} />}
-      {view === 'network' && <NetworkView atlas={atlas} things={shown} focusHub={hub?.id} />}
+      {!nothingFinished && view === 'table' && <TableView atlas={atlas} things={shown} caption={caption} />}
+      {!nothingFinished && view === 'network' && <NetworkView atlas={atlas} things={shown} focusHub={hub?.id} />}
     </section>
   );
 }
