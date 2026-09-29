@@ -1,175 +1,230 @@
 /*
- * PACT design tokens.
+ * PACT design tokens · v2 "on paper"
  *
  * ┌──────────────────────────────────────────────────────────────────────┐
- * │ OVERRIDE, READ FIRST.                                                 │
+ * │ READ FIRST.                                                          │
  * │                                                                      │
- * │ PACT is white. The Cheap Sensationalism design system's rule 1 (one  │
- * │ dark base, #0a0b10) does NOT apply to this project. That is the      │
- * │ founder's decision, recorded in the project spec §7.1.               │
+ * │ PACT is paper by day. The ground is #faf8f3, not white and not the   │
+ * │ Cheap Sensationalism dark base. Night (a warm charcoal) appears only │
+ * │ when the reader's device or the [display] panel asks for it; high    │
+ * │ contrast (white and black) the same way. That is the founder's       │
+ * │ decision of 27 September 2026 (references/decisions.md).             │
  * │                                                                      │
- * │ Everything else carries over: cs- prefixes on anything borrowed,     │
- * │ lowercase headers, [bracket] CTAs, no decorative emoji. The type and │
- * │ the palette are PACT's own; see the two notes below.                 │
- * │                                                                      │
- * │ If you are an agent and a skill tells you to flip the background     │
- * │ dark, this comment wins. Do not "fix" it.                            │
+ * │ If you are an agent and a skill tells you to make the page white or  │
+ * │ dark by default, this comment wins. Do not "fix" it.                 │
  * └──────────────────────────────────────────────────────────────────────┘
  *
- * Direction: New York subway signage. White ground, black type, one colour
- * that does real work, heavy weights, generous room between sections and
- * tight leading within them. Every mark tells you where you are, what to
- * do, or what a number is. Nothing decorative.
+ * Direction: New York subway signage on paper. Black type set wide, one
+ * indigo that does real work, the five dimension colours as wayfinding,
+ * generous room between sections and tight leading within them. The
+ * ground is calm; excitement comes from moments (references/motion.md).
  *
- * Fonts are self-hosted by next/font (see app/layout.tsx), which sets the
- * --font-archivo and --font-azeret variables. No request ever goes to
- * Google Fonts from a visitor's browser.
+ * Every colour below comes out of scripts/palette.ts for its ground:
+ *   paper          --ground "#faf8f3" --ink "#1d1b17"          (default)
+ *   night          --ground "#1b1915" --ink "#e8e2d6"
+ *   high contrast  --ground "#ffffff" --ink "#000000" --more
+ * Never hand-edit a hex here; rerun the script and paste.
+ *
+ * Sizes and spaces are in rem so the reader's own browser text size is
+ * honoured. Fonts: assets/fonts.css (or next/font, which sets
+ * --font-archivo and --font-azeret).
  */
 
 :root {
-  /* ── Ground and ink ── */
-  --pact-bg: #ffffff;        /* Ground. Only ground. */
-  --pact-ink: #0a0b10;       /* All primary text. This is --cs-bg with its role inverted. */
-  --pact-muted: #5c5a55;     /* Secondary text. 6.4:1 on white, passes AA at any size. */
-  --pact-rule: #e6e4df;      /* Hairlines only. */
-  --pact-surface: #f5f4f0;   /* The one lifted surface: table header rows, code. */
+  color-scheme: light;
+
+  /* ── Ground and ink (paper) ── */
+  --pact-bg: #faf8f3;        /* The ground. Paper, not white. */
+  --pact-ink: #1d1b17;       /* All primary text. 16.2:1. */
+  --pact-muted: #5d5b57;     /* Secondary text, kickers, table heads. 6.4:1. */
+  --pact-rule: #dcdad5;      /* Hairlines only. */
+  --pact-surface: #efede8;   /* The one lifted surface: table heads, code, formulas. */
+  --pact-context: #92908b;   /* Context marks in a chart: the grey series beside the subject. 3.0:1. */
 
   /* ── The five ───────────────────────────────────────────────────────
-     One hue per dimension, for fills and shapes: a 12px circle before a
-     concept name, a 6px rule beside a section, a bar on a chart. Every one
-     at least 3:1 on white so the mark is visible (the neon set this
-     replaced sat at 1.7:1 and vanished). Every pair kept apart under
-     simulated red-green colour blindness (ΔE ≥ 8, worst 9.5) and under
-     normal vision (ΔE ≥ 15, worst 18.1), across all ten pairs, so a chart
-     with five series is still five series to 1 man in 12.
+     One hue per dimension. Searched, not picked: every pair stays apart
+     under simulated red-green colour blindness (worst ΔE 9.4, line 8) and
+     normal vision (worst ΔE 17.5, line 15).
 
-     They are searched, not picked. The first cut of this palette held all
-     five at one lightness to make them read as a family; that is exactly
-     what makes a set collapse for a dichromat, who tells colours apart
-     mostly by lightness. Regenerate with `pnpm palette`; never hand-pick a
-     replacement, because the set only works while the numbers hold.
+     pop   fills and shapes, at least 3:1 on the ground. Never text.
+     ink   the same hue at 6:1. The only cut allowed to carry text, and the
+           fill behind a subway bullet's letter. */
+  --pact-dim-practices: #029bc3;        /* cyan     3.1:1 */
+  --pact-dim-architecture: #aa32a4;     /* magenta  5.3:1 */
+  --pact-dim-culture: #cf7c00;          /* orange   3.0:1 */
+  --pact-dim-technology: #00764c;       /* jade     5.4:1 */
+  --pact-dim-outcomes: #c52012;         /* red      5.5:1 */
 
-     Two cuts per hue, because one value cannot do both jobs on white:
-       pop   fills and shapes. Never text.
-       ink   the same hue at ~6:1. The only cut allowed to carry text. */
-  --pact-dim-practices: #00a1cb;        /* cyan     3.0:1 */
-  --pact-dim-architecture: #ad36a7;     /* magenta  5.4:1 */
-  --pact-dim-culture: #dd7c02;          /* orange   3.0:1 */
-  --pact-dim-technology: #00764c;       /* jade     5.7:1 */
-  --pact-dim-outcomes: #c52012;         /* red      5.9:1 */
+  --pact-dim-practices-ink: #026783;    /* 6.0:1 */
+  --pact-dim-architecture-ink: #a1289b; /* 6.0:1 */
+  --pact-dim-culture-ink: #8b5101;      /* 6.0:1 */
+  --pact-dim-technology-ink: #026d46;   /* 6.0:1 */
+  --pact-dim-outcomes-ink: #bd1305;     /* 6.1:1 */
 
-  --pact-dim-practices-ink: #026c89;    /* 6.0:1 */
-  --pact-dim-architecture-ink: #a52da0; /* 6.0:1 */
-  --pact-dim-culture-ink: #965202;      /* 6.0:1 */
-  --pact-dim-technology-ink: #007249;   /* 6.0:1 */
-  --pact-dim-outcomes-ink: #c31d0f;     /* 6.0:1 */
+  --pact-on-dim: #ffffff;               /* The letter in a subway bullet, on an -ink fill. */
+  --pact-mark-edge: rgba(29, 27, 23, 0.28); /* The hairline ring around a dimension mark. */
+  --pact-wip-ink: #1d1b17;              /* Text on the [WIP] chip (culture pop). 5.4:1. */
 
   /* ── The action colour ─────────────────────────────────────────────
-     The indigo. Buttons, links, focus rings, active states, the fit line
-     on a plot. 8.6:1 on white, the same ratio in both directions, so white
-     type on it passes AAA too. Its hue sits at least 45° from every
-     dimension hue, so a mark is never mistaken for a control. There is no
-     second action colour. */
+     The indigo. Links, buttons, focus, the current nav item, the fit line
+     on a plot, and "you" in a chart (your ballot, your guess). 8.1:1 on
+     paper; white on it is 8.6:1. Nothing else is indigo except the
+     sequential ramp and the positive arm of the diverging pair, both of
+     which mean "more". */
   --pact-primary: #4835b4;
-  --pact-primary-hover: #381b9d; /* One step deeper. The filled button on :hover, nothing else. */
-  --pact-primary-ink: #ffffff;   /* Text on primary. */
+  --pact-primary-hover: #381b9d;
+  --pact-primary-ink: #ffffff;
 
-  /* ── Signal ── */
-  /* Not a sixth colour: the outcomes red, doing a second job. Red means
-     "look at this number", and the words always say it too. */
-  --pact-signal: var(--pact-dim-outcomes);         /* Large numbers and shapes. */
-  --pact-signal-ink: var(--pact-dim-outcomes-ink); /* Same meaning at body size. Inline errors. */
+  /* ── Signal: the outcomes red doing a second job ── */
+  --pact-signal: var(--pact-dim-outcomes);
+  --pact-signal-ink: var(--pact-dim-outcomes-ink);
 
   /* ── Charts: how much, and which way ───────────────────────────────
-     The five above are for *which*: one hue per series, assigned in the
-     order technology, architecture, culture, practices, outcomes (ranked
-     so the pairs that touch in a stack are the furthest apart), never
-     cycled. These two are for *how much* and *which way*.
-
-     Sequential: one hue, the indigo, light to dark. Step 7 is the action
-     colour itself. Step 1 recedes toward the page and means "near zero";
-     discrete ordered marks (tiers, stages) start at step 3, the first that
-     clears 2:1 on white. */
+     Sequential: the indigo, from the ground up. Step 7 is the action
+     colour. Discrete ordered marks start at step 3. */
   --pact-seq-1: #e4e6ff;
-  --pact-seq-2: #c4c7ff;
+  --pact-seq-2: #c4c8ff;
   --pact-seq-3: #a6a8ff;
-  --pact-seq-4: #8b87ff;
+  --pact-seq-4: #8b88ff;
   --pact-seq-5: #736aec;
   --pact-seq-6: #5d50d0;
   --pact-seq-7: #4835b4;
 
-  /* Diverging: indigo one way, orange the other, the hairline grey as
-     zero. Both arms step through the same three lightnesses so neither
-     side shouts. Blue against orange survives every kind of colour
-     blindness; red against green, the usual choice, does not. */
+  /* Diverging: indigo is POSITIVE (agree, up, more), orange is NEGATIVE
+     (disagree, down, less), the hairline grey is zero. Flipped in v2 so
+     indigo means "more" everywhere. Use the pos/neg names in new work. */
   --pact-div-cool-3: #685dde;
   --pact-div-cool-2: #8782ff;
   --pact-div-cool-1: #acaeff;
-  --pact-div-mid: #e6e4df;
-  --pact-div-warm-1: #ff9c3f;
-  --pact-div-warm-2: #d97901;
-  --pact-div-warm-3: #ab5e01;
+  --pact-div-mid: #dcdad5;
+  --pact-div-warm-1: #ff9d21;
+  --pact-div-warm-2: #d37e01;
+  --pact-div-warm-3: #a56202;
+  --pact-div-pos-3: var(--pact-div-cool-3);
+  --pact-div-pos-2: var(--pact-div-cool-2);
+  --pact-div-pos-1: var(--pact-div-cool-1);
+  --pact-div-neg-1: var(--pact-div-warm-1);
+  --pact-div-neg-2: var(--pact-div-warm-2);
+  --pact-div-neg-3: var(--pact-div-warm-3);
 
-  /* ── Type ───────────────────────────────────────────────────────────
-     Archivo for words, Azeret Mono for numbers. Both are grotesques with
-     a flat, signage-y skeleton — the Inter and Space Mono idea, in faces
-     that are not on every other site. Archivo carries a width axis, so
-     the headline cut is the same family stretched wide the way a subway
-     sign is, rather than a second font. See docs/decisions.md. */
+  /* ── Type ── */
   --pact-font-ui: var(--font-archivo, "Archivo"), system-ui, -apple-system, "Segoe UI", sans-serif;
   --pact-font-num: var(--font-azeret, "Azeret Mono"), "SF Mono", "Fira Code", Consolas, monospace;
+  --pact-display-wdth: 110;  /* Archivo's wide cut, h1 and h2 only. */
 
-  --pact-display-wdth: 110; /* Archivo's wide cut, on headings only. Body text
-                               stays at normal width, where it reads fastest.
-                               110 of a possible 125: wide enough to read as a
-                               decision, not so wide that lowercase letters
-                               look inflated at h2 size. */
-
-  --pact-text-base: 17px;    /* 18px from the desktop breakpoint, see below. */
+  --pact-text-base: 1.0625rem;  /* 17px; 18px from 48rem. */
   --pact-text-sm: 0.875rem;
-  --pact-text-kicker: 11px;
-  --pact-text-h1: 2.25rem;   /* 38px mobile, scales up on desktop. */
+  --pact-text-kicker: 0.6875rem; /* 11px */
+  --pact-text-h1: 2.25rem;
   --pact-text-h2: 1.5rem;
-  --pact-text-num: 2.75rem;  /* The big numbers. */
+  --pact-text-num: 2.75rem;
 
   --pact-leading-tight: 1.1;
   --pact-leading-snug: 1.3;
   --pact-leading-base: 1.55;
-
-  --pact-tracking-tight: -0.02em; /* Archivo sets tighter than Inter; it needs less help. */
+  --pact-tracking-tight: -0.02em;
   --pact-tracking-widest: 0.15em;
 
-  /* ── Space: 8px grid ── */
-  /* "Breathing room between, compression within." Big gaps between
-     sections, small gaps between rows inside one. */
-  --pact-space-1: 8px;
-  --pact-space-2: 16px;
-  --pact-space-3: 24px;
-  --pact-space-4: 32px;
-  --pact-space-6: 48px;
-  --pact-section-gap: 64px;  /* 96px on desktop. */
-  --pact-measure: 40rem;     /* Max line length for prose. About 70 characters. */
-  --pact-page-max: 64rem;    /* Max page width. */
+  /* ── Space: an 8px grid, in rem so it grows with the text ── */
+  --pact-space-1: 0.5rem;
+  --pact-space-2: 1rem;
+  --pact-space-3: 1.5rem;
+  --pact-space-4: 2rem;
+  --pact-space-6: 3rem;
+  --pact-section-gap: 4rem;  /* 6rem on desktop. */
+  --pact-measure: 40rem;     /* About 70 characters. */
+  --pact-page-max: 64rem;
 
-  /* ── Focus ── */
-  --pact-focus-ring: 3px solid var(--pact-primary);
+  /* ── Rules, focus, actions ── */
+  --pact-rule-strong: 2px;           /* The ink rule on a list or table edge. 3px in high contrast. */
+  --pact-focus-width: 3px;           /* 4px in high contrast. */
+  --pact-focus-ring: var(--pact-focus-width) solid var(--pact-primary);
   --pact-focus-offset: 2px;
+  --pact-cta-decoration: none;       /* [bracket] CTAs gain an underline in high contrast or on request. */
 
-  /* ── Motion ── */
-  --pact-motion: 150ms;      /* Nothing longer. Removed entirely under prefers-reduced-motion. */
+  /* ── Motion: excitement in moments (references/motion.md) ── */
+  --pact-motion-quick: 120ms;   /* hover, press, toggles: colour and weight only */
+  --pact-motion: 200ms;         /* something appears in place: a note, a row opening */
+  --pact-motion-data: 600ms;    /* data arrives or changes: a chart draws, a mark moves, a number counts */
+  --pact-motion-moment: 900ms;  /* the one celebration in a flow */
+  --pact-ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --pact-ease-in-out: cubic-bezier(0.6, 0, 0.2, 1);
+  --pact-ease-moment: cubic-bezier(0.34, 1.45, 0.64, 1);  /* the only overshoot; the moment only */
+  --pact-stagger: 40ms;
+  --pact-nudge: 8px;
 }
 
 @media (min-width: 48rem) {
   :root {
-    --pact-text-base: 18px;
+    --pact-text-base: 1.125rem;
     --pact-text-h1: 3.25rem;
     --pact-text-num: 3.5rem;
-    --pact-section-gap: 96px;
+    --pact-section-gap: 6rem;
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  :root {
-    --pact-motion: 0ms;
+/* ── Night: the device's dark mode, or [display] → night ──────────────
+   Two copies of the same block (media query and attribute); keep them in
+   step. [data-theme="dark"] is how claude.ai artifacts mark a dark viewer;
+   it is harmless elsewhere. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-pact-theme]):not([data-theme="light"]) {
+    color-scheme: dark;
+    --pact-bg: #1b1915; --pact-ink: #e8e2d6; --pact-muted: #a09b92; --pact-rule: #393631; --pact-surface: #272420; --pact-context: #69655e;
+    --pact-dim-practices: #02bced; --pact-dim-architecture: #cc54c5; --pact-dim-culture: #ff8506; --pact-dim-technology: #06cb76; --pact-dim-outcomes: #e23d4e;
+    --pact-dim-practices-ink: #04a4ce; --pact-dim-architecture-ink: #e168d9; --pact-dim-culture-ink: #e97904; --pact-dim-technology-ink: #01ae64; --pact-dim-outcomes-ink: #ff626b;
+    --pact-on-dim: #1b1915; --pact-mark-edge: rgba(232, 226, 214, 0.3); --pact-wip-ink: #1b1915;
+    --pact-primary: #9a9aff; --pact-primary-hover: #b2b5ff; --pact-primary-ink: #1b1915;
+    --pact-seq-1: #2f018e; --pact-seq-2: #3d24a4; --pact-seq-3: #4d3cbb; --pact-seq-4: #5e52d2; --pact-seq-5: #7068ea; --pact-seq-6: #847eff; --pact-seq-7: #9a9aff;
+    --pact-div-cool-3: #8a86ff; --pact-div-cool-2: #685dde; --pact-div-cool-1: #4936b6; --pact-div-mid: #393631; --pact-div-warm-1: #7f3f00; --pact-div-warm-2: #b05a02; --pact-div-warm-3: #e47602;
   }
+}
+:root[data-pact-theme="night"],
+:root[data-theme="dark"]:not([data-pact-theme]) {
+  color-scheme: dark;
+  --pact-bg: #1b1915; --pact-ink: #e8e2d6; --pact-muted: #a09b92; --pact-rule: #393631; --pact-surface: #272420; --pact-context: #69655e;
+  --pact-dim-practices: #02bced; --pact-dim-architecture: #cc54c5; --pact-dim-culture: #ff8506; --pact-dim-technology: #06cb76; --pact-dim-outcomes: #e23d4e;
+  --pact-dim-practices-ink: #04a4ce; --pact-dim-architecture-ink: #e168d9; --pact-dim-culture-ink: #e97904; --pact-dim-technology-ink: #01ae64; --pact-dim-outcomes-ink: #ff626b;
+  --pact-on-dim: #1b1915; --pact-mark-edge: rgba(232, 226, 214, 0.3); --pact-wip-ink: #1b1915;
+  --pact-primary: #9a9aff; --pact-primary-hover: #b2b5ff; --pact-primary-ink: #1b1915;
+  --pact-seq-1: #2f018e; --pact-seq-2: #3d24a4; --pact-seq-3: #4d3cbb; --pact-seq-4: #5e52d2; --pact-seq-5: #7068ea; --pact-seq-6: #847eff; --pact-seq-7: #9a9aff;
+  --pact-div-cool-3: #8a86ff; --pact-div-cool-2: #685dde; --pact-div-cool-1: #4936b6; --pact-div-mid: #393631; --pact-div-warm-1: #7f3f00; --pact-div-warm-2: #b05a02; --pact-div-warm-3: #e47602;
+}
+
+/* ── High contrast: the device's "more contrast", or [display] → high contrast ──
+   The second :not() only raises specificity, so "more contrast" beats a dark
+   device (whose night selector above carries the same weight and comes first). */
+@media (prefers-contrast: more) {
+  :root:not([data-pact-theme]):not([data-pact-contrast-guard]) {
+    color-scheme: light;
+    --pact-bg: #ffffff; --pact-ink: #000000; --pact-muted: #585858; --pact-rule: #555555; --pact-surface: #f0f0f0; --pact-context: #747474;
+    --pact-dim-practices: #017d9f; --pact-dim-architecture: #8c0888; --pact-dim-culture: #733801; --pact-dim-technology: #017c1f; --pact-dim-outcomes: #da3456;
+    --pact-dim-practices-ink: #03617b; --pact-dim-architecture-ink: #9a1f94; --pact-dim-culture-ink: #8c4601; --pact-dim-technology-ink: #016819; --pact-dim-outcomes-ink: #b3003a;
+    --pact-on-dim: #ffffff; --pact-mark-edge: #000000; --pact-wip-ink: #ffffff;
+    --pact-primary: #4028a8; --pact-primary-hover: #310791; --pact-primary-ink: #ffffff;
+    --pact-seq-1: #e4e6ff; --pact-seq-2: #c2c5ff; --pact-seq-3: #a2a4ff; --pact-seq-4: #8580ff; --pact-seq-5: #6c62e4; --pact-seq-6: #5546c6; --pact-seq-7: #4028a8;
+    --pact-div-cool-3: #685dde; --pact-div-cool-2: #8782ff; --pact-div-cool-1: #acaeff; --pact-div-mid: #d7d7d7; --pact-div-warm-1: #ff9b52; --pact-div-warm-2: #e07404; --pact-div-warm-3: #b05a02;
+    --pact-rule-strong: 3px; --pact-focus-width: 4px; --pact-cta-decoration: underline;
+  }
+}
+:root[data-pact-theme="contrast"] {
+  color-scheme: light;
+  --pact-bg: #ffffff; --pact-ink: #000000; --pact-muted: #585858; --pact-rule: #555555; --pact-surface: #f0f0f0; --pact-context: #747474;
+  --pact-dim-practices: #017d9f; --pact-dim-architecture: #8c0888; --pact-dim-culture: #733801; --pact-dim-technology: #017c1f; --pact-dim-outcomes: #da3456;
+  --pact-dim-practices-ink: #03617b; --pact-dim-architecture-ink: #9a1f94; --pact-dim-culture-ink: #8c4601; --pact-dim-technology-ink: #016819; --pact-dim-outcomes-ink: #b3003a;
+  --pact-on-dim: #ffffff; --pact-mark-edge: #000000; --pact-wip-ink: #ffffff;
+  --pact-primary: #4028a8; --pact-primary-hover: #310791; --pact-primary-ink: #ffffff;
+  --pact-seq-1: #e4e6ff; --pact-seq-2: #c2c5ff; --pact-seq-3: #a2a4ff; --pact-seq-4: #8580ff; --pact-seq-5: #6c62e4; --pact-seq-6: #5546c6; --pact-seq-7: #4028a8;
+  --pact-div-cool-3: #685dde; --pact-div-cool-2: #8782ff; --pact-div-cool-1: #acaeff; --pact-div-mid: #d7d7d7; --pact-div-warm-1: #ff9b52; --pact-div-warm-2: #e07404; --pact-div-warm-3: #b05a02;
+  --pact-rule-strong: 3px; --pact-focus-width: 4px; --pact-cta-decoration: underline;
+}
+
+/* ── Less motion: the device setting, or [display] → less. Colour fades stay; movement goes. ── */
+@media (prefers-reduced-motion: reduce) {
+  :root:not([data-pact-motion="full"]) {
+    --pact-motion: 0ms; --pact-motion-data: 0ms; --pact-motion-moment: 0ms; --pact-stagger: 0ms; --pact-nudge: 0px;
+  }
+}
+:root[data-pact-motion="reduce"] {
+  --pact-motion: 0ms; --pact-motion-data: 0ms; --pact-motion-moment: 0ms; --pact-stagger: 0ms; --pact-nudge: 0px;
 }

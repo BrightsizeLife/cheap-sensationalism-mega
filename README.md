@@ -90,10 +90,24 @@ sections sharing a colour, a path that clashes with another.
 
 ## design
 
-The PACT design system (white ground, black type, one indigo for everything
-you can press, five colours held apart under colour blindness), with the
-Cheap Sensationalism voice on top: lowercase headers, `[bracket]` actions,
-`[WIP]` where it's true. The list is one plain hierarchy (section, hub,
-thing) told apart by space, size and indent, with no markers or colour.
-The one loud thing, on purpose, is the moving banner. It stops on hover,
-on focus, with its own button, and under reduced motion.
+The PACT design system, v2 "on paper" (a paper ground, black type, one
+indigo for everything you can press, five colours held apart under colour
+blindness), with the Cheap Sensationalism voice on top: lowercase headers,
+`[bracket]` actions, `[WIP]` where it's true. `src/styles/tokens.css`,
+`src/styles/pact.css` and `public/pact-display.js` are the design system's
+own files, unchanged; to update the design, copy the new ones over and put
+what the site needs on top in `src/styles/site.css`.
+
+Headings are typed in lowercase in the content, not lowercased by CSS, so
+proper nouns keep their capitals (DORA, AI, NYC).
+
+Night and high contrast follow the visitor's device. The `[display]` button
+in the header opens a panel where anyone can choose paper, night or high
+contrast, a bigger text size, less motion, open spacing or underlined links.
+The choices are saved in that browser only.
+
+The list is one plain hierarchy (section, hub, thing) told apart by space,
+size and indent, with no markers or colour. The one loud thing, on purpose,
+is the moving banner. It stops on hover, on focus, with its own button, and
+when the device or `[display]` asks for less motion. Its colours change with
+the theme so its text stays readable.

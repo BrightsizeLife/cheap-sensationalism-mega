@@ -1,10 +1,12 @@
-// The chrome every page shares: skip link, header, main, footer, and the
-// banner that tells you when you are looking at an old edition.
+// The chrome every page shares: skip link, header, the [display] panel,
+// main, footer, and the banner that tells you when you are looking at an
+// old edition.
 
 import React, { useState } from 'react';
 import type { Atlas } from '../atlas/load';
 import { LATEST } from '../atlas/load';
 import { Link, useLocation } from '../router';
+import { useDisplay } from './Display';
 
 declare const __BUILD__: { sha: string; date: string };
 
@@ -20,6 +22,7 @@ export function Shell({
   current?: string;
   children: React.ReactNode;
 }) {
+  const display = useDisplay();
   return (
     <>
       <a className="pact-skip" href="#main">
@@ -39,20 +42,17 @@ export function Shell({
                   </Link>
                 </li>
               ))}
-              <li>
-                <Link to="/editions" aria-current={current === 'editions' ? 'page' : undefined}>
-                  editions
-                </Link>
-              </li>
             </ul>
           </nav>
+          {display.toggle}
         </div>
       </header>
+      {display.panel}
       <main id="main" tabIndex={-1} className="pact-page">
         {pinned && <EditionBanner atlas={atlas} />}
         {children}
       </main>
-      <Footer atlas={atlas} />
+      <Footer atlas={atlas} current={current} />
     </>
   );
 }
@@ -116,7 +116,7 @@ function Permalink({ atlas }: { atlas: Atlas }) {
   );
 }
 
-function Footer({ atlas }: { atlas: Atlas }) {
+function Footer({ atlas, current }: { atlas: Atlas; current?: string }) {
   const sha = __BUILD__.sha;
   return (
     <footer className="pact-footer">
@@ -127,7 +127,11 @@ function Footer({ atlas }: { atlas: Atlas }) {
         </p>
         <ul>
           <li>
-            <Link to="/editions">editions</Link>
+            {/* Here rather than in the header, so the header keeps one row
+                on a desktop with [display] in it. */}
+            <Link to="/editions" aria-current={current === 'editions' ? 'page' : undefined}>
+              editions
+            </Link>
           </li>
           <li>
             <a href="https://github.com/BrightsizeLife/cheap-sensationalism-mega" rel="noopener">
